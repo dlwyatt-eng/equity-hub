@@ -79,15 +79,15 @@ const lessons: Lesson[] = [
     grades: "K–7 adaptable",
     tone: "leaf",
     use: "Build shared language for belonging, access, and student voice.",
-    activity: "Compare fairness, rank six belonging actions, then draw one action happening",
-    product: "A class mural, two or three actions to practise, and a check-back date",
-    materials: "Projector · two student pages · crayons or markers",
-    formats: ["Same-or-fair look", "Action ranking", "Picture mural"],
+    activity: "Compare fairness, rank six belonging actions, then develop one full-page action picture",
+    product: "One full-page action studio per student, two or three class commitments, and a check-back date",
+    materials: "Projector · one group reference page · one full-page student studio per learner · crayons or markers",
+    formats: ["Same-or-fair look", "Action ranking", "Full-page action studio"],
     printable: {
-      title: "Belonging Picture Studio",
+      title: "Belonging Action Studio",
       href: "/downloads/lesson-belonging-builder.pdf",
       bwHref: "/downloads/lesson-belonging-builder-black-white.pdf",
-      includes: "Two student pages + teacher quick start: action cards, ranking, and picture-mural tiles",
+      includes: "Group action-card reference + one full-page student action studio + teacher quick start",
     },
     steps: [
       {
@@ -120,32 +120,32 @@ const lessons: Lesson[] = [
       {
         label: "DRAW",
         time: "20 min",
-        title: "Draw the action happening",
-        prompt: "How will you help someone join in?",
-        directions: ["Choose one real action.", "Draw people doing it; add one to five words."],
-        artSpark: "Adapt a picture idea from the action cards if helpful. Make the action easy to see across the room.",
+        title: "Develop one action on a full page",
+        prompt: "What would your action look and sound like in a real classroom moment?",
+        directions: ["Choose one real action and draw it happening in the large space.", "Add labels, explain who it helps and why, then name one first move you can try."],
+        artSpark: "Use the full page. Make the action—not just a symbol—easy to understand without needing you to explain it aloud.",
       },
       {
         label: "SHARE",
         time: "7 min",
         title: "Choose what we will practise",
         prompt: "Which two or three actions will we notice this week?",
-        directions: ["Group the mural tiles by action and notice patterns.", "Choose two or three to practise first; keep every action visible.", "Set a one-week check-back."],
+        directions: ["Students choose whether to share their page with a partner, teacher, or the class.", "Tally the actions without ranking artwork.", "Choose two or three actions to practise first and set a one-week check-back."],
         image: "/images/hero-belonging-built.webp",
         imageAlt: "Students and an adult creating a welcoming learning space with visual supports, flexible choices, and clear paths.",
       },
     ],
     teacher: {
       prepare: [
-        "Print student pages 1–2: page 1 once per group and page 2 once per four students.",
+        "Print page 1 once per group and page 2 once per student. Keep page 2 full size; do not print four pages per sheet.",
         "Open the linked B.C. video page and cue Episode 4, ‘Inclusion 2.0: Teaching to Diversity,’ before class.",
-        "Pre-cut action cards and mural tiles if cutting may be a barrier; set three room corners: same, fair, it depends.",
-        "During Grade 6 rotation, put each student’s name on the back and send the tile with them. Assemble the mural only after classes are set.",
+        "Pre-cut action cards only if cutting may be a barrier; set three room corners: same, fair, it depends.",
+        "During Grade 6 rotation, keep each named full-page studio with the student's handoff materials. Revisit the pages only after classes are set.",
       ],
       moves: ["Ask “What makes you say that?”", "Separate barriers from personal deficits.", "Invite several ways to contribute."],
       care: "Students may draw on fictional or general examples. Nobody needs to disclose an identity, diagnosis, or personal experience.",
       curriculum: ["Social Studies: systems and participation", "Language Arts: exchanging ideas", "ADST: design for users", "Career Education: community responsibility"],
-      evidence: "One action-picture tile per student, two or three actions to practise, and a one-week check-back date; optional SpacesEDU photo.",
+      evidence: "One full-page action studio per student, two or three class commitments, and a one-week check-back date; optional student-chosen SpacesEDU photo.",
       sources: [
         { label: "B.C. video — Episode 4: Teaching to Diversity", href: "https://www2.gov.bc.ca/gov/content/education-training/k-12/teach/resources-for-teachers/inclusive-education/videos" },
       ],
@@ -1159,7 +1159,7 @@ const lessons: Lesson[] = [
 ];
 
 const runways: Runway[] = [
-  { month: "SEPT", event: "Belonging during Grade 6 rotation", start: "Sept. 8–11", create: "One picture tile", share: "Assemble Sept. 14–15", date: "Opening weeks", lesson: "belonging-built", priority: "Core" },
+  { month: "SEPT", event: "Belonging during Grade 6 rotation", start: "Sept. 8–11", create: "One full-page belonging action", share: "Choose class commitments Sept. 14–15", date: "Opening weeks", lesson: "belonging-built", priority: "Core" },
   { month: "SEPT", event: "Truth, place & Orange Shirt Day", start: "Sept. 15", create: "Sept. 17–24", share: "Sept. 28–29", date: "Orange Shirt Day Sept. 29 · school closed Sept. 30", lesson: "truth-place-responsibility", priority: "Core" },
   { month: "SEPT", event: "Voice beyond voting — quick discussion", start: "Sept. 8 onward", create: "Choose one realistic route", share: "No product required", date: "Build participation language before campaigns", lesson: "voice-and-rules", startAt: 12, cta: "Project the 15-minute visual →", priority: "Choice" },
   { month: "SEPT", event: "Official candidates & representation", start: "After Sept. 11", create: "Sample equal amounts of candidate material", share: "One pattern + one missing question", date: "Nominations close and candidates are declared Sept. 11", lesson: "voice-and-rules", startAt: 7, cta: "Open representation screens →", priority: "Choice" },
@@ -1557,7 +1557,7 @@ export default function Home() {
                 </div>
                 <div className="launch-grid">
                   <button type="button" className="launch-card leaf" onClick={() => startLesson("belonging-built", 0)}>
-                    <span><b>45–55 MIN</b> Grade 6 rotation + first full week</span><h3>Belonging Picture Studio</h3><p>Each student carries a picture tile into the final class. Assemble and choose actions after classes settle.</p><strong>Students make: a tile → mural → weekly check-in →</strong>
+                    <span><b>45–55 MIN</b> Grade 6 rotation + first full week</span><h3>Belonging Action Studio</h3><p>Each student creates one full-page action plan, explains why it could help, and chooses a realistic first move.</p><strong>Students make: one action page → class commitments → check-back →</strong>
                   </button>
                   <button type="button" className="launch-card coral" onClick={() => startLesson("truth-place-responsibility")}>
                     <span><b>2–3 BLOCKS</b> Sept. 15–29</span><h3>Two Maps, One Place</h3><p>Use the provided maps and one local First Nations source. No teacher searching required.</p><strong>Students make: credited learning + next action →</strong>
