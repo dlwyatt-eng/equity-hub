@@ -6,6 +6,12 @@ export default defineConfig({
   root: "pages",
   base: "/equity-hub/",
   publicDir: "../public",
+  server: {
+    host: "0",
+    port: 4173,
+    strictPort: true,
+    allowedHosts: ["terminal.local"],
+  },
   plugins: [react()],
   build: {
     outDir: "../pages-dist",

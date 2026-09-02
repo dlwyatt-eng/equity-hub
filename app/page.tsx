@@ -26,6 +26,8 @@ type Lesson = {
   id: string;
   title: string;
   shortTitle: string;
+  image: string;
+  imageAlt: string;
   question: string;
   timing: string;
   length: string;
@@ -36,11 +38,22 @@ type Lesson = {
   product: string;
   materials: string;
   formats: string[];
+  routes?: {
+    title: string;
+    time: string;
+    description: string;
+    steps: number[];
+    print: string;
+  }[];
   printable: {
     title: string;
     href: string;
     bwHref: string;
+    preview: string;
+    pages: number;
+    studentPages: number;
     includes: string;
+    pagePlan: string[];
   };
   steps: LessonStep[];
   teacher: {
@@ -73,21 +86,36 @@ const lessons: Lesson[] = [
     id: "belonging-built",
     title: "Belonging is built",
     shortTitle: "Belonging",
+    image: "/images/hero-belonging-built.webp",
+    imageAlt: "Students and an adult redesigning a welcoming classroom with several ways to participate.",
     question: "What helps everyone join in and be themselves?",
     timing: "Sept. 8–15; assemble after classes settle",
     length: "45–55 min or 2 × 25 min",
     grades: "K–7 adaptable",
     tone: "leaf",
     use: "Build shared language for belonging, access, and student voice.",
-    activity: "Compare fairness, rank six belonging actions, then develop one full-page action picture",
-    product: "One full-page action studio per student, two or three class commitments, and a check-back date",
+    activity: "Look for fairness in a classroom picture, choose three belonging actions our class needs, then draw one action happening and name a first step",
+    product: "One illustrated belonging-action page per student, followed by two or three class commitments and a check-back date",
     materials: "Projector · one group reference page · one full-page student studio per learner · crayons or markers",
     formats: ["Same-or-fair look", "Action ranking", "Full-page action studio"],
+    routes: [
+      { title: "Belonging lesson", time: "45–55 min", description: "Notice fairness, choose class priorities, draw one belonging action, and agree on commitments.", steps: [0, 1, 2, 3, 4], print: "Hand out pages 1–2; keep page 3 ready for class commitments and pages 4–5 for yourself." },
+      { title: "Belonging check-back", time: "7–12 min", description: "Revisit the class commitments, notice what changed, and choose the next action to practise.", steps: [4], print: "Use the class commitments on page 3; no new student copies are needed." },
+    ],
     printable: {
       title: "Belonging Action Studio",
       href: "/downloads/lesson-belonging-builder.pdf",
       bwHref: "/downloads/lesson-belonging-builder-black-white.pdf",
-      includes: "Group action-card reference + one full-page student action studio + teacher quick start",
+      preview: "/images/printable-previews/belonging-built.webp",
+      pages: 5,
+      studentPages: 3,
+      includes: "Group action-ranking page + full-page student studio + class commitments page + two teacher guide pages",
+      pagePlan: [
+        "Project LOOK first; LOOK + DISCUSS are screen-only. Page 1 supports RANK; copy one for each group.",
+        "Page 2 supports DRAW; copy one full-size action studio for every student.",
+        "Page 3 supports SHARE; use one class copy to record two or three commitments and a check-back date.",
+        "Pages 4–5 — teacher print/project map, model, care, evidence, and source; keep these pages.",
+      ],
     },
     steps: [
       {
@@ -120,9 +148,9 @@ const lessons: Lesson[] = [
       {
         label: "DRAW",
         time: "20 min",
-        title: "Develop one action on a full page",
+        title: "Draw one belonging action happening",
         prompt: "What would your action look and sound like in a real classroom moment?",
-        directions: ["Choose one real action and draw it happening in the large space.", "Add labels, explain who it helps and why, then name one first move you can try."],
+        directions: ["Choose one action and draw it happening in a real classroom.", "Add labels or speech bubbles.", "Explain who it helps and choose one first step you can try."],
         artSpark: "Use the full page. Make the action—not just a symbol—easy to understand without needing you to explain it aloud.",
       },
       {
@@ -130,14 +158,14 @@ const lessons: Lesson[] = [
         time: "7 min",
         title: "Choose what we will practise",
         prompt: "Which two or three actions will we notice this week?",
-        directions: ["Students choose whether to share their page with a partner, teacher, or the class.", "Tally the actions without ranking artwork.", "Choose two or three actions to practise first and set a one-week check-back."],
+        directions: ["Choose whether to share with a partner, the teacher, or the class.", "Count the action ideas without ranking the artwork.", "Choose two or three actions to practise and set a date to check back."],
         image: "/images/hero-belonging-built.webp",
         imageAlt: "Students and an adult creating a welcoming learning space with visual supports, flexible choices, and clear paths.",
       },
     ],
     teacher: {
       prepare: [
-        "Print page 1 once per group and page 2 once per student. Keep page 2 full size; do not print four pages per sheet.",
+        "Print page 1 once per group, page 2 once per student, and page 3 once for the class. Keep pages 4–5 as your teacher guide. Keep page 2 full size; do not print four pages per sheet.",
         "Open the linked B.C. video page and cue Episode 4, ‘Inclusion 2.0: Teaching to Diversity,’ before class.",
         "Pre-cut action cards only if cutting may be a barrier; set three room corners: same, fair, it depends.",
         "During Grade 6 rotation, keep each named full-page studio with the student's handoff materials. Revisit the pages only after classes are set.",
@@ -155,6 +183,8 @@ const lessons: Lesson[] = [
     id: "voice-and-rules",
     title: "Whose voice shapes the rules?",
     shortTitle: "Voice & rules",
+    image: "/images/voice-and-rules.webp",
+    imageAlt: "Students sharing ideas through a circle, voting, anonymous responses, and other participation choices.",
     question: "How can a community make decisions so people can be heard, represented, and included?",
     timing: "Sept. 8–Oct. 23; choose one short route",
     length: "15 min, 45 min, or 2 × 40 min",
@@ -165,11 +195,28 @@ const lessons: Lesson[] = [
     product: "Only when useful: a reasoned recommendation, one question for a decision-maker, or a participation route",
     materials: "Projector · selected student pages · pencils · direct sources already linked",
     formats: ["15-min discussion", "Surrey decision lab", "Trustee voice challenge"],
+    routes: [
+      { title: "Fair class decision", time: "35–45 min", description: "Reveal a barrier, redesign a class-sharing plan, and decide how the class will review it.", steps: [0, 1, 2, 3, 4], print: "Use student pages 3–4." },
+      { title: "Surrey equity lab", time: "25–40 min", description: "Compare evidence about a fictional recreation-centre decision and identify who still needs to be heard.", steps: [5, 6], print: "Use student page 5." },
+      { title: "Representation + student voice", time: "30–45 min", description: "Study what appears in public messages or gather student input for trustees.", steps: [7, 8], print: "Choose student page 6, page 7, or both." },
+      { title: "Source check + participation", time: "25–35 min", description: "Sort public messages by type, check evidence, and choose a realistic way for youth to participate.", steps: [9, 13], print: "Use student pages 8–9." },
+      { title: "Voting is one piece", time: "15 min", description: "Discuss several realistic ways young people can participate before and after an election.", steps: [13], print: "No worksheet is required; page 9 is optional." },
+      { title: "AI power + accountability", time: "35–55 min", description: "Examine who benefits, who bears costs, who helps set rules, and how people can challenge a decision.", steps: [10, 11, 12], print: "Use the separate AI dilemma cards." },
+      { title: "After the election", time: "15 min", description: "Choose one promise or issue and plan how students can check what happens next.", steps: [14], print: "No worksheet is required." },
+    ],
     printable: {
       title: "Who Gets Heard? Surrey Voice Lab",
       href: "/downloads/lesson-fair-decision-lab.pdf",
       bwHref: "/downloads/lesson-fair-decision-lab-black-white.pdf",
-      includes: "Four student pages + teacher route map: class choice, Surrey case, representation, source check, trustee voice, and participation",
+      preview: "/images/printable-previews/voice-and-rules.webp",
+      pages: 9,
+      studentPages: 7,
+      includes: "Two teacher-guide pages + seven spacious student pages: class choice, Surrey case, representation, student voice, source check, and participation",
+      pagePlan: [
+        "Pages 1–2 are the teacher route map, model, ready links, and collection guide. Keep these pages.",
+        "Choose one route: pages 3–4 = fair class decision; page 5 = Surrey case; pages 6–7 = representation or student voice; pages 8–9 = source check + participation.",
+        "The AI route uses the separate AI cards. AFTER can use page 9 or run as a discussion without a worksheet.",
+      ],
     },
     steps: [
       {
@@ -202,7 +249,7 @@ const lessons: Lesson[] = [
         time: "12 min",
         title: "Use every checkpoint",
         prompt: "How can we redesign the sharing plan so more students can participate?",
-        directions: ["Talk through all five checkpoints.", "Record which checkpoint changed your plan."],
+        directions: ["Walk the plan through five checks: hear what people need, name barriers, redesign, decide, and choose when to review.", "Record which check changed your plan."],
         options: ["Hear", "Check", "Redesign", "Decide", "Review"],
         visual: "decision",
       },
@@ -254,7 +301,7 @@ const lessons: Lesson[] = [
         time: "15–25 min",
         title: "What does representation look like?",
         prompt: "Which experiences, issues, communities, and perspectives appear in the campaign—and which are hard to find?",
-        directions: ["Use the official candidate list only after September 11.", "Sample the same amount of material for each candidate or organization.", "Track issues and evidence—not private family views or a demographic scorecard."],
+        directions: ["Use the official candidate list only after September 11.", "Each group records the same amount of material from one candidate. Compare the class set together.", "Track issues and evidence—not private family views or a demographic scorecard."],
         visual: "representation",
         links: [
           { label: "Official Surrey candidates", href: "https://www.surrey.ca/city-government/2026-municipal-election/candidates" },
@@ -314,7 +361,7 @@ const lessons: Lesson[] = [
         time: "30–45 min · optional",
         title: "Who needs a seat at the table?",
         prompt: "Your community must set rules for a powerful AI system. Who should help decide?",
-        directions: ["Give each group a role card and one dilemma.", "Each group proposes one benefit to protect, one harm to prevent, one right to challenge a decision, and one way to check results.", "Add someone who is not in the room but will still be affected."],
+        directions: ["In your group, read one role card and one dilemma.", "Protect one benefit, prevent one harm, add a right to challenge the decision, and choose how results will be checked.", "Add someone who is not in the room but will still be affected."],
         options: ["Students", "Families", "Workers", "Businesses", "Scientists", "Disability advocates", "Indigenous governments", "Environmental advocates", "Government", "Future generations"],
         maxChoices: 3,
         visual: "decision",
@@ -400,6 +447,8 @@ const lessons: Lesson[] = [
     id: "truth-place-responsibility",
     title: "Truth, place & responsibility",
     shortTitle: "Truth & place",
+    image: "/images/artivism-gallery.webp",
+    imageAlt: "Students creating source-based artwork together in a bright, welcoming classroom.",
     question: "What should we learn and do because we live on this land?",
     timing: "Sept. 15–29, leading to Orange Shirt Day",
     length: "2–3 × 40 min",
@@ -410,11 +459,24 @@ const lessons: Lesson[] = [
     product: "A source-credited visual response, one next learning action, and a check-back date",
     materials: "Projector · linked maps · one selected local source · student pack · art materials",
     formats: ["Two-map look", "Source study", "Credited visual response"],
+    routes: [
+      { title: "Core learning pathway", time: "2–3 blocks", description: "Compare maps, learn from a Nation-created source, make a credited response, and choose a next learning action.", steps: [0, 1, 2, 3, 6], print: "Hand out student pages 1–2; keep teacher pages 3–4." },
+      { title: "Governance extension", time: "15–25 min", description: "Study governments in relationship using a local Nation’s own governance source.", steps: [4], print: "No worksheet is required." },
+      { title: "Knowledge + AI consent extension", time: "20–30 min", description: "Compare access to information with consent to reuse community-held knowledge.", steps: [5], print: "No worksheet is required." },
+    ],
     printable: {
       title: "Truth, Place & Responsibility",
       href: "/downloads/lesson-truth-place-responsibility.pdf",
       bwHref: "/downloads/lesson-truth-place-responsibility-black-white.pdf",
-      includes: "Two student pages + teacher quick start: source study, credited visual-layout choices, and dated responsibility",
+      preview: "/images/printable-previews/truth-place-responsibility.webp",
+      pages: 4,
+      studentPages: 2,
+      includes: "Two spacious student pages + two teacher pages: source study, credited visual response, next responsibility, exact screen map, care, and sources",
+      pagePlan: [
+        "Project MAP first; the two maps are not inside this pack. Page 1 supports OPEN + CONNECT; copy for each student or pair.",
+        "Page 2 supports CREATE + COMMIT; the same student or pair builds a credited response and names one next action.",
+        "Pages 3–4 — teacher copy counts, exact screen map, model, care, consent, and ready sources; keep these pages. GOVERNANCE and KNOWLEDGE + CONSENT are screen-only.",
+      ],
     },
     steps: [
       {
@@ -431,8 +493,8 @@ const lessons: Lesson[] = [
       {
         label: "OPEN",
         time: "15–25 min",
-        title: "Who is teaching us?",
-        prompt: "What does the creator want learners to understand?",
+        title: "Who created this source?",
+        prompt: "What does the creator want us to understand?",
         directions: ["Record the creator, title, and Nation or community.", "Look or listen twice before writing."],
         links: [
           { label: "Katzie First Nation — Who We Are", href: "https://katzie.ca/who-we-are/" },
@@ -443,8 +505,8 @@ const lessons: Lesson[] = [
       {
         label: "CONNECT",
         time: "15 min",
-        title: "What is strong and living today?",
-        prompt: "Which exact detail supports your learning?",
+        title: "Notice strength in the present",
+        prompt: "What is one strength you notice in the Nation or community today?",
         directions: ["Notice language, family, land, culture, community, or joy.", "Write or sketch one source detail."],
       },
       {
@@ -475,7 +537,7 @@ const lessons: Lesson[] = [
         time: "10–20 min · optional",
         title: "Online does not mean free to take",
         prompt: "Who should decide whether community-held knowledge can be used to train or answer through AI?",
-        directions: ["Begin with the First Nations principles of OCAP® source; do not ask an AI to imitate an Indigenous voice.", "Compare being able to access information with having consent to reuse it.", "Name who owns, controls, accesses, and possesses the information—and what remains for the Nation to decide."],
+        directions: ["Begin with the First Nations principles of OCAP® source; do not ask an AI to imitate an Indigenous voice.", "Compare being able to see information with having permission to reuse it.", "Ask: Who owns it? Who controls its use? Who may see it? Who keeps it? What remains for the Nation to decide?"],
         cards: [
           { title: "ACCESS", text: "Someone can find the information online." },
           { title: "CONSENT", text: "The people or Nation with authority agreed to this use." },
@@ -487,13 +549,13 @@ const lessons: Lesson[] = [
         label: "COMMIT",
         time: "5 min",
         title: "Choose our next learning action",
-        prompt: "What is one small action our class can complete and check?",
+        prompt: "What is one respectful thing our class will do next to keep learning?",
         directions: ["Choose from the provided class actions.", "Add a date when we will check what happened."],
       },
     ],
     teacher: {
       prepare: [
-        "Print student pages 1–2 per student or pair and set out art materials.",
+        "Print student pages 1–2 per student or pair, keep teacher pages 3–4, and set out art materials.",
         "Preview the two exact maps linked on Step 1; no resource search is needed.",
         "Choose one of the three local Nation sources shown on Step 2 and preview it for grade fit.",
         "Choose two or three realistic class actions from the linked NCTR ReconciliACTION Plans.",
@@ -524,6 +586,8 @@ const lessons: Lesson[] = [
     id: "rights-in-our-room",
     title: "Rights in our room",
     shortTitle: "Children’s rights",
+    image: "/images/children-rights-in-action.webp",
+    imageAlt: "Children learning, playing, speaking, and receiving support in an inclusive community space.",
     question: "What rights belong to every child?",
     timing: "Before Nov. 20; brief revisit Dec. 10",
     length: "55–65 min or 2 × 30 min",
@@ -534,11 +598,24 @@ const lessons: Lesson[] = [
     product: "A four-frame Rights Repair comic",
     materials: "Projected scene · Rights Repair card set · comic page · scissors optional",
     formats: ["Rights mystery", "Match pairs", "Repair comic"],
+    routes: [
+      { title: "Rights Repair lesson", time: "45–55 min", description: "Spot a right, match rights with adult responsibilities, and repair a fictional case in a comic.", steps: [0, 1, 2, 3, 4], print: "Hand out student pages 1–2; keep teacher pages 3–4." },
+      { title: "Rights check-back", time: "8–12 min", description: "Revisit one class action and ask whether the adult or school responsibility is now being met.", steps: [4], print: "Reuse page 2 or discuss the existing comic; no new pack is required." },
+      { title: "AI privacy extension", time: "15–25 min", description: "Consider the promised safety benefit, privacy risks, evidence, limits, and right to challenge errors.", steps: [5], print: "No worksheet is required." },
+    ],
     printable: {
       title: "Rights Repair Mystery",
       href: "/downloads/lesson-rights-in-our-room.pdf",
       bwHref: "/downloads/lesson-rights-in-our-room-black-white.pdf",
-      includes: "Two student pages + teacher quick start: rights-and-adult matches, fictional scenarios, and repair comic",
+      preview: "/images/printable-previews/rights-in-our-room.webp",
+      pages: 4,
+      studentPages: 2,
+      includes: "Two spacious student pages + two teacher pages: rights-and-adult matches, fictional scenarios, repair comic, screen map, key, and care guidance",
+      pagePlan: [
+        "Project SPOT first; SPOT is screen-only. Page 1 supports MATCH; copy one for each group and cut—or match in place.",
+        "Page 2 supports SOLVE + COMIC; copy one Rights Repair comic for every student. SHARE is screen-only.",
+        "Pages 3–4 — teacher copy counts, screen map, model, answer key, care, and source; keep these pages. AI PRIVACY is screen-only.",
+      ],
     },
     steps: [
       {
@@ -555,7 +632,7 @@ const lessons: Lesson[] = [
         time: "12 min",
         title: "Rights need responsible adults",
         prompt: "Which adult or system action protects each right?",
-        directions: ["Match six pairs.", "Explain one match."],
+        directions: ["Cut and match the cards, or leave the page whole and write each matching letter beside its number.", "Explain one match."],
         options: ["Safety", "Learning", "Voice", "Identity", "Play", "Care"],
       },
       {
@@ -594,7 +671,7 @@ const lessons: Lesson[] = [
     ],
     teacher: {
       prepare: [
-        "Print student page 1 once per group and page 2 once per student; pre-cut the match cards if helpful.",
+        "Print student page 1 once per group and page 2 once per student; keep teacher pages 3–4. Pre-cut the match cards if helpful.",
         "Open the linked UNICEF Canada elementary children’s-rights resources before class.",
         "Use one fictional case from the lesson: a video without captions, a playground rule made without checking how it affects safe play, or a student’s full name repeatedly ignored.",
       ],
@@ -609,6 +686,8 @@ const lessons: Lesson[] = [
     id: "barrier-detectives",
     title: "Barrier detectives",
     shortTitle: "Access design",
+    image: "/images/same-versus-fair.webp",
+    imageAlt: "Two classroom scenes compare one fixed task with flexible ways to read, listen, write, draw, or speak.",
     question: "When does the place or task create the problem?",
     timing: "Late November, after Children’s Rights",
     length: "45–60 min",
@@ -619,11 +698,24 @@ const lessons: Lesson[] = [
     product: "A Ways-to-Join menu for one real class task",
     materials: "Student pack · pencil or highlighter · one real upcoming task",
     formats: ["30-second mini-task", "Barrier-to-tool match", "Access Makeover"],
+    routes: [
+      { title: "Access Makeover lesson", time: "40–50 min", description: "Test a badly designed task, match supports to barriers, and redesign a real class task with more ways to join.", steps: [0, 1, 2, 3, 4], print: "Hand out student pages 1–3; keep pages 4–5." },
+      { title: "AI access extension", time: "20–30 min", description: "Test whether one AI support removes a barrier without creating unfair new ones.", steps: [5], print: "No worksheet is required." },
+    ],
     printable: {
       title: "Access Makeover Lab",
       href: "/downloads/lesson-barrier-detectives.pdf",
       bwHref: "/downloads/lesson-barrier-detectives-black-white.pdf",
-      includes: "Two student pages + teacher quick start: 30-second mini-task, access-tool match, and Ways-to-Join menu",
+      preview: "/images/printable-previews/barrier-detectives.webp",
+      pages: 5,
+      studentPages: 3,
+      includes: "Three spacious student pages + two teacher pages: mini-task, access-tool match, Ways-to-Join menu, peer test, revision, and after-use check",
+      pagePlan: [
+        "Page 1 supports TRY + MATCH; copy one deliberately difficult mini-task for each group.",
+        "Page 2 supports BUILD; give students the real task and learning goal, then mark at least two genuinely available choices in every row.",
+        "Page 3 supports TEST + USE; partners test, revise, and return after the class uses the menu.",
+        "Pages 4–5 — teacher copy/project map, model, sources, care, and evidence; keep these pages. AI ACCESS CHECK is screen-only.",
+      ],
     },
     steps: [
       {
@@ -649,7 +741,7 @@ const lessons: Lesson[] = [
         time: "20 min",
         title: "Build a Ways-to-Join menu",
         prompt: "How can students get information, do the work, and show learning in more than one way?",
-        directions: ["Use the real task and learning goal your teacher provides.", "Choose only options the class can actually use."],
+        directions: ["Write the real class task and learning goal your teacher gives you.", "Circle at least two available choices in each row so the page becomes a real menu."],
         options: ["Read, listen, watch, or see a model", "Solo, pair, group, or quiet space", "Write, draw, speak, or build"],
         artSpark: "Keep the learning goal the same. Change how students can enter, participate, or respond.",
       },
@@ -665,7 +757,7 @@ const lessons: Lesson[] = [
         time: "5 min",
         title: "Build the class version",
         prompt: "Which useful parts should we combine and test on the next task?",
-        directions: ["Combine clear choices that are genuinely available.", "Teacher posts the final menu with the real task.", "Check after use: what helped, and what still needs changing?"],
+        directions: ["Help choose the clearest options that are truly available.", "Add them to one class Ways-to-Join menu for the real task.", "After using it, check what helped and what still needs changing."],
       },
       {
         label: "AI ACCESS CHECK",
@@ -681,7 +773,7 @@ const lessons: Lesson[] = [
     ],
     teacher: {
       prepare: [
-        "Print student pages 1–2 once per group. Bring one real upcoming task, its student-friendly learning goal, and only choices that are genuinely available.",
+        "Print student pages 1–3 once per group and keep teacher pages 4–5. Bring one real upcoming task, its student-friendly learning goal, and only choices that are genuinely available.",
         "Open the linked Rick Hansen Foundation School Program before class.",
         "Open the linked B.C. Inclusive & Responsive Learning videos and choose one brief example to connect after the makeover.",
       ],
@@ -700,6 +792,8 @@ const lessons: Lesson[] = [
     id: "many-languages",
     title: "Pictures, words & welcome",
     shortTitle: "Wayfinding & welcome",
+    image: "/images/multilingual-welcome.webp",
+    imageAlt: "Students use pictures, words, symbols, and maps to make a school more welcoming.",
     question: "How can pictures and clear words help more people find their way?",
     timing: "Late October, or when a real navigation need appears",
     length: "45–60 min",
@@ -708,13 +802,26 @@ const lessons: Lesson[] = [
     use: "Explore visual and school-approved multilingual wayfinding without turning students into translators.",
     activity: "Test six picture signs, try two visual strategies, then revise one real school sign",
     product: "A peer-tested mock-up for one real navigation need; approved translated wording only when provided",
-    materials: "Projected image · student pack · assigned school place · markers",
+    materials: "Projected image · student pack · one assigned school place or routine · markers · school-approved wording",
     formats: ["Picture-sign test", "Two visual drafts", "Partner revision"],
+    routes: [
+      { title: "Wayfinding design lesson", time: "45–60 min", description: "Test picture signs, design two possibilities, ask a partner to guess, and revise one real school sign.", steps: [0, 1, 2, 3, 4], print: "Hand out student pages 1–3; keep pages 4–5." },
+      { title: "AI translation extension", time: "15–25 min", description: "Decide when quick translation is enough and when a person must check it.", steps: [5], print: "No worksheet is required." },
+    ],
     printable: {
       title: "Signs Everyone Can Understand",
       href: "/downloads/lesson-our-languages-our-welcome.pdf",
       bwHref: "/downloads/lesson-our-languages-our-welcome-black-white.pdf",
-      includes: "Two student pages + teacher quick start: picture-sign test, two drafts, partner guess, and visible revision",
+      preview: "/images/printable-previews/many-languages.webp",
+      pages: 5,
+      studentPages: 3,
+      includes: "Three spacious student pages + two teacher pages: picture-sign test, two visual tries, partner test, visible revision, and approved final label",
+      pagePlan: [
+        "Page 1 supports GUESS + NOTICE; copy one for each group and keep the answer key hidden.",
+        "Page 2 supports DESIGN; copy one for each student or pair and keep all words covered during the visual-design stage.",
+        "Page 3 supports TEST + LABEL; the same student or pair records the guess, revises, and adds only adult-approved wording.",
+        "Pages 4–5 — teacher print/project map, hidden answer key, model, sources, care, and evidence; keep these pages. TRANSLATION TEST is screen-only.",
+      ],
     },
     steps: [
       {
@@ -722,7 +829,7 @@ const lessons: Lesson[] = [
         time: "7 min",
         title: "What does each picture sign mean?",
         prompt: "Can you identify each school place from the picture alone?",
-        directions: ["Look at one picture at a time before seeing the teacher key.", "Write a guess, then mark clear or revise."],
+        directions: ["Look at one picture at a time before seeing the teacher key.", "Write a guess, then mark CLEAR or NEEDS REVISION."],
         image: "/images/multilingual-welcome.webp",
         imageAlt: "Students follow colourful picture symbols and floor paths to find school spaces and use several nonverbal ways to ask for help.",
       },
@@ -771,7 +878,7 @@ const lessons: Lesson[] = [
     ],
     teacher: {
       prepare: [
-        "Print student page 1 once per group and page 2 once per student or pair; keep the page 1 teacher key hidden during the first test.",
+        "Print student page 1 once per group and pages 2–3 once per student or pair; keep teacher pages 4–5 and the page 1 answer key hidden during the first test.",
         "Open the linked Surrey Schools Welcome Centre page before class.",
         "Assign one real space or routine and obtain any approved translated wording before class. Show final mock-ups to administration before public display.",
       ],
@@ -789,6 +896,8 @@ const lessons: Lesson[] = [
     id: "responding-to-racism",
     title: "Interrupt, support, report, repair",
     shortTitle: "Responding to racism",
+    image: "/images/intersectionality-community.webp",
+    imageAlt: "A diverse community listens, connects, and supports one another in an outdoor gathering place.",
     question: "What can we do when racist words or actions hurt someone?",
     timing: "January, after class norms and the school help route are clear",
     length: "35–45 min",
@@ -803,7 +912,15 @@ const lessons: Lesson[] = [
       title: "Four Moves + Pocket Guide",
       href: "/downloads/lesson-responding-to-racism.pdf",
       bwHref: "/downloads/lesson-responding-to-racism-black-white.pdf",
-      includes: "Two student pages + teacher quick start: Four Moves cards, safe-choice route, and Pocket Response Guide",
+      preview: "/images/printable-previews/responding-to-racism.webp",
+      pages: 4,
+      studentPages: 2,
+      includes: "Two spacious student pages + two teacher pages: Four Moves sort, safe-choice route, Pocket Response Guide, exact screen map, key, and follow-through",
+      pagePlan: [
+        "Project NOTICE + SAFETY first; those screens need no paper. Page 1 supports SEQUENCE; copy one sorting and safe-route page per group. No role-play is needed.",
+        "Page 2 supports MAKE + KNOW; copy one Pocket Response Guide for every student, including repair and adult-help reminders.",
+        "Pages 3–4 — teacher copy counts, exact screen map, model, answer key, care, and follow-through; add real school help locations before class.",
+      ],
     },
     steps: [
       {
@@ -825,7 +942,7 @@ const lessons: Lesson[] = [
         time: "10 min",
         title: "Build a Four Moves route",
         prompt: "Which actions are safe and useful now? What must happen next?",
-        directions: ["Sort the numbered choices under the four moves.", "Explain your order; more than one safe route may work."],
+        directions: ["Sort each numbered card under INTERRUPT, SUPPORT, REPORT, or REPAIR.", "Choose which safe move could come first in this situation. More than one route may work."],
         options: ["INTERRUPT", "SUPPORT", "REPORT", "REPAIR"],
       },
       {
@@ -842,7 +959,7 @@ const lessons: Lesson[] = [
         time: "5 min",
         title: "Stopping is not the end",
         prompt: "What must change after the harmful words stop?",
-        directions: ["Include changed behaviour and adult follow-through.", "The student who was hurt never has to explain, accept an apology, or join a repair conversation."],
+        directions: ["Repair means behaviour changes and adults follow up.", "The student who was hurt chooses whether to explain, accept an apology, or join a repair conversation."],
         links: [
           { label: "Walnut Road Code of Conduct", href: "https://www.surreyschools.ca/walnutroad/code-of-conduct" },
           { label: "PSST — private reporting", href: "https://www.surreyschools.ca/safeschools/psst-protecting-surrey-schools-together" },
@@ -851,7 +968,7 @@ const lessons: Lesson[] = [
     ],
     teacher: {
       prepare: [
-        "Print student page 1 once per group and page 2 once per student; pre-cut the numbered cards if helpful. No role-play is needed.",
+        "Print student page 1 once per group and page 2 once per student; keep teacher pages 3–4. Pre-cut the numbered cards if helpful. No role-play is needed.",
         "Open the linked B.C. Curriculum Anti-Racism Guide for Teachers before class.",
         "Pre-fill two real Walnut Road adult roles or places where students can get help; open the school Code of Conduct and PSST route.",
       ],
@@ -871,6 +988,8 @@ const lessons: Lesson[] = [
     id: "barriers-overlap",
     title: "When barriers stack",
     shortTitle: "Barriers stack",
+    image: "/images/global-goals-connections.webp",
+    imageAlt: "Students use a shared planning board to connect community needs, access, and possible solutions.",
     question: "What happens when more than one barrier affects someone?",
     timing: "After Barrier Detectives; best in February or March",
     length: "45–55 min",
@@ -881,11 +1000,25 @@ const lessons: Lesson[] = [
     product: "A fictional event plan with access basics, chosen enhancements, one unanswered question, and people to consult",
     materials: "Student pack · pencils · projected Community Night facts",
     formats: ["Barrier chain", "No-cut access budget", "Consultation check"],
+    routes: [
+      { title: "Access planning lesson", time: "40–55 min", description: "Connect two barriers, protect required access basics, and improve a fictional community event.", steps: [0, 1, 2, 3, 5], print: "Hand out student pages 1–4; keep pages 5–6." },
+      { title: "AI + environment extension", time: "20–30 min", description: "Map who receives the benefits and costs of a data centre, then propose one accountability rule.", steps: [4], print: "No worksheet is required." },
+    ],
     printable: {
       title: "Access Budget Challenge",
       href: "/downloads/lesson-when-barriers-overlap.pdf",
       bwHref: "/downloads/lesson-when-barriers-overlap-black-white.pdf",
-      includes: "Two student pages + teacher quick start: barrier chain, no-cut budget ledger, remaining-barrier check",
+      preview: "/images/printable-previews/barriers-overlap.webp",
+      pages: 6,
+      studentPages: 4,
+      includes: "Four spacious student pages + two teacher pages: fictional event facts, barrier chain, no-cut access plan, consultation, and final check",
+      pagePlan: [
+        "Page 1 — STACK + CHAIN: study the fictional event and notice how two conditions can combine.",
+        "Page 2 — CHAIN: copy two facts, explain the new participation problem, and name a question to ask.",
+        "Page 3 — BUILD: protect all required access basics, then spend up to six points on enhancements.",
+        "Page 4 — CHECK + FINAL: name the remaining barrier, who to consult, and the honest unanswered question.",
+        "Pages 5–6 — teacher screen map, model, sources, care, and debrief guidance; keep these pages. AI + ENVIRONMENT is screen-only.",
+      ],
     },
     steps: [
       {
@@ -911,7 +1044,7 @@ const lessons: Lesson[] = [
         time: "18 min",
         title: "Basics first. Then spend six points.",
         prompt: "Which access basics are required, and which extra choices widen participation?",
-        directions: ["Check every required access basic before spending points.", "Choose enhancements and record the total out of six."],
+        directions: ["Check all four required access basics.", "Then spend up to six points on extra improvements and record the total.", "These points belong to this classroom challenge; they are not a real accessibility budget."],
         cards: [
           { title: "REQUIRED BASICS", text: "Accessible route · a way to join without paying · ingredient/allergen information · safe emergency route" },
           { title: "ENHANCEMENTS", text: "Two times · picture signs · approved translation · quiet zone · seated/standing choices · take-home summary" },
@@ -923,7 +1056,7 @@ const lessons: Lesson[] = [
         time: "10 min",
         title: "Which barrier remains?",
         prompt: "Which participation barrier is still present, and what should organizers ask before finalizing?",
-        directions: ["Name the barrier, not an identity.", "Name a role or group with relevant experience; no classmate represents anyone."],
+        directions: ["Name the barrier, not an identity.", "Who should organizers ask before deciding? Name a role or group with relevant experience; no classmate represents anyone."],
       },
       {
         label: "AI + ENVIRONMENT",
@@ -948,7 +1081,7 @@ const lessons: Lesson[] = [
     ],
     teacher: {
       prepare: [
-        "Print student pages 1–2 once per group and provide pencils; no cutting or loose counters are needed.",
+        "Print student pages 1–4 once per group and keep teacher pages 5–6. Provide pencils; no cutting or loose counters are needed.",
         "Open the linked B.C. Human Rights Commissioner intersectionality page before class.",
         "Open the linked B.C. Human Rights public-services page and project the pack’s fictional Community Night facts.",
       ],
@@ -966,6 +1099,8 @@ const lessons: Lesson[] = [
     id: "concern-to-action",
     title: "From concern to action",
     shortTitle: "Take action",
+    image: "/images/student-voice-club.webp",
+    imageAlt: "Students gather ideas, choose a shared priority, and plan a useful improvement.",
     question: "How can students help with a real issue in a useful, caring way?",
     timing: "Early March: Steps 1–3; return to Steps 4–6 after an issue is chosen",
     length: "1 planning block + later project sessions",
@@ -976,19 +1111,33 @@ const lessons: Lesson[] = [
     product: "A sourced action proposal, an approved student product, and a scheduled follow-up",
     materials: "Student pack · one ready pathway · provided source links · making materials later",
     formats: ["Ready pathway sources", "0/1/2 action check", "Product + follow-up"],
+    routes: [
+      { title: "Planning launch", time: "40–50 min", description: "Learn from two sources, compare three realistic actions, choose the fitting product, then pause for approval.", steps: [0, 1, 2], print: "Hand out pages 1–3 now; keep pages 5–6." },
+      { title: "Approved action + follow-up", time: "Project session + 10-min check", description: "Build and deliver the approved product, then separate output, response, and evidence of change.", steps: [3, 4, 5], print: "Reuse page 3 while building and use page 4 for delivery and follow-up." },
+    ],
     printable: {
       title: "Will It Help? Action Studio",
       href: "/downloads/lesson-concern-to-action.pdf",
       bwHref: "/downloads/lesson-concern-to-action-black-white.pdf",
-      includes: "Two student pages + teacher quick start: source check, action comparison, branching product plan, and follow-up",
+      preview: "/images/printable-previews/concern-to-action.webp",
+      pages: 6,
+      studentPages: 4,
+      includes: "Four spacious student pages + two teacher pages: source check, action comparison, product plan, delivery record, and follow-up",
+      pagePlan: [
+        "Page 1 — LEARN: record the chosen pathway, two sources, one verified fact, and the current request.",
+        "Page 2 — COMPARE: score exactly three real actions, then name the best fit for now.",
+        "Page 3 — CHOOSE + BUILD: select a fitting product, audience, fact, request, roles, and adult check.",
+        "Page 4 — ACT + CHECK: record delivery, response, change, and the next evidence check.",
+        "Pages 5–6 — teacher quick start, ready links, safety, evidence, and debrief guidance; keep these pages.",
+      ],
     },
     steps: [
       {
         label: "LEARN",
         time: "15 min",
-        title: "Choose one ready pathway",
-        prompt: "What do its direct sources say is needed now?",
-        directions: ["Open the matching project in Student Action Studio; its direct sources and three starting actions are ready.", "Record one verified fact, one current request or recommendation, and who is guiding it."],
+        title: "Choose one action project",
+        prompt: "What do the project’s two trusted sources say people need now?",
+        directions: ["Your teacher opens one project in Student Action Studio and its two sources.", "Record one fact you verified, what a trusted source recommends, and who made that recommendation."],
         image: "/images/student-voice-club.webp",
         imageAlt: "Students gather ideas, listen, choose a priority, create a useful response, and report what changed.",
         links: [
@@ -1003,14 +1152,14 @@ const lessons: Lesson[] = [
         time: "12 min",
         title: "Compare three real actions",
         prompt: "Which action is guided by the need, useful to the audience, and possible to finish?",
-        directions: ["Score the three issue-specific action cards 0, 1, or 2 for each check.", "Include one tempting action that does not match the current request."],
+        directions: ["Score three actions: 0 = not ready, 1 = unsure—check, 2 = yes—evidence supports it.", "Notice the tempting action that does not match what the trusted source recommends."],
       },
       {
         label: "CHOOSE",
         time: "15 min",
         title: "Choose the right product",
         prompt: "Does this action need artwork, a letter, a collection plan, a short presentation, or a design change?",
-        directions: ["Choose the format that best reaches the real audience.", "Name what the audience can actually do."],
+        directions: ["Choose the format that best reaches the real audience.", "Name what the audience can actually do.", "Stop here today. Continue only after an adult approves the issue and product."],
         options: ["Artwork", "Letter", "Collection plan", "Short presentation", "Design change"],
         maxChoices: 1,
       },
@@ -1041,7 +1190,7 @@ const lessons: Lesson[] = [
     ],
     teacher: {
       prepare: [
-        "Print student pages 1–2 once per group. In Student Action Studio, select one ready pathway with direct sources and three starting action ideas; no resource search is needed.",
+        "Print student pages 1–4 once per group. Keep teacher pages 5–6. In Student Action Studio, select one ready pathway with direct sources and three starting action ideas; no resource search is needed.",
         "Before spring break, teach only LEARN, COMPARE, and CHOOSE. Return to BUILD, ACT, and CHECK after the class or club selects its spring issue.",
         "Confirm adult permission before any public message, contact, collection, fundraising, or change to a shared space.",
       ],
@@ -1062,6 +1211,8 @@ const lessons: Lesson[] = [
     id: "animal-welfare",
     title: "Animals need us to learn first",
     shortTitle: "BC SPCA pathway",
+    image: "/images/animal-welfare-learning.webp",
+    imageAlt: "Students investigate animal needs and compare evidence-based ways to help.",
     question: "Which action would really help animals?",
     timing: "Launch week of Mar. 30; continue April–May",
     length: "3–6 lessons + project",
@@ -1070,13 +1221,23 @@ const lessons: Lesson[] = [
     use: "Prepare a student-chosen BC SPCA or animal-welfare project grounded in current needs.",
     activity: "Use one provided BC SPCA case card, identify a need and current recommendation, then compare three actions",
     product: "A source-backed team proposal, an approved action or artifact, and a scheduled result check",
-    materials: "Student pack · one direct BC SPCA case source · pencil · projector",
+    materials: "Student pack · one direct BC SPCA case source · pencil · projector · separate paper or slides for the final panel",
     formats: ["Assigned case card", "Y / ? / N action test", "Action + follow-up"],
     printable: {
       title: "Help or Hype? Animal Action Lab",
       href: "/downloads/lesson-animal-welfare-evidence-lab.pdf",
       bwHref: "/downloads/lesson-animal-welfare-evidence-lab-black-white.pdf",
-      includes: "Two student pages + teacher quick start: specific BC SPCA case, action test, flexible pitch, and follow-up",
+      preview: "/images/printable-previews/animal-welfare.webp",
+      pages: 6,
+      studentPages: 4,
+      includes: "Four spacious student pages + two teacher pages: assigned BC SPCA case, source check, action test, verified proposal, and follow-up",
+      pagePlan: [
+        "Page 1 — CASE: assign one case, record a first prediction, and identify the likely welfare need.",
+        "Page 2 — SOURCE: record the exact source, one verified fact, and the current recommendation or ‘not stated.’",
+        "Page 3 — SCORE: test exactly three actions against the source, usefulness, safety, and finishability.",
+        "Page 4 — PROPOSE + ACT + CHECK: plan the verified next step, record results, and schedule follow-up.",
+        "Pages 5–6 — teacher quick start, direct source links, care guidance, evidence, and debrief; keep these pages.",
+      ],
     },
     steps: [
       {
@@ -1084,7 +1245,7 @@ const lessons: Lesson[] = [
         time: "10 min",
         title: "Open one assigned case card",
         prompt: "Which animal-welfare need will your team investigate?",
-        directions: ["Your teacher assigns one case per team; all three appear in the final gallery.", "Circle the need and predict what the BC SPCA may recommend."],
+        directions: ["Circle your team’s assigned case and complete only that case box.", "Circle the animal’s need and predict what the BC SPCA may recommend."],
         options: ["Hen housing learning extension", "Bird-window collisions", "Hot-car safety"],
         maxChoices: 1,
         cards: [
@@ -1112,7 +1273,7 @@ const lessons: Lesson[] = [
         time: "15 min",
         title: "Test exactly three actions",
         prompt: "Is each action asked for now, helpful, safe and approved, and possible to finish?",
-        directions: ["Choose three issue-specific action rows only.", "Write Y = yes, ? = unsure, or N = not yet for every check."],
+        directions: ["Your teacher circles three actions that fit your case. Copy and test only those three.", "Write Y = yes, ? = unsure, or N = not yet for every check."],
         options: ["Teach a verified safety message", "Send one specific request", "Make expert-approved art or signage", "Collect only with a written wish list", "Fundraise only if approved", "Make an expert-approved school safety change"],
         maxChoices: 3,
       },
@@ -1121,7 +1282,7 @@ const lessons: Lesson[] = [
         time: "30 min",
         title: "Build one verified proposal",
         prompt: "Does the evidence support action now—or more learning first?",
-        directions: ["Create a one-card proposal or learning panel that may be presented live, read by a partner or teacher, or recorded.", "If no current request is stated, mark what must be checked before action. Get adult approval before acting."],
+        directions: ["Use page 2 to plan a one-card proposal or learning panel. Make the final panel on separate paper or slides.", "If the source gives no current request, write what must be checked before action. Get adult approval before acting."],
         artSpark: "Create an Animal Advocate panel: REAL NEED · MYTH CORRECTED · EVIDENCE · OUR ACTION. No sad or graphic images.",
       },
       {
@@ -1141,7 +1302,7 @@ const lessons: Lesson[] = [
     ],
     teacher: {
       prepare: [
-        "Print student pages 1–2 once per team and assign one of the three direct case sources shown on Step 2.",
+        "Print student pages 1–4 once per team and keep teacher pages 5–6. Assign one of the three direct case sources shown on SOURCE.",
         "Preview the assigned BC SPCA source for the exact grade and skip distressing details or images.",
         "Get school approval before contact, collections, fundraising, signage, or any change to school windows or grounds.",
       ],
@@ -1161,10 +1322,10 @@ const lessons: Lesson[] = [
 const runways: Runway[] = [
   { month: "SEPT", event: "Belonging during Grade 6 rotation", start: "Sept. 8–11", create: "One full-page belonging action", share: "Choose class commitments Sept. 14–15", date: "Opening weeks", lesson: "belonging-built", priority: "Core" },
   { month: "SEPT", event: "Truth, place & Orange Shirt Day", start: "Sept. 15", create: "Sept. 17–24", share: "Sept. 28–29", date: "Orange Shirt Day Sept. 29 · school closed Sept. 30", lesson: "truth-place-responsibility", priority: "Core" },
-  { month: "SEPT", event: "Voice beyond voting — quick discussion", start: "Sept. 8 onward", create: "Choose one realistic route", share: "No product required", date: "Build participation language before campaigns", lesson: "voice-and-rules", startAt: 12, cta: "Project the 15-minute visual →", priority: "Choice" },
+  { month: "SEPT", event: "Voice beyond voting — quick discussion", start: "Sept. 8 onward", create: "Choose one realistic route", share: "No product required", date: "Build participation language before campaigns", lesson: "voice-and-rules", startAt: 13, cta: "Preview the 15-minute route →", priority: "Choice" },
   { month: "SEPT", event: "Official candidates & representation", start: "After Sept. 11", create: "Sample equal amounts of candidate material", share: "One pattern + one missing question", date: "Nominations close and candidates are declared Sept. 11", lesson: "voice-and-rules", startAt: 7, cta: "Open representation screens →", priority: "Choice" },
   { month: "OCT", event: "Surrey election equity lab + Student Vote", start: "Oct. 5", create: "Oct. 6–9 & 13–15", share: "Oct. 16", date: "Election Oct. 17", lesson: "voice-and-rules", startAt: 5, cta: "Open the Surrey equity route →", priority: "Core" },
-  { month: "OCT", event: "After the election: accountability", start: "Oct. 19", create: "Choose one issue to follow", share: "Set a later evidence check", date: "Official results due by Oct. 21", lesson: "voice-and-rules", startAt: 13, cta: "Open the post-election screen →", priority: "Choice" },
+  { month: "OCT", event: "After the election: accountability", start: "Oct. 19", create: "Choose one issue to follow", share: "Set a later evidence check", date: "Official results due by Oct. 21", lesson: "voice-and-rules", startAt: 14, cta: "Preview the post-election route →", priority: "Choice" },
   { month: "OCT", event: "Pictures, words & school wayfinding", start: "Oct. 26", create: "Oct. 27–Nov. 3", share: "Nov. 4–5", date: "Use when a real navigation need appears", lesson: "many-languages", priority: "Choice" },
   { month: "NOV", event: "National Child Day", start: "Nov. 9", create: "Nov. 12–18", share: "Nov. 19–20", date: "Nov. 20", lesson: "rights-in-our-room", priority: "Core" },
   { month: "NOV", event: "Disability awareness & access", start: "Nov. 23", create: "Nov. 24–Dec. 1", share: "Dec. 2–3", date: "Dec. 3", lesson: "barrier-detectives", priority: "Core" },
@@ -1292,7 +1453,7 @@ const actionSteps = [
 
 const downloads = [
   { title: "Belonging & Learner Voice Toolkit", detail: "Facilitator guide + five write, draw, and colour graphic organizers", colour: "/downloads/belonging-learner-voice-toolkit.pdf", bw: "/downloads/belonging-learner-voice-toolkit.pdf", type: "Flexible K–12 toolkit" },
-  { title: "AI Equity Dilemma Cards", detail: "Eight discussion cards + AI Rules Council + evidence sorter + teacher quick start", colour: "/downloads/ai-equity-dilemma-cards.pdf", bw: "/downloads/ai-equity-dilemma-cards-black-white.pdf", type: "Reusable discussion kit" },
+  { title: "AI Equity Dilemma Cards", detail: "Ten-page kit: equity lens, eight dilemma cards, Rules Council, power checks, sources, and teacher map", colour: "/downloads/ai-equity-dilemma-cards.pdf", bw: "/downloads/ai-equity-dilemma-cards-black-white.pdf", type: "Reusable discussion kit" },
   { title: "From Concern to Action", detail: "8-page student project toolkit", colour: "/downloads/from-concern-to-action-student-toolkit.pdf", bw: "/downloads/from-concern-to-action-student-toolkit-black-white.pdf", type: "Student toolkit" },
   { title: "Intersectionality Classroom Toolkit", detail: "Scenarios, audits, systems map, and action planner", colour: "/downloads/intersectionality-classroom-toolkit.pdf", bw: "/downloads/intersectionality-classroom-toolkit-black-white.pdf", type: "Teacher + student" },
   { title: "November–December Teacher Pack", detail: "Child rights, accessibility, Human Rights Day, and winter learning", colour: "/downloads/november-december-teacher-pack.pdf", bw: "/downloads/november-december-teacher-pack-black-white.pdf", type: "Teacher pack" },
@@ -1366,6 +1527,8 @@ export default function Home() {
   const [largeText, setLargeText] = useState(false);
   const [projectorMode, setProjectorMode] = useState(false);
   const [selectedLessonId, setSelectedLessonId] = useState<string | null>(null);
+  const [lessonOverview, setLessonOverview] = useState(false);
+  const [routeSteps, setRouteSteps] = useState<number[]>([]);
   const [stepIndex, setStepIndex] = useState(0);
   const [monthFilter, setMonthFilter] = useState("ALL");
   const [issueFilter, setIssueFilter] = useState("");
@@ -1376,6 +1539,11 @@ export default function Home() {
 
   const selectedLesson = lessons.find((lesson) => lesson.id === selectedLessonId) ?? null;
   const currentStep = selectedLesson?.steps[stepIndex];
+  const activeStepIndexes = selectedLesson
+    ? (routeSteps.length ? routeSteps : selectedLesson.steps.map((_, index) => index))
+    : [];
+  const routePosition = Math.max(0, activeStepIndexes.indexOf(stepIndex));
+  const selectedRoute = selectedLesson?.routes?.find((route) => route.steps.length === activeStepIndexes.length && route.steps.every((step, index) => step === activeStepIndexes[index]));
   const orderedLessons = lessonOrder.map((id) => lessons.find((lesson) => lesson.id === id)).filter((lesson): lesson is Lesson => Boolean(lesson));
   const months = ["ALL", ...Array.from(new Set(runways.map((item) => item.month)))];
   const visibleRunways = monthFilter === "ALL" ? runways : runways.filter((item) => item.month === monthFilter);
@@ -1394,18 +1562,67 @@ export default function Home() {
     return () => document.removeEventListener("fullscreenchange", closeProjector);
   }, []);
 
+  useEffect(() => {
+    document.documentElement.classList.toggle("large-type-root", largeText);
+    return () => document.documentElement.classList.remove("large-type-root");
+  }, [largeText]);
+
   const go = (next: View) => {
     setView(next);
     setSelectedLessonId(null);
+    setLessonOverview(false);
+    setRouteSteps([]);
     setMenuOpen(false);
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
   const startLesson = (id: string, startAt = 0) => {
+    const lesson = lessons.find((item) => item.id === id);
+    const matchingRoute = lesson?.routes?.find((route) => route.steps[0] === startAt);
+    const selectedSteps = matchingRoute?.steps
+      ?? (startAt > 0 ? [startAt] : lesson?.steps.map((_, index) => index))
+      ?? [];
     setSelectedLessonId(id);
     setStepIndex(startAt);
+    setRouteSteps(selectedSteps);
+    setLessonOverview(true);
     setChosenOptions([]);
     setView("teach");
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
+
+  const chooseRoute = (steps: number[]) => {
+    setRouteSteps(steps);
+    setStepIndex(steps[0] ?? 0);
+    setChosenOptions([]);
+  };
+
+  const openStudentScreens = (steps = activeStepIndexes) => {
+    if (steps.length) {
+      setRouteSteps(steps);
+      if (!steps.includes(stepIndex)) setStepIndex(steps[0]);
+    }
+    setLessonOverview(false);
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
+
+  const openAtStep = (index: number) => {
+    setStepIndex(index);
+    setChosenOptions([]);
+    setLessonOverview(false);
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
+
+  const returnToOverview = async () => {
+    if (document.fullscreenElement) {
+      try {
+        await document.exitFullscreen();
+      } catch {
+        // The overview still provides a safe way out if the browser closes fullscreen itself.
+      }
+    }
+    setProjectorMode(false);
+    setLessonOverview(true);
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
@@ -1459,38 +1676,122 @@ export default function Home() {
             <button type="button" className={teacherMode ? "toggle active" : "toggle"} aria-pressed={teacherMode} onClick={() => setTeacherMode((current) => !current)}>
               {teacherMode ? "Teacher notes on" : "Teacher notes"}
             </button>
-            <button type="button" className="icon-button" aria-label={largeText ? "Use standard text size" : "Use larger text"} aria-pressed={largeText} onClick={() => setLargeText((current) => !current)}>Aa</button>
+            <button type="button" className={largeText ? "text-size-toggle active" : "text-size-toggle"} aria-label={largeText ? "Use standard text size" : "Use large text"} aria-pressed={largeText} onClick={() => setLargeText((current) => !current)}>
+              <span aria-hidden="true">Aa</span>{largeText ? "Large text" : "Standard text"}
+            </button>
             <button type="button" className="menu-button" aria-expanded={menuOpen} onClick={() => setMenuOpen((current) => !current)}>{menuOpen ? "Close" : "Menu"}</button>
           </div>
           {menuOpen && <nav className="mobile-nav" aria-label="Mobile navigation">{navItems.map((item) => <button type="button" key={item.key} onClick={() => go(item.key)}>{item.label}</button>)}</nav>}
         </header>
       )}
 
-      {selectedLesson && currentStep ? (
+      {selectedLesson && lessonOverview ? (
+        <section className={`lesson-overview tone-${selectedLesson.tone}`}>
+          <div className="overview-topbar">
+            <button type="button" className="back-button" onClick={() => setSelectedLessonId(null)}>← All lessons</button>
+            <span><b>PREPARE FIRST</b> See the lesson, pages, and student result before opening Screen 1.</span>
+          </div>
+
+          <div className="overview-hero section">
+            <figure className="overview-illustration">
+              <img src={selectedLesson.image} alt={selectedLesson.imageAlt} width="1536" height="1024" />
+              <span aria-hidden="true">✦</span>
+            </figure>
+            <div className="overview-copy">
+              <p className="eyebrow dark"><span /> Lesson preview · {selectedLesson.grades}</p>
+              <h1>{selectedLesson.title}</h1>
+              <p className="overview-question">{selectedLesson.question}</p>
+              <div className="overview-facts">
+                <span><small>TIME</small><b>{selectedRoute?.time ?? selectedLesson.length}</b></span>
+                <span><small>PACK CONTENTS</small><b>{selectedLesson.printable.studentPages} student + {selectedLesson.printable.pages - selectedLesson.printable.studentPages} teacher pages</b></span>
+                <span><small>SCREENS IN THIS ROUTE</small><b>{activeStepIndexes.length}</b></span>
+              </div>
+            </div>
+          </div>
+
+          <div className="section overview-body">
+            <div className="overview-summary-grid">
+              <article><span aria-hidden="true">01</span><small>STUDENTS DO</small><p>{selectedLesson.activity}</p></article>
+              <article><span aria-hidden="true">02</span><small>STUDENTS FINISH WITH</small><p>{selectedLesson.product}</p></article>
+              <article><span aria-hidden="true">03</span><small>HAVE READY</small><p>{selectedLesson.materials}</p></article>
+            </div>
+
+            {selectedLesson.routes && (
+              <section className="route-chooser" aria-labelledby="route-title">
+                <div className="overview-section-heading"><span aria-hidden="true">✦</span><div><small>CHOOSE ONE — NOT THE WHOLE SLIDESHOW</small><h2 id="route-title">Which route are you teaching?</h2></div></div>
+                <div className="route-grid">
+                  {selectedLesson.routes.map((route) => {
+                    const active = selectedRoute?.title === route.title;
+                    return <button type="button" className={active ? "active" : ""} aria-pressed={active} key={route.title} onClick={() => chooseRoute(route.steps)}>
+                      <span>{route.time}</span><h3>{route.title}</h3><p>{route.description}</p><b>{route.print}</b>
+                    </button>;
+                  })}
+                </div>
+              </section>
+            )}
+
+            <section className="print-plan" aria-labelledby="print-plan-title">
+              <figure><img src={selectedLesson.printable.preview} alt={`Preview of page 1 in the ${selectedLesson.printable.title} activity pack`} width="773" height="1000" /></figure>
+              <div>
+                <div className="overview-section-heading"><span aria-hidden="true">✦</span><div><small>PRINT PLAN</small><h2 id="print-plan-title">What is this pack for?</h2></div></div>
+                <p className="print-plan-intro"><b>{selectedLesson.printable.title}</b> supports the projected lesson. Teacher pages are clearly marked and should stay with you.</p>
+                <ol>{selectedLesson.printable.pagePlan.map((item) => <li key={item}>{item}</li>)}</ol>
+                {selectedRoute && <p className="route-print-note"><b>For the route selected above:</b> {selectedRoute.print}</p>}
+                <div className="print-plan-actions">
+                  <a className="primary-print" href={selectedLesson.printable.bwHref} target="_blank" rel="noreferrer">Open B&amp;W pack · {selectedLesson.printable.pages} pages</a>
+                  <a href={selectedLesson.printable.href} target="_blank" rel="noreferrer">Open colour pack</a>
+                </div>
+              </div>
+            </section>
+
+            <section className="lesson-map" aria-labelledby="lesson-map-title">
+              <div className="overview-section-heading"><span aria-hidden="true">✦</span><div><small>PROJECTOR MAP</small><h2 id="lesson-map-title">What students will see</h2></div></div>
+              <div className="overview-step-grid">
+                {activeStepIndexes.map((index, position) => {
+                  const step = selectedLesson.steps[index];
+                  return <button type="button" key={`${index}-${step.label}`} onClick={() => openAtStep(index)}>
+                    <b>{String(position + 1).padStart(2, "0")}</b><span><small>{step.label} · {step.time}</small><strong>{step.title}</strong><em>Start here →</em></span>
+                  </button>;
+                })}
+              </div>
+            </section>
+
+            <div className="overview-launch">
+              <div><small>READY TO TEACH</small><b>{selectedRoute?.title ?? selectedLesson.title}</b><span>{selectedRoute?.print ?? `Use the ${selectedLesson.printable.title} pack.`}</span></div>
+              <button type="button" onClick={() => openStudentScreens()}>Open {selectedLesson.steps[stepIndex]?.label ?? "student"} screen →</button>
+            </div>
+          </div>
+        </section>
+      ) : selectedLesson && currentStep ? (
         <section className={`lesson-player tone-${selectedLesson.tone}`}>
           <div className="lesson-player-top">
-            {!projectorMode && <button type="button" className="back-button" onClick={() => setSelectedLessonId(null)}>← All lessons</button>}
+            {!projectorMode && <button type="button" className="back-button" onClick={returnToOverview}>← Lesson overview</button>}
             <div className="lesson-identity"><small>{selectedLesson.timing}</small><strong>{selectedLesson.title}</strong></div>
-            {!projectorMode && <div className="player-print-actions"><a className="print-button primary-print" href={selectedLesson.printable.bwHref} target="_blank" rel="noreferrer">Print B&amp;W</a><a className="print-button" href={selectedLesson.printable.href} target="_blank" rel="noreferrer">Colour</a></div>}
+            {!projectorMode && <div className="player-print-actions"><a className="print-button primary-print" href={selectedLesson.printable.bwHref} target="_blank" rel="noreferrer">B&amp;W · {selectedLesson.printable.pages} pages</a><a className="print-button" href={selectedLesson.printable.href} target="_blank" rel="noreferrer">Colour pack</a></div>}
             <button type="button" className="project-button" onClick={toggleProjector}>{projectorMode ? "Exit projection" : "Project screen"}</button>
           </div>
-          <div className="step-track" aria-label={`Step ${stepIndex + 1} of ${selectedLesson.steps.length}`}>
-            {selectedLesson.steps.map((step, index) => (
-              <button key={step.label} type="button" className={index === stepIndex ? "active" : index < stepIndex ? "done" : ""} onClick={() => showStep(index)}>
-                <b>{index + 1}</b><span>{step.label}</span>
+          <div className="step-track" aria-label={`Screen ${routePosition + 1} of ${activeStepIndexes.length}`}>
+            {activeStepIndexes.map((index, position) => {
+              const step = selectedLesson.steps[index];
+              return (
+              <button key={`${index}-${step.label}`} type="button" className={index === stepIndex ? "active" : position < routePosition ? "done" : ""} onClick={() => showStep(index)}>
+                <b>{position + 1}</b><span>{step.label}</span>
               </button>
-            ))}
+              );
+            })}
           </div>
 
           <div className={["projector-stage", currentStep.image ? "with-image" : "", currentStep.cards ? "with-cards" : "", currentStep.links ? "with-links" : "", currentStep.artSpark ? "with-art" : "", currentStep.visual ? "with-visual" : ""].filter(Boolean).join(" ")}>
             <div className="step-kicker"><span>{currentStep.label}</span><b>{currentStep.time}</b></div>
             <h1>{currentStep.title}</h1>
+            <span className="prompt-label">THINK ABOUT</span>
             <p className="big-question">{currentStep.prompt}</p>
             {currentStep.visual && <InstructionalVisual kind={currentStep.visual} />}
             {currentStep.image && <img className="step-image" src={currentStep.image} alt={currentStep.imageAlt ?? ""} width="1536" height="1024" />}
             {currentStep.cards && <div className="fact-card-row">{currentStep.cards.map((card) => <article key={card.title}><b>{card.title}</b><span>{card.text}</span></article>)}</div>}
             {currentStep.maxChoices && <p className="choice-limit">Choose {currentStep.maxChoices === 1 ? "one" : `up to ${currentStep.maxChoices}`}.</p>}
             {currentStep.options && <div className="choice-row" aria-label="Tap to choose one or more options">{currentStep.options.map((option) => <button type="button" key={option} className={chosenOptions.includes(option) ? "selected" : ""} aria-pressed={chosenOptions.includes(option)} onClick={() => toggleChoice(option)}>{option}</button>)}</div>}
+            <span className="direction-label">DO THIS NOW</span>
             <ol className="student-directions">{currentStep.directions.map((direction, index) => <li key={direction}><b>{index + 1}</b><span>{direction}</span></li>)}</ol>
             {currentStep.links && <div className="student-source-links">{currentStep.links.map((link) => <a key={link.href} href={link.href} target="_blank" rel="noreferrer">{link.label} ↗</a>)}</div>}
             {currentStep.artSpark && <div className="artivism-spark"><span aria-hidden="true">✦</span><p><b>ART SPARK</b>{currentStep.artSpark}</p></div>}
@@ -1501,16 +1802,16 @@ export default function Home() {
               <div><small>WHY THIS FITS NOW</small><p>{selectedLesson.use}</p><small className="dock-subhead">BEFORE CLASS</small>{selectedLesson.teacher.prepare.map((item) => <span key={item}>{item}</span>)}</div>
               <div><small>ASK / DO</small>{selectedLesson.teacher.moves.map((item) => <span key={item}>{item}</span>)}</div>
               <div><small>WATCH FOR</small><p>{selectedLesson.teacher.care}</p></div>
-              <details open><summary>PRINT + OPEN SOURCES</summary><strong>{selectedLesson.teacher.evidence}</strong><div className="dock-print-row"><a href={selectedLesson.printable.bwHref} target="_blank" rel="noreferrer">B&amp;W ↓</a><a href={selectedLesson.printable.href} target="_blank" rel="noreferrer">Colour ↓</a></div><p>{selectedLesson.teacher.curriculum.join(" · ")}</p>{selectedLesson.teacher.sources?.map((source) => <a key={source.href} href={source.href} target="_blank" rel="noreferrer">{source.label} ↗</a>)}{selectedLesson.teacher.adaptations && <details className="grade-adapt"><summary>GRADE ADAPTATIONS</summary>{selectedLesson.teacher.adaptations.map((item) => <span key={item.band}><b>{item.band}</b> {item.move}</span>)}</details>}</details>
+              <details open><summary>PRINT + OPEN SOURCES</summary><strong>{selectedRoute?.print ?? selectedLesson.printable.pagePlan.join(" ")}</strong><div className="dock-print-row"><a href={selectedLesson.printable.bwHref} target="_blank" rel="noreferrer">B&amp;W · {selectedLesson.printable.pages} pages ↓</a><a href={selectedLesson.printable.href} target="_blank" rel="noreferrer">Colour ↓</a></div><p><b>Collect / notice:</b> {selectedLesson.teacher.evidence}</p><p>{selectedLesson.teacher.curriculum.join(" · ")}</p>{selectedLesson.teacher.sources?.map((source) => <a key={source.href} href={source.href} target="_blank" rel="noreferrer">{source.label} ↗</a>)}{selectedLesson.teacher.adaptations && <details className="grade-adapt"><summary>GRADE ADAPTATIONS</summary>{selectedLesson.teacher.adaptations.map((item) => <span key={item.band}><b>{item.band}</b> {item.move}</span>)}</details>}</details>
             </aside>
           )}
 
           <div className="lesson-controls">
-            <button type="button" disabled={stepIndex === 0} onClick={() => showStep(Math.max(0, stepIndex - 1))}>← Previous</button>
-            <span>{stepIndex + 1} / {selectedLesson.steps.length}</span>
-            {stepIndex < selectedLesson.steps.length - 1
-              ? <button type="button" className="primary-control" onClick={() => showStep(stepIndex + 1)}>Next →</button>
-              : <button type="button" className="primary-control" onClick={() => setSelectedLessonId(null)}>Finish lesson ✓</button>}
+            <button type="button" disabled={routePosition === 0} onClick={() => showStep(activeStepIndexes[Math.max(0, routePosition - 1)])}>← Previous</button>
+            <span>{routePosition + 1} / {activeStepIndexes.length}</span>
+            {routePosition < activeStepIndexes.length - 1
+              ? <button type="button" className="primary-control" onClick={() => showStep(activeStepIndexes[routePosition + 1])}>Next →</button>
+              : <button type="button" className="primary-control" onClick={returnToOverview}>Finish route ✓</button>}
           </div>
         </section>
       ) : (
@@ -1527,8 +1828,8 @@ export default function Home() {
                     <div><small>STUDENTS MAKE</small><strong>{featuredLesson.product}</strong></div>
                   </div>
                   <div className="hero-actions">
-                    <button type="button" className="button primary" onClick={() => startLesson("belonging-built")}>Project screen 1 <span>→</span></button>
-                    <a className="button secondary print-hero" href={featuredLesson.printable.bwHref} target="_blank" rel="noreferrer">Print B&amp;W</a>
+                    <button type="button" className="button primary" onClick={() => startLesson("belonging-built")}>Preview lesson + print plan <span>→</span></button>
+                    <a className="button secondary print-hero" href={featuredLesson.printable.bwHref} target="_blank" rel="noreferrer">B&amp;W pack · {featuredLesson.printable.pages} pages</a>
                     <a className="colour-link" href={featuredLesson.printable.href} target="_blank" rel="noreferrer">Colour version ↓</a>
                   </div>
                   {teacherMode && <details className="home-teacher-notes"><summary>Teacher prep</summary><div><span><b>BEFORE</b>{featuredLesson.teacher.prepare.join(" · ")}</span><span><b>ASK</b>{featuredLesson.teacher.moves[0]}</span><span><b>EVIDENCE</b>{featuredLesson.teacher.evidence}</span></div></details>}
@@ -1543,10 +1844,10 @@ export default function Home() {
               <section className="election-now section" aria-labelledby="election-now-title">
                 <div className="election-now-copy"><p className="eyebrow dark"><span /> Timely local connection · Oct. 17, 2026</p><h2 id="election-now-title">Who gets heard in Surrey?</h2><p>Use one short equity lens—not a second election unit. Classroom OS can teach the mechanics.</p></div>
                 <div className="election-route-grid">
-                  <button type="button" onClick={() => startLesson("voice-and-rules", 10)}><small>EARLY SEPTEMBER · 15 MIN</small><b>Voting is one piece</b><span>How can young people participate now?</span></button>
+                  <button type="button" onClick={() => startLesson("voice-and-rules", 13)}><small>EARLY SEPTEMBER · 15 MIN</small><b>Voting is one piece</b><span>How can young people participate now?</span></button>
                   <button type="button" onClick={() => startLesson("voice-and-rules", 5)}><small>LATE SEPT.–OCTOBER · 45 MIN</small><b>Surrey equity lab</b><span>Decide, check missing perspectives, and revise.</span></button>
                   <button type="button" onClick={() => startLesson("voice-and-rules", 7)}><small>AFTER SEPTEMBER 11</small><b>Representation + messages</b><span>Use the official candidate list and equal samples.</span></button>
-                  <button type="button" onClick={() => startLesson("voice-and-rules", 11)}><small>AFTER OCTOBER 17 · 15 MIN</small><b>Accountability check</b><span>Results are the start of the next question.</span></button>
+                  <button type="button" onClick={() => startLesson("voice-and-rules", 14)}><small>AFTER OCTOBER 17 · 15 MIN</small><b>Accountability check</b><span>Results are the start of the next question.</span></button>
                 </div>
               </section>
 
@@ -1557,13 +1858,13 @@ export default function Home() {
                 </div>
                 <div className="launch-grid">
                   <button type="button" className="launch-card leaf" onClick={() => startLesson("belonging-built", 0)}>
-                    <span><b>45–55 MIN</b> Grade 6 rotation + first full week</span><h3>Belonging Action Studio</h3><p>Each student creates one full-page action plan, explains why it could help, and chooses a realistic first move.</p><strong>Students make: one action page → class commitments → check-back →</strong>
+                    <img src="/images/hero-belonging-built.webp" alt="" width="1536" height="1024" /><span><b>45–55 MIN</b> Grade 6 rotation + first full week</span><h3>Belonging Action Studio</h3><p>Each student creates one full-page action plan, explains why it could help, and chooses a realistic first move.</p><strong>Preview lesson + print plan →</strong>
                   </button>
                   <button type="button" className="launch-card coral" onClick={() => startLesson("truth-place-responsibility")}>
-                    <span><b>2–3 BLOCKS</b> Sept. 15–29</span><h3>Two Maps, One Place</h3><p>Use the provided maps and one local First Nations source. No teacher searching required.</p><strong>Students make: credited learning + next action →</strong>
+                    <img src="/images/artivism-gallery.webp" alt="" width="1536" height="1024" /><span><b>2–3 BLOCKS</b> Sept. 15–29</span><h3>Two Maps, One Place</h3><p>Use the provided maps and one local First Nations source. No teacher searching required.</p><strong>Preview lesson + print plan →</strong>
                   </button>
                   <button type="button" className="launch-card sun" onClick={() => startLesson("voice-and-rules")}>
-                    <span><b>15–90 MIN</b> Choose a September–October route</span><h3>Who Gets Heard?</h3><p>Start with a real class choice, then connect fairness to Surrey, trustees, participation, and accountability.</p><strong>Project one useful route—not all 12 screens →</strong>
+                    <img src="/images/voice-and-rules.webp" alt="" width="1536" height="1024" /><span><b>15–90 MIN</b> Choose a September–October route</span><h3>Who Gets Heard?</h3><p>Start with a real class choice, then connect fairness to Surrey, trustees, participation, and accountability.</p><strong>Choose one route in the lesson preview →</strong>
                   </button>
                 </div>
               </section>
@@ -1597,13 +1898,14 @@ export default function Home() {
               <div className="lesson-grid">
                 {orderedLessons.map((lesson) => (
                   <article className={`lesson-card tone-${lesson.tone}`} key={lesson.id}>
-                    <div className="lesson-card-top"><span>{lesson.timing}</span><b>{lesson.length}</b></div>
+                    <figure className="lesson-card-image"><img src={lesson.image} alt="" width="1536" height="1024" /><figcaption>{lesson.length}</figcaption></figure>
+                    <div className="lesson-card-top"><span>{lesson.timing}</span><b>{lesson.printable.pages}-page pack</b></div>
                     <h2>{lesson.title}</h2><p className="lesson-question">{lesson.question}</p>
                     <div className="lesson-formats">{lesson.formats.map((format) => <span key={format}>{format}</span>)}</div>
-                    <div className="lesson-card-plan"><span><small>THE EXPERIENCE</small>{lesson.activity}</span><span><small>STUDENTS MAKE</small>{lesson.product}</span></div>
+                    <div className="lesson-card-plan"><span><small>STUDENTS WILL</small>{lesson.activity}</span><span><small>THEY FINISH WITH</small>{lesson.product}</span><span className="pack-purpose"><small>THE PRINTABLE IS FOR</small>{lesson.printable.pagePlan.slice(0, 2).join(" ")}</span></div>
                     <p className="lesson-materials"><b>Materials:</b> {lesson.materials}</p>
-                    <div className="lesson-meta"><span>{lesson.grades}</span><span>{lesson.steps.length} screens</span></div>
-                    <div className="lesson-card-actions"><button type="button" onClick={() => startLesson(lesson.id)}>Project →</button><a className="bw-link" href={lesson.printable.bwHref} target="_blank" rel="noreferrer">Print B&amp;W</a><a href={lesson.printable.href} target="_blank" rel="noreferrer">Colour</a></div>
+                    <div className="lesson-meta"><span>{lesson.grades}</span><span>{lesson.routes ? `${lesson.routes.length} route choices` : `${lesson.steps.length} student screens`}</span></div>
+                    <div className="lesson-card-actions"><button type="button" onClick={() => startLesson(lesson.id)}>Open lesson + print plan →</button><a className="bw-link" href={lesson.printable.bwHref} target="_blank" rel="noreferrer">B&amp;W · {lesson.printable.pages} pages</a><a href={lesson.printable.href} target="_blank" rel="noreferrer">Colour pack</a></div>
                   </article>
                 ))}
               </div>
@@ -1674,8 +1976,8 @@ export default function Home() {
             <section className="section page-section library-page">
               <div className="page-heading split"><div><p className="eyebrow dark"><span /> Quietly kept in the back</p><h1>Resources</h1></div><p>Open what you need. The teaching experience stays uncluttered.</p></div>
               <h2 className="library-heading">Lesson activity packs</h2>
-              <p className="library-intro">Every pack includes two student pages plus a one-page teacher quick start with materials, a 60-second model, run steps, debrief, evidence, and ready source links.</p>
-              <div className="lesson-printables-grid">{orderedLessons.map((lesson, index) => <article className={`tone-${lesson.tone}`} key={lesson.id}><span>{String(index + 1).padStart(2, "0")}</span><div><h3>{lesson.printable.title}</h3><p>{lesson.printable.includes}</p></div><div className="printable-links"><a className="bw-link" href={lesson.printable.bwHref} target="_blank" rel="noreferrer">B&amp;W ↓</a><a href={lesson.printable.href} target="_blank" rel="noreferrer">Colour ↓</a></div></article>)}</div>
+              <p className="library-intro">Each pack includes clearly marked teacher pages showing what to project, which student pages match the lesson, how many copies to make, what to model, and what to collect. Multi-route packs tell you which pages to choose—you do not teach the whole pack.</p>
+              <div className="lesson-printables-grid">{orderedLessons.map((lesson, index) => <article className={`tone-${lesson.tone}`} key={lesson.id}><figure><img src={lesson.printable.preview} alt="" width="773" height="1000" /><span>{String(index + 1).padStart(2, "0")}</span></figure><div><h3>{lesson.printable.title}</h3><p>{lesson.printable.pagePlan.join(" ")}</p><button type="button" onClick={() => startLesson(lesson.id)}>See lesson + page map →</button></div><div className="printable-links"><a className="bw-link" href={lesson.printable.bwHref} target="_blank" rel="noreferrer">B&amp;W · {lesson.printable.pages} pages</a><a href={lesson.printable.href} target="_blank" rel="noreferrer">Colour pack</a></div></article>)}</div>
               <h2 className="library-heading">Longer project toolkits</h2>
               <div className="download-grid">{downloads.map((item) => <article key={item.title}><span>{item.type}</span><h3>{item.title}</h3><p>{item.detail}</p><div>{item.colour === item.bw ? <a href={item.bw}>Open printable PDF ↓</a> : <><a href={item.colour}>Colour PDF ↓</a><a href={item.bw}>B&amp;W PDF ↓</a></>}</div></article>)}</div>
               <h2 className="library-heading">Trusted starting points</h2>
