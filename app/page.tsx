@@ -1,10 +1,19 @@
 "use client";
 /* eslint-disable @next/next/no-img-element -- compressed local WebP assets are used for predictable projector rendering. */
 
-import { useEffect, useState } from "react";
+import { useEffect, useLayoutEffect, useState } from "react";
 
 type View = "home" | "teach" | "plan" | "issues" | "action" | "library";
 type Tone = "leaf" | "sun" | "sky" | "berry" | "coral" | "sand";
+type GradeBand = "K–2" | "3–5" | "6–8" | "9–12";
+type GradeSelection = "ALL" | GradeBand;
+type GradeFit = "Core lesson" | "Teacher-led + core" | "Core + extension" | "Teacher-led" | "Extension";
+
+type GradeAdaptation = {
+  band: GradeBand;
+  fit: GradeFit;
+  move: string;
+};
 
 type LessonStep = {
   label: string;
@@ -63,7 +72,7 @@ type Lesson = {
     curriculum: string[];
     evidence: string;
     sources?: { label: string; href: string }[];
-    adaptations?: { band: string; move: string }[];
+    adaptations: GradeAdaptation[];
   };
 };
 
@@ -89,9 +98,9 @@ const lessons: Lesson[] = [
     image: "/images/hero-belonging-built.webp",
     imageAlt: "Students and an adult redesigning a welcoming classroom with several ways to participate.",
     question: "What helps everyone join in and be themselves?",
-    timing: "Sept. 8–15; assemble after classes settle",
+    timing: "Opening weeks, or whenever a learning group needs a belonging reset",
     length: "45–55 min or 2 × 25 min",
-    grades: "K–7 adaptable",
+    grades: "K–12 pathway · core K–7",
     tone: "leaf",
     use: "Build shared language for belonging, access, and student voice.",
     activity: "Look for fairness in a classroom picture, choose three belonging actions our class needs, then draw one action happening and name a first step",
@@ -168,14 +177,20 @@ const lessons: Lesson[] = [
         "Print page 1 once per group, page 2 once per student, and page 3 once for the class. Keep pages 4–5 as your teacher guide. Keep page 2 full size; do not print four pages per sheet.",
         "Open the linked B.C. video page and cue Episode 4, ‘Inclusion 2.0: Teaching to Diversity,’ before class.",
         "Pre-cut action cards only if cutting may be a barrier; set three room corners: same, fair, it depends.",
-        "During Grade 6 rotation, keep each named full-page studio with the student's handoff materials. Revisit the pages only after classes are set.",
+        "For rotating classes or multiple course sections, keep each named full-page studio with that learner's group materials and revisit it once the group is established.",
       ],
       moves: ["Ask “What makes you say that?”", "Separate barriers from personal deficits.", "Invite several ways to contribute."],
       care: "Students may draw on fictional or general examples. Nobody needs to disclose an identity, diagnosis, or personal experience.",
       curriculum: ["Social Studies: systems and participation", "Language Arts: exchanging ideas", "ADST: design for users", "Career Education: community responsibility"],
-      evidence: "One full-page action studio per student, two or three class commitments, and a one-week check-back date; optional student-chosen SpacesEDU photo.",
+      evidence: "One full-page action studio per student, two or three group commitments, and a one-week check-back date; optional student-chosen paper, photo, or audio reflection.",
       sources: [
         { label: "B.C. video — Episode 4: Teaching to Diversity", href: "https://www2.gov.bc.ca/gov/content/education-training/k-12/teach/resources-for-teachers/inclusive-education/videos" },
+      ],
+      adaptations: [
+        { band: "K–2", fit: "Core lesson", move: "Read the action cards aloud; learners can point, act, or draw one observable belonging action." },
+        { band: "3–5", fit: "Core lesson", move: "Rank actions with reasons, then set one measurable group commitment and a one-week check-back." },
+        { band: "6–8", fit: "Core + extension", move: "Grades 6–7 can audit a class routine directly; Grade 8 can extend the inquiry to a structural change and measure participation." },
+        { band: "9–12", fit: "Extension", move: "Audit course belonging and access, propose one structural change, and measure participation after the change." },
       ],
     },
   },
@@ -186,9 +201,9 @@ const lessons: Lesson[] = [
     image: "/images/voice-and-rules.webp",
     imageAlt: "Students sharing ideas through a circle, voting, anonymous responses, and other participation choices.",
     question: "How can a community make decisions so people can be heard, represented, and included?",
-    timing: "Sept. 8–Oct. 23; choose one short route",
+    timing: "Anytime voice, rules, or public decisions are studied; Surrey election routes fit Sept.–Oct. 2026",
     length: "15 min, 45 min, or 2 × 40 min",
-    grades: "K–12 adaptable; core screens Grades 3–8",
+    grades: "K–12 pathway · core 3–8",
     tone: "sun",
     use: "Use the Surrey election as a real equity case: who is heard, whose perspective is missing, and how voice continues after voting.",
     activity: "Choose a route: fair class decision, Surrey recreation-centre case, campaign-source check, trustee challenge, or post-election check-in",
@@ -417,9 +432,9 @@ const lessons: Lesson[] = [
       prepare: [
         "Choose a route; do not run all screens in one sitting. The AI Equity Lens and AI Rules Council are optional routes inside this power-and-participation lesson—not a separate unit.",
         "For a current event, open one credible source yourself and use the on-screen three-card routine. Students should not search an open web or test personal information in AI.",
-        "Print only the pages the route uses. Page 1 supports Screens 1–5; pages 2–4 support the Surrey election route.",
+        "Print only the pages the route uses. Keep pages 1–2 as teacher guides; use pages 3–4 for the fair-class route, page 5 for the Surrey case, pages 6–7 for representation or student voice, and pages 8–9 for source checking and participation.",
         "Use the official candidate list only after nominations close September 11. Preview any candidate material and compare equal samples.",
-        "Keep Classroom OS for election mechanics. Here, centre access, missing perspectives, representation, participation, and accountability.",
+        "Use your usual civics or election materials only if you also teach election mechanics. This Equity Hub pathway centres access, missing perspectives, representation, participation, and accountability.",
       ],
       moves: ["Ask who set the choices, whose experience is missing, and what evidence could change a mind.", "Separate representation by ideas, experience, community, interest, and perspective from simple identity counting.", "Keep returning to: output, response, change, and next check."],
       care: "Stay non-partisan. Never ask students to disclose family voting, defend a group, rank identities, or treat a community as if everyone agrees. Use hypothetical cases when a live issue is unsafe or too personal.",
@@ -436,10 +451,10 @@ const lessons: Lesson[] = [
         { label: "Office of the Privacy Commissioner – Canadian privacy principles for generative AI", href: "https://www.priv.gc.ca/en/privacy-topics/technology/artificial-intelligence/gd_principles_ai/" },
       ],
       adaptations: [
-        { band: "K–2", move: "Use one classroom or playground choice: Who gets a turn to speak? What would make the choice fairer?" },
-        { band: "3–5", move: "Use the recreation-centre cards, missing-perspective prompt, and Voting Is One Piece visual." },
-        { band: "6–8", move: "Add candidate issue sampling, source labels, trustee recommendation, and follow-up." },
-        { band: "9–12", move: "Compare policy trade-offs, institutions, systemic participation barriers, and accountability evidence." },
+        { band: "K–2", fit: "Teacher-led", move: "Use one class or playground choice, reveal one picture barrier, and co-create a fairer plan." },
+        { band: "3–5", fit: "Core lesson", move: "Use the class or fictional recreation-centre case; cite evidence and name one missing perspective." },
+        { band: "6–8", fit: "Core lesson", move: "Sort claims, evidence, promises, and opinions; plan participation and a decision-review date." },
+        { band: "9–12", fit: "Extension", move: "Investigate a live policy issue through primary sources; build a stakeholder map, recommendation, and accountability check." },
       ],
     },
   },
@@ -450,9 +465,9 @@ const lessons: Lesson[] = [
     image: "/images/artivism-gallery.webp",
     imageAlt: "Students creating source-based artwork together in a bright, welcoming classroom.",
     question: "What should we learn and do because we live on this land?",
-    timing: "Sept. 15–29, leading to Orange Shirt Day",
+    timing: "Before Orange Shirt Day, or anytime learners study place, governance, and responsibility",
     length: "2–3 × 40 min",
-    grades: "Grades 4–7; K–3 teacher-led",
+    grades: "K–12 pathway · core 4–8",
     tone: "coral",
     use: "Move beyond a one-day observance toward truth, living Nations, relationships, and responsibility.",
     activity: "Compare two provided Surrey maps, learn from one local First Nations source, then create a credited response",
@@ -575,10 +590,10 @@ const lessons: Lesson[] = [
         { label: "FNIGC – First Nations principles of OCAP®", href: "https://fnigc.ca/ocap-training/" },
       ],
       adaptations: [
-        { band: "K–2", move: "Learn that Nations make decisions for their communities; use one Nation-created story or image chosen by the teacher." },
-        { band: "3–5", move: "Compare what two maps were created to show; name that First Nations are governments, not a level below the city." },
-        { band: "6–8", move: "Study one Nation’s own governance language and one real relationship or agreement." },
-        { band: "9–12", move: "Examine inherent rights, self-government, traditional and elected systems, and jurisdiction using Nation-authored sources." },
+        { band: "K–2", fit: "Teacher-led", move: "Use one local Nation-created source; learners notice through talk or drawing, then credit its creator and Nation." },
+        { band: "3–5", fit: "Teacher-led + core", move: "Grade 3 uses a teacher-led source preview; Grades 4–5 compare what two maps show and make a present-day, source-credited response." },
+        { band: "6–8", fit: "Core lesson", move: "Add one Nation-authored governance source and examine how jurisdiction changes responsibility." },
+        { band: "9–12", fit: "Extension", move: "Synthesize Nation-authored land and governance sources; apply access, consent, protocol, and credit to reuse." },
       ],
     },
   },
@@ -589,9 +604,9 @@ const lessons: Lesson[] = [
     image: "/images/children-rights-in-action.webp",
     imageAlt: "Children learning, playing, speaking, and receiving support in an inclusive community space.",
     question: "What rights belong to every child?",
-    timing: "Before Nov. 20; brief revisit Dec. 10",
+    timing: "Before National Child Day, or anytime learners study rights and adult responsibility",
     length: "55–65 min or 2 × 30 min",
-    grades: "Grades 3–7",
+    grades: "K–12 pathway · core 3–7",
     tone: "sky",
     use: "Connect human rights to students’ daily lives without turning rights into rewards.",
     activity: "Spot a right, solve the Rights Repair Mystery, then repair a fictional case in a comic",
@@ -680,6 +695,12 @@ const lessons: Lesson[] = [
       curriculum: ["Social Studies: human rights", "Language Arts: explaining and responding", "Career Education: well-being and community"],
       evidence: "Six matched right/adult-responsibility pairs and a four-frame comic showing an adult or school repair.",
       sources: [{ label: "UNICEF Canada – Elementary children’s-rights resources", href: "https://www.unicef.ca/en/elementary-resources" }],
+      adaptations: [
+        { band: "K–2", fit: "Teacher-led", move: "Use one illustrated fictional case; learners dictate or draw the right and the adult repair." },
+        { band: "3–5", fit: "Core lesson", move: "Match rights with adult responsibilities and show a complete repair in a comic." },
+        { band: "6–8", fit: "Core + extension", move: "Grades 6–7 can use the core repair task; Grade 8 can extend it with a right → duty → evidence → remedy chain for one policy." },
+        { band: "9–12", fit: "Extension", move: "Compare policy and practice with an authoritative rights source; propose a remedy, review route, and safeguards." },
+      ],
     },
   },
   {
@@ -689,9 +710,9 @@ const lessons: Lesson[] = [
     image: "/images/same-versus-fair.webp",
     imageAlt: "Two classroom scenes compare one fixed task with flexible ways to read, listen, write, draw, or speak.",
     question: "When does the place or task create the problem?",
-    timing: "Late November, after Children’s Rights",
+    timing: "Anytime; pairs well with children’s and human-rights learning",
     length: "45–60 min",
-    grades: "Grades 3–7",
+    grades: "K–12 pathway · core 3–7",
     tone: "berry",
     use: "Teach accessibility through observation, user-centred design, and multiple ways to participate.",
     activity: "Try a 30-second mini-task, match barriers to tools, then complete an Access Makeover",
@@ -780,11 +801,17 @@ const lessons: Lesson[] = [
       moves: ["Use “barrier” and “access” more than “special need.”", "Avoid disability simulations.", "Value expertise from lived experience without requiring disclosure."],
       care: "Students may contribute without identifying their own disability, diagnosis, or support plan.",
       curriculum: ["ADST: user-centred design", "Social Studies: equity and inclusion", "Language Arts: communicating ideas"],
-      evidence: "A peer-tested Ways-to-Join menu attached to a real class task; optional SpacesEDU photo and reflection.",
+      evidence: "A peer-tested Ways-to-Join menu attached to a real class task; optional student-chosen paper, photo, or audio reflection.",
       sources: [
         { label: "Rick Hansen Foundation – School Program", href: "https://www.rickhansen.com/schools-communities/school-program" },
         { label: "B.C. Inclusive & Responsive Learning videos", href: "https://www2.gov.bc.ca/gov/content/education-training/k-12/teach/resources-for-teachers/inclusive-education/videos" },
         { label: "Accessibility Standards Canada – accessible and equitable AI systems", href: "https://accessible.canada.ca/standards-and-technical-guides/standards-and-technical-guides-database/accessible-and-equitable-artificial-intelligence-systems" },
+      ],
+      adaptations: [
+        { band: "K–2", fit: "Teacher-led", move: "Demonstrate a badly designed task without simulating disability; choose picture supports and retest it." },
+        { band: "3–5", fit: "Core lesson", move: "Peer-test a Ways-to-Join menu on a real task and revise it from feedback." },
+        { band: "6–8", fit: "Core + extension", move: "Grades 6–7 can use the core access makeover; Grade 8 can audit more barrier types, test a redesign, and name what remains." },
+        { band: "9–12", fit: "Extension", move: "Use accessibility criteria and user input to redesign a course or service; document trade-offs, privacy, and gaps." },
       ],
     },
   },
@@ -797,7 +824,7 @@ const lessons: Lesson[] = [
     question: "How can pictures and clear words help more people find their way?",
     timing: "Late October, or when a real navigation need appears",
     length: "45–60 min",
-    grades: "Grades 3–7",
+    grades: "K–12 pathway · core 3–7",
     tone: "sky",
     use: "Explore visual and school-approved multilingual wayfinding without turning students into translators.",
     activity: "Test six picture signs, try two visual strategies, then revise one real school sign",
@@ -890,6 +917,12 @@ const lessons: Lesson[] = [
         { label: "Surrey Schools Welcome Centre", href: "https://www.surreyschools.ca/welcomecentre" },
         { label: "Accessible Canada – Wayfinding and signage", href: "https://accessible.canada.ca/standards-and-technical-guides/standards-and-technical-guides-database/can-asc-24-wayfinding-and-signage/9-definitions-symbols-and-abbreviations" },
       ],
+      adaptations: [
+        { band: "K–2", fit: "Teacher-led", move: "Match familiar places to pictures and arrows; use teacher-supplied approved wording for one peer test." },
+        { band: "3–5", fit: "Core lesson", move: "Test picture-only meaning, add an approved label, and make one visible revision." },
+        { band: "6–8", fit: "Core + extension", move: "Grades 6–7 can use the core sign task; Grade 8 can audit a full route and test symbol, contrast, placement, and wording." },
+        { band: "9–12", fit: "Extension", move: "Design a small standards-based wayfinding system with translation verification and usability testing." },
+      ],
     },
   },
   {
@@ -901,7 +934,7 @@ const lessons: Lesson[] = [
     question: "What can we do when racist words or actions hurt someone?",
     timing: "January, after class norms and the school help route are clear",
     length: "35–45 min",
-    grades: "Grades 4–7",
+    grades: "K–12 pathway · core 4–7",
     tone: "sun",
     use: "Practise safe responses without asking students to reenact personal harm.",
     activity: "Sort eight safe choices into Four Moves, then make a Pocket Response Guide",
@@ -970,7 +1003,7 @@ const lessons: Lesson[] = [
       prepare: [
         "Print student page 1 once per group and page 2 once per student; keep teacher pages 3–4. Pre-cut the numbered cards if helpful. No role-play is needed.",
         "Open the linked B.C. Curriculum Anti-Racism Guide for Teachers before class.",
-        "Pre-fill two real Walnut Road adult roles or places where students can get help; open the school Code of Conduct and PSST route.",
+        "Pre-fill two real adult roles or places where students can get help. At Walnut Road, open the school Code of Conduct and PSST route; elsewhere, use the local policy and reporting route.",
       ],
       moves: ["Name the harm clearly.", "Do not ask the targeted student to educate others.", "Emphasize adult responsibility and follow-through."],
       care: "Students may pass and use a private check-in. Do not invite public disclosures, require repair from the harmed student, or turn a live incident into class debate.",
@@ -982,6 +1015,12 @@ const lessons: Lesson[] = [
         { label: "Walnut Road – Code of Conduct", href: "https://www.surreyschools.ca/walnutroad/code-of-conduct" },
         { label: "Surrey Schools – PSST private reporting", href: "https://www.surreyschools.ca/safeschools/psst-protecting-surrey-schools-together" },
       ],
+      adaptations: [
+        { band: "K–2", fit: "Teacher-led", move: "Narrate an illustrated fictional case and model stop-if-safe, support, and tell an adult; never role-play harm." },
+        { band: "3–5", fit: "Teacher-led + core", move: "Grade 3 uses a teacher-led fictional case; Grades 4–5 sort safe choices using real help locations without reenacting harm." },
+        { band: "6–8", fit: "Core + extension", move: "Grades 6–7 can use the core response guide; Grade 8 can compare routes for online, in-person, and power-unequal situations." },
+        { band: "9–12", fit: "Extension", move: "Audit a reporting policy and design a trauma-informed response-and-repair protocol with confidentiality and accountability." },
+      ],
     },
   },
   {
@@ -991,9 +1030,9 @@ const lessons: Lesson[] = [
     image: "/images/global-goals-connections.webp",
     imageAlt: "Students use a shared planning board to connect community needs, access, and possible solutions.",
     question: "What happens when more than one barrier affects someone?",
-    timing: "After Barrier Detectives; best in February or March",
+    timing: "Anytime after learners know the word barrier; optional February–March connection",
     length: "45–55 min",
-    grades: "Grades 5–7",
+    grades: "K–12 pathway · core 5–7",
     tone: "berry",
     use: "Make intersectionality concrete through one school-event design scenario.",
     activity: "Mark required access basics, then use six planning points for extra ways to participate",
@@ -1093,6 +1132,12 @@ const lessons: Lesson[] = [
         { label: "B.C. Human Rights Commissioner – Intersectionality", href: "https://bchumanrights.ca/glossary/intersectionality/" },
         { label: "B.C. Human Rights – Rights in public services", href: "https://bchumanrights.ca/human-rights/rights-and-responsibilities/rights-under-the-code-regarding-services/" },
       ],
+      adaptations: [
+        { band: "K–2", fit: "Teacher-led", move: "Combine two picture facts, such as noise and one event time, then choose supports together." },
+        { band: "3–5", fit: "Teacher-led + core", move: "Grades 3–4 use two supplied conditions with teacher guidance; Grade 5 can add the simple no-cut access budget." },
+        { band: "6–8", fit: "Core + extension", move: "Grades 6–7 can use the core plan; Grade 8 can justify enhancements, consult relevant roles, and retain an unanswered question." },
+        { band: "9–12", fit: "Extension", move: "Build a costed event-access plan using policy requirements, stakeholder input, trade-offs, and residual barriers." },
+      ],
     },
   },
   {
@@ -1102,9 +1147,9 @@ const lessons: Lesson[] = [
     image: "/images/student-voice-club.webp",
     imageAlt: "Students gather ideas, choose a shared priority, and plan a useful improvement.",
     question: "How can students help with a real issue in a useful, caring way?",
-    timing: "Early March: Steps 1–3; return to Steps 4–6 after an issue is chosen",
+    timing: "Anytime a class, course, or club is ready to move from learning to useful action",
     length: "1 planning block + later project sessions",
-    grades: "Grades 4–7",
+    grades: "K–12 pathway · core 4–7",
     tone: "sand",
     use: "Move from a strong feeling to listening, evidence, realistic influence, and accountable action.",
     activity: "Choose a sourced pathway, compare three ready action ideas, then plan the product that fits",
@@ -1190,8 +1235,8 @@ const lessons: Lesson[] = [
     ],
     teacher: {
       prepare: [
-        "Print student pages 1–4 once per group. Keep teacher pages 5–6. In Student Action Studio, select one ready pathway with direct sources and three starting action ideas; no resource search is needed.",
-        "Before spring break, teach only LEARN, COMPARE, and CHOOSE. Return to BUILD, ACT, and CHECK after the class or club selects its spring issue.",
+        "Print student pages 1–4 once per group and keep teacher pages 5–6. In this Equity Hub, open Student action and select one ready pathway with direct sources and three starting action ideas; no other hub or open-ended resource search is needed.",
+        "For a short planning launch, teach only LEARN, COMPARE, and CHOOSE. Return to BUILD, ACT, and CHECK after the class, course, or club selects an issue.",
         "Confirm adult permission before any public message, contact, collection, fundraising, or change to a shared space.",
       ],
       moves: ["Slow students down before action.", "Distinguish awareness from measurable change.", "Require a report-back."],
@@ -1205,6 +1250,12 @@ const lessons: Lesson[] = [
         { label: "Local student action toolkit", href: "/downloads/from-concern-to-action-student-toolkit.pdf" },
         { label: "International Energy Agency – Energy and AI", href: "https://www.iea.org/reports/energy-and-ai" },
       ],
+      adaptations: [
+        { band: "K–2", fit: "Teacher-led", move: "Choose one safe class issue and two feasible actions; adults deliver the action and learners observe results." },
+        { band: "3–5", fit: "Teacher-led + core", move: "Grade 3 uses a teacher-led action choice; Grades 4–5 compare three actions, pause for approval, and check what changed." },
+        { band: "6–8", fit: "Core + extension", move: "Grades 6–7 can use the core plan; Grade 8 can add stakeholder listening, a measurable goal, roles, and outcome tracking." },
+        { band: "9–12", fit: "Extension", move: "Require needs assessment, source triangulation, power analysis, permissions, outcome indicators, and public report-back." },
+      ],
     },
   },
   {
@@ -1214,9 +1265,9 @@ const lessons: Lesson[] = [
     image: "/images/animal-welfare-learning.webp",
     imageAlt: "Students investigate animal needs and compare evidence-based ways to help.",
     question: "Which action would really help animals?",
-    timing: "Launch week of Mar. 30; continue April–May",
+    timing: "Anytime a verified animal-welfare need fits; suggested spring pathway",
     length: "3–6 lessons + project",
-    grades: "Grades 3–7",
+    grades: "K–12 pathway · core 3–7",
     tone: "coral",
     use: "Prepare a student-chosen BC SPCA or animal-welfare project grounded in current needs.",
     activity: "Use one provided BC SPCA case card, identify a need and current recommendation, then compare three actions",
@@ -1315,12 +1366,18 @@ const lessons: Lesson[] = [
         { label: "BC SPCA – Bird-window collisions", href: "https://spca.bc.ca/news/striking-bird-window-collisions/" },
         { label: "BC SPCA – Hot-car safety", href: "https://spca.bc.ca/news/bc-spca-urges-public-keep-animals-out-of-hot-vehicles/" },
       ],
+      adaptations: [
+        { band: "K–2", fit: "Teacher-led", move: "Use a non-distressing, teacher-curated bird-window case; identify one need and an adult-approved school action." },
+        { band: "3–5", fit: "Core lesson", move: "Preview the source; record one fact and recommendation, then reject one unsupported action." },
+        { band: "6–8", fit: "Core + extension", move: "Grades 6–7 can use the core source check; Grade 8 can compare claims and trade-offs before planning an action and result check." },
+        { band: "9–12", fit: "Extension", move: "Use a current primary-source welfare or policy case; evaluate evidence and trade-offs, then propose a measurable intervention." },
+      ],
     },
   },
 ];
 
 const runways: Runway[] = [
-  { month: "SEPT", event: "Belonging during Grade 6 rotation", start: "Sept. 8–11", create: "One full-page belonging action", share: "Choose class commitments Sept. 14–15", date: "Opening weeks", lesson: "belonging-built", priority: "Core" },
+  { month: "SEPT", event: "Opening-week or new-group belonging", start: "First 1–2 weeks", create: "One belonging action or group contribution", share: "Set commitments + a check-back", date: "Use at the start of a term, course, advisory, or group reset", lesson: "belonging-built", priority: "Core" },
   { month: "SEPT", event: "Truth, place & Orange Shirt Day", start: "Sept. 15", create: "Sept. 17–24", share: "Sept. 28–29", date: "Orange Shirt Day Sept. 29 · school closed Sept. 30", lesson: "truth-place-responsibility", priority: "Core" },
   { month: "SEPT", event: "Voice beyond voting — quick discussion", start: "Sept. 8 onward", create: "Choose one realistic route", share: "No product required", date: "Build participation language before campaigns", lesson: "voice-and-rules", startAt: 13, cta: "Preview the 15-minute route →", priority: "Choice" },
   { month: "SEPT", event: "Official candidates & representation", start: "After Sept. 11", create: "Sample equal amounts of candidate material", share: "One pattern + one missing question", date: "Nominations close and candidates are declared Sept. 11", lesson: "voice-and-rules", startAt: 7, cta: "Open representation screens →", priority: "Choice" },
@@ -1341,7 +1398,7 @@ const runways: Runway[] = [
 ];
 
 const yearStages = [
-  { n: "1", when: "SEPT–OCT", title: "Build the class", detail: "Belonging → truth & place → fair voice → wayfinding" },
+  { n: "1", when: "SEPT–OCT", title: "Build the learning community", detail: "Belonging → truth & place → fair voice → wayfinding" },
   { n: "2", when: "NOV–JAN", title: "Practise rights and safety", detail: "Children’s rights → access → safe responses" },
   { n: "3", when: "FEB–MAR", title: "Connect systems", detail: "Overlapping barriers → useful action planning" },
   { n: "4", when: "APR–JUNE", title: "Act, check, report", detail: "Chosen spring action (BC SPCA featured) → honest follow-up · optional Earth/Pride connections" },
@@ -1455,8 +1512,8 @@ const downloads = [
   { title: "Belonging & Learner Voice Toolkit", detail: "Facilitator guide + five write, draw, and colour graphic organizers", colour: "/downloads/belonging-learner-voice-toolkit.pdf", bw: "/downloads/belonging-learner-voice-toolkit.pdf", type: "Flexible K–12 toolkit" },
   { title: "AI Equity Dilemma Cards", detail: "Ten-page kit: equity lens, eight dilemma cards, Rules Council, power checks, sources, and teacher map", colour: "/downloads/ai-equity-dilemma-cards.pdf", bw: "/downloads/ai-equity-dilemma-cards-black-white.pdf", type: "Reusable discussion kit" },
   { title: "From Concern to Action", detail: "8-page student project toolkit", colour: "/downloads/from-concern-to-action-student-toolkit.pdf", bw: "/downloads/from-concern-to-action-student-toolkit-black-white.pdf", type: "Student toolkit" },
-  { title: "Intersectionality Classroom Toolkit", detail: "Scenarios, audits, systems map, and action planner", colour: "/downloads/intersectionality-classroom-toolkit.pdf", bw: "/downloads/intersectionality-classroom-toolkit-black-white.pdf", type: "Teacher + student" },
-  { title: "November–December Teacher Pack", detail: "Child rights, accessibility, Human Rights Day, and winter learning", colour: "/downloads/november-december-teacher-pack.pdf", bw: "/downloads/november-december-teacher-pack-black-white.pdf", type: "Teacher pack" },
+  { title: "Intersectionality Classroom Toolkit", detail: "Scenarios, audits, systems map, and action planner", colour: "/downloads/intersectionality-classroom-toolkit.pdf", bw: "/downloads/intersectionality-classroom-toolkit-black-white.pdf", type: "Grades 5–7 + staff learning" },
+  { title: "November–December Teacher Pack", detail: "Child rights, accessibility, Human Rights Day, and winter learning", colour: "/downloads/november-december-teacher-pack.pdf", bw: "/downloads/november-december-teacher-pack-black-white.pdf", type: "K–7 teacher pack" },
 ];
 
 const trustedLinks = [
@@ -1479,6 +1536,22 @@ const trustedLinks = [
   { title: "Energy and AI", source: "International Energy Agency", href: "https://www.iea.org/reports/energy-and-ai", tag: "AI + environment" },
   { title: "AI and work", source: "OECD", href: "https://www.oecd.org/en/topics/ai-and-work.html", tag: "AI + work" },
 ];
+
+const gradeBands: GradeBand[] = ["K–2", "3–5", "6–8", "9–12"];
+const gradeFitOrder: Record<GradeFit, number> = { "Core lesson": 0, "Teacher-led + core": 1, "Core + extension": 2, "Teacher-led": 3, Extension: 4 };
+const gradeFitClass: Record<GradeFit, string> = {
+  "Core lesson": "fit-core-lesson",
+  "Teacher-led + core": "fit-teacher-core",
+  "Core + extension": "fit-core-extension",
+  "Teacher-led": "fit-teacher-led",
+  Extension: "fit-extension",
+};
+const gradeBandNotes: Record<GradeBand, string> = {
+  "K–2": "Teacher-led pathways use oral language, pictures, movement, and co-created products. Preview every source and read student text aloud.",
+  "3–5": "Most student pages can be used directly. Choose the stated core route and add reading, scribing, or drawing support as needed.",
+  "6–8": "Use the core inquiry and add evidence, systems, and accountability. Grade 8 learners may use the extension move on simpler packs.",
+  "9–12": "Keep the inquiry and public sources, then use the extension move to replace elementary products with deeper policy, systems, or design work.",
+};
 
 function BrandMark() {
   return <span className="brand-mark" aria-hidden="true"><i /><b>W</b></span>;
@@ -1531,11 +1604,13 @@ export default function Home() {
   const [routeSteps, setRouteSteps] = useState<number[]>([]);
   const [stepIndex, setStepIndex] = useState(0);
   const [monthFilter, setMonthFilter] = useState("ALL");
+  const [gradeBand, setGradeBand] = useState<GradeSelection>("ALL");
   const [issueFilter, setIssueFilter] = useState("");
   const [selectedProject, setSelectedProject] = useState(actionProjects[0].id);
   const [actionStep, setActionStep] = useState(0);
   const [menuOpen, setMenuOpen] = useState(false);
   const [chosenOptions, setChosenOptions] = useState<string[]>([]);
+  const [scrollResetKey, setScrollResetKey] = useState(0);
 
   const selectedLesson = lessons.find((lesson) => lesson.id === selectedLessonId) ?? null;
   const currentStep = selectedLesson?.steps[stepIndex];
@@ -1545,6 +1620,18 @@ export default function Home() {
   const routePosition = Math.max(0, activeStepIndexes.indexOf(stepIndex));
   const selectedRoute = selectedLesson?.routes?.find((route) => route.steps.length === activeStepIndexes.length && route.steps.every((step, index) => step === activeStepIndexes[index]));
   const orderedLessons = lessonOrder.map((id) => lessons.find((lesson) => lesson.id === id)).filter((lesson): lesson is Lesson => Boolean(lesson));
+  const gradeSortedLessons = gradeBand === "ALL"
+    ? orderedLessons
+    : [...orderedLessons].sort((a, b) => {
+      const aFit = a.teacher.adaptations.find((item) => item.band === gradeBand)?.fit ?? "Extension";
+      const bFit = b.teacher.adaptations.find((item) => item.band === gradeBand)?.fit ?? "Extension";
+      return gradeFitOrder[aFit] - gradeFitOrder[bFit];
+    });
+  const gradeCounts = gradeBand === "ALL" ? null : orderedLessons.reduce<Record<GradeFit, number>>((counts, lesson) => {
+    const fit = lesson.teacher.adaptations.find((item) => item.band === gradeBand)?.fit ?? "Extension";
+    counts[fit] += 1;
+    return counts;
+  }, { "Core lesson": 0, "Teacher-led + core": 0, "Core + extension": 0, "Teacher-led": 0, Extension: 0 });
   const months = ["ALL", ...Array.from(new Set(runways.map((item) => item.month)))];
   const visibleRunways = monthFilter === "ALL" ? runways : runways.filter((item) => item.month === monthFilter);
   const visibleIssues = issueAreas.filter((issue) => {
@@ -1567,13 +1654,31 @@ export default function Home() {
     return () => document.documentElement.classList.remove("large-type-root");
   }, [largeText]);
 
+  useLayoutEffect(() => {
+    const root = document.documentElement;
+    const previousScrollBehavior = root.style.scrollBehavior;
+    root.style.scrollBehavior = "auto";
+    root.scrollTop = 0;
+    document.body.scrollTop = 0;
+    root.style.scrollBehavior = previousScrollBehavior;
+  }, [scrollResetKey]);
+
+  const scrollToPageTop = () => {
+    setScrollResetKey((current) => current + 1);
+  };
+
   const go = (next: View) => {
     setView(next);
     setSelectedLessonId(null);
     setLessonOverview(false);
     setRouteSteps([]);
     setMenuOpen(false);
-    window.scrollTo({ top: 0, behavior: "smooth" });
+    scrollToPageTop();
+  };
+
+  const browseGrade = (band: GradeBand) => {
+    setGradeBand(band);
+    go("teach");
   };
 
   const startLesson = (id: string, startAt = 0) => {
@@ -1588,7 +1693,7 @@ export default function Home() {
     setLessonOverview(true);
     setChosenOptions([]);
     setView("teach");
-    window.scrollTo({ top: 0, behavior: "smooth" });
+    scrollToPageTop();
   };
 
   const chooseRoute = (steps: number[]) => {
@@ -1603,14 +1708,20 @@ export default function Home() {
       if (!steps.includes(stepIndex)) setStepIndex(steps[0]);
     }
     setLessonOverview(false);
-    window.scrollTo({ top: 0, behavior: "smooth" });
+    scrollToPageTop();
   };
 
   const openAtStep = (index: number) => {
     setStepIndex(index);
     setChosenOptions([]);
     setLessonOverview(false);
-    window.scrollTo({ top: 0, behavior: "smooth" });
+    scrollToPageTop();
+  };
+
+  const returnToLessons = () => {
+    setSelectedLessonId(null);
+    setLessonOverview(false);
+    scrollToPageTop();
   };
 
   const returnToOverview = async () => {
@@ -1623,12 +1734,13 @@ export default function Home() {
     }
     setProjectorMode(false);
     setLessonOverview(true);
-    window.scrollTo({ top: 0, behavior: "smooth" });
+    scrollToPageTop();
   };
 
   const showStep = (index: number) => {
     setStepIndex(index);
     setChosenOptions([]);
+    scrollToPageTop();
   };
 
   const toggleChoice = (choice: string) => {
@@ -1655,7 +1767,8 @@ export default function Home() {
   };
 
   const navItems: { key: View; label: string }[] = [
-    { key: "home", label: "Teach" },
+    { key: "home", label: "Start" },
+    { key: "teach", label: "Lessons" },
     { key: "plan", label: "Year plan" },
     { key: "action", label: "Student action" },
     { key: "library", label: "Printables" },
@@ -1674,7 +1787,7 @@ export default function Home() {
           </nav>
           <div className="header-tools">
             <button type="button" className={teacherMode ? "toggle active" : "toggle"} aria-pressed={teacherMode} onClick={() => setTeacherMode((current) => !current)}>
-              {teacherMode ? "Teacher notes on" : "Teacher notes"}
+              {teacherMode ? "Screen notes on" : "Screen notes"}
             </button>
             <button type="button" className={largeText ? "text-size-toggle active" : "text-size-toggle"} aria-label={largeText ? "Use standard text size" : "Use large text"} aria-pressed={largeText} onClick={() => setLargeText((current) => !current)}>
               <span aria-hidden="true">Aa</span>{largeText ? "Large text" : "Standard text"}
@@ -1688,8 +1801,8 @@ export default function Home() {
       {selectedLesson && lessonOverview ? (
         <section className={`lesson-overview tone-${selectedLesson.tone}`}>
           <div className="overview-topbar">
-            <button type="button" className="back-button" onClick={() => setSelectedLessonId(null)}>← All lessons</button>
-            <span><b>PREPARE FIRST</b> See the lesson, pages, and student result before opening Screen 1.</span>
+            <button type="button" className="back-button" onClick={returnToLessons}>← All lessons</button>
+            <span><b>PREPARE FIRST</b> Grade fit, preparation, projected screens, printables, and public source links are all here in the Equity Hub.</span>
           </div>
 
           <div className="overview-hero section">
@@ -1715,6 +1828,21 @@ export default function Home() {
               <article><span aria-hidden="true">02</span><small>STUDENTS FINISH WITH</small><p>{selectedLesson.product}</p></article>
               <article><span aria-hidden="true">03</span><small>HAVE READY</small><p>{selectedLesson.materials}</p></article>
             </div>
+
+            <section className="overview-grade-guide" aria-labelledby="grade-guide-title">
+              <div className="overview-section-heading"><span aria-hidden="true">✦</span><div><small>K–12 GRADE GUIDE</small><h2 id="grade-guide-title">Teach the inquiry, adapt the product.</h2></div></div>
+              <p className="grade-guide-intro">The student pages are written for the lesson’s core range. Choose a band to see the most important adjustment before you print or project.</p>
+              <div className="grade-band-tabs" aria-label="Choose a grade band">
+                <button type="button" className={gradeBand === "ALL" ? "active" : ""} aria-pressed={gradeBand === "ALL"} onClick={() => setGradeBand("ALL")}>All bands</button>
+                {gradeBands.map((band) => <button type="button" key={band} className={gradeBand === band ? "active" : ""} aria-pressed={gradeBand === band} onClick={() => setGradeBand(band)}>{band}</button>)}
+              </div>
+              {gradeBand !== "ALL" && <p className="grade-band-note"><b>{gradeBand}:</b> {gradeBandNotes[gradeBand]}</p>}
+              <div className="grade-adaptation-grid">
+                {selectedLesson.teacher.adaptations.map((item) => <article key={item.band} className={gradeBand === item.band ? "active" : gradeBand === "ALL" ? "" : "muted"}>
+                  <span>{item.band}</span><b>{item.fit}</b><p>{item.move}</p>
+                </article>)}
+              </div>
+            </section>
 
             {selectedLesson.routes && (
               <section className="route-chooser" aria-labelledby="route-title">
@@ -1744,21 +1872,33 @@ export default function Home() {
               </div>
             </section>
 
+            <details className="overview-prep" open>
+              <summary><span><small>BEFORE CLASS</small><b>{selectedLesson.teacher.prepare.length} preparation tasks</b></span><em>Open / close</em></summary>
+              <div className="overview-prep-grid">
+                <ol>{selectedLesson.teacher.prepare.map((item) => <li key={item}>{item}</li>)}</ol>
+                <div className="prep-support">
+                  <aside><small>TEACH WITH CARE</small><p>{selectedLesson.teacher.care}</p></aside>
+                  <section><small>PUBLIC LINKS TO OPEN IF THIS ROUTE USES THEM</small>{selectedLesson.teacher.sources?.length ? selectedLesson.teacher.sources.map((source) => <a key={source.href} href={source.href} target="_blank" rel="noreferrer">{source.label} ↗</a>) : <p>No outside source is required.</p>}{selectedLesson.id === "concern-to-action" && <button type="button" className="internal-prep-link" onClick={() => go("action")}>Open Student action in this Hub →</button>}</section>
+                  <section><small>CURRICULUM CONNECTIONS</small><p>{selectedLesson.teacher.curriculum.join(" · ")}</p></section>
+                </div>
+              </div>
+            </details>
+
             <section className="lesson-map" aria-labelledby="lesson-map-title">
               <div className="overview-section-heading"><span aria-hidden="true">✦</span><div><small>PROJECTOR MAP</small><h2 id="lesson-map-title">What students will see</h2></div></div>
               <div className="overview-step-grid">
                 {activeStepIndexes.map((index, position) => {
                   const step = selectedLesson.steps[index];
                   return <button type="button" key={`${index}-${step.label}`} onClick={() => openAtStep(index)}>
-                    <b>{String(position + 1).padStart(2, "0")}</b><span><small>{step.label} · {step.time}</small><strong>{step.title}</strong><em>Start here →</em></span>
+                    <b>{String(position + 1).padStart(2, "0")}</b><span><small>{step.label} · {step.time}</small><strong>{step.title}</strong><em>Preview this student screen →</em></span>
                   </button>;
                 })}
               </div>
             </section>
 
             <div className="overview-launch">
-              <div><small>READY TO TEACH</small><b>{selectedRoute?.title ?? selectedLesson.title}</b><span>{selectedRoute?.print ?? `Use the ${selectedLesson.printable.title} pack.`}</span></div>
-              <button type="button" onClick={() => openStudentScreens()}>Open {selectedLesson.steps[stepIndex]?.label ?? "student"} screen →</button>
+              <div><small>READY TO TEACH</small><b>{selectedRoute?.title ?? selectedLesson.title}</b><span>{selectedRoute?.print ?? `Use the ${selectedLesson.printable.title} pack.`} Projection begins only if you later choose Project fullscreen.</span></div>
+              <button type="button" onClick={() => openStudentScreens()}>Open student screens →</button>
             </div>
           </div>
         </section>
@@ -1768,7 +1908,7 @@ export default function Home() {
             {!projectorMode && <button type="button" className="back-button" onClick={returnToOverview}>← Lesson overview</button>}
             <div className="lesson-identity"><small>{selectedLesson.timing}</small><strong>{selectedLesson.title}</strong></div>
             {!projectorMode && <div className="player-print-actions"><a className="print-button primary-print" href={selectedLesson.printable.bwHref} target="_blank" rel="noreferrer">B&amp;W · {selectedLesson.printable.pages} pages</a><a className="print-button" href={selectedLesson.printable.href} target="_blank" rel="noreferrer">Colour pack</a></div>}
-            <button type="button" className="project-button" onClick={toggleProjector}>{projectorMode ? "Exit projection" : "Project screen"}</button>
+            <button type="button" className="project-button" onClick={toggleProjector}>{projectorMode ? "Exit projection" : "Project fullscreen"}</button>
           </div>
           <div className="step-track" aria-label={`Screen ${routePosition + 1} of ${activeStepIndexes.length}`}>
             {activeStepIndexes.map((index, position) => {
@@ -1820,7 +1960,8 @@ export default function Home() {
             <>
               <section className="home-hero">
                 <div className="hero-copy">
-                  <p className="eyebrow"><span /> {featuredLesson.timing} · {featuredLesson.length} · {featuredLesson.grades}</p>
+                  <aside className="standalone-note"><span aria-hidden="true">✦</span><div><b>ONE PUBLIC K–12 HUB</b><p>No Teach Hub or Learn Hub access is needed. Preparation, projected screens, printables, and public source links live here.</p></div></aside>
+                  <p className="eyebrow"><span /> Featured lesson · {featuredLesson.title} · {featuredLesson.grades}</p>
                   <h1>What helps everyone <em>belong?</em></h1>
                   <p className="featured-route">LOOK CLOSELY <b>→</b> RANK WHAT MATTERS <b>→</b> DRAW THE ACTION</p>
                   <div className="featured-ready">
@@ -1828,12 +1969,12 @@ export default function Home() {
                     <div><small>STUDENTS MAKE</small><strong>{featuredLesson.product}</strong></div>
                   </div>
                   <div className="hero-actions">
-                    <button type="button" className="button primary" onClick={() => startLesson("belonging-built")}>Preview lesson + print plan <span>→</span></button>
+                    <button type="button" className="button primary" onClick={() => startLesson("belonging-built")}>Preview &amp; prepare <span>→</span></button>
                     <a className="button secondary print-hero" href={featuredLesson.printable.bwHref} target="_blank" rel="noreferrer">B&amp;W pack · {featuredLesson.printable.pages} pages</a>
                     <a className="colour-link" href={featuredLesson.printable.href} target="_blank" rel="noreferrer">Colour version ↓</a>
                   </div>
                   {teacherMode && <details className="home-teacher-notes"><summary>Teacher prep</summary><div><span><b>BEFORE</b>{featuredLesson.teacher.prepare.join(" · ")}</span><span><b>ASK</b>{featuredLesson.teacher.moves[0]}</span><span><b>EVIDENCE</b>{featuredLesson.teacher.evidence}</span></div></details>}
-                  <button type="button" className="choose-another" onClick={() => go("teach")}>Choose another lesson ↓</button>
+                  <div className="grade-entry"><span>CHOOSE YOUR GRADE BAND</span><div>{gradeBands.map((band) => <button type="button" key={band} onClick={() => browseGrade(band)}>{band}</button>)}</div><small>Every lesson shows whether the band is core, teacher-led, or an extension.</small></div>
                 </div>
                 <figure className="hero-image">
                   <img src="/images/hero-belonging-built.webp" alt="Students and an adult redesigning a welcoming and accessible learning space." width="1536" height="1024" />
@@ -1842,7 +1983,7 @@ export default function Home() {
               </section>
 
               <section className="election-now section" aria-labelledby="election-now-title">
-                <div className="election-now-copy"><p className="eyebrow dark"><span /> Timely local connection · Oct. 17, 2026</p><h2 id="election-now-title">Who gets heard in Surrey?</h2><p>Use one short equity lens—not a second election unit. Classroom OS can teach the mechanics.</p></div>
+                <div className="election-now-copy"><p className="eyebrow dark"><span /> Timely local connection · Oct. 17, 2026</p><h2 id="election-now-title">Who gets heard in Surrey?</h2><p>This route includes the equity questions and direct public sources. Use your usual civics materials if you also teach election mechanics.</p></div>
                 <div className="election-route-grid">
                   <button type="button" onClick={() => startLesson("voice-and-rules", 13)}><small>EARLY SEPTEMBER · 15 MIN</small><b>Voting is one piece</b><span>How can young people participate now?</span></button>
                   <button type="button" onClick={() => startLesson("voice-and-rules", 5)}><small>LATE SEPT.–OCTOBER · 45 MIN</small><b>Surrey equity lab</b><span>Decide, check missing perspectives, and revise.</span></button>
@@ -1858,13 +1999,13 @@ export default function Home() {
                 </div>
                 <div className="launch-grid">
                   <button type="button" className="launch-card leaf" onClick={() => startLesson("belonging-built", 0)}>
-                    <img src="/images/hero-belonging-built.webp" alt="" width="1536" height="1024" /><span><b>45–55 MIN</b> Grade 6 rotation + first full week</span><h3>Belonging Action Studio</h3><p>Each student creates one full-page action plan, explains why it could help, and chooses a realistic first move.</p><strong>Preview lesson + print plan →</strong>
+                    <img src="/images/hero-belonging-built.webp" alt="" width="1536" height="1024" /><span><b>45–55 MIN</b> K–12 pathway · core K–7</span><h3>Belonging is built</h3><p>Students create a Belonging Action Studio page, explain why the action could help, and choose a realistic first move.</p><strong>Preview &amp; prepare →</strong>
                   </button>
                   <button type="button" className="launch-card coral" onClick={() => startLesson("truth-place-responsibility")}>
-                    <img src="/images/artivism-gallery.webp" alt="" width="1536" height="1024" /><span><b>2–3 BLOCKS</b> Sept. 15–29</span><h3>Two Maps, One Place</h3><p>Use the provided maps and one local First Nations source. No teacher searching required.</p><strong>Preview lesson + print plan →</strong>
+                    <img src="/images/artivism-gallery.webp" alt="" width="1536" height="1024" /><span><b>2–3 BLOCKS</b> K–12 pathway · core 4–8</span><h3>Truth, place &amp; responsibility</h3><p>Use the two linked maps and one local First Nations source. Direct links are in the preview.</p><strong>Preview &amp; prepare →</strong>
                   </button>
                   <button type="button" className="launch-card sun" onClick={() => startLesson("voice-and-rules")}>
-                    <img src="/images/voice-and-rules.webp" alt="" width="1536" height="1024" /><span><b>15–90 MIN</b> Choose a September–October route</span><h3>Who Gets Heard?</h3><p>Start with a real class choice, then connect fairness to Surrey, trustees, participation, and accountability.</p><strong>Choose one route in the lesson preview →</strong>
+                    <img src="/images/voice-and-rules.webp" alt="" width="1536" height="1024" /><span><b>15–90 MIN</b> K–12 pathway · core 3–8</span><h3>Whose voice shapes the rules?</h3><p>Start with a real class choice, then connect fairness to Surrey, trustees, participation, and accountability.</p><strong>Preview &amp; choose one route →</strong>
                   </button>
                 </div>
               </section>
@@ -1894,27 +2035,41 @@ export default function Home() {
 
           {view === "teach" && (
             <section className="section page-section">
-              <div className="page-heading split"><div><p className="eyebrow dark"><span /> Ready-to-run classroom experiences</p><h1>Choose a lesson.</h1><p>Start with the question. The activity and student result are shown on every card.</p></div><button type="button" className="button secondary browse-issues" onClick={() => go("issues")}>Browse by big question →</button></div>
+              <div className="page-heading split"><div><p className="eyebrow dark"><span /> K–12 Equity Hub lessons</p><h1>Choose a lesson.</h1><p>Every lesson opens in a teacher preview first. You will see grade fit, preparation, student outcomes, exact print pages, and route choices before any student screen.</p></div><button type="button" className="button secondary browse-issues" onClick={() => go("issues")}>Browse by big question →</button></div>
+              <section className="grade-chooser" aria-labelledby="grade-chooser-title">
+                <div><span aria-hidden="true">✦</span><div><small>CHOOSE YOUR TEACHING BAND</small><h2 id="grade-chooser-title">One inquiry. Different depth and products.</h2></div></div>
+                <div className="grade-band-tabs" aria-label="Show grade-band guidance">
+                  <button type="button" className={gradeBand === "ALL" ? "active" : ""} aria-pressed={gradeBand === "ALL"} onClick={() => setGradeBand("ALL")}>All bands</button>
+                  {gradeBands.map((band) => <button type="button" key={band} className={gradeBand === band ? "active" : ""} aria-pressed={gradeBand === band} onClick={() => setGradeBand(band)}>{band}</button>)}
+                </div>
+                {gradeBand === "ALL"
+                  ? <p>Select a band to bring its exact teaching move to the top of every card. Core lessons appear first; teacher-led and extension pathways remain visible and clearly labelled.</p>
+                  : <div className="grade-selection-summary"><p><b>{gradeBand}:</b> {gradeBandNotes[gradeBand]}</p>{gradeCounts && <span>{gradeCounts["Core lesson"]} core · {gradeCounts["Teacher-led + core"] + gradeCounts["Core + extension"]} mixed · {gradeCounts["Teacher-led"]} teacher-led · {gradeCounts.Extension} extensions</span>}</div>}
+              </section>
               <div className="lesson-grid">
-                {orderedLessons.map((lesson) => (
+                {gradeSortedLessons.map((lesson) => {
+                  const bandMove = gradeBand === "ALL" ? null : lesson.teacher.adaptations.find((item) => item.band === gradeBand);
+                  return (
                   <article className={`lesson-card tone-${lesson.tone}`} key={lesson.id}>
                     <figure className="lesson-card-image"><img src={lesson.image} alt="" width="1536" height="1024" /><figcaption>{lesson.length}</figcaption></figure>
-                    <div className="lesson-card-top"><span>{lesson.timing}</span><b>{lesson.printable.pages}-page pack</b></div>
+                    <div className="lesson-card-top"><span>{lesson.grades}</span><b>{lesson.printable.pages}-page pack</b></div>
+                    {bandMove && <div className={`card-grade-move ${gradeFitClass[bandMove.fit]}`}><span>{bandMove.band} · {bandMove.fit}</span><p>{bandMove.move}</p></div>}
                     <h2>{lesson.title}</h2><p className="lesson-question">{lesson.question}</p>
                     <div className="lesson-formats">{lesson.formats.map((format) => <span key={format}>{format}</span>)}</div>
-                    <div className="lesson-card-plan"><span><small>STUDENTS WILL</small>{lesson.activity}</span><span><small>THEY FINISH WITH</small>{lesson.product}</span><span className="pack-purpose"><small>THE PRINTABLE IS FOR</small>{lesson.printable.pagePlan.slice(0, 2).join(" ")}</span></div>
+                    <div className="lesson-card-plan"><span><small>STUDENTS WILL</small>{lesson.activity}</span><span><small>THEY FINISH WITH</small>{lesson.product}</span><span className="pack-purpose"><small>PACK CONTENTS</small>{lesson.printable.includes}{lesson.routes ? " Choose a route in the preview to see exactly which pages to print." : " The preview shows the exact copy plan."}</span></div>
                     <p className="lesson-materials"><b>Materials:</b> {lesson.materials}</p>
-                    <div className="lesson-meta"><span>{lesson.grades}</span><span>{lesson.routes ? `${lesson.routes.length} route choices` : `${lesson.steps.length} student screens`}</span></div>
-                    <div className="lesson-card-actions"><button type="button" onClick={() => startLesson(lesson.id)}>Open lesson + print plan →</button><a className="bw-link" href={lesson.printable.bwHref} target="_blank" rel="noreferrer">B&amp;W · {lesson.printable.pages} pages</a><a href={lesson.printable.href} target="_blank" rel="noreferrer">Colour pack</a></div>
+                    <div className="lesson-meta"><span>{lesson.timing}</span><span>{lesson.routes ? `${lesson.routes.length} route choices` : `${lesson.steps.length} student screens`}</span></div>
+                    <div className="lesson-card-actions"><button type="button" onClick={() => startLesson(lesson.id)}>Preview &amp; prepare →</button><a className="bw-link" href={lesson.printable.bwHref} target="_blank" rel="noreferrer">Full B&amp;W pack · {lesson.printable.pages} pages</a><a href={lesson.printable.href} target="_blank" rel="noreferrer">Colour pack</a></div>
                   </article>
-                ))}
+                  );
+                })}
               </div>
             </section>
           )}
 
           {view === "plan" && (
             <section className="section page-section planning-page">
-              <div className="page-heading split"><div><p className="eyebrow dark"><span /> 2026–27 teaching runway</p><h1>Plan ahead</h1></div><p><b>Core</b> = main sequence. <b>Featured</b> = recommended spring pathway. <b>Choice</b> = flexible extension. <b>Plan</b> = important date with a trusted starting source.</p></div>
+              <div className="page-heading split"><div><p className="eyebrow dark"><span /> Optional K–12 school-year example · 2026–27</p><h1>A flexible runway.</h1></div><p>Use it, remix it, or skip what does not fit. <b>Core</b> = suggested anchor, not a requirement. <b>Featured</b> = one spring possibility. <b>Choice</b> = flexible extension. <b>Plan</b> = a date with a trusted starting source.</p></div>
               <div className="year-stage-grid">{yearStages.map((stage) => <article key={stage.n}><span>{stage.n}</span><small>{stage.when}</small><h2>{stage.title}</h2><p>{stage.detail}</p></article>)}</div>
               <div className="month-filter" aria-label="Filter schedule by month">{months.map((month) => <button type="button" key={month} className={monthFilter === month ? "active" : ""} onClick={() => setMonthFilter(month)}>{month}</button>)}</div>
               <div className="runway-list">
@@ -1929,7 +2084,7 @@ export default function Home() {
                   </article>
                 ))}
               </div>
-              <aside className="planning-note"><b>Keep it flexible.</b><span>The runway is a prompt, not another mandate. Choose what fits school priorities, students, available time, and authentic community connections.</span></aside>
+              <aside className="planning-note"><b>Keep it flexible.</b><span>This is a local Walnut Road and Surrey planning example, not a sequence every class must follow. Choose the grade-band move, timing, and lesson that fit your course, learning group, available time, and authentic community connections.</span></aside>
             </section>
           )}
 
@@ -1955,7 +2110,7 @@ export default function Home() {
           {view === "action" && (
             <section className="page-section action-page">
               <div className="action-hero section">
-                <div><p className="eyebrow light"><span /> Student Action Studio</p><h1>Listen. Learn.<br /><em>Do something useful.</em></h1><p>Students choose what matters. Adults provide safety, access, permission, and follow-through.</p></div>
+                <div><p className="eyebrow light"><span /> Inside this Equity Hub · Student action</p><h1>Listen. Learn.<br /><em>Do something useful.</em></h1><p>Students choose what matters. Adults provide safety, access, permission, and follow-through. No companion site is needed.</p></div>
                 <figure><img src="/images/student-voice-club.webp" alt="Students listening, mapping ideas, choosing a priority, and presenting an improvement." width="1586" height="992" /></figure>
               </div>
               <div className="section action-workspace">
@@ -1974,11 +2129,12 @@ export default function Home() {
 
           {view === "library" && (
             <section className="section page-section library-page">
-              <div className="page-heading split"><div><p className="eyebrow dark"><span /> Quietly kept in the back</p><h1>Resources</h1></div><p>Open what you need. The teaching experience stays uncluttered.</p></div>
+              <div className="page-heading split"><div><p className="eyebrow dark"><span /> Everything linked in one public place</p><h1>Printables &amp; sources</h1></div><p>No Teach Hub or Learn Hub access is required. Open the lesson preview first for grade fit, exact copy counts, and the projected-screen map.</p></div>
               <h2 className="library-heading">Lesson activity packs</h2>
-              <p className="library-intro">Each pack includes clearly marked teacher pages showing what to project, which student pages match the lesson, how many copies to make, what to model, and what to collect. Multi-route packs tell you which pages to choose—you do not teach the whole pack.</p>
-              <div className="lesson-printables-grid">{orderedLessons.map((lesson, index) => <article className={`tone-${lesson.tone}`} key={lesson.id}><figure><img src={lesson.printable.preview} alt="" width="773" height="1000" /><span>{String(index + 1).padStart(2, "0")}</span></figure><div><h3>{lesson.printable.title}</h3><p>{lesson.printable.pagePlan.join(" ")}</p><button type="button" onClick={() => startLesson(lesson.id)}>See lesson + page map →</button></div><div className="printable-links"><a className="bw-link" href={lesson.printable.bwHref} target="_blank" rel="noreferrer">B&amp;W · {lesson.printable.pages} pages</a><a href={lesson.printable.href} target="_blank" rel="noreferrer">Colour pack</a></div></article>)}</div>
+              <p className="library-intro">Each pack includes clearly marked teacher pages showing what to project, which student pages match the lesson, how many copies to make, what to model, and what to collect. Multi-route packs tell you which pages to choose—you do not teach the whole pack. The core range is shown honestly; use the lesson’s K–12 guide outside that range.</p>
+              <div className="lesson-printables-grid">{orderedLessons.map((lesson, index) => <article className={`tone-${lesson.tone}`} key={lesson.id}><figure><img src={lesson.printable.preview} alt="" width="773" height="1000" /><span>{String(index + 1).padStart(2, "0")}</span></figure><div><span className="printable-grade">{lesson.grades}</span><h3>{lesson.printable.title}</h3><p>{lesson.printable.pagePlan.join(" ")}</p><button type="button" onClick={() => startLesson(lesson.id)}>Preview grade fit + page map →</button></div><div className="printable-links"><a className="bw-link" href={lesson.printable.bwHref} target="_blank" rel="noreferrer">Full B&amp;W · {lesson.printable.pages} pages</a><a href={lesson.printable.href} target="_blank" rel="noreferrer">Colour pack</a></div></article>)}</div>
               <h2 className="library-heading">Longer project toolkits</h2>
+              <p className="library-intro compact">These are supplemental packs with their own intended ranges. A K–12 Hub does not mean every printable is written at every reading level.</p>
               <div className="download-grid">{downloads.map((item) => <article key={item.title}><span>{item.type}</span><h3>{item.title}</h3><p>{item.detail}</p><div>{item.colour === item.bw ? <a href={item.bw}>Open printable PDF ↓</a> : <><a href={item.colour}>Colour PDF ↓</a><a href={item.bw}>B&amp;W PDF ↓</a></>}</div></article>)}</div>
               <h2 className="library-heading">Trusted starting points</h2>
               <div className="link-list">{trustedLinks.map((item) => <a href={item.href} target="_blank" rel="noreferrer" key={item.href}><span>{item.tag}</span><div><strong>{item.title}</strong><small>{item.source}</small></div><b>↗</b></a>)}</div>
@@ -1987,7 +2143,7 @@ export default function Home() {
           )}
         </>
       )}
-      {!projectorMode && <footer><BrandMark /><p><strong>Walnut Road Equity Learning &amp; Action Hub</strong><span>Built for projection, participation, and thoughtful action.</span></p><button type="button" onClick={() => go("home")}>Back to start ↑</button></footer>}
+      {!projectorMode && <footer><BrandMark /><p><strong>Walnut Road Equity Learning &amp; Action Hub</strong><span>One public K–12 place for preparation, projection, printables, and thoughtful action.</span></p><button type="button" onClick={() => go("home")}>Back to start ↑</button></footer>}
     </main>
   );
 }

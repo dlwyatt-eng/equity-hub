@@ -18,20 +18,20 @@ const lora = Lora({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://walnut-road-equity-hub.darylwyatt409.chatgpt.site"),
+  metadataBase: new URL("https://dlwyatt-eng.github.io/equity-hub/"),
   title: "Walnut Road Equity Learning & Action Hub",
   description:
-    "Student-facing equity learning, timely classroom pathways, and student-led action for the Walnut Road school community.",
+    "A public K–12 Equity Learning & Action Hub with grade-band guidance, teacher preparation, projected lessons, printables, and linked public sources.",
   openGraph: {
     title: "Walnut Road Equity Learning & Action",
-    description: "Learn · Question · Act",
+    description: "Public K–12 hub · grade guidance · projection · printables",
     type: "website",
     images: [{ url: "/og.png", width: 1200, height: 630, alt: "Walnut Road students learning, questioning, and taking action together." }],
   },
   twitter: {
     card: "summary_large_image",
     title: "Walnut Road Equity Learning & Action",
-    description: "Learn · Question · Act",
+    description: "Public K–12 hub · grade guidance · projection · printables",
     images: ["/og.png"],
   },
   icons: {
