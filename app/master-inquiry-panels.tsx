@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import masterPack from "../content/master-inquiry-pack-v1.json";
 import "./master-inquiry-panels.css";
 
@@ -11,6 +11,7 @@ type ProjectionProps = {
 };
 
 type CalendarProvocation = (typeof masterPack.calendarProvocations)[number];
+type ListeningRehearsal = NonNullable<CalendarProvocation["listeningRehearsal"]>;
 
 const mapInquiry = masterPack.mapInquiry;
 
@@ -227,19 +228,98 @@ function ProvocationProjection({ provocation, screen, onExit, onScreen }: { prov
   );
 }
 
+export function FictionalListeningRehearsal({ rehearsal, onBack }: { rehearsal: ListeningRehearsal; onBack: () => void }) {
+  const headingRef = useRef<HTMLHeadingElement>(null);
+
+  useEffect(() => {
+    const previousTitle = document.title;
+    document.title = `${rehearsal.title} | Fictional listening rehearsal | Equity Hub`;
+    headingRef.current?.focus({ preventScroll: true });
+    headingRef.current?.scrollIntoView({ block: "start", behavior: "auto" });
+    return () => { document.title = previousTitle; };
+  }, [rehearsal.id, rehearsal.title]);
+
+  return (
+    <section className="calendar-provocations-shell fictional-listening-rehearsal" aria-labelledby="fictional-listening-title">
+      <div className="sr-only" role="status" aria-live="polite">Fictional listening rehearsal opened. Original classroom practice by Classroom OS.</div>
+      <div className="fictional-listening-actions">
+        <button type="button" onClick={onBack}>← Back to calendar</button>
+        <button type="button" onClick={() => window.print()}>Print fictional listening rehearsal</button>
+      </div>
+      <header className="fictional-listening-heading">
+        <p className="eyebrow dark">FICTIONAL LISTENING REHEARSAL · CLASSROOM OS</p>
+        <h2 id="fictional-listening-title" tabIndex={-1} ref={headingRef}>{rehearsal.title}</h2>
+        <p><b>Learning goal:</b> {rehearsal.goal}</p>
+        <p className="fictional-listening-credit"><b>Source credit:</b> {rehearsal.attribution}</p>
+      </header>
+      <section className="fictional-listening-boundary" aria-labelledby="fictional-listening-boundary-title">
+        <h3 id="fictional-listening-boundary-title">Skills practice only</h3>
+        <p>{rehearsal.boundary}</p>
+      </section>
+      <div className="fictional-listening-sources">
+        {rehearsal.sourceCards.map((card) => (
+          <article key={card.id} aria-labelledby={`fictional-listening-${card.id}`}>
+            <p className="fictional-listening-label">FICTIONAL SOURCE · CLASSROOM OS</p>
+            <h3 id={`fictional-listening-${card.id}`}>{card.title}</h3>
+            <p><b>Context:</b> {card.context}</p>
+            <blockquote>{card.text}</blockquote>
+            <p className="fictional-listening-credit">{rehearsal.attribution}</p>
+          </article>
+        ))}
+      </div>
+      <section className="fictional-listening-prompts" aria-labelledby="fictional-listening-prompts-title">
+        <h3 id="fictional-listening-prompts-title">Listen, compare, and keep a question open</h3>
+        <ol>{rehearsal.prompts.map((prompt) => <li key={prompt}>{prompt}</li>)}</ol>
+      </section>
+      <section className="fictional-listening-finish" aria-labelledby="fictional-listening-finish-title">
+        <p className="fictional-listening-label">FICTIONAL PRACTICE RESPONSE · CLASSROOM OS</p>
+        <h3 id="fictional-listening-finish-title">Finish your listening card</h3>
+        <ol>{rehearsal.finishFrame.map((frame) => <li key={frame}>{frame}</li>)}</ol>
+      </section>
+      <section className="fictional-listening-care" aria-labelledby="fictional-listening-care-title">
+        <h3 id="fictional-listening-care-title">Teacher note and next learning</h3>
+        <p>{rehearsal.teacherNote}</p>
+        <p>{rehearsal.returnToAuthentic}</p>
+        <p className="fictional-listening-credit"><b>This rehearsal:</b> {rehearsal.attribution}</p>
+      </section>
+    </section>
+  );
+}
+
 export function CalendarProvocationsPanel({ projectorMode, onEnterProjection, onExitProjection }: ProjectionProps) {
   const [selectedId, setSelectedId] = useState(masterPack.calendarProvocations[0].id);
   const [screen, setScreen] = useState(0);
+  const [rehearsal, setRehearsal] = useState<{ provocationId: string; content: ListeningRehearsal } | null>(null);
   const selected = useMemo(() => masterPack.calendarProvocations.find((item) => item.id === selectedId) ?? masterPack.calendarProvocations[0], [selectedId]);
+
+  useEffect(() => {
+    if (projectorMode) setRehearsal(null);
+  }, [projectorMode]);
 
   if (projectorMode) {
     return <ProvocationProjection provocation={selected} screen={screen} onScreen={setScreen} onExit={() => void onExitProjection()} />;
   }
 
+  if (rehearsal) {
+    return <FictionalListeningRehearsal rehearsal={rehearsal.content} onBack={() => {
+      const returnId = `listening-rehearsal-open-${rehearsal.provocationId}`;
+      setRehearsal(null);
+      window.requestAnimationFrame(() => document.getElementById(returnId)?.focus());
+    }} />;
+  }
+
   const begin = (provocation: CalendarProvocation) => {
+    setRehearsal(null);
     setSelectedId(provocation.id);
     setScreen(0);
     void onEnterProjection();
+  };
+
+  const openRehearsal = (provocation: CalendarProvocation) => {
+    if (!provocation.listeningRehearsal) return;
+    setSelectedId(provocation.id);
+    setScreen(0);
+    setRehearsal({ provocationId: provocation.id, content: provocation.listeningRehearsal });
   };
 
   return (
@@ -274,6 +354,10 @@ export function CalendarProvocationsPanel({ projectorMode, onEnterProjection, on
               <p><b>Avoid tokenism:</b> {provocation.antiTokenism}</p>
               <a href={provocation.source.href} target="_blank" rel="noreferrer">Open {provocation.source.label} ↗</a>
             </div>
+            {provocation.listeningRehearsal && <div className="fictional-listening-entry">
+              <div><b>Separate fictional skills practice · Classroom OS</b><p>{provocation.listeningRehearsal.boundary}</p></div>
+              <button type="button" id={`listening-rehearsal-open-${provocation.id}`} onClick={() => openRehearsal(provocation)}>Open fictional listening rehearsal</button>
+            </div>}
           </article>
         ))}
       </div>

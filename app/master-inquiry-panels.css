@@ -149,6 +149,26 @@
 .provocation-supports p { margin: 0; font-size: .9rem; line-height: 1.43; }
 .provocation-supports a { min-height: 44px; display: flex; align-items: center; padding: 9px 11px; border: 1px solid var(--ink); border-radius: 10px; background: white; text-decoration: none; font-size: .82rem; font-weight: 850; }
 
+.fictional-listening-entry { display: flex; flex-wrap: wrap; align-items: center; gap: 18px; margin-top: 18px; padding: 18px; border: 2px solid var(--ink); border-radius: 16px; background: var(--sky); }
+.fictional-listening-entry > div { flex: 1 1 320px; }
+.fictional-listening-entry p { margin: 8px 0 0; line-height: 1.5; }
+.fictional-listening-entry button, .fictional-listening-actions button { min-height: 46px; padding: 11px 15px; border: 2px solid var(--ink); border-radius: 11px; color: var(--ink); background: white; font: inherit; font-weight: 850; cursor: pointer; }
+.fictional-listening-entry button:focus-visible, .fictional-listening-actions button:focus-visible, #fictional-listening-title:focus { outline: 3px solid #fff; box-shadow: 0 0 0 7px #0b6074; }
+.fictional-listening-rehearsal { padding: clamp(18px, 4vw, 40px); border: 2px solid var(--ink); border-radius: 28px; background: white; overflow-wrap: anywhere; }
+.fictional-listening-actions { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px; margin-bottom: 24px; }
+.fictional-listening-heading h2 { margin: 10px 0 18px; scroll-margin-top: 110px; font-family: var(--font-lora), Georgia, serif; font-size: clamp(2.1rem, 4.5vw, 3.8rem); line-height: 1.12; }
+.fictional-listening-rehearsal h3 { margin: 0 0 12px; font-size: clamp(1.3rem, 2.5vw, 1.8rem); line-height: 1.25; }
+.fictional-listening-rehearsal p, .fictional-listening-rehearsal li { font-size: 1.08rem; line-height: 1.6; }
+.fictional-listening-rehearsal li + li { margin-top: 12px; }
+.fictional-listening-rehearsal ol { padding-left: 1.5em; }
+.fictional-listening-rehearsal .fictional-listening-label { font-size: .88rem; font-weight: 900; letter-spacing: .06em; }
+.fictional-listening-credit { font-weight: 750; }
+.fictional-listening-boundary, .fictional-listening-prompts, .fictional-listening-finish, .fictional-listening-care { margin-top: 22px; padding: 20px; border: 1px solid var(--ink); border-radius: 14px; background: #f6f3eb; }
+.fictional-listening-boundary { border-left-width: 6px; background: #fff3d6; }
+.fictional-listening-sources { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px; margin-top: 22px; }
+.fictional-listening-sources article { min-width: 0; padding: 22px; border: 2px solid var(--ink); border-radius: 16px; background: #edf5f3; }
+.fictional-listening-sources blockquote { margin: 20px 0; padding: 0 0 0 18px; border-left: 4px solid var(--ink); font-size: 1.25rem; line-height: 1.65; white-space: pre-line; }
+
 .master-projector { min-height: 100vh; background: white; }
 .master-projector-stage { height: calc(100vh - 76px); overflow: auto; display: flex; flex-direction: column; align-items: center; gap: 14px; padding: 3vh 4vw; text-align: center; }
 .master-stage-kicker { display: flex; align-items: center; gap: 14px; margin: 0; font-size: 1rem; font-weight: 900; letter-spacing: .1em; }
@@ -201,6 +221,7 @@
   .word-help > div:last-child { grid-template-columns: repeat(3, 1fr); }
   .master-grade-guide > div:last-child, .calendar-grade-guide > div:last-child { grid-template-columns: 1fr 1fr; }
   .provocation-supports { grid-template-columns: 1fr 1fr; }
+  .fictional-listening-sources { grid-template-columns: 1fr; }
 }
 
 @media (max-width: 600px) {
@@ -223,4 +244,13 @@
   .calendar-provocation-card { page-break-before: auto; }
   .uncertainty-ladder > div { display: grid !important; }
   .calendar-provocation-card a[href]::after, .master-sources a[href]::after, .place-extension a[href]::after { content: " (" attr(href) ")"; font-size: 8pt; font-weight: 400; }
+  .fictional-listening-entry button, .fictional-listening-actions { display: none !important; }
+  .planning-page:has(> .fictional-listening-rehearsal) > :not(.fictional-listening-rehearsal) { display: none !important; }
+  .fictional-listening-rehearsal { margin: 0; padding: 0; border: 0; border-radius: 0; color: #000; background: #fff; }
+  .fictional-listening-rehearsal h2 { font-size: 20pt; }
+  .fictional-listening-rehearsal h3 { font-size: 14pt; }
+  .fictional-listening-rehearsal p, .fictional-listening-rehearsal li, .fictional-listening-sources blockquote { font-size: 11pt; line-height: 1.45; }
+  .fictional-listening-sources { display: block; }
+  .fictional-listening-sources article, .fictional-listening-boundary, .fictional-listening-prompts, .fictional-listening-finish, .fictional-listening-care { margin-top: 14pt; padding: 12pt; border: 1pt solid #000; border-radius: 0; color: #000; background: #fff; break-inside: avoid; box-shadow: none; }
+  .fictional-listening-sources blockquote { color: #000; border-color: #000; }
 }
