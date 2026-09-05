@@ -1,9 +1,10 @@
 "use client";
 /* eslint-disable @next/next/no-img-element -- compressed local WebP assets are used for predictable projector rendering. */
 
-import { useEffect, useLayoutEffect, useState } from "react";
+import { useEffect, useLayoutEffect, useRef, useState } from "react";
+import { CalendarProvocationsPanel, MapRepresentationInquiry } from "./master-inquiry-panels";
 
-type View = "home" | "teach" | "plan" | "issues" | "action" | "library";
+type View = "home" | "teach" | "maps" | "plan" | "issues" | "action" | "library";
 type Tone = "leaf" | "sun" | "sky" | "berry" | "coral" | "sand";
 type GradeBand = "K–2" | "3–5" | "6–8" | "9–12";
 type GradeSelection = "ALL" | GradeBand;
@@ -87,6 +88,7 @@ type Runway = {
   startAt?: number;
   href?: string;
   cta?: string;
+  provocationId?: string;
   priority: "Core" | "Featured" | "Choice" | "Plan";
 };
 
@@ -465,7 +467,7 @@ const lessons: Lesson[] = [
     image: "/images/artivism-gallery.webp",
     imageAlt: "Students creating source-based artwork together in a bright, welcoming classroom.",
     question: "What should we learn and do because we live on this land?",
-    timing: "Before Orange Shirt Day, or anytime learners study place, governance, and responsibility",
+    timing: "Before the September 29 school observance and September 30 Orange Shirt Day / National Day for Truth and Reconciliation, or anytime learners study place, governance, and responsibility",
     length: "2–3 × 40 min",
     grades: "K–12 pathway · core 4–8",
     tone: "coral",
@@ -1378,22 +1380,25 @@ const lessons: Lesson[] = [
 
 const runways: Runway[] = [
   { month: "SEPT", event: "Opening-week or new-group belonging", start: "First 1–2 weeks", create: "One belonging action or group contribution", share: "Set commitments + a check-back", date: "Use at the start of a term, course, advisory, or group reset", lesson: "belonging-built", priority: "Core" },
-  { month: "SEPT", event: "Truth, place & Orange Shirt Day", start: "Sept. 15", create: "Sept. 17–24", share: "Sept. 28–29", date: "Orange Shirt Day Sept. 29 · school closed Sept. 30", lesson: "truth-place-responsibility", priority: "Core" },
+  { month: "SEPT", event: "Terry Fox: access, action & story", start: "Before the school run", create: "Revise one ethical message", share: "Report purpose + access", date: "Use the school’s confirmed Terry Fox date", provocationId: "terry-fox-access-and-action", cta: "Open 35–50 min provocation →", priority: "Choice" },
+  { month: "SEPT", event: "Truth, place & Orange Shirt Day", start: "Sept. 15", create: "Sept. 17–24", share: "Sept. 28–29", date: "September 29 school observance · Orange Shirt Day / National Day for Truth and Reconciliation September 30 · school closed September 30", lesson: "truth-place-responsibility", provocationId: "truth-records-responsibility", cta: "Open 30–50 min provocation →", priority: "Core" },
   { month: "SEPT", event: "Voice beyond voting — quick discussion", start: "Sept. 8 onward", create: "Choose one realistic route", share: "No product required", date: "Build participation language before campaigns", lesson: "voice-and-rules", startAt: 13, cta: "Preview the 15-minute route →", priority: "Choice" },
   { month: "SEPT", event: "Official candidates & representation", start: "After Sept. 11", create: "Sample equal amounts of candidate material", share: "One pattern + one missing question", date: "Nominations close and candidates are declared Sept. 11", lesson: "voice-and-rules", startAt: 7, cta: "Open representation screens →", priority: "Choice" },
   { month: "OCT", event: "Surrey election equity lab + Student Vote", start: "Oct. 5", create: "Oct. 6–9 & 13–15", share: "Oct. 16", date: "Election Oct. 17", lesson: "voice-and-rules", startAt: 5, cta: "Open the Surrey equity route →", priority: "Core" },
   { month: "OCT", event: "After the election: accountability", start: "Oct. 19", create: "Choose one issue to follow", share: "Set a later evidence check", date: "Official results due by Oct. 21", lesson: "voice-and-rules", startAt: 14, cta: "Preview the post-election route →", priority: "Choice" },
+  { month: "OCT", event: "Harvest: who helps food reach us?", start: "Choose a fitting October day", create: "Trace one food relationship", share: "Name responsibility, not blame", date: "Use as a fresh harvest or food-systems lens", provocationId: "harvest-reciprocity", cta: "Open 40–60 min provocation →", priority: "Choice" },
   { month: "OCT", event: "Pictures, words & school wayfinding", start: "Oct. 26", create: "Oct. 27–Nov. 3", share: "Nov. 4–5", date: "Use when a real navigation need appears", lesson: "many-languages", priority: "Choice" },
+  { month: "NOV", event: "Remembrance: who and what do we remember?", start: "Before Nov. 11", create: "Source-based memory panel", share: "Responsibility + care", date: "Remembrance Day Nov. 11", provocationId: "remembrance-public-memory", cta: "Open 35–55 min provocation →", priority: "Choice" },
   { month: "NOV", event: "National Child Day", start: "Nov. 9", create: "Nov. 12–18", share: "Nov. 19–20", date: "Nov. 20", lesson: "rights-in-our-room", priority: "Core" },
   { month: "NOV", event: "Disability awareness & access", start: "Nov. 23", create: "Nov. 24–Dec. 1", share: "Dec. 2–3", date: "Dec. 3", lesson: "barrier-detectives", priority: "Core" },
   { month: "DEC", event: "Human Rights Day: revisit & connect", start: "Dec. 7", create: "Revisit one comic", share: "Check one class action Dec. 10", date: "Dec. 10", lesson: "rights-in-our-room", startAt: 4, cta: "Open the revisit screen →", priority: "Choice" },
   { month: "JAN", event: "Safe responses to racism", start: "Week of Jan. 4", create: "Jan. 5–7", share: "Practise Jan. 8", date: "After routines restart", lesson: "responding-to-racism", priority: "Core" },
-  { month: "JAN", event: "Black excellence & Black histories", start: "Jan. 11", create: "Begin Jan. 15", share: "Continue through February", date: "Jan. 15 + February", href: "https://bcblackhistory.ca/learning-centre/", cta: "Open B.C. learning source ↗", priority: "Plan" },
+  { month: "JAN", event: "Black excellence, histories & futures", start: "Jan. 11", create: "Begin Jan. 15", share: "Continue through February", date: "Jan. 15 + February—and throughout the year", href: "https://bcblackhistory.ca/learning-centre/", provocationId: "black-futures-bc", cta: "Open 35–55 min provocation →", priority: "Plan" },
   { month: "FEB", event: "When barriers overlap", start: "Feb. 1", create: "Feb. 2–10", share: "Feb. 11", date: "Advanced extension after rights + access", lesson: "barriers-overlap", priority: "Choice" },
-  { month: "FEB", event: "Pink Shirt Day: belonging check-in", start: "Feb. 15", create: "Update one class action", share: "Feb. 22–24", date: "Pink Shirt Day Feb. 24", lesson: "belonging-built", startAt: 4, cta: "Open the check-in screen →", priority: "Choice" },
+  { month: "FEB", event: "Pink Shirt Day: bystander power & repair", start: "Feb. 15", create: "Build a safe response path", share: "Feb. 22–24", date: "Pink Shirt Day Feb. 24", lesson: "belonging-built", startAt: 4, provocationId: "pink-shirt-bystander-power", cta: "Open 30–45 min provocation →", priority: "Choice" },
   { month: "MAR", event: "Action Studio: planning launch", start: "Mar. 5", create: "Teach LEARN → COMPARE → CHOOSE", share: "Issue + plan ready Mar. 12", date: "Pause before BUILD until a spring issue is chosen", lesson: "concern-to-action", cta: "Teach planning Steps 1–3 →", priority: "Core" },
   { month: "APR", event: "Animal welfare & BC SPCA pathway", start: "Week of Mar. 30", create: "April–early May", share: "May 10–14", date: "Featured spring option after Action Studio", lesson: "animal-welfare", priority: "Featured" },
-  { month: "APR", event: "Earth Day connection — no second big project", start: "Use current spring work", create: "Add a local climate link only if it fits", share: "Apr. 22", date: "Earth Day Apr. 22", href: "https://climateactiontracker.surrey.ca/", cta: "Open Surrey’s climate tracker ↗", priority: "Choice" },
+  { month: "APR", event: "Earth Day: test a claim and track change", start: "Use current spring work", create: "Add one measured local action", share: "Apr. 22 + check-back", date: "Earth Day Apr. 22", href: "https://climateactiontracker.surrey.ca/", provocationId: "earth-day-systems", cta: "Open 35–60 min provocation →", priority: "Choice" },
   { month: "MAY", event: "Pride & inclusive belonging", start: "May 17", create: "Choose one exact grade-fit source in advance", share: "June", date: "Pride Month", href: "https://www.sogieducation.org/resourceguide", cta: "Open SOGI resource guide ↗", priority: "Plan" },
 ];
 
@@ -1517,6 +1522,9 @@ const downloads = [
 ];
 
 const trustedLinks = [
+  { title: "Equal Earth projection and free maps", source: "Equal Earth", href: "https://equal-earth.com/", tag: "Maps" },
+  { title: "Equal Earth research record", source: "Monash University", href: "https://research.monash.edu/en/publications/the-equal-earth-map-projection", tag: "Evidence" },
+  { title: "Correct The Map campaign", source: "Africa No Filter / Speak Up Africa", href: "https://correctthemap.org/", tag: "Representation" },
   { title: "Surrey Schools Equity, Diversity & Belonging Calendar", source: "Surrey Schools", href: "https://media.surreyschools.ca/media/Default/medialib/surrey-schools-edb-calendar-2026-27.aabfef204060.pdf", tag: "Planning" },
   { title: "Student Vote classroom resources", source: "CIVIX", href: "https://studentvote.ca/bc/classroom-resources/", tag: "Democracy" },
   { title: "2026 Surrey municipal election", source: "City of Surrey", href: "https://www.surrey.ca/city-government/2026-municipal-election", tag: "Local" },
@@ -1595,6 +1603,7 @@ function InstructionalVisual({ kind }: { kind: NonNullable<LessonStep["visual"]>
 }
 
 export default function Home() {
+  const shellRef = useRef<HTMLElement>(null);
   const [view, setView] = useState<View>("home");
   const [teacherMode, setTeacherMode] = useState(false);
   const [largeText, setLargeText] = useState(false);
@@ -1640,6 +1649,23 @@ export default function Home() {
   });
   const currentProject = actionProjects.find((project) => project.id === selectedProject) ?? actionProjects[0];
   const featuredLesson = orderedLessons[0] ?? lessons[0];
+  const liveAnnouncement = selectedLesson && lessonOverview
+    ? `${selectedLesson.title} lesson overview. Grade fit, preparation, printables, and projected screens are ready.`
+    : selectedLesson && currentStep
+      ? `${selectedLesson.title}. Screen ${routePosition + 1} of ${activeStepIndexes.length}: ${currentStep.title}.`
+      : view === "teach"
+          ? `Lessons page. ${gradeBand === "ALL" ? "All grade bands" : `${gradeBand} guidance`} selected.`
+          : view === "maps"
+            ? "Map representation inquiry. Standalone preparation, projection, sources, and K–12 adaptations are ready."
+          : view === "plan"
+          ? `Year plan. ${monthFilter === "ALL" ? "All months" : monthFilter} selected.`
+          : view === "action"
+            ? `Student action. ${currentProject.title}. Step ${actionStep + 1} of ${actionSteps.length}: ${actionSteps[actionStep].title}.`
+            : view === "library"
+              ? "Printables and public sources page."
+              : view === "issues"
+                ? "Issues and inquiry questions page."
+                : "Equity Learning and Action Hub start page.";
 
   useEffect(() => {
     const closeProjector = () => {
@@ -1661,6 +1687,13 @@ export default function Home() {
     root.scrollTop = 0;
     document.body.scrollTop = 0;
     root.style.scrollBehavior = previousScrollBehavior;
+    const frame = window.requestAnimationFrame(() => {
+      const heading = shellRef.current?.querySelector<HTMLElement>("h1");
+      if (!heading) return;
+      heading.tabIndex = -1;
+      heading.focus({ preventScroll: true });
+    });
+    return () => window.cancelAnimationFrame(frame);
   }, [scrollResetKey]);
 
   const scrollToPageTop = () => {
@@ -1743,6 +1776,13 @@ export default function Home() {
     scrollToPageTop();
   };
 
+  const openProvocation = (id: string) => {
+    const target = document.getElementById(`provocation-${id}`);
+    if (!target) return;
+    target.scrollIntoView({ behavior: "smooth", block: "start" });
+    window.requestAnimationFrame(() => target.focus({ preventScroll: true }));
+  };
+
   const toggleChoice = (choice: string) => {
     setChosenOptions((current) => {
       if (current.includes(choice)) return current.filter((item) => item !== choice);
@@ -1752,30 +1792,44 @@ export default function Home() {
     });
   };
 
-  const toggleProjector = async () => {
-    if (!document.fullscreenElement) {
-      try {
-        await document.documentElement.requestFullscreen();
-        setProjectorMode(true);
-      } catch {
-        setProjectorMode((current) => !current);
-      }
-    } else {
-      await document.exitFullscreen();
+  const enterProjection = async () => {
+    setProjectorMode(true);
+    if (document.fullscreenElement || !document.documentElement.requestFullscreen) return;
+    try {
+      await document.documentElement.requestFullscreen();
+    } catch {
+      // CSS projection remains fully usable when the browser blocks Fullscreen API access.
+    }
+  };
+
+  const exitProjection = async () => {
+    try {
+      if (document.fullscreenElement) await document.exitFullscreen();
+    } catch {
+      // Always clear CSS projection even if the browser rejects exitFullscreen.
+    } finally {
       setProjectorMode(false);
     }
+  };
+
+  const toggleProjector = async () => {
+    if (projectorMode || document.fullscreenElement) await exitProjection();
+    else await enterProjection();
   };
 
   const navItems: { key: View; label: string }[] = [
     { key: "home", label: "Start" },
     { key: "teach", label: "Lessons" },
+    { key: "maps", label: "Maps & power" },
     { key: "plan", label: "Year plan" },
     { key: "action", label: "Student action" },
     { key: "library", label: "Printables" },
   ];
 
   return (
-    <main className={[largeText ? "large-text" : "", teacherMode ? "teacher-on" : "", projectorMode ? "projector-on" : ""].filter(Boolean).join(" ")}>
+    <>
+    {!projectorMode && <a className="skip-link" href="#main-content">Skip to main content</a>}
+    <main id="main-content" tabIndex={-1} ref={shellRef} className={[largeText ? "large-text" : "", teacherMode ? "teacher-on" : "", projectorMode ? "projector-on" : ""].filter(Boolean).join(" ")}>
       {!projectorMode && (
         <header className="site-header">
           <button className="brand" type="button" onClick={() => go("home")} aria-label="Equity Learning and Action Hub home">
@@ -1783,7 +1837,7 @@ export default function Home() {
             <span><strong>Walnut Road</strong><small>Equity Learning &amp; Action</small></span>
           </button>
           <nav className="desktop-nav" aria-label="Main navigation">
-            {navItems.map((item) => <button type="button" key={item.key} className={view === item.key ? "active" : ""} onClick={() => go(item.key)}>{item.label}</button>)}
+            {navItems.map((item) => <button type="button" key={item.key} className={view === item.key ? "active" : ""} aria-current={view === item.key ? "page" : undefined} onClick={() => go(item.key)}>{item.label}</button>)}
           </nav>
           <div className="header-tools">
             <button type="button" className={teacherMode ? "toggle active" : "toggle"} aria-pressed={teacherMode} onClick={() => setTeacherMode((current) => !current)}>
@@ -1794,9 +1848,10 @@ export default function Home() {
             </button>
             <button type="button" className="menu-button" aria-expanded={menuOpen} onClick={() => setMenuOpen((current) => !current)}>{menuOpen ? "Close" : "Menu"}</button>
           </div>
-          {menuOpen && <nav className="mobile-nav" aria-label="Mobile navigation">{navItems.map((item) => <button type="button" key={item.key} onClick={() => go(item.key)}>{item.label}</button>)}</nav>}
+          {menuOpen && <nav className="mobile-nav" aria-label="Mobile navigation">{navItems.map((item) => <button type="button" key={item.key} aria-current={view === item.key ? "page" : undefined} onClick={() => go(item.key)}>{item.label}</button>)}</nav>}
         </header>
       )}
+      <p className="sr-only" role="status" aria-live="polite" aria-atomic="true">{liveAnnouncement}</p>
 
       {selectedLesson && lessonOverview ? (
         <section className={`lesson-overview tone-${selectedLesson.tone}`}>
@@ -1914,7 +1969,7 @@ export default function Home() {
             {activeStepIndexes.map((index, position) => {
               const step = selectedLesson.steps[index];
               return (
-              <button key={`${index}-${step.label}`} type="button" className={index === stepIndex ? "active" : position < routePosition ? "done" : ""} onClick={() => showStep(index)}>
+              <button key={`${index}-${step.label}`} type="button" className={index === stepIndex ? "active" : position < routePosition ? "done" : ""} aria-current={index === stepIndex ? "step" : undefined} onClick={() => showStep(index)}>
                 <b>{position + 1}</b><span>{step.label}</span>
               </button>
               );
@@ -1960,7 +2015,7 @@ export default function Home() {
             <>
               <section className="home-hero">
                 <div className="hero-copy">
-                  <aside className="standalone-note"><span aria-hidden="true">✦</span><div><b>ONE PUBLIC K–12 HUB</b><p>No Teach Hub or Learn Hub access is needed. Preparation, projected screens, printables, and public source links live here.</p></div></aside>
+                  <aside className="standalone-note"><span aria-hidden="true">✦</span><div><b>ONE PUBLIC K–12 HUB</b><p>No Teacher Hub or Learn Hub access is needed. Preparation, projected screens, printables, and public source links live here.</p></div></aside>
                   <p className="eyebrow"><span /> Featured lesson · {featuredLesson.title} · {featuredLesson.grades}</p>
                   <h1>What helps everyone <em>belong?</em></h1>
                   <p className="featured-route">LOOK CLOSELY <b>→</b> RANK WHAT MATTERS <b>→</b> DRAW THE ACTION</p>
@@ -1990,6 +2045,11 @@ export default function Home() {
                   <button type="button" onClick={() => startLesson("voice-and-rules", 7)}><small>AFTER SEPTEMBER 11</small><b>Representation + messages</b><span>Use the official candidate list and equal samples.</span></button>
                   <button type="button" onClick={() => startLesson("voice-and-rules", 14)}><small>AFTER OCTOBER 17 · 15 MIN</small><b>Accountability check</b><span>Results are the start of the next question.</span></button>
                 </div>
+              </section>
+
+              <section className="map-home-feature section" aria-labelledby="map-home-title">
+                <div><p className="eyebrow dark"><span /> New standalone map inquiry · 45–60 min</p><h2 id="map-home-title">Who gets to represent the world?</h2><p>Compare Mercator and Equal Earth, measure four familiar place pairs, separate evidence from policy choices, and reimagine what a map could make visible.</p><button type="button" className="button dark" onClick={() => go("maps")}>Preview the K–12 inquiry →</button></div>
+                <div className="map-home-pair"><img src="/images/map-inquiry/mercator-world.svg" alt="Mercator world map projection, which enlarges high-latitude land areas." width="960" height="500" /><img src="/images/map-inquiry/equal-earth-world.svg" alt="Equal Earth world map projection, which preserves relative land area." width="960" height="500" /></div>
               </section>
 
               <section className="home-board section">
@@ -2033,6 +2093,10 @@ export default function Home() {
             </>
           )}
 
+          {view === "maps" && (
+            <MapRepresentationInquiry projectorMode={projectorMode} onEnterProjection={enterProjection} onExitProjection={exitProjection} />
+          )}
+
           {view === "teach" && (
             <section className="section page-section">
               <div className="page-heading split"><div><p className="eyebrow dark"><span /> K–12 Equity Hub lessons</p><h1>Choose a lesson.</h1><p>Every lesson opens in a teacher preview first. You will see grade fit, preparation, student outcomes, exact print pages, and route choices before any student screen.</p></div><button type="button" className="button secondary browse-issues" onClick={() => go("issues")}>Browse by big question →</button></div>
@@ -2070,8 +2134,9 @@ export default function Home() {
           {view === "plan" && (
             <section className="section page-section planning-page">
               <div className="page-heading split"><div><p className="eyebrow dark"><span /> Optional K–12 school-year example · 2026–27</p><h1>A flexible runway.</h1></div><p>Use it, remix it, or skip what does not fit. <b>Core</b> = suggested anchor, not a requirement. <b>Featured</b> = one spring possibility. <b>Choice</b> = flexible extension. <b>Plan</b> = a date with a trusted starting source.</p></div>
+              <CalendarProvocationsPanel projectorMode={projectorMode} onEnterProjection={enterProjection} onExitProjection={exitProjection} />
               <div className="year-stage-grid">{yearStages.map((stage) => <article key={stage.n}><span>{stage.n}</span><small>{stage.when}</small><h2>{stage.title}</h2><p>{stage.detail}</p></article>)}</div>
-              <div className="month-filter" aria-label="Filter schedule by month">{months.map((month) => <button type="button" key={month} className={monthFilter === month ? "active" : ""} onClick={() => setMonthFilter(month)}>{month}</button>)}</div>
+              <div className="month-filter" aria-label="Filter schedule by month">{months.map((month) => <button type="button" key={month} className={monthFilter === month ? "active" : ""} aria-pressed={monthFilter === month} onClick={() => setMonthFilter(month)}>{month}</button>)}</div>
               <div className="runway-list">
                 {visibleRunways.map((item) => (
                   <article key={`${item.month}-${item.event}`} className={item.priority === "Core" ? "core" : item.priority === "Featured" ? "featured" : item.priority === "Plan" ? "plan" : ""}>
@@ -2080,7 +2145,11 @@ export default function Home() {
                     <div className="runway-phase"><small>BEGIN</small><b>{item.start}</b></div>
                     <div className="runway-phase"><small>CREATE</small><b>{item.create}</b></div>
                     <div className="runway-phase"><small>SHARE</small><b>{item.share}</b></div>
-                    {item.lesson ? <button type="button" onClick={() => startLesson(item.lesson!, item.startAt ?? 0)}>{item.cta ?? "Teach →"}</button> : item.href ? <a className="runway-source" href={item.href} target="_blank" rel="noreferrer">{item.cta ?? "Open source ↗"}</a> : <span className="coming-label">Planning marker</span>}
+                    {item.provocationId || item.lesson || item.href ? <div className="runway-actions">
+                      {item.provocationId && <button type="button" onClick={() => openProvocation(item.provocationId!)}>{item.cta ?? "Open provocation →"}</button>}
+                      {item.lesson && <button type="button" className="secondary-runway-action" onClick={() => startLesson(item.lesson!, item.startAt ?? 0)}>{item.provocationId ? "Teach full lesson →" : item.cta ?? "Teach →"}</button>}
+                      {item.href && <a className="runway-source" href={item.href} target="_blank" rel="noreferrer">Open source ↗</a>}
+                    </div> : <span className="coming-label">Planning marker</span>}
                   </article>
                 ))}
               </div>
@@ -2094,6 +2163,10 @@ export default function Home() {
               <article className="belonging-toolkit-feature">
                 <div><span>COMMUNITY &amp; BELONGING</span><h2>Belonging &amp; Learner Voice Toolkit</h2><p>Five flexible pages for identity, learning preferences, inclusive spaces, community ideas, and goals. Learners can write, draw, colour, dictate, or use symbols.</p></div>
                 <div><strong>Includes a facilitator guide with consent, privacy, accessibility, and display guidance.</strong><a href="/downloads/belonging-learner-voice-toolkit.pdf" target="_blank" rel="noreferrer">Open printable PDF ↓</a></div>
+              </article>
+              <article className="map-issue-feature">
+                <div><span>MAPS · REPRESENTATION · EVIDENCE · POWER</span><h2>Who gets to represent the world?</h2><p>A complete K–12 pathway with local Mercator and Equal Earth visuals, measured area comparisons, source care, and an offline route.</p></div>
+                <button type="button" onClick={() => go("maps")}>Open map inquiry →</button>
               </article>
               <div className="issue-grid">
                 {visibleIssues.map((issue) => (
@@ -2114,13 +2187,13 @@ export default function Home() {
                 <figure><img src="/images/student-voice-club.webp" alt="Students listening, mapping ideas, choosing a priority, and presenting an improvement." width="1586" height="992" /></figure>
               </div>
               <div className="section action-workspace">
-                <div className="project-picker"><span>CHOOSE A POSSIBLE PROJECT</span><div>{actionProjects.map((project) => <button type="button" key={project.id} className={selectedProject === project.id ? "active" : ""} onClick={() => setSelectedProject(project.id)}>{project.title}</button>)}</div></div>
+                <div className="project-picker"><span>CHOOSE A POSSIBLE PROJECT</span><div>{actionProjects.map((project) => <button type="button" key={project.id} className={selectedProject === project.id ? "active" : ""} aria-pressed={selectedProject === project.id} onClick={() => setSelectedProject(project.id)}>{project.title}</button>)}</div></div>
                 <article className="project-focus"><div><small>START BY</small><p>{currentProject.start}</p></div><div><small>SUCCESS LOOKS LIKE</small><p>{currentProject.proof}</p></div>{currentProject.id === "spca" && <button type="button" onClick={() => startLesson("animal-welfare")}>Open BC SPCA learning pathway →</button>}</article>
                 <div className="project-ready">
                   <article><small>OPEN THESE DIRECT SOURCES</small><div>{currentProject.sources.map((source) => <a key={source.href} href={source.href} target="_blank" rel="noreferrer">{source.label} ↗</a>)}</div></article>
                   <article><small>COMPARE THESE THREE STARTING ACTIONS</small><ol>{currentProject.actions.map((action) => <li key={action}>{action}</li>)}</ol><p>One is deliberately tempting but may not fit. Students use evidence to decide.</p></article>
                 </div>
-                <div className="action-step-tabs" aria-label="Action steps">{actionSteps.map((step, index) => <button type="button" key={step.n} className={actionStep === index ? "active" : ""} onClick={() => setActionStep(index)}><b>{step.n}</b><span>{step.title}</span></button>)}</div>
+                <div className="action-step-tabs" aria-label="Action steps">{actionSteps.map((step, index) => <button type="button" key={step.n} className={actionStep === index ? "active" : ""} aria-current={actionStep === index ? "step" : undefined} onClick={() => setActionStep(index)}><b>{step.n}</b><span>{step.title}</span></button>)}</div>
                 <article className="action-step-card"><span>STEP {actionSteps[actionStep].n}</span><h2>{actionSteps[actionStep].title}</h2><p>{actionSteps[actionStep].question}</p><strong>{actionSteps[actionStep].tool}</strong><div><button type="button" disabled={actionStep === 0} onClick={() => setActionStep((current) => Math.max(0, current - 1))}>← Back</button><button type="button" disabled={actionStep === actionSteps.length - 1} onClick={() => setActionStep((current) => Math.min(actionSteps.length - 1, current + 1))}>Next →</button></div></article>
                 <div className="action-download"><div><b>READY-TO-USE STUDENT TOOLKIT</b><span>Issue research, power mapping, action planning, and reflection.</span></div><a href="/downloads/from-concern-to-action-student-toolkit.pdf">Colour PDF ↓</a><a href="/downloads/from-concern-to-action-student-toolkit-black-white.pdf">B&amp;W PDF ↓</a></div>
               </div>
@@ -2129,7 +2202,7 @@ export default function Home() {
 
           {view === "library" && (
             <section className="section page-section library-page">
-              <div className="page-heading split"><div><p className="eyebrow dark"><span /> Everything linked in one public place</p><h1>Printables &amp; sources</h1></div><p>No Teach Hub or Learn Hub access is required. Open the lesson preview first for grade fit, exact copy counts, and the projected-screen map.</p></div>
+              <div className="page-heading split"><div><p className="eyebrow dark"><span /> Everything linked in one public place</p><h1>Printables &amp; sources</h1></div><p>No Teacher Hub or Learn Hub access is required. Open the lesson preview first for grade fit, exact copy counts, and the projected-screen map.</p></div>
               <h2 className="library-heading">Lesson activity packs</h2>
               <p className="library-intro">Each pack includes clearly marked teacher pages showing what to project, which student pages match the lesson, how many copies to make, what to model, and what to collect. Multi-route packs tell you which pages to choose—you do not teach the whole pack. The core range is shown honestly; use the lesson’s K–12 guide outside that range.</p>
               <div className="lesson-printables-grid">{orderedLessons.map((lesson, index) => <article className={`tone-${lesson.tone}`} key={lesson.id}><figure><img src={lesson.printable.preview} alt="" width="773" height="1000" /><span>{String(index + 1).padStart(2, "0")}</span></figure><div><span className="printable-grade">{lesson.grades}</span><h3>{lesson.printable.title}</h3><p>{lesson.printable.pagePlan.join(" ")}</p><button type="button" onClick={() => startLesson(lesson.id)}>Preview grade fit + page map →</button></div><div className="printable-links"><a className="bw-link" href={lesson.printable.bwHref} target="_blank" rel="noreferrer">Full B&amp;W · {lesson.printable.pages} pages</a><a href={lesson.printable.href} target="_blank" rel="noreferrer">Colour pack</a></div></article>)}</div>
@@ -2145,5 +2218,6 @@ export default function Home() {
       )}
       {!projectorMode && <footer><BrandMark /><p><strong>Walnut Road Equity Learning &amp; Action Hub</strong><span>One public K–12 place for preparation, projection, printables, and thoughtful action.</span></p><button type="button" onClick={() => go("home")}>Back to start ↑</button></footer>}
     </main>
+    </>
   );
 }

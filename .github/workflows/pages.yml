@@ -27,8 +27,8 @@ jobs:
           node-version: 22
           cache: npm
       - run: npm ci
-      - run: npx vite build --config vite.pages.config.ts
-      - run: node pages/postbuild.mjs
+      - run: npm test
+      - run: git diff --check
       - uses: actions/configure-pages@v5
         with:
           enablement: true
