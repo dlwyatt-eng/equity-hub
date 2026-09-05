@@ -156,3 +156,40 @@ test("focus, announcement, responsive reading, and complete print content have e
   assert.match(print, /\.fictional-listening-sources \{ display: block; \}/);
   assert.match(print, /fictional-listening-care[\s\S]*break-inside: avoid/);
 });
+
+test("all 21 calendar projection screens render student directions without teacher-planning fields", () => {
+  const { ProvocationProjection } = loadComponent();
+  for (const original of pack.calendarProvocations) {
+    const provocation = { ...original, learning: "STAFF_ONLY_SENTINEL", hook: "STAFF_ONLY_SENTINEL", before: "STAFF_ONLY_SENTINEL", noticeWonder: ["STAFF_ONLY_SENTINEL"], questions: ["STAFF_ONLY_SENTINEL"], discussion: "STAFF_ONLY_SENTINEL", product: "STAFF_ONLY_SENTINEL" };
+    for (let screen = 0; screen < 3; screen++) {
+      const html = renderToStaticMarkup(React.createElement(ProvocationProjection, { provocation, screen, onScreen() {}, onExit() {} }));
+      const fields = screen === 0 ? [original.student.learning, original.student.lookListen, original.student.before]
+        : screen === 1 ? [...original.student.noticeWonder, ...original.student.questions]
+        : [original.student.discussion, original.student.product];
+      for (const field of fields) assert.ok(html.includes(escaped(field)), original.id + ": " + field);
+      assert.doesNotMatch(html, /STAFF_ONLY_SENTINEL/);
+      assert.ok(html.includes(escaped(original.source.label)));
+    }
+  }
+});
+
+test("the student rehearsal keeps made-up source texts but uses separate plain instructions", () => {
+  const { FictionalListeningRehearsal } = loadComponent();
+  const html = renderToStaticMarkup(React.createElement(FictionalListeningRehearsal, { rehearsal, audience: "student", onBack() {} }));
+  for (const field of [rehearsal.student.goal, rehearsal.student.boundary, rehearsal.student.care, rehearsal.student.returnToAuthentic, ...rehearsal.student.prompts, ...rehearsal.finishFrame, rehearsal.attribution, ...rehearsal.sourceCards.map(c => c.text)]) assert.ok(html.includes(escaped(field)));
+  assert.ok(!html.includes(escaped(rehearsal.teacherNote)));
+  assert.match(rehearsal.student.boundary, /not survivor testimony, Indigenous knowledge, or evidence about history/);
+  assert.match(rehearsal.student.boundary, /not be used as a comparison with residential schools/);
+  assert.match(source, /FictionalListeningRehearsal audience="student"/);
+});
+
+test("map investigation projects the word definitions students are asked to use", () => {
+  const { MapRepresentationInquiry } = loadComponent({ ...React, useState: () => React.useState(2) });
+  const html = renderToStaticMarkup(React.createElement(MapRepresentationInquiry, { projectorMode: true, onEnterProjection() {}, onExitProjection() {} }));
+  for (const item of pack.mapInquiry.vocabulary) {
+    assert.ok(html.includes(escaped(item.term)));
+    assert.ok(html.includes(escaped(item.meaning)));
+  }
+  assert.match(html, /Preserves \(keeps accurate\)/);
+  assert.match(html, /Distorts \(changes\)/);
+});

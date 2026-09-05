@@ -254,3 +254,8 @@
   .fictional-listening-sources article, .fictional-listening-boundary, .fictional-listening-prompts, .fictional-listening-finish, .fictional-listening-care { margin-top: 14pt; padding: 12pt; border: 1pt solid #000; border-radius: 0; color: #000; background: #fff; break-inside: avoid; box-shadow: none; }
   .fictional-listening-sources blockquote { color: #000; border-color: #000; }
 }
+.master-projector .word-help { margin-top: 24px; }
+.master-projector .word-help article span { font-size: 1.2rem; line-height: 1.5; }
+.large-text .master-projector .word-help article span { font-size: 1.5rem; }
+.master-projector .projected-source { margin: 16px 0; font-size: 1.1rem; line-height: 1.5; }
+.large-text .master-projector .projected-source { font-size: 1.4rem; }

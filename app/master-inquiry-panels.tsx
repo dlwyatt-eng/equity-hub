@@ -51,7 +51,7 @@ function MapPair({ compact = false }: { compact?: boolean }) {
           />
           <figcaption>
             <strong>{card.name}</strong>
-            {!compact && <><span><b>Preserves:</b> {card.preserves}</span><span><b>Distorts:</b> {card.distorts}</span></>}
+            {!compact && <><span><b>Preserves (keeps accurate):</b> {card.preserves}</span><span><b>Distorts (changes):</b> {card.distorts}</span></>}
           </figcaption>
         </figure>
       ))}
@@ -110,9 +110,10 @@ export function MapRepresentationInquiry({ projectorMode, onEnterProjection, onE
           <p className="master-stage-kicker"><span>{stage.label}</span><b>{step.minutes} min</b></p>
           <h1 id="map-projector-title">{step.prompt}</h1>
           {stageIndex <= 1 && <MapPair compact />}
+          {stageIndex === 2 && <section className="word-help" aria-label="Map word help"><div>{mapInquiry.vocabulary.map((item) => <article key={item.term}><b>{item.term}</b><span>{item.meaning}</span></article>)}</div></section>}
           {stageIndex === 2 && (
             <div className="projection-fact-grid">
-              {mapInquiry.projectionCards.map((card) => <article key={card.name}><h2>{card.name}</h2><p><b>Preserves:</b> {card.preserves}</p><p><b>Distorts:</b> {card.distorts}</p><small>{card.care}</small></article>)}
+              {mapInquiry.projectionCards.map((card) => <article key={card.name}><h2>{card.name}</h2><p><b>Preserves (keeps accurate):</b> {card.preserves}</p><p><b>Distorts (changes):</b> {card.distorts}</p><small>{card.care}</small></article>)}
             </div>
           )}
           {stageIndex === 3 && (
@@ -122,7 +123,7 @@ export function MapRepresentationInquiry({ projectorMode, onEnterProjection, onE
           )}
           {stageIndex === 4 && (
             <div className="evidence-policy-split" role="img" aria-label="Separate map evidence from interpretation and policy choices">
-              <span><b>EVIDENCE</b>What the area measurements establish</span><span><b>INTERPRETATION</b>What the pattern may mean</span><span><b>POLICY CHOICE</b>Which map fits a purpose</span>
+              <span><b>EVIDENCE</b>What the measurements show</span><span><b>INTERPRETATION</b>What we think it means</span><span><b>POLICY CHOICE</b>Which map we choose for a job</span>
             </div>
           )}
           {stageIndex === 5 && (
@@ -212,23 +213,25 @@ export function MapRepresentationInquiry({ projectorMode, onEnterProjection, onE
   );
 }
 
-function ProvocationProjection({ provocation, screen, onExit, onScreen }: { provocation: CalendarProvocation; screen: number; onExit: () => void; onScreen: (index: number) => void }) {
+export function ProvocationProjection({ provocation, screen, onExit, onScreen }: { provocation: CalendarProvocation; screen: number; onExit: () => void; onScreen: (index: number) => void }) {
   const earthImage = provocation.id === "earth-day-systems";
   return (
     <section className="calendar-provocations-shell calendar-projector master-projector" aria-labelledby="provocation-projector-title">
       <div className="master-projector-stage">
         <p className="master-stage-kicker"><span>{screen === 0 ? "HOOK" : screen === 1 ? "NOTICE + WONDER" : "DISCUSS + CREATE"}</span><b>{provocation.timing}</b></p>
         <h1 id="provocation-projector-title">{provocation.title}</h1>
-        {screen === 0 && <><p className="projected-learning"><b>We are learning:</b> {provocation.learning}</p>{earthImage && <img className="calendar-hook-image" src="/images/climate-justice-action.webp" alt="Students and community members restore a stream, test water, plant native species, and map local climate action." width="1536" height="1024" />}<article className="projected-hook"><small>LOOK / LISTEN</small><p>{provocation.hook}</p><strong>{provocation.before}</strong></article></>}
-        {screen === 1 && <div className="projected-provocation-grid"><article><small>NOTICE + WONDER</small><ol>{provocation.noticeWonder.map((item) => <li key={item}>{item}</li>)}</ol></article><article><small>QUESTIONS</small><ul>{provocation.questions.map((item) => <li key={item}>{item}</li>)}</ul></article></div>}
-        {screen === 2 && <div className="projected-provocation-grid"><article><small>DISCUSS</small><p>{provocation.discussion}</p></article><article><small>OPTIONAL PRODUCT</small><p>{provocation.product}</p></article></div>}
+        {screen === 0 && <><p className="projected-learning"><b>We are learning:</b> {provocation.student.learning}</p>{earthImage && <img className="calendar-hook-image" src="/images/climate-justice-action.webp" alt="Students and community members restore a stream, test water, plant native species, and map local climate action." width="1536" height="1024" />}<article className="projected-hook"><small>LOOK / LISTEN</small><p>{provocation.student.lookListen}</p><strong>{provocation.student.before}</strong></article></>}
+        {screen === 1 && <div className="projected-provocation-grid"><article><small>NOTICE + WONDER</small><ol>{provocation.student.noticeWonder.map((item) => <li key={item}>{item}</li>)}</ol></article><article><small>QUESTIONS</small><ul>{provocation.student.questions.map((item) => <li key={item}>{item}</li>)}</ul></article></div>}
+        {screen === 2 && <div className="projected-provocation-grid"><article><small>DISCUSS</small><p>{provocation.student.discussion}</p></article><article><small>YOU COULD MAKE</small><p>{provocation.student.product}</p></article></div>}
       </div>
+      <p className="projected-source"><b>Source:</b> {provocation.source.label}</p>
       <ProjectionControls index={screen} count={3} onBack={() => onScreen(Math.max(0, screen - 1))} onNext={() => onScreen(Math.min(2, screen + 1))} onExit={onExit} />
     </section>
   );
 }
 
-export function FictionalListeningRehearsal({ rehearsal, onBack }: { rehearsal: ListeningRehearsal; onBack: () => void }) {
+export function FictionalListeningRehearsal({ rehearsal, onBack, audience = "teacher" }: { rehearsal: ListeningRehearsal; onBack: () => void; audience?: "teacher" | "student" }) {
+  const directions = audience === "student" ? rehearsal.student : rehearsal;
   const headingRef = useRef<HTMLHeadingElement>(null);
 
   useEffect(() => {
@@ -249,12 +252,12 @@ export function FictionalListeningRehearsal({ rehearsal, onBack }: { rehearsal: 
       <header className="fictional-listening-heading">
         <p className="eyebrow dark">FICTIONAL LISTENING REHEARSAL · CLASSROOM OS</p>
         <h2 id="fictional-listening-title" tabIndex={-1} ref={headingRef}>{rehearsal.title}</h2>
-        <p><b>Learning goal:</b> {rehearsal.goal}</p>
+        <p><b>Learning goal:</b> {directions.goal}</p>
         <p className="fictional-listening-credit"><b>Source credit:</b> {rehearsal.attribution}</p>
       </header>
       <section className="fictional-listening-boundary" aria-labelledby="fictional-listening-boundary-title">
         <h3 id="fictional-listening-boundary-title">Skills practice only</h3>
-        <p>{rehearsal.boundary}</p>
+        <p>{directions.boundary}</p>
       </section>
       <div className="fictional-listening-sources">
         {rehearsal.sourceCards.map((card) => (
@@ -269,7 +272,7 @@ export function FictionalListeningRehearsal({ rehearsal, onBack }: { rehearsal: 
       </div>
       <section className="fictional-listening-prompts" aria-labelledby="fictional-listening-prompts-title">
         <h3 id="fictional-listening-prompts-title">Listen, compare, and keep a question open</h3>
-        <ol>{rehearsal.prompts.map((prompt) => <li key={prompt}>{prompt}</li>)}</ol>
+        <ol>{directions.prompts.map((prompt) => <li key={prompt}>{prompt}</li>)}</ol>
       </section>
       <section className="fictional-listening-finish" aria-labelledby="fictional-listening-finish-title">
         <p className="fictional-listening-label">FICTIONAL PRACTICE RESPONSE · CLASSROOM OS</p>
@@ -277,9 +280,9 @@ export function FictionalListeningRehearsal({ rehearsal, onBack }: { rehearsal: 
         <ol>{rehearsal.finishFrame.map((frame) => <li key={frame}>{frame}</li>)}</ol>
       </section>
       <section className="fictional-listening-care" aria-labelledby="fictional-listening-care-title">
-        <h3 id="fictional-listening-care-title">Teacher note and next learning</h3>
-        <p>{rehearsal.teacherNote}</p>
-        <p>{rehearsal.returnToAuthentic}</p>
+        <h3 id="fictional-listening-care-title">Careful listening and what comes next</h3>
+        <p>{audience === "teacher" ? rehearsal.teacherNote : rehearsal.student.care}</p>
+        <p>{directions.returnToAuthentic}</p>
         <p className="fictional-listening-credit"><b>This rehearsal:</b> {rehearsal.attribution}</p>
       </section>
     </section>
@@ -301,7 +304,7 @@ export function CalendarProvocationsPanel({ projectorMode, onEnterProjection, on
   }
 
   if (rehearsal) {
-    return <FictionalListeningRehearsal rehearsal={rehearsal.content} onBack={() => {
+    return <FictionalListeningRehearsal audience="student" rehearsal={rehearsal.content} onBack={() => {
       const returnId = `listening-rehearsal-open-${rehearsal.provocationId}`;
       setRehearsal(null);
       window.requestAnimationFrame(() => document.getElementById(returnId)?.focus());
@@ -355,7 +358,7 @@ export function CalendarProvocationsPanel({ projectorMode, onEnterProjection, on
               <a href={provocation.source.href} target="_blank" rel="noreferrer">Open {provocation.source.label} ↗</a>
             </div>
             {provocation.listeningRehearsal && <div className="fictional-listening-entry">
-              <div><b>Separate fictional skills practice · Classroom OS</b><p>{provocation.listeningRehearsal.boundary}</p></div>
+              <div><b>Separate fictional skills practice · Classroom OS</b><p>{provocation.listeningRehearsal.boundary}</p><p><b>Teacher preparation:</b> {provocation.listeningRehearsal.teacherNote}</p></div>
               <button type="button" id={`listening-rehearsal-open-${provocation.id}`} onClick={() => openRehearsal(provocation)}>Open fictional listening rehearsal</button>
             </div>}
           </article>
