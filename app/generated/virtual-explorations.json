@@ -14,7 +14,7 @@
       "mediaLabel": "Recorded civic tour",
       "goal": "We are learning how people can have a say in local decisions.",
       "invitation": "Step inside the place where Surrey makes decisions.",
-      "route": "Watch selected parts of the tour together. Pause when a room or service gives you a clue about who does what. Keep one question for your civic case wall.",
+      "route": "Use a short council or city-services excerpt. Notice who decides and who carries out decisions. Then return to the fictional recreation-centre case; the tour does not depict that class scenario.",
       "stops": [
         {
           "title": "A place to decide",
@@ -69,14 +69,14 @@
       "title": "Swim along with a sea turtle",
       "place": "Great Barrier Reef, Australia",
       "strand": "animal",
-      "duration": "6–8 min with word gathering",
+      "duration": "4–6 min with observation and talk",
       "provider": "WWF-Australia",
       "sourceUrl": "https://www.youtube.com/watch?v=2I6hDqCrI9o",
       "launchUrl": "https://www.youtube.com/watch?v=2I6hDqCrI9o",
       "mediaLabel": "Real turtle-mounted camera footage",
       "goal": "We are learning to separate what we observe from what we assume about an animal.",
       "invitation": "What changes when the camera travels with a turtle?",
-      "route": "Watch a short section. Pause on one clear frame, then another after the camera has moved. Gather exact words before imagining a story.",
+      "route": "Watch one short section or compare two still moments. Describe what the camera shows, then identify a question the camera cannot answer. Return to the assigned animal-care case.",
       "stops": [
         {
           "title": "Describe one frame",
@@ -96,24 +96,24 @@
       ],
       "task": "Share one visible movement or habitat detail and one question that needs another source. Return to the animal-care evidence before recommending an action.",
       "entry": "Say two observations to a partner, or sketch one frame and label it.",
-      "extension": "Rewrite one line from a different camera position. Explain what changed.",
+      "extension": "Name another kind of source you would need before making a claim about the turtle’s wellbeing. Explain what that source could add.",
       "check": "Did you separate a camera observation from a claim about the animal’s needs or feelings?",
       "fallback": {
         "title": "Swim along with a sea turtle · text and table-top route",
         "facts": [
           "This WWF footage comes from a camera carried by a turtle. It follows the camera’s position.",
           "The camera does not show exactly what the turtle’s eyes see or what it thinks.",
-          "A poem can include imagination, but we should not present an invented animal thought as a scientific finding."
+          "An animal-care recommendation needs a reliable source about the animal’s actual needs. One camera view is not enough."
         ],
-        "action": "Place a pencil case on a desk. Observe it from above and from seated desk height. Collect five precise words. Write two lines; label any imagined voice as fiction."
+        "action": "Look at a pencil case from above and then from desk height. Share one observation and something hidden from each view. Explain why a single camera view cannot tell us everything about an animal’s needs."
       },
       "teacher": {
         "placement": "Animal Welfare, opening observation. Replace the generic noticing example with a brief turtle-camera excerpt, then return to the existing care evidence and action. The video cannot establish a welfare verdict.",
-        "prepare": "Preview two clear frames. Plan 2–3 minutes of footage and 4–5 minutes for words and talk. An actual desk object supports the backup.",
+        "prepare": "Preview two clear moments. Use 1–2 minutes of footage and 3–4 minutes of observation and talk within the opening time. A desk object supplies the backup.",
         "model": "“The view tilts and the reef passes below” is an observation if visible. “I am searching for a friend” is an invented turtle voice.",
         "misconception": "An animal-mounted camera is not a model of animal vision or a source of animal-care advice.",
         "assessment": "Listen for an observed detail, a clearly labelled uncertainty and a question for another source. Keep the existing care-recommendation task.",
-        "curriculum": "English Language Arts 6: sensory detail, creative language and distinguishing evidence from inference. Animal ecology is enrichment.",
+        "curriculum": "Cross-grade source literacy: distinguish observation, inference and a supported recommendation. Use the host lesson’s grade guidance; science claims need evidence from the chosen animal-care case.",
         "sourceNotes": "The WWF-Australia video is corroborated by its official channel playlist. No exact timestamps or biological sensory claims are assumed.",
         "verification": "Source reviewed 2026-09-05. Player or source metadata checked; sustained video playback, lesson embed and school-projector use still need confirmation. Use the prepared text route if video cannot play.",
         "grades": [

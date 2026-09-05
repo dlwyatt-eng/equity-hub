@@ -1856,7 +1856,7 @@ export default function Home() {
 
       {selectedLesson && lessonOverview ? (
         <section className={`lesson-overview tone-${selectedLesson.tone}`}>
-          {teacherMode && <EquityExploration lessonId={selectedLesson.id} teacher />}
+          <EquityExploration lessonId={selectedLesson.id} teacher />
           <div className="overview-topbar">
             <button type="button" className="back-button" onClick={returnToLessons}>← All lessons</button>
             <span><b>PREPARE FIRST</b> Grade fit, preparation, projected screens, printables, and public source links are all here in the Equity Hub.</span>
