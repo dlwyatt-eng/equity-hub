@@ -1,6 +1,7 @@
 "use client";
 /* eslint-disable @next/next/no-img-element -- compressed local WebP assets are used for predictable projector rendering. */
 
+import { EquityExploration } from "./virtual-explorations";
 import { useEffect, useLayoutEffect, useRef, useState } from "react";
 import { CalendarProvocationsPanel, MapRepresentationInquiry } from "./master-inquiry-panels";
 
@@ -1855,6 +1856,7 @@ export default function Home() {
 
       {selectedLesson && lessonOverview ? (
         <section className={`lesson-overview tone-${selectedLesson.tone}`}>
+          {teacherMode && <EquityExploration lessonId={selectedLesson.id} teacher />}
           <div className="overview-topbar">
             <button type="button" className="back-button" onClick={returnToLessons}>← All lessons</button>
             <span><b>PREPARE FIRST</b> Grade fit, preparation, projected screens, printables, and public source links are all here in the Equity Hub.</span>
@@ -1975,6 +1977,8 @@ export default function Home() {
               );
             })}
           </div>
+
+          <EquityExploration lessonId={selectedLesson.id} step={stepIndex} teacher={teacherMode && !projectorMode} />
 
           <div className={["projector-stage", currentStep.image ? "with-image" : "", currentStep.cards ? "with-cards" : "", currentStep.links ? "with-links" : "", currentStep.artSpark ? "with-art" : "", currentStep.visual ? "with-visual" : ""].filter(Boolean).join(" ")}>
             <div className="step-kicker"><span>{currentStep.label}</span><b>{currentStep.time}</b></div>
