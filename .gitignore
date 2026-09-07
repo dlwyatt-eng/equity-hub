@@ -43,3 +43,7 @@ next-env.d.ts
 /outputs/
 /work/
 /tmp/
+
+# Generated from the pinned Earth, Stuff & Fairness source
+/public/earth-stuff-fairness/
+/earth-review/
