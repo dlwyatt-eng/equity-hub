@@ -6,11 +6,11 @@ import { execFileSync } from 'node:child_process';
 const audience=process.argv[2];
 if (!['equity','family'].includes(audience)) throw new Error('Use equity or family');
 const pin='d7bd8c264a417820c3c1a417e1070e885853bd33';
-const reviewPin='cdb980efa78c386f8d74c2e024c2d538eccae0e8';
+const reviewPin='5921c790918a9bc6169ed39bb369dca13aed41e8';
 const files={
   'content/earth-stuff-fairness.mjs':'3162adb27999d7e02c34ac503e0c12676e498085',
   'scripts/build-earth-stuff-pack.mjs':'78d717f2a767d7563587d692bb83b7bd01a77aa9',
-  'scripts/review-earth-browser.py':'94f1493490639a2fa476a87a461d9ce3090f4155'
+  'scripts/review-earth-browser.py':'d7f27269f2966ab38d0ea0a8e9cf7f216ffbce82'
 };
 const cache=resolve('tmp/earth-source');
 function blobHash(bytes){return createHash('sha1').update(`blob ${bytes.length}\0`).update(bytes).digest('hex');}
