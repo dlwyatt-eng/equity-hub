@@ -21,17 +21,17 @@ export const metadata: Metadata = {
   metadataBase: new URL("https://dlwyatt-eng.github.io/equity-hub/"),
   title: "Walnut Road Equity Learning & Action Hub",
   description:
-    "A public K–12 Equity Learning & Action Hub with grade-band guidance, teacher preparation, projected lessons, printables, and linked public sources.",
+    "A public K–7 Equity Learning & Action Hub with grade-band guidance, teacher preparation, projected lessons, printables, and linked public sources.",
   openGraph: {
     title: "Walnut Road Equity Learning & Action",
-    description: "Public K–12 hub · grade guidance · projection · printables",
+    description: "Public K–7 hub · grade guidance · projection · printables",
     type: "website",
     images: [{ url: "/og.png", width: 1200, height: 630, alt: "Walnut Road students learning, questioning, and taking action together." }],
   },
   twitter: {
     card: "summary_large_image",
     title: "Walnut Road Equity Learning & Action",
-    description: "Public K–12 hub · grade guidance · projection · printables",
+    description: "Public K–7 hub · grade guidance · projection · printables",
     images: ["/og.png"],
   },
   icons: {

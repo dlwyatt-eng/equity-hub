@@ -27,15 +27,13 @@ const mapStages = [
 const mapGradeMoves = [
   { band: "K–2", fit: "Teacher-led", move: "Compare a globe with one flat map. Name one thing the map shows and one thing it cannot show. Co-draw a map made for helping or caring." },
   { band: "3–5", fit: "Teacher-led + core", move: "Use the Africa/Greenland comparison, pre-labelled area bars, partner talk, and one sentence or drawing about map purpose." },
-  { band: "6–8", fit: "Core lesson", move: "Compare two place pairs, weigh the area evidence, separate mathematical findings from a policy choice, and redesign a map purpose." },
-  { band: "9–12", fit: "Extension", move: "Audit a textbook, news graphic, game, or AI-generated map and compare more than one equal-area projection using primary sources." },
+  { band: "6–7", fit: "Core lesson", move: "Compare two place pairs, weigh the area evidence, separate mathematical findings from a policy choice, and redesign a map purpose." },
 ];
 
 const calendarGradeMoves = [
   { band: "K–2", move: "Teacher narrates one image or scenario. Learners notice aloud, sort with pictures, and co-create one small response." },
   { band: "3–5", move: "Use the core question, partner talk, icons or sentence frames, and one clearly modelled optional product." },
-  { band: "6–8", move: "Run the full evidence-and-systems route. Students cite the source and name responsibility, power, and a realistic next check." },
-  { band: "9–12", move: "Add a second primary source, policy or systems analysis, stakeholder perspectives, and a measurable follow-up." },
+  { band: "6–7", move: "Run the full evidence-and-systems route. Students cite the source and name responsibility, power, and a realistic next check." },
 ];
 
 function MapPair({ compact = false }: { compact?: boolean }) {
@@ -146,7 +144,7 @@ export function MapRepresentationInquiry({ projectorMode, onEnterProjection, onE
     <section className="map-inquiry-page section page-section" aria-labelledby="map-inquiry-title">
       <header className="master-inquiry-hero">
         <div>
-          <p className="eyebrow dark"><span /> Standalone K–12 representation inquiry</p>
+          <p className="eyebrow dark"><span /> Standalone K–7 representation inquiry</p>
           <h1 id="map-inquiry-title">{mapInquiry.publicTitle}</h1>
           <p className="master-learning"><b>We are learning:</b> {mapInquiry.learning}</p>
           <p>{mapInquiry.why}</p>
@@ -190,7 +188,7 @@ export function MapRepresentationInquiry({ projectorMode, onEnterProjection, onE
       </section>
 
       <section className="master-grade-guide" aria-labelledby="map-grade-title">
-        <div className="master-section-heading"><small>K–12 GRADE GUIDE</small><h2 id="map-grade-title">Keep the question. Change the depth.</h2></div>
+        <div className="master-section-heading"><small>K–7 GRADE GUIDE</small><h2 id="map-grade-title">Keep the question. Change the depth.</h2></div>
         <div>{mapGradeMoves.map((item) => <article key={item.band}><b>{item.band}</b><span>{item.fit}</span><p>{item.move}</p></article>)}</div>
       </section>
 
@@ -328,12 +326,12 @@ export function CalendarProvocationsPanel({ projectorMode, onEnterProjection, on
   return (
     <section id="calendar-provocations" className="calendar-provocations-shell" aria-labelledby="calendar-provocations-title">
       <header className="calendar-heading">
-        <div><p className="eyebrow dark"><span /> Seven optional 20–60 minute pathways</p><h2 id="calendar-provocations-title">Calendar Provocations</h2><p>Fresh inquiries for familiar dates. Each one can stand alone: preparation, prompts, product, source, fallback, care, and K–12 guidance are all here.</p></div>
+        <div><p className="eyebrow dark"><span /> Seven optional 20–60 minute pathways</p><h2 id="calendar-provocations-title">Calendar Provocations</h2><p>Fresh inquiries for familiar dates. Each one can stand alone: preparation, prompts, product, source, fallback, care, and K–7 guidance are all here.</p></div>
         <button type="button" className="button secondary" onClick={() => window.print()}>Print the inventory</button>
       </header>
 
       <section className="calendar-grade-guide" aria-labelledby="calendar-grade-title">
-        <div className="master-section-heading"><small>K–12 ADAPTATION</small><h3 id="calendar-grade-title">Use the same question at a fitting depth</h3></div>
+        <div className="master-section-heading"><small>K–7 ADAPTATION</small><h3 id="calendar-grade-title">Use the same question at a fitting depth</h3></div>
         <div>{calendarGradeMoves.map((item) => <article key={item.band}><b>{item.band}</b><p>{item.move}</p></article>)}</div>
       </section>
 

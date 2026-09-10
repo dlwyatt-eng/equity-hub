@@ -1,0 +1,1046 @@
+{
+  "schemaVersion": 1,
+  "schoolYear": "2026–27",
+  "reviewedOn": "2026-09-10",
+  "validFrom": "2026-09-01",
+  "validUntil": "2027-08-31",
+  "timezone": "America/Vancouver",
+  "sources": {
+    "canada": {
+      "label": "Canadian Heritage — commemorative days",
+      "href": "https://www.canada.ca/en/canadian-heritage/services/important-commemorative-days.html"
+    },
+    "surrey": {
+      "label": "Surrey Schools — 2026–27 calendar",
+      "href": "https://media.surreyschools.ca/media/Default/medialib/surrey-schools-edb-calendar-2026-27.aabfef204060.pdf"
+    },
+    "black": {
+      "label": "BC Black History Awareness Society — Learning Centre",
+      "href": "https://bcblackhistory.ca/learning-centre/"
+    },
+    "nigeria": {
+      "label": "Nigeria-Canada Association of BC",
+      "href": "https://ncabc.org/"
+    },
+    "yoruba": {
+      "label": "Yoruba Social and Cultural Association of BC — Surrey",
+      "href": "https://yorubabc.ca/"
+    },
+    "sikh": {
+      "label": "Surrey Khalsa Day Vaisakhi Parade — community organisers",
+      "href": "https://www.surreyvaisakhiparade.com/"
+    },
+    "southasia": {
+      "label": "South Asian Canadian Heritage — Komagata Maru histories",
+      "href": "https://www.southasiancanadianheritage.ca/koma-gata-maru/history/"
+    },
+    "chinese": {
+      "label": "Chinese Canadian Museum — living heritage",
+      "href": "https://www.chinesecanadianmuseum.ca/"
+    },
+    "vietnamese": {
+      "label": "Vietnamese Cultural Centre of Canada",
+      "href": "https://centreculturelvietnamien.ca/en/the-vietnamese-cultural-center/"
+    },
+    "filipino": {
+      "label": "MacKenzie Art Gallery — Filipino Canadian artists in conversation",
+      "href": "https://mackenzie.art/event/revisiting-the-roots/"
+    },
+    "islamic": {
+      "label": "Islamic History Month Canada — community histories",
+      "href": "https://www.islamichistorymonth.ca/"
+    },
+    "jewish": {
+      "label": "Jewish Museum and Archives of BC",
+      "href": "https://jewishmuseum.ca/"
+    },
+    "holocaust": {
+      "label": "Vancouver Holocaust Education Centre — teacher guidance",
+      "href": "https://www.vhec.org/how-to-teach-the-holocaust/"
+    },
+    "orange": {
+      "label": "Orange Shirt Society — Phyllis Webstad’s story",
+      "href": "https://orangeshirtday.org/"
+    },
+    "nctr": {
+      "label": "National Centre for Truth and Reconciliation — education",
+      "href": "https://nctr.ca/education/"
+    },
+    "katzie": {
+      "label": "Katzie First Nation — the Nation’s own voice",
+      "href": "https://katzie.ca/"
+    },
+    "semiahmoo": {
+      "label": "Semiahmoo First Nation — community",
+      "href": "https://www.semiahmoofirstnation.ca/"
+    },
+    "kwantlen": {
+      "label": "Kwantlen First Nation — the Nation’s own voice",
+      "href": "https://kwantlenfn.ca/"
+    },
+    "firstvoices": {
+      "label": "FirstVoices — community-led language resources",
+      "href": "https://www.firstvoices.com/"
+    },
+    "access": {
+      "label": "Inclusion BC — rights and community inclusion",
+      "href": "https://inclusionbc.org/"
+    },
+    "autism": {
+      "label": "Autistic Self Advocacy Network — autistic-led perspectives (international)",
+      "href": "https://autisticadvocacy.org/about-asan/about-autism/"
+    },
+    "pride": {
+      "label": "Greater Victoria School District — SOGI educator resources",
+      "href": "https://learn.sd61.bc.ca/home/sogi/"
+    },
+    "refugee": {
+      "label": "United Nations — World Refugee Day",
+      "href": "https://www.un.org/en/observances/refugee-day"
+    },
+    "language": {
+      "label": "UNESCO — International Mother Language Day",
+      "href": "https://www.unesco.org/en/days/mother-language"
+    },
+    "rights": {
+      "label": "Canadian Museum for Human Rights — education",
+      "href": "https://humanrights.ca/education"
+    },
+    "emancipation": {
+      "label": "Canadian Heritage — Emancipation Day",
+      "href": "https://www.canada.ca/en/canadian-heritage/campaigns/emancipation-day.html"
+    },
+    "asian": {
+      "label": "Canadian Heritage — Asian Heritage Month",
+      "href": "https://www.canada.ca/en/canadian-heritage/campaigns/asian-heritage-month.html"
+    },
+    "diwali": {
+      "label": "Statistics Canada — Diwali and distinct traditions",
+      "href": "https://www.statcan.gc.ca/o1/en/plus/8604-diwali-festival-lights"
+    }
+  },
+  "items": [
+    {
+      "id": "rosh-hashanah",
+      "title": "Rosh Hashanah",
+      "start": "2026-09-11",
+      "end": "2026-09-13",
+      "kind": "Religious observance",
+      "what": "For many Jewish families, Rosh Hashanah marks a new year and a time for reflection. Families observe it in different ways.",
+      "canada": "Jewish communities have long histories and active cultural lives in BC.",
+      "fact": "A new year does not begin in January in every calendar.",
+      "explore": "Name a hope for the coming year. How could we support someone else’s hope?",
+      "voices": [
+        "jewish"
+      ],
+      "lesson": "belonging-built",
+      "dateNote": "Sunset September 11 to nightfall September 13, 2026. Annual dates.",
+      "dateSource": "surrey",
+      "minBand": null,
+      "deeper": [
+        "Draw a hope for the new year. How could we help someone else with their hope?",
+        "Name a hope for the coming year. How could we support someone else’s hope? Share one source detail that helped your thinking.",
+        "Name a hope for the coming year. How could we support someone else’s hope? Then ask whose voice is missing and how schools could reduce a barrier to belonging."
+      ]
+    },
+    {
+      "id": "yom-kippur",
+      "title": "Yom Kippur",
+      "start": "2026-09-20",
+      "end": "2026-09-21",
+      "kind": "Religious observance",
+      "what": "For many Jewish people, Yom Kippur is a solemn time to reflect and seek forgiveness. Observance varies.",
+      "canada": "Recognising important days helps Canadian schools respect family commitments.",
+      "fact": "A solemn observance differs from a party or celebration.",
+      "explore": "Think of a fictional disagreement. What action could help repair it? No personal confessions.",
+      "voices": [
+        "jewish"
+      ],
+      "lesson": "belonging-built",
+      "dateNote": "Sunset September 20 to nightfall September 21, 2026. Annual dates.",
+      "dateSource": "surrey",
+      "minBand": null,
+      "deeper": [
+        "Two made-up friends disagree. Draw or say one thing they could do to repair the friendship.",
+        "Think of a fictional disagreement. What action could help repair it? No personal confessions. Share one source detail that helped your thinking.",
+        "Think of a fictional disagreement. What action could help repair it? No personal confessions. Then ask whose voice is missing and how schools could reduce a barrier to belonging."
+      ]
+    },
+    {
+      "id": "mid-autumn",
+      "title": "Mid-Autumn: different family traditions",
+      "start": "2026-09-25",
+      "end": "2026-09-25",
+      "kind": "Cultural learning",
+      "what": "Some Chinese and Vietnamese families mark this season with gatherings and moon stories. Korean Chuseok has its own history and traditions around this season.",
+      "canada": "Chinese, Vietnamese and Korean communities each contribute to Canadian life. Their traditions are not interchangeable.",
+      "fact": "Sharing a season does not mean sharing one culture or celebration.",
+      "explore": "Choose one community’s own example. Name it specifically instead of calling it “an Asian tradition”.",
+      "voices": [
+        "chinese",
+        "vietnamese",
+        "asian"
+      ],
+      "lesson": "belonging-built",
+      "dateNote": "District Mid-Autumn date: September 25, 2026. Community festivities can span other days; this is not a universal Chuseok date.",
+      "dateSource": "surrey",
+      "minBand": null,
+      "deeper": [
+        "Look at one teacher-chosen moon story or museum picture. Name its community. What do you notice?",
+        "Choose one community’s own example. Name it specifically instead of calling it “an Asian tradition”. Share one source detail that helped your thinking.",
+        "Choose one community’s own example. Name it specifically instead of calling it “an Asian tradition”. Then ask whose voice is missing and how schools could reduce a barrier to belonging."
+      ]
+    },
+    {
+      "id": "truth-reconciliation",
+      "title": "Orange Shirt Day / Truth and Reconciliation",
+      "start": "2026-09-30",
+      "end": "2026-09-30",
+      "kind": "Commemoration & responsibility",
+      "what": "Every child deserves care, family and respect. This day asks us to listen to residential school Survivors and keep learning about truth and responsibility.",
+      "canada": "Residential schools harmed Indigenous children, families, languages and Nations in Canada. These histories carry responsibilities today.",
+      "fact": "Phyllis Webstad’s orange shirt story is a specific person’s story. Indigenous peoples also have living cultures, governments and rights.",
+      "explore": "Read a teacher-selected part of Phyllis Webstad’s story. Name a responsibility schools have towards children.",
+      "voices": [
+        "orange",
+        "nctr"
+      ],
+      "lesson": "truth-place-responsibility",
+      "dateNote": "National date: September 30. Surrey lists school recognition on September 29 in 2026; confirm school plans. This is not a festival.",
+      "dateSource": "canada",
+      "minBand": null,
+      "deeper": [
+        "Read an age-appropriate version of Phyllis’s Orange Shirt. Draw what care for a child looks like.",
+        "Connect a child’s right to language and family with one school responsibility. Use non-graphic sources.",
+        "Use the existing Truth, place & responsibility lesson. Distinguish evidence, ongoing rights and a specific action."
+      ]
+    },
+    {
+      "id": "islamic-history",
+      "title": "Canadian Islamic History Month",
+      "start": "2026-10-01",
+      "end": "2026-10-31",
+      "kind": "Heritage month",
+      "what": "Muslim Canadians have many languages, family histories and ways of living. This month invites us to hear their stories.",
+      "canada": "Canada recognises Islamic History Month in October. Muslim communities are part of Canada’s past and present.",
+      "fact": "Muslim describes a religious identity, not one ethnicity or nationality.",
+      "explore": "Find one community story about learning, creativity or everyday life beyond a holiday.",
+      "voices": [
+        "islamic"
+      ],
+      "lesson": "responding-to-racism",
+      "dateNote": "",
+      "dateSource": "canada",
+      "minBand": null,
+      "deeper": [
+        "Listen to a teacher-chosen story about a Muslim Canadian. What do you learn about that person’s interests?",
+        "Find one community story about learning, creativity or everyday life beyond a holiday. Share one source detail that helped your thinking.",
+        "Find one community story about learning, creativity or everyday life beyond a holiday. Then ask whose voice is missing and how schools could reduce a barrier to belonging."
+      ]
+    },
+    {
+      "id": "latin-american",
+      "title": "Latin American Heritage Month",
+      "start": "2026-10-01",
+      "end": "2026-10-31",
+      "kind": "Heritage month",
+      "what": "Latin American Canadian communities have roots in many places and include Indigenous, Black and other identities.",
+      "canada": "October is Latin American Heritage Month in Canada.",
+      "fact": "Spanish is not the only language spoken across Latin America.",
+      "explore": "Choose Canadian library books by authors with roots in two different Latin American countries. Notice what each author shares.",
+      "voices": [
+        "canada"
+      ],
+      "lesson": "many-languages",
+      "dateNote": "",
+      "dateSource": "canada",
+      "minBand": null,
+      "deeper": [
+        "Look at a Canadian picture book by an author with Latin American roots. Name the author and something you wonder.",
+        "Choose Canadian library books by authors with roots in two different Latin American countries. Notice what each author shares. Share one source detail that helped your thinking.",
+        "Choose Canadian library books by authors with roots in two different Latin American countries. Notice what each author shares. Then ask whose voice is missing and how schools could reduce a barrier to belonging."
+      ]
+    },
+    {
+      "id": "hindu-heritage",
+      "title": "Hindu Heritage Month",
+      "start": "2026-11-01",
+      "end": "2026-11-30",
+      "kind": "Heritage month",
+      "what": "Hindu Canadians have many languages, traditions and family stories. There is no single way to be Hindu.",
+      "canada": "November is Hindu Heritage Month in Canada. Include everyday community life as well as festivals.",
+      "fact": "Hindi is a language; Hindu is a religious identity. They are not interchangeable.",
+      "explore": "Correct this sentence: “Everyone who speaks Hindi is Hindu.” What should we avoid assuming?",
+      "voices": [
+        "canada",
+        "southasia"
+      ],
+      "lesson": "many-languages",
+      "dateNote": "",
+      "dateSource": "canada",
+      "minBand": null,
+      "deeper": [
+        "Listen to the words Hindi and Hindu. One names a language; one names a religion. Why should we use the right word?",
+        "Correct this sentence: “Everyone who speaks Hindi is Hindu.” What should we avoid assuming? Share one source detail that helped your thinking.",
+        "Correct this sentence: “Everyone who speaks Hindi is Hindu.” What should we avoid assuming? Then ask whose voice is missing and how schools could reduce a barrier to belonging."
+      ]
+    },
+    {
+      "id": "diwali",
+      "title": "Diwali / Deepavali",
+      "start": "2026-11-08",
+      "end": "2026-11-08",
+      "kind": "Religious & cultural observance",
+      "what": "Many Hindu families celebrate Diwali or Deepavali. Jain traditions have their own meanings, and many Sikhs recognise Bandi Chhor Divas around this time.",
+      "canada": "These occasions are part of contemporary life for many Canadian families, including in Surrey.",
+      "fact": "Similar dates or lights do not make these traditions the same. Not every South Asian family observes them.",
+      "explore": "What could we ask a community educator about how these occasions differ? Do not ask a classmate to explain a whole religion.",
+      "voices": [
+        "diwali",
+        "sikh"
+      ],
+      "lesson": "belonging-built",
+      "dateNote": "District planning date: November 8, 2026. Observances may span several days. Verify community-specific dates each year.",
+      "dateSource": "surrey",
+      "minBand": null,
+      "deeper": [
+        "People can mark special days differently. Draw a question you would like a community educator to answer about Diwali.",
+        "What could we ask a community educator about how these occasions differ? Do not ask a classmate to explain a whole religion. Share one source detail that helped your thinking.",
+        "What could we ask a community educator about how these occasions differ? Do not ask a classmate to explain a whole religion. Then ask whose voice is missing and how schools could reduce a barrier to belonging."
+      ]
+    },
+    {
+      "id": "child-day",
+      "title": "National Child Day",
+      "start": "2026-11-20",
+      "end": "2026-11-20",
+      "kind": "Rights & belonging",
+      "what": "Children have rights to safety, learning, play and being heard. Rights belong to every child.",
+      "canada": "Canada marks National Child Day on November 20.",
+      "fact": "A right is not a prize for good behaviour.",
+      "explore": "Choose one classroom routine. How does it help children use their rights? What could improve?",
+      "voices": [
+        "rights"
+      ],
+      "lesson": "rights-in-our-room",
+      "dateNote": "",
+      "dateSource": "canada",
+      "minBand": null,
+      "deeper": [
+        "Draw one way adults can help every child learn, play or be heard.",
+        "Choose one classroom routine. How does it help children use their rights? What could improve? Share one source detail that helped your thinking.",
+        "Choose one classroom routine. How does it help children use their rights? What could improve? Then ask whose voice is missing and how schools could reduce a barrier to belonging."
+      ]
+    },
+    {
+      "id": "disability-day",
+      "title": "International Day of Persons with Disabilities",
+      "start": "2026-12-03",
+      "end": "2026-12-03",
+      "kind": "Accessibility & rights",
+      "what": "People move, communicate and learn in different ways. A barrier gets in the way of taking part.",
+      "canada": "Disabled people and disability organisations in BC work for access and equal rights.",
+      "fact": "Accessibility includes clear information, quiet spaces and communication choices, as well as ramps.",
+      "explore": "Spot one barrier in a fictional school event. Change the event so more people can take part.",
+      "voices": [
+        "access"
+      ],
+      "lesson": "barrier-detectives",
+      "dateNote": "",
+      "dateSource": "canada",
+      "minBand": null,
+      "deeper": [
+        "Draw two ways to join the same activity.",
+        "Check a sign for size, contrast and clear language.",
+        "Use a disability-led source to evaluate whose access was missed in a decision."
+      ]
+    },
+    {
+      "id": "hanukkah",
+      "title": "Hanukkah",
+      "start": "2026-12-04",
+      "end": "2026-12-12",
+      "kind": "Religious observance",
+      "what": "Many Jewish families mark Hanukkah over eight nights. Traditions vary between families and communities.",
+      "canada": "Jewish Canadian life includes many observances, languages, arts and everyday experiences.",
+      "fact": "Hanukkah is not “Jewish Christmas”. These occasions have different histories and meanings.",
+      "explore": "How can a school display name an occasion accurately without assuming everyone takes part?",
+      "voices": [
+        "jewish"
+      ],
+      "lesson": "belonging-built",
+      "dateNote": "Sunset December 4 to nightfall December 12, 2026. Annual dates.",
+      "dateSource": "surrey",
+      "minBand": null,
+      "deeper": [
+        "Hanukkah has eight nights. What question could you ask to learn about it without guessing from another holiday?",
+        "How can a school display name an occasion accurately without assuming everyone takes part? Share one source detail that helped your thinking.",
+        "How can a school display name an occasion accurately without assuming everyone takes part? Then ask whose voice is missing and how schools could reduce a barrier to belonging."
+      ]
+    },
+    {
+      "id": "human-rights",
+      "title": "Human Rights Day",
+      "start": "2026-12-10",
+      "end": "2026-12-10",
+      "kind": "Rights & belonging",
+      "what": "Human rights protect people’s dignity. They matter in schools, homes and communities.",
+      "canada": "Canadian museums and community organisations show how rights have been defended and denied.",
+      "fact": "A written right does not always mean everyone can use it equally.",
+      "explore": "Choose one right and one practical change that would help people use it here.",
+      "voices": [
+        "rights"
+      ],
+      "lesson": "rights-in-our-room",
+      "dateNote": "",
+      "dateSource": "canada",
+      "minBand": null,
+      "deeper": [
+        "Draw a classroom where everyone has a way to join in. Name one helpful change.",
+        "Choose one right and one practical change that would help people use it here. Share one source detail that helped your thinking.",
+        "Choose one right and one practical change that would help people use it here. Then ask whose voice is missing and how schools could reduce a barrier to belonging."
+      ]
+    },
+    {
+      "id": "tamil",
+      "title": "Tamil Heritage Month",
+      "start": "2027-01-01",
+      "end": "2027-01-31",
+      "kind": "Heritage month",
+      "what": "Tamil is a language with a long literary history and a living global community. Tamil Canadians have different religions and family histories.",
+      "canada": "January is Tamil Heritage Month in Canada.",
+      "fact": "Tamil, Hindi and Telugu are distinct languages.",
+      "explore": "Find these three languages in a library catalogue. How can accurate labels help people find their stories?",
+      "voices": [
+        "canada",
+        "language"
+      ],
+      "lesson": "many-languages",
+      "dateNote": "",
+      "dateSource": "canada",
+      "minBand": null,
+      "deeper": [
+        "Hear the language names Tamil, Hindi and Telugu. How can we help someone find a book in the language they want?",
+        "Find these three languages in a library catalogue. How can accurate labels help people find their stories? Share one source detail that helped your thinking.",
+        "Find these three languages in a library catalogue. How can accurate labels help people find their stories? Then ask whose voice is missing and how schools could reduce a barrier to belonging."
+      ]
+    },
+    {
+      "id": "african-voices",
+      "title": "African and Afrodescendant cultures",
+      "start": "2027-01-24",
+      "end": "2027-01-24",
+      "kind": "International cultural recognition",
+      "what": "People with African roots belong to many distinct communities. Their lives include languages, art, families, work and community-building today.",
+      "canada": "The Nigeria-Canada Association of BC and Surrey’s Yoruba association share local community voices.",
+      "fact": "One Yoruba or Nigerian story cannot represent all Nigerians or all of Africa.",
+      "explore": "Read one association’s description. Name a present-day community goal. What would another community’s voice add?",
+      "voices": [
+        "nigeria",
+        "yoruba",
+        "black"
+      ],
+      "lesson": "many-languages",
+      "dateNote": "World Day for African and Afrodescendant Culture, listed by Canadian Heritage. International observance, not an “African heritage month”.",
+      "dateSource": "canada",
+      "minBand": null,
+      "deeper": [
+        "Your teacher reads a goal from the Yoruba association in Surrey. Draw one way a community helps people.",
+        "Read one association’s description. Name a present-day community goal. What would another community’s voice add? Share one source detail that helped your thinking.",
+        "Read one association’s description. Name a present-day community goal. What would another community’s voice add? Then ask whose voice is missing and how schools could reduce a barrier to belonging."
+      ]
+    },
+    {
+      "id": "holocaust",
+      "title": "International Holocaust Remembrance Day",
+      "start": "2027-01-27",
+      "end": "2027-01-27",
+      "kind": "Remembrance · teacher-selected 6–7",
+      "what": "The Holocaust was the persecution and murder of six million Jewish people by Nazi Germany and its collaborators. We learn from evidence and Survivors to remember people and recognise antisemitism.",
+      "canada": "Vancouver Holocaust Education Centre preserves testimony and teaches Canadian connections, including exclusion of Jewish refugees.",
+      "fact": "Jewish lives must be represented beyond persecution, including family, culture and life today.",
+      "explore": "With teacher guidance, read a short, non-graphic life story. What do we learn about the person beyond what happened to them?",
+      "voices": [
+        "holocaust",
+        "jewish"
+      ],
+      "lesson": "responding-to-racism",
+      "dateNote": "",
+      "dateSource": "canada",
+      "minBand": "6–7",
+      "deeper": [
+        "Choose a separate belonging story. Do not teach Holocaust details through this card.",
+        "Use a teacher-selected story about standing against exclusion. Do not simulate trauma.",
+        "Preview VHEC guidance and a non-graphic life story. No role-play, atrocity images or debates about whether documented harms occurred."
+      ]
+    },
+    {
+      "id": "black-history",
+      "title": "Black History Month in Canada",
+      "start": "2027-02-01",
+      "end": "2027-02-28",
+      "kind": "Heritage month",
+      "what": "Black Canadians have shaped communities through art, work, care, organising and ideas. These stories belong in learning all year.",
+      "canada": "Start with BC Black histories and community voices, then connect with other Black Canadian experiences.",
+      "fact": "Black Canadian history is not simply US civil-rights history moved north. Canada has its own histories of exclusion and resistance.",
+      "explore": "Choose a person or community from the BC Learning Centre. Name a goal, an action and what changed.",
+      "voices": [
+        "black"
+      ],
+      "lesson": "responding-to-racism",
+      "dateNote": "",
+      "dateSource": "canada",
+      "minBand": null,
+      "deeper": [
+        "Hear a teacher-selected story of a Black Canadian creator. Draw one contribution.",
+        "Connect a BC story to a place, a barrier and an action.",
+        "Compare a historic effort with a contemporary Black Canadian initiative. What progress and remaining barriers can you document?"
+      ]
+    },
+    {
+      "id": "lunar-new-year",
+      "title": "Lunar New Year: distinct traditions",
+      "start": "2027-02-06",
+      "end": "2027-02-06",
+      "kind": "Cultural & family observances",
+      "what": "Many Chinese families celebrate a new year at this time. Vietnamese Tết and Korean Seollal have their own names, meanings and traditions.",
+      "canada": "Canadian communities carry, change and share traditions across generations.",
+      "fact": "“Chinese” does not describe every East Asian community. Cantonese and Mandarin are also distinct language varieties.",
+      "explore": "Compare Tết and Seollal with one named Chinese community example. What should a school avoid treating as identical?",
+      "voices": [
+        "chinese",
+        "asian",
+        "vietnamese"
+      ],
+      "lesson": "many-languages",
+      "dateNote": "District planning date: February 6, 2027. Community events may span other days. Annual dates.",
+      "dateSource": "surrey",
+      "minBand": null,
+      "deeper": [
+        "Say or listen to the names Tết and Seollal. They name different traditions. What could we ask to learn more?",
+        "Compare Tết and Seollal with one named Chinese community example. What should a school avoid treating as identical? Share one source detail that helped your thinking.",
+        "Compare Tết and Seollal with one named Chinese community example. What should a school avoid treating as identical? Then ask whose voice is missing and how schools could reduce a barrier to belonging."
+      ]
+    },
+    {
+      "id": "ramadan",
+      "title": "Ramadan",
+      "start": "2027-02-07",
+      "end": "2027-03-08",
+      "kind": "Religious month",
+      "what": "For many Muslims, Ramadan is a month of reflection, prayer, generosity and community. Some people fast; many children and others do not.",
+      "canada": "Schools can offer flexible activities and respect family choices without singling anyone out.",
+      "fact": "The Islamic calendar is lunar, so Ramadan moves through the Gregorian year. Appearance does not tell us who is fasting.",
+      "explore": "Suggest a way to make an activity welcoming whether someone is fasting or not. No one needs to explain their choice.",
+      "voices": [
+        "islamic"
+      ],
+      "lesson": "belonging-built",
+      "dateNote": "Anticipated: sunset February 7–March 8, 2027 in the district calendar. Moon sighting and community practice can shift dates. Not a fasting timetable.",
+      "dateSource": "surrey",
+      "minBand": null,
+      "deeper": [
+        "Draw two ways to join a class activity. Could someone join without eating or drinking?",
+        "Suggest a way to make an activity welcoming whether someone is fasting or not. No one needs to explain their choice. Share one source detail that helped your thinking.",
+        "Suggest a way to make an activity welcoming whether someone is fasting or not. No one needs to explain their choice. Then ask whose voice is missing and how schools could reduce a barrier to belonging."
+      ]
+    },
+    {
+      "id": "mother-language",
+      "title": "International Mother Language Day",
+      "start": "2027-02-21",
+      "end": "2027-02-21",
+      "kind": "Language & belonging",
+      "what": "People may use several languages at home, at school or with friends. Languages carry stories, knowledge and relationships.",
+      "canada": "Canada includes Indigenous languages, English, French, sign languages and languages brought through migration.",
+      "fact": "Hindi, Punjabi, Tamil, Telugu, Tagalog, Korean, Vietnamese and Cantonese are distinct. A language does not tell us someone’s religion or birthplace.",
+      "explore": "Make a welcome sign clearer using pictures and words. Invite voluntary language additions; never assign translation based on a child’s name or appearance.",
+      "voices": [
+        "language",
+        "firstvoices"
+      ],
+      "lesson": "many-languages",
+      "dateNote": "",
+      "dateSource": "canada",
+      "minBand": null,
+      "deeper": [
+        "Show a welcome with a drawing, gesture or words you choose.",
+        "Test a multilingual sign with a willing reader; do not rely on unverified automatic translation.",
+        "Compare which languages appear on public signs. Propose a change and respectful verification process."
+      ]
+    },
+    {
+      "id": "francophonie",
+      "title": "Mois de la Francophonie",
+      "start": "2027-03-01",
+      "end": "2027-03-31",
+      "kind": "Language & community month",
+      "what": "French-speaking communities live across Canada and the world. Their accents, stories and identities are diverse.",
+      "canada": "Francophone life in BC is part of Canada’s multilingual present.",
+      "fact": "A French speaker may also speak other languages and have African, Asian, European, Indigenous or other roots.",
+      "explore": "Can people share a language and have different stories? Think of examples without assigning classmates identities.",
+      "voices": [
+        "language",
+        "canada"
+      ],
+      "lesson": "many-languages",
+      "dateNote": "",
+      "dateSource": "surrey",
+      "minBand": null,
+      "deeper": [
+        "Look at a French-language picture book. Could people who speak the same language have different family stories?",
+        "Can people share a language and have different stories? Think of examples without assigning classmates identities. Share one source detail that helped your thinking.",
+        "Can people share a language and have different stories? Think of examples without assigning classmates identities. Then ask whose voice is missing and how schools could reduce a barrier to belonging."
+      ]
+    },
+    {
+      "id": "eid-fitr",
+      "title": "Eid al-Fitr",
+      "start": "2027-03-09",
+      "end": "2027-03-10",
+      "kind": "Religious celebration",
+      "what": "For many Muslims, Eid al-Fitr marks the end of Ramadan. Families may gather and give to others in different ways.",
+      "canada": "Eid is part of Canadian family life across many ethnic and language communities.",
+      "fact": "Eid al-Fitr and Eid al-Adha are different observances.",
+      "explore": "Design a welcome message that allows different family plans and does not assume everyone celebrates.",
+      "voices": [
+        "islamic"
+      ],
+      "lesson": "belonging-built",
+      "dateNote": "Anticipated March 9 or 10, 2027; begins the preceding evening. Planning window, not a universal two-day duration. Confirm locally.",
+      "dateSource": "surrey",
+      "minBand": null,
+      "deeper": [
+        "Make a welcoming message for families celebrating Eid. Leave room for people who have different plans.",
+        "Design a welcome message that allows different family plans and does not assume everyone celebrates. Share one source detail that helped your thinking.",
+        "Design a welcome message that allows different family plans and does not assume everyone celebrates. Then ask whose voice is missing and how schools could reduce a barrier to belonging."
+      ]
+    },
+    {
+      "id": "anti-racism",
+      "title": "International Day for the Elimination of Racial Discrimination",
+      "start": "2027-03-21",
+      "end": "2027-03-21",
+      "kind": "Rights & action",
+      "what": "Racism can appear in words, actions and unfair rules. We can learn safe ways to interrupt it and support people affected.",
+      "canada": "Canadian communities have challenged unfair rules and continue to work for change.",
+      "fact": "Being kind matters; changing an unfair rule matters too.",
+      "explore": "Try the Hub’s safe-response practice with a fictional situation. What can a witness do?",
+      "voices": [
+        "rights",
+        "black"
+      ],
+      "lesson": "responding-to-racism",
+      "dateNote": "",
+      "dateSource": "canada",
+      "minBand": null,
+      "deeper": [
+        "Practise telling a trusted adult when someone is treated unfairly. You do not have to solve it alone.",
+        "Try the Hub’s safe-response practice with a fictional situation. What can a witness do? Share one source detail that helped your thinking.",
+        "Try the Hub’s safe-response practice with a fictional situation. What can a witness do? Then ask whose voice is missing and how schools could reduce a barrier to belonging."
+      ]
+    },
+    {
+      "id": "indigenous-languages",
+      "title": "National Indigenous Languages Day",
+      "start": "2027-03-31",
+      "end": "2027-03-31",
+      "kind": "Living languages & rights",
+      "what": "Indigenous languages hold knowledge and relationships with lands and communities. Communities lead work to keep languages strong.",
+      "canada": "FirstVoices shares resources under participating Indigenous communities’ direction.",
+      "fact": "Public access is not permission to copy a story, song or design.",
+      "explore": "Open a community’s own public language page. Notice how it names its language and explains what may be shared.",
+      "voices": [
+        "firstvoices"
+      ],
+      "lesson": "truth-place-responsibility",
+      "dateNote": "",
+      "dateSource": "canada",
+      "minBand": null,
+      "deeper": [
+        "Listen to one word a local Nation has chosen to share publicly. Name the language and who shared it.",
+        "Open a community’s own public language page. Notice how it names its language and explains what may be shared. Share one source detail that helped your thinking.",
+        "Open a community’s own public language page. Notice how it names its language and explains what may be shared. Then ask whose voice is missing and how schools could reduce a barrier to belonging."
+      ]
+    },
+    {
+      "id": "sikh-heritage",
+      "title": "Sikh Heritage Month",
+      "start": "2027-04-01",
+      "end": "2027-04-30",
+      "kind": "Heritage month",
+      "what": "Sikh Canadians have long histories of community-building, service and challenging unfair treatment. Sikh experiences are diverse.",
+      "canada": "April is Sikh Heritage Month in Canada. Surrey’s Sikh communities are active throughout the year.",
+      "fact": "Sikh and Hindu are different religious identities. Punjabi is a language, not a synonym for either.",
+      "explore": "Use a community source to name a way people care for others. What could our class learn about service?",
+      "voices": [
+        "sikh",
+        "southasia"
+      ],
+      "lesson": "belonging-built",
+      "dateNote": "",
+      "dateSource": "canada",
+      "minBand": null,
+      "deeper": [
+        "Hear a teacher-selected example of Sikh community service. Draw a way our class could help someone.",
+        "Use a community source to name a way people care for others. What could our class learn about service? Share one source detail that helped your thinking.",
+        "Use a community source to name a way people care for others. What could our class learn about service? Then ask whose voice is missing and how schools could reduce a barrier to belonging."
+      ]
+    },
+    {
+      "id": "autism",
+      "title": "Autism acceptance",
+      "start": "2027-04-01",
+      "end": "2027-04-30",
+      "kind": "Acceptance & accessibility",
+      "what": "Autistic people have different ways of sensing, communicating and learning. People should be able to ask for what helps them.",
+      "canada": "Surrey Schools recognises Autism Acceptance Month. Inclusion should change everyday classroom conditions.",
+      "fact": "Eye contact is not the only way to listen. No student needs to share a diagnosis.",
+      "explore": "Offer speaking, drawing or writing as ways to answer. Which barriers does having a choice remove?",
+      "voices": [
+        "access",
+        "autism"
+      ],
+      "lesson": "barrier-detectives",
+      "dateNote": "April district recognition; April 2 is its named acceptance day. The autistic-led source is international, paired with BC advocacy.",
+      "dateSource": "surrey",
+      "minBand": null,
+      "deeper": [
+        "Try answering by speaking, drawing or pointing. Why is it helpful to have a choice?",
+        "Offer speaking, drawing or writing as ways to answer. Which barriers does having a choice remove? Share one source detail that helped your thinking.",
+        "Offer speaking, drawing or writing as ways to answer. Which barriers does having a choice remove? Then ask whose voice is missing and how schools could reduce a barrier to belonging."
+      ]
+    },
+    {
+      "id": "vaisakhi",
+      "title": "Vaisakhi",
+      "start": "2027-04-14",
+      "end": "2027-04-14",
+      "kind": "Religious & cultural observance",
+      "what": "For many Sikhs, Vaisakhi remembers the founding of the Khalsa in 1699. The season also has harvest meanings in Punjab.",
+      "canada": "Surrey’s Nagar Kirtan brings people together, with service and sharing playing important roles.",
+      "fact": "The religious date and the Surrey parade date need not be the same.",
+      "explore": "Read the organisers’ description. How is service different from simply putting on a display?",
+      "voices": [
+        "sikh"
+      ],
+      "lesson": "belonging-built",
+      "dateNote": "April 14, 2027 in the district calendar. Check the organiser for the separate 2027 parade date; a 2026 event page is not a 2027 schedule.",
+      "dateSource": "surrey",
+      "minBand": null,
+      "deeper": [
+        "Look at a teacher-chosen community photo of Vaisakhi. What question could we ask about people helping one another?",
+        "Read the organisers’ description. How is service different from simply putting on a display? Share one source detail that helped your thinking.",
+        "Read the organisers’ description. How is service different from simply putting on a display? Then ask whose voice is missing and how schools could reduce a barrier to belonging."
+      ]
+    },
+    {
+      "id": "passover",
+      "title": "Passover / Pesach",
+      "start": "2027-04-21",
+      "end": "2027-04-29",
+      "kind": "Religious observance",
+      "what": "For many Jewish families, Passover is a time for remembering, asking questions and telling a story of freedom. Customs differ.",
+      "canada": "Jewish Canadian stories include many places, languages and traditions.",
+      "fact": "Questions are important in many Passover gatherings. Learning about a ritual does not mean performing it.",
+      "explore": "What makes a question open thoughtful conversation? Write one about freedom or belonging.",
+      "voices": [
+        "jewish"
+      ],
+      "lesson": "belonging-built",
+      "dateNote": "Sunset April 21 to nightfall April 29, 2027 in the district calendar. Some communities observe seven days; others eight.",
+      "dateSource": "surrey",
+      "minBand": null,
+      "deeper": [
+        "Think of one question about freedom or belonging. How does asking a question help us learn?",
+        "What makes a question open thoughtful conversation? Write one about freedom or belonging. Share one source detail that helped your thinking.",
+        "What makes a question open thoughtful conversation? Write one about freedom or belonging. Then ask whose voice is missing and how schools could reduce a barrier to belonging."
+      ]
+    },
+    {
+      "id": "asian-heritage",
+      "title": "Asian Heritage Month",
+      "start": "2027-05-01",
+      "end": "2027-05-31",
+      "kind": "Heritage month",
+      "what": "Asian Canadian communities have roots in many regions and speak many languages. Their stories include creativity, migration, resistance and everyday life.",
+      "canada": "May is Asian Heritage Month in Canada. BC histories include discriminatory laws and people challenging them.",
+      "fact": "Asian includes South, East, Southeast, Central and West Asian experiences. One Chinese Canadian story cannot represent them all.",
+      "explore": "Choose two named communities. Find one contemporary voice and one historical question.",
+      "voices": [
+        "asian",
+        "chinese",
+        "southasia"
+      ],
+      "lesson": "many-languages",
+      "dateNote": "",
+      "dateSource": "canada",
+      "minBand": null,
+      "deeper": [
+        "Hear a Canadian story. Name its author and something it makes you wonder.",
+        "Use named Chinese, Korean, Vietnamese, Filipino, Tamil or Telugu examples. Distinguish language, religion and nationality.",
+        "Read the Komagata Maru source. Its passengers included Sikhs, Muslims and Hindus. Compare that evidence with historical newspaper labels."
+      ]
+    },
+    {
+      "id": "jewish-heritage",
+      "title": "Canadian Jewish Heritage Month",
+      "start": "2027-05-01",
+      "end": "2027-05-31",
+      "kind": "Heritage month",
+      "what": "Jewish Canadian life includes family stories, work, art, languages and community organisations. Religious and secular identities both belong.",
+      "canada": "May is Canadian Jewish Heritage Month. BC’s Jewish museum shares local voices.",
+      "fact": "Jewish identity cannot be reduced to one holiday, persecution or a political viewpoint.",
+      "explore": "Choose a BC museum story about everyday life. What would be missing if we only studied holidays?",
+      "voices": [
+        "jewish"
+      ],
+      "lesson": "belonging-built",
+      "dateNote": "",
+      "dateSource": "canada",
+      "minBand": null,
+      "deeper": [
+        "Hear a BC Jewish family story from the museum. Draw one thing you learned about everyday life.",
+        "Choose a BC museum story about everyday life. What would be missing if we only studied holidays? Share one source detail that helped your thinking.",
+        "Choose a BC museum story about everyday life. What would be missing if we only studied holidays? Then ask whose voice is missing and how schools could reduce a barrier to belonging."
+      ]
+    },
+    {
+      "id": "eid-adha",
+      "title": "Eid al-Adha",
+      "start": "2027-05-16",
+      "end": "2027-05-20",
+      "kind": "Religious celebration",
+      "what": "Many Muslims observe Eid al-Adha as a time of faith, generosity and connection. Family customs vary.",
+      "canada": "Muslim Canadians include people of many languages and backgrounds, including people born in Canada.",
+      "fact": "This Eid is connected with the time of Hajj, the pilgrimage to Mecca. Not everyone makes that journey.",
+      "explore": "Think about generosity beyond money. What could people share to make a community more welcoming?",
+      "voices": [
+        "islamic"
+      ],
+      "lesson": "belonging-built",
+      "dateNote": "Anticipated district planning window: May 16–20, 2027. Start and duration depend on community practice and lunar confirmation; not five universal festival days.",
+      "dateSource": "surrey",
+      "minBand": null,
+      "deeper": [
+        "What could you share besides money or things? Draw or say one generous action.",
+        "Think about generosity beyond money. What could people share to make a community more welcoming? Share one source detail that helped your thinking.",
+        "Think about generosity beyond money. What could people share to make a community more welcoming? Then ask whose voice is missing and how schools could reduce a barrier to belonging."
+      ]
+    },
+    {
+      "id": "against-homophobia",
+      "title": "Belonging without homophobia, transphobia or biphobia",
+      "start": "2027-05-17",
+      "end": "2027-05-17",
+      "kind": "Human rights & inclusion",
+      "what": "Everyone should be safe to be themselves. Different families and people deserve equal care and respect.",
+      "canada": "Canada recognises May 17 as a day against homophobia, transphobia and biphobia. BC schools use age-appropriate inclusion resources.",
+      "fact": "Clothes, interests or family do not tell us everything about a person.",
+      "explore": "Practise responding to “That’s only for boys/girls”: “People can enjoy different things.”",
+      "voices": [
+        "pride"
+      ],
+      "lesson": "belonging-built",
+      "dateNote": "",
+      "dateSource": "canada",
+      "minBand": null,
+      "deeper": [
+        "Read an inclusive family story and practise kind language.",
+        "Discuss fictional exclusion and a safe bystander response.",
+        "Connect a fictional example to rights and school responsibilities. Do not debate classmates’ identities or ask anyone to come out."
+      ]
+    },
+    {
+      "id": "accessability",
+      "title": "National AccessAbility Week",
+      "start": "2027-05-30",
+      "end": "2027-06-05",
+      "kind": "Accessibility & action",
+      "what": "An accessible community plans for many ways of moving, sensing and communicating. Everyone needs a way to take part.",
+      "canada": "Canada’s National AccessAbility Week begins on the last Sunday of May.",
+      "fact": "Access works best when planned from the start.",
+      "explore": "Revisit a barrier identified earlier. Did a change help? What evidence could we collect respectfully?",
+      "voices": [
+        "access"
+      ],
+      "lesson": "barrier-detectives",
+      "dateNote": "May 30–June 5, 2027. Reviewed annual window.",
+      "dateSource": "canada",
+      "minBand": null,
+      "deeper": [
+        "Draw two different ways to enjoy the same game. How can we plan for both?",
+        "Revisit a barrier identified earlier. Did a change help? What evidence could we collect respectfully? Share one source detail that helped your thinking.",
+        "Revisit a barrier identified earlier. Did a change help? What evidence could we collect respectfully? Then ask whose voice is missing and how schools could reduce a barrier to belonging."
+      ]
+    },
+    {
+      "id": "indigenous-history",
+      "title": "National Indigenous History Month",
+      "start": "2027-06-01",
+      "end": "2027-06-30",
+      "kind": "Histories, rights & responsibility",
+      "what": "First Nations, Métis and Inuit are distinct peoples with living cultures, histories and rights. Learn from communities’ own voices.",
+      "canada": "Begin locally with Katzie, Kwantlen and Semiahmoo voices, following school and Nation guidance about relationships and place.",
+      "fact": "Indigenous peoples are not part of Canada’s immigration story. Their relationships with these lands long predate Canada.",
+      "explore": "Choose a local Nation’s own page. What does it want visitors to know about its community today?",
+      "voices": [
+        "katzie",
+        "kwantlen",
+        "semiahmoo"
+      ],
+      "lesson": "truth-place-responsibility",
+      "dateNote": "",
+      "dateSource": "canada",
+      "minBand": null,
+      "deeper": [
+        "Learn a local Nation’s name and one publicly shared fact about its community today.",
+        "Distinguish a Nation’s own source from someone else describing it.",
+        "Connect a contemporary Nation-led priority to rights, land or governance. Do not imitate ceremonies or designs."
+      ]
+    },
+    {
+      "id": "filipino-heritage",
+      "title": "Filipino Heritage Month",
+      "start": "2027-06-01",
+      "end": "2027-06-30",
+      "kind": "Heritage month",
+      "what": "Filipino Canadians have different languages, creative traditions and family histories. Their lives include more than festivals.",
+      "canada": "June is Filipino Heritage Month in Canada. Canadian artists explore home, memory and identity.",
+      "fact": "Tagalog is one of many languages used in the Philippines and its diaspora. Not every Filipino person speaks it.",
+      "explore": "Look at a work or description by a Filipino Canadian artist. What does the artist say about home? Do not copy a cultural design.",
+      "voices": [
+        "filipino",
+        "canada"
+      ],
+      "lesson": "many-languages",
+      "dateNote": "",
+      "dateSource": "canada",
+      "minBand": null,
+      "deeper": [
+        "Look at a Filipino Canadian artist’s work chosen by your teacher. What does it make you wonder about home?",
+        "Look at a work or description by a Filipino Canadian artist. What does the artist say about home? Do not copy a cultural design. Share one source detail that helped your thinking.",
+        "Look at a work or description by a Filipino Canadian artist. What does the artist say about home? Do not copy a cultural design. Then ask whose voice is missing and how schools could reduce a barrier to belonging."
+      ]
+    },
+    {
+      "id": "pride",
+      "title": "Pride month / Pride season",
+      "start": "2027-06-01",
+      "end": "2027-06-30",
+      "kind": "Belonging & rights",
+      "what": "Pride recognises 2SLGBTQ+ people, families and communities. Everyone deserves safety, friendship and respect.",
+      "canada": "June launches Pride season in Canada; local events may happen in other summer months.",
+      "fact": "Two-Spirit is used by some Indigenous people and has culturally specific meanings. It is not a label for all Indigenous LGBTQ+ people.",
+      "explore": "Can different families see themselves in our classroom stories? Suggest a thoughtful addition.",
+      "voices": [
+        "pride"
+      ],
+      "lesson": "belonging-built",
+      "dateNote": "June classroom recognition; Canadian Pride season extends beyond June. This is not a local parade schedule.",
+      "dateSource": "canada",
+      "minBand": null,
+      "deeper": [
+        "Read an inclusive family story. Name ways families care for one another.",
+        "Practise supporting someone facing exclusion in a fictional situation.",
+        "Use a teacher-selected BC resource to connect inclusion with rights and safe action. Sharing identity is always optional."
+      ]
+    },
+    {
+      "id": "refugee-day",
+      "title": "World Refugee Day",
+      "start": "2027-06-20",
+      "end": "2027-06-20",
+      "kind": "Migration, rights & welcome",
+      "what": "Refugees have had to leave their country because it is not safe for them. Each person has their own skills, hopes and story.",
+      "canada": "People who have sought refuge help shape Canada. Welcome also means removing barriers to everyday life.",
+      "fact": "Refugee and immigrant do not mean the same thing. No one owes the class their family’s migration story.",
+      "explore": "Design a welcome that gives a new student useful choices, without asking why their family moved.",
+      "voices": [
+        "refugee"
+      ],
+      "lesson": "belonging-built",
+      "dateNote": "",
+      "dateSource": "canada",
+      "minBand": null,
+      "deeper": [
+        "Draw a helpful welcome and offer a choice of activities.",
+        "Identify a language, transport or school-information barrier and an action to reduce it.",
+        "Compare a person’s own account with a headline. What is left out? Do not simulate displacement."
+      ]
+    },
+    {
+      "id": "indigenous-peoples-day",
+      "title": "National Indigenous Peoples Day",
+      "start": "2027-06-21",
+      "end": "2027-06-21",
+      "kind": "Celebration & ongoing relationships",
+      "what": "This day celebrates First Nations, Inuit and Métis cultures and contributions. Each people and Nation has its own traditions.",
+      "canada": "June 21 is National Indigenous Peoples Day in Canada. Local Nation-led events have their own invitations and protocols.",
+      "fact": "Celebration in June does not replace truth-learning in September or ongoing responsibilities.",
+      "explore": "Revisit a local Nation’s source. What have we learned about its living work and priorities?",
+      "voices": [
+        "katzie",
+        "kwantlen",
+        "semiahmoo"
+      ],
+      "lesson": "truth-place-responsibility",
+      "dateNote": "",
+      "dateSource": "canada",
+      "minBand": null,
+      "deeper": [
+        "Revisit a local Nation’s own page. Name the Nation and something it shares about its community today.",
+        "Revisit a local Nation’s source. What have we learned about its living work and priorities? Share one source detail that helped your thinking.",
+        "Revisit a local Nation’s source. What have we learned about its living work and priorities? Then ask whose voice is missing and how schools could reduce a barrier to belonging."
+      ]
+    },
+    {
+      "id": "multiculturalism",
+      "title": "Canadian Multiculturalism Day",
+      "start": "2027-06-27",
+      "end": "2027-06-27",
+      "kind": "Belonging & reflection",
+      "what": "Canada holds many languages, histories, identities and ways of belonging. People can have several identities at once.",
+      "canada": "June 27 invites reflection on who is heard and who still faces barriers in multicultural Canada.",
+      "fact": "Cultural recognition does not replace Indigenous rights or action against discrimination.",
+      "explore": "Look back at the year. Whose stories did we hear often? Whose voices should we seek next?",
+      "voices": [
+        "canada",
+        "rights"
+      ],
+      "lesson": "concern-to-action",
+      "dateNote": "",
+      "dateSource": "canada",
+      "minBand": null,
+      "deeper": [
+        "Remember a story we heard this year. Whose story would you like to hear next?",
+        "Look back at the year. Whose stories did we hear often? Whose voices should we seek next? Share one source detail that helped your thinking.",
+        "Look back at the year. Whose stories did we hear often? Whose voices should we seek next? Then ask whose voice is missing and how schools could reduce a barrier to belonging."
+      ]
+    },
+    {
+      "id": "emancipation",
+      "title": "Emancipation Day in Canada",
+      "start": "2027-08-01",
+      "end": "2027-08-01",
+      "kind": "Commemoration & continuing freedom",
+      "what": "Emancipation means being freed from enslavement. This day remembers people who resisted slavery and worked for freedom.",
+      "canada": "August 1 marks the 1834 coming into effect of the law abolishing slavery across much of the British Empire, including what is now Canada.",
+      "fact": "Slavery existed in the lands now called Canada. Abolition did not end racism or create equal opportunity.",
+      "explore": "What is the difference between a law changing and people having equal opportunities? Use a Black Canadian source.",
+      "voices": [
+        "emancipation",
+        "black"
+      ],
+      "lesson": "responding-to-racism",
+      "dateNote": "Summer observance. Preview in June or revisit in September; no summer assignment is expected.",
+      "dateSource": "canada",
+      "minBand": null,
+      "deeper": [
+        "Use a teacher-selected story about freedom and fairness without violent details.",
+        "Name a Black Canadian community action challenging an unfair condition.",
+        "Investigate what abolition changed, its limits and a later struggle for rights in Canada."
+      ]
+    }
+  ]
+}

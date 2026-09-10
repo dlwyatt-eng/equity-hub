@@ -1,0 +1,142 @@
+[
+  {
+    "key": "canada",
+    "status": 200,
+    "url": "https://www.canada.ca/en/canadian-heritage/services/important-commemorative-days.html"
+  },
+  {
+    "key": "surrey",
+    "status": 200,
+    "url": "https://media.surreyschools.ca/media/Default/medialib/surrey-schools-edb-calendar-2026-27.aabfef204060.pdf"
+  },
+  {
+    "key": "black",
+    "status": 200,
+    "url": "https://bcblackhistory.ca/learning-centre/"
+  },
+  {
+    "key": "nigeria",
+    "status": 200,
+    "url": "https://ncabc.org/"
+  },
+  {
+    "key": "yoruba",
+    "status": 200,
+    "url": "https://yorubabc.ca/"
+  },
+  {
+    "key": "sikh",
+    "status": 200,
+    "url": "https://www.surreyvaisakhiparade.com/"
+  },
+  {
+    "key": "southasia",
+    "status": 200,
+    "url": "https://www.southasiancanadianheritage.ca/koma-gata-maru/history/"
+  },
+  {
+    "key": "chinese",
+    "status": 200,
+    "url": "https://www.chinesecanadianmuseum.ca/"
+  },
+  {
+    "key": "vietnamese",
+    "status": 200,
+    "url": "https://centreculturelvietnamien.ca/en/the-vietnamese-cultural-center/"
+  },
+  {
+    "key": "filipino",
+    "status": 200,
+    "url": "https://mackenzie.art/event/revisiting-the-roots/"
+  },
+  {
+    "key": "islamic",
+    "status": 200,
+    "url": "https://www.islamichistorymonth.ca/"
+  },
+  {
+    "key": "jewish",
+    "status": 200,
+    "url": "https://jewishmuseum.ca/"
+  },
+  {
+    "key": "holocaust",
+    "status": 200,
+    "url": "https://www.vhec.org/how-to-teach-the-holocaust/"
+  },
+  {
+    "key": "orange",
+    "status": 200,
+    "url": "https://orangeshirtday.org/"
+  },
+  {
+    "key": "nctr",
+    "status": 200,
+    "url": "https://nctr.ca/education/"
+  },
+  {
+    "key": "katzie",
+    "status": 200,
+    "url": "https://katzie.ca/"
+  },
+  {
+    "key": "semiahmoo",
+    "status": 200,
+    "url": "https://www.semiahmoofirstnation.ca/"
+  },
+  {
+    "key": "kwantlen",
+    "status": 200,
+    "url": "https://kwantlenfn.ca/"
+  },
+  {
+    "key": "firstvoices",
+    "status": 200,
+    "url": "https://www.firstvoices.com/"
+  },
+  {
+    "key": "access",
+    "status": 200,
+    "url": "https://inclusionbc.org/"
+  },
+  {
+    "key": "autism",
+    "status": 200,
+    "url": "https://autisticadvocacy.org/about-asan/about-autism/"
+  },
+  {
+    "key": "pride",
+    "status": 200,
+    "url": "https://learn.sd61.bc.ca/home/sogi/"
+  },
+  {
+    "key": "refugee",
+    "status": 200,
+    "url": "https://www.un.org/en/observances/refugee-day"
+  },
+  {
+    "key": "language",
+    "status": 200,
+    "url": "https://www.unesco.org/en/days/mother-language"
+  },
+  {
+    "key": "rights",
+    "status": 200,
+    "url": "https://humanrights.ca/education"
+  },
+  {
+    "key": "emancipation",
+    "status": 200,
+    "url": "https://www.canada.ca/en/canadian-heritage/campaigns/emancipation-day.html"
+  },
+  {
+    "key": "asian",
+    "status": 200,
+    "url": "https://www.canada.ca/en/canadian-heritage/campaigns/asian-heritage-month.html"
+  },
+  {
+    "key": "diwali",
+    "status": 200,
+    "url": "https://www.statcan.gc.ca/o1/en/plus/8604-diwali-festival-lights"
+  }
+]

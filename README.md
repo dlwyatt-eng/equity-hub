@@ -1,6 +1,6 @@
 # Equity Learning & Action Hub
 
-A public, standalone K–12 teaching hub with preparation guidance, projector-ready student screens, printable resources, direct public sources, and grade-band adaptations. It does not require access to the Teacher Hub or Learn Hub.
+A public, standalone K–7 teaching hub with preparation guidance, projector-ready student screens, printable resources, direct public sources, and grade-band adaptations. It does not require access to the Teacher Hub or Learn Hub.
 
 ## Canonical inquiry content
 

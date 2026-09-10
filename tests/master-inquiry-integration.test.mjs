@@ -51,7 +51,7 @@ test("all seven calendar provocations are complete and discoverable", () => {
     assert.ok(provocation.source?.href.startsWith("https://"), `${provocation.id} needs a direct public source`);
     assert.match(page, new RegExp(provocation.id));
   }
-  for (const band of ["K–2", "3–5", "6–8", "9–12"]) assert.match(panels, new RegExp(band));
+  for (const band of ["K–2", "3–5", "6–7"]) assert.match(panels, new RegExp(band));
 });
 
 test("previously unused evidence and climate visuals are now purposeful", () => {
