@@ -110,9 +110,9 @@
     {
       "id": "terry-fox-access-and-action",
       "student": {
-        "learning": "We are learning to tell Terry Fox's story respectfully and notice barriers that can keep people from taking part.",
+        "learning": "We are learning how Terry Fox's courage and work for cancer research can inspire us to help others and make it easier for everyone to take part.",
         "lookListen": "Look at the Terry Fox Foundation image and the route or fundraising graph your teacher shares. Find one detail in each.",
-        "before": "What can you see about Terry's actions and the support that helped make them possible?",
+        "before": "Which of Terry's choices inspire you? What support helped make his actions possible?",
         "noticeWonder": [
           "Point to three details. Do not guess how someone feels from an image.",
           "Who helped make this event possible? What might make it hard for someone to join a school event?"
@@ -120,7 +120,7 @@
         "questions": [
           "How can a fundraising message respect people instead of making them feel guilty?",
           "What could stop someone from getting cancer treatment or benefiting from research?",
-          "How could we check whether a school action helped?"
+          "How could we turn inspiration into a useful school action and check whether it helped?"
         ],
         "discussion": "With a partner, sort the fictional messages: respects a person's choice, makes it easier to join, puts pressure on people, or needs more information. Explain one choice using words from the card. You do not need to share a personal story.",
         "product": "Rewrite one fictional school fundraising message. Say what the event supports, offer a way to join without donating, make participation a choice, and explain how the school will report the results. Credit the Terry Fox Foundation source you used.",
@@ -129,17 +129,17 @@
       "title": "Terry Fox: Access, Action & the Stories We Tell",
       "lens": "Disability justice · health-care access · ethical fundraising",
       "timing": "35–50 minutes",
-      "learning": "We are learning to honour a person's choices without using disability as tragedy or inspiration for everyone else.",
+      "learning": "We are learning to appreciate Terry Fox's courage, determination and work for cancer research, and turn inspiration into useful, accessible action.",
       "hook": "Project one official Terry Fox Foundation image and a simple route or fundraising graph for 90 seconds.",
-      "before": "What details show action, access, support, or barriers?",
+      "before": "Which of Terry's choices inspire us, and what details show the support that helped make his actions possible?",
       "noticeWonder": ["Notice three details without guessing feelings.", "Wonder who made the event possible and who might still face a barrier."],
-      "questions": ["How can fundraising messages protect dignity?", "Who gets access to treatment and research benefits?", "What makes an action useful instead of symbolic?"],
+      "questions": ["How can fundraising messages protect dignity?", "Who gets access to treatment and research benefits?", "How can inspiration lead to an action whose benefits we can check?"],
       "discussion": "Pairs sort message cards into honours choice, removes barriers, pressures people, or needs more context.",
       "product": "Revise one fictional school fundraising message so it names purpose, access, choice, and how results will be reported.",
       "curriculum": ["ELA: audience and message", "Career: community contribution", "PHE: access and well-being"],
       "differentiation": "Offer oral sorting, icons, a scribe, a model message, or an extension that follows how research funds are allocated.",
       "fallback": "Use the teacher-prepared image description, route sketch, and fictional message cards.",
-      "antiTokenism": "Do not ask disabled students to explain disability, reward public disclosure, or suggest one heroic story represents every disabled person.",
+      "antiTokenism": "It is appropriate to feel inspired by Terry Fox's courage, choices and contributions. People with disabilities do not have to be heroic to deserve respect, access and support, and determination alone does not remove every barrier. Do not treat one person's story as everyone's experience or ask disabled students to explain disability or disclose personal information.",
       "source": { "label": "Terry Fox Foundation", "href": "https://terryfox.org/" }
     },
     {
