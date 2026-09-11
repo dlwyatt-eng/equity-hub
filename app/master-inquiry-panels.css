@@ -145,7 +145,7 @@
 .provocation-core p, .provocation-core li { line-height: 1.42; }
 .provocation-core ul { padding-left: 20px; }
 .provocation-core strong { display: block; margin-top: 9px; line-height: 1.42; }
-.provocation-supports { display: grid; grid-template-columns: 1fr 1fr 1fr auto; gap: 10px; align-items: start; margin-top: 10px; padding-top: 14px; border-top: 1px solid var(--line); }
+.provocation-supports { display: grid; grid-template-columns: minmax(0,1fr) auto; gap: 10px; align-items: start; margin-top: 10px; padding-top: 14px; border-top: 1px solid var(--line); }
 .provocation-supports p { margin: 0; font-size: .9rem; line-height: 1.43; }
 .provocation-supports a { min-height: 44px; display: flex; align-items: center; padding: 9px 11px; border: 1px solid var(--ink); border-radius: 10px; background: white; text-decoration: none; font-size: .82rem; font-weight: 850; }
 
@@ -259,3 +259,8 @@
 .large-text .master-projector .word-help article span { font-size: 1.5rem; }
 .master-projector .projected-source { margin: 16px 0; font-size: 1.1rem; line-height: 1.5; }
 .large-text .master-projector .projected-source { font-size: 1.4rem; }
+
+.provocation-teacher-notes { min-width: 0; }
+.provocation-teacher-notes summary { cursor: pointer; font-weight: 750; min-height: 44px; padding: 10px 0; }
+.provocation-teacher-notes p { margin: .75rem 0; font-size: 1rem; line-height: 1.55; }
+.provocation-teacher-notes summary:focus-visible { outline: 3px solid var(--ink); outline-offset: 3px; }

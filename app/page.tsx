@@ -434,7 +434,7 @@ const lessons: Lesson[] = [
     ],
     teacher: {
       prepare: [
-        "Choose a route; do not run all screens in one sitting. The AI Equity Lens and AI Rules Council are optional routes inside this power-and-participation lesson—not a separate unit.",
+        "Choose one route for this lesson. Allow a separate session for the AI Equity Lens or AI Rules Council if you use them.",
         "For a current event, open one credible source yourself and use the on-screen three-card routine. Students should not search an open web or test personal information in AI.",
         "Print only the pages the route uses. Keep pages 1–2 as teacher guides; use pages 3–4 for the fair-class route, page 5 for the Surrey case, pages 6–7 for representation or student voice, and pages 8–9 for source checking and participation.",
         "Use the official candidate list only after nominations close September 11. Preview any candidate material and compare equal samples.",
@@ -1379,7 +1379,7 @@ const runways: Runway[] = [
   { month: "SEPT", event: "Official candidates & representation", start: "After Sept. 11", create: "Sample equal amounts of candidate material", share: "One pattern + one missing question", date: "Nominations close and candidates are declared Sept. 11", lesson: "voice-and-rules", startAt: 7, cta: "Open representation screens →", priority: "Choice" },
   { month: "OCT", event: "Surrey election equity lab + Student Vote", start: "Oct. 5", create: "Oct. 6–9 & 13–15", share: "Oct. 16", date: "Election Oct. 17", lesson: "voice-and-rules", startAt: 5, cta: "Open the Surrey equity route →", priority: "Core" },
   { month: "OCT", event: "After the election: accountability", start: "Oct. 19", create: "Choose one issue to follow", share: "Set a later evidence check", date: "Official results due by Oct. 21", lesson: "voice-and-rules", startAt: 14, cta: "Preview the post-election route →", priority: "Choice" },
-  { month: "OCT", event: "Harvest: who helps food reach us?", start: "Choose a fitting October day", create: "Trace one food relationship", share: "Name responsibility, not blame", date: "Use as a fresh harvest or food-systems lens", provocationId: "harvest-reciprocity", cta: "Open 40–60 min provocation →", priority: "Choice" },
+  { month: "OCT", event: "Harvest: who helps food reach us?", start: "Choose a fitting October day", create: "Trace one food relationship", share: "Name responsibility, not blame", date: "Use during harvest or food-systems learning", provocationId: "harvest-reciprocity", cta: "Open 40–60 min provocation →", priority: "Choice" },
   { month: "OCT", event: "Pictures, words & school wayfinding", start: "Oct. 26", create: "Oct. 27–Nov. 3", share: "Nov. 4–5", date: "Use when a real navigation need appears", lesson: "many-languages", priority: "Choice" },
   { month: "NOV", event: "Remembrance: who and what do we remember?", start: "Before Nov. 11", create: "Source-based memory panel", share: "Responsibility + care", date: "Remembrance Day Nov. 11", provocationId: "remembrance-public-memory", cta: "Open 35–55 min provocation →", priority: "Choice" },
   { month: "NOV", event: "National Child Day", start: "Nov. 9", create: "Nov. 12–18", share: "Nov. 19–20", date: "Nov. 20", lesson: "rights-in-our-room", priority: "Core" },
@@ -1649,7 +1649,7 @@ export default function Home() {
       : view === "teach"
           ? `Lessons page. ${gradeBand === "ALL" ? "All grade bands" : `${gradeBand} guidance`} selected.`
           : view === "maps"
-            ? "Map representation inquiry. Standalone preparation, projection, sources, and K–7 adaptations are ready."
+            ? "Map representation inquiry. Preparation, projection, sources, and K–7 adaptations."
           : view === "plan"
           ? `Year plan. ${monthFilter === "ALL" ? "All months" : monthFilter} selected.`
           : view === "action"
@@ -1860,7 +1860,7 @@ export default function Home() {
           <EquityExploration lessonId={selectedLesson.id} teacher />
           <div className="overview-topbar">
             <button type="button" className="back-button" onClick={returnToLessons}>← All lessons</button>
-            <span><b>PREPARE FIRST</b> Grade fit, preparation, projected screens, printables, and public source links are all here in the Equity Hub.</span>
+            <span><b>BEFORE TEACHING</b> Choose a grade band, gather materials, and preview the screens.</span>
           </div>
 
           <div className="overview-hero section">
@@ -2021,7 +2021,7 @@ export default function Home() {
               <CommunityToday onOpen={openCommunity} />
               <section className="home-hero">
                 <div className="hero-copy">
-                  <aside className="standalone-note"><span aria-hidden="true">✦</span><div><b>ONE PUBLIC K–7 HUB</b><p>No Teacher Hub or Learn Hub access is needed. Preparation, projected screens, printables, and public source links live here.</p></div></aside>
+                  <aside className="standalone-note"><span aria-hidden="true">✦</span><div><b>LEARN &amp; ACT · K–7</b><p>Choose a lesson, gather the materials, and project the first question.</p></div></aside>
                   <p className="eyebrow"><span /> Featured lesson · {featuredLesson.title} · {featuredLesson.grades}</p>
                   <h1>What helps everyone <em>belong?</em></h1>
                   <p className="featured-route">LOOK CLOSELY <b>→</b> RANK WHAT MATTERS <b>→</b> DRAW THE ACTION</p>
@@ -2044,7 +2044,7 @@ export default function Home() {
               </section>
 
               <section className="election-now section" aria-labelledby="election-now-title">
-                <div className="election-now-copy"><p className="eyebrow dark"><span /> Timely local connection · Oct. 17, 2026</p><h2 id="election-now-title">Who gets heard in Surrey?</h2><p>This route includes the equity questions and direct public sources. Use your usual civics materials if you also teach election mechanics.</p></div>
+                <div className="election-now-copy"><p className="eyebrow dark"><span /> Timely local connection · Oct. 17, 2026</p><h2 id="election-now-title">Who gets heard in Surrey?</h2><p>Explore whose voices shape local decisions and how young people can participate.</p></div>
                 <div className="election-route-grid">
                   <button type="button" onClick={() => startLesson("voice-and-rules", 13)}><small>EARLY SEPTEMBER · 15 MIN</small><b>Voting is one piece</b><span>How can young people participate now?</span></button>
                   <button type="button" onClick={() => startLesson("voice-and-rules", 5)}><small>LATE SEPT.–OCTOBER · 45 MIN</small><b>Surrey equity lab</b><span>Decide, check missing perspectives, and revise.</span></button>
@@ -2054,7 +2054,7 @@ export default function Home() {
               </section>
 
               <section className="map-home-feature section" aria-labelledby="map-home-title">
-                <div><p className="eyebrow dark"><span /> New standalone map inquiry · 45–60 min</p><h2 id="map-home-title">Who gets to represent the world?</h2><p>Compare Mercator and Equal Earth, measure four familiar place pairs, separate evidence from policy choices, and reimagine what a map could make visible.</p><button type="button" className="button dark" onClick={() => go("maps")}>Preview the K–7 inquiry →</button></div>
+                <div><p className="eyebrow dark"><span /> Map inquiry · 45–60 min</p><h2 id="map-home-title">Who gets to represent the world?</h2><p>Compare Mercator and Equal Earth, measure four familiar place pairs, separate evidence from policy choices, and reimagine what a map could make visible.</p><button type="button" className="button dark" onClick={() => go("maps")}>Preview the K–7 inquiry →</button></div>
                 <div className="map-home-pair"><img src="/images/map-inquiry/mercator-world.svg" alt="Mercator world map projection, which enlarges high-latitude land areas." width="960" height="500" /><img src="/images/map-inquiry/equal-earth-world.svg" alt="Equal Earth world map projection, which preserves relative land area." width="960" height="500" /></div>
               </section>
 
@@ -2105,7 +2105,7 @@ export default function Home() {
 
           {view === "teach" && (
             <section className="section page-section">
-              <div className="page-heading split"><div><p className="eyebrow dark"><span /> K–7 Equity Hub lessons</p><h1>Choose a lesson.</h1><p>Every lesson opens in a teacher preview first. You will see grade fit, preparation, student outcomes, exact print pages, and route choices before any student screen.</p></div><button type="button" className="button secondary browse-issues" onClick={() => go("issues")}>Browse by big question →</button></div>
+              <div className="page-heading split"><div><p className="eyebrow dark"><span /> K–7 Equity Hub lessons</p><h1>Choose a lesson.</h1><p>Choose a lesson to see materials, print pages and grade guidance. Select a route, then project it.</p></div><button type="button" className="button secondary browse-issues" onClick={() => go("issues")}>Browse by big question →</button></div>
               <section className="grade-chooser" aria-labelledby="grade-chooser-title">
                 <div><span aria-hidden="true">✦</span><div><small>CHOOSE YOUR TEACHING BAND</small><h2 id="grade-chooser-title">One inquiry. Different depth and products.</h2></div></div>
                 <div className="grade-band-tabs" aria-label="Show grade-band guidance">
@@ -2139,7 +2139,7 @@ export default function Home() {
 
           {view === "plan" && (
             <section className="section page-section planning-page">
-              <div className="page-heading split"><div><p className="eyebrow dark"><span /> Optional K–7 school-year example · 2026–27</p><h1>A year of belonging.</h1></div><p>Use it, remix it, or skip what does not fit. <b>Core</b> = suggested anchor, not a requirement. <b>Featured</b> = one spring possibility. <b>Choice</b> = flexible extension. <b>Plan</b> = a date with a trusted starting source.</p></div>
+              <div className="page-heading split"><div><p className="eyebrow dark"><span /> K–7 year plan · 2026–27</p><h1>A year of belonging.</h1></div><p>Choose what fits your class. <b>Core</b> = starting point. <b>Featured</b> = spring project. <b>Choice</b> = extension. <b>Plan</b> = date and source.</p></div>
               {!projectorMode && <CommunityCalendar initialCardId={communityCardId} onLesson={startLesson} largeText={largeText} onLargeText={() => setLargeText(v => !v)} />}
               <CalendarProvocationsPanel projectorMode={projectorMode} onEnterProjection={enterProjection} onExitProjection={exitProjection} />
               <div className="year-stage-grid">{yearStages.map((stage) => <article key={stage.n}><span>{stage.n}</span><small>{stage.when}</small><h2>{stage.title}</h2><p>{stage.detail}</p></article>)}</div>
@@ -2160,7 +2160,7 @@ export default function Home() {
                   </article>
                 ))}
               </div>
-              <aside className="planning-note"><b>Keep it flexible.</b><span>This is a local Walnut Road and Surrey planning example, not a sequence every class must follow. Choose the grade-band move, timing, and lesson that fit your course, learning group, available time, and authentic community connections.</span></aside>
+              <aside className="planning-note"><b>Keep it flexible.</b><span>Adapt the timing and activities to your class and school plans.</span></aside>
             </section>
           )}
 
@@ -2209,7 +2209,7 @@ export default function Home() {
 
           {view === "library" && (
             <section className="section page-section library-page">
-              <div className="page-heading split"><div><p className="eyebrow dark"><span /> Everything linked in one public place</p><h1>Printables &amp; sources</h1></div><p>No Teacher Hub or Learn Hub access is required. Open the lesson preview first for grade fit, exact copy counts, and the projected-screen map.</p></div>
+              <div className="page-heading split"><div><p className="eyebrow dark"><span /> Classroom resources</p><h1>Printables &amp; sources</h1></div><p>Open a lesson preview for grade guidance, copy counts and the matching projection screens.</p></div>
               <h2 className="library-heading">Lesson activity packs</h2>
               <p className="library-intro">Each pack includes clearly marked teacher pages showing what to project, which student pages match the lesson, how many copies to make, what to model, and what to collect. Multi-route packs tell you which pages to choose—you do not teach the whole pack. The core range is shown honestly; use the lesson’s K–7 guide outside that range.</p>
               <div className="lesson-printables-grid">{orderedLessons.map((lesson, index) => <article className={`tone-${lesson.tone}`} key={lesson.id}><figure><img src={lesson.printable.preview} alt="" width="773" height="1000" /><span>{String(index + 1).padStart(2, "0")}</span></figure><div><span className="printable-grade">{lesson.grades}</span><h3>{lesson.printable.title}</h3><p>{lesson.printable.pagePlan.join(" ")}</p><button type="button" onClick={() => startLesson(lesson.id)}>Preview grade fit + page map →</button></div><div className="printable-links"><a className="bw-link" href={lesson.printable.bwHref} target="_blank" rel="noreferrer">Full B&amp;W · {lesson.printable.pages} pages</a><a href={lesson.printable.href} target="_blank" rel="noreferrer">Colour pack</a></div></article>)}</div>
@@ -2223,7 +2223,7 @@ export default function Home() {
           )}
         </>
       )}
-      {!projectorMode && <footer><BrandMark /><p><strong>Walnut Road Equity Learning &amp; Action Hub</strong><span>One public K–7 place for preparation, projection, printables, and thoughtful action.</span></p><button type="button" onClick={() => go("home")}>Back to start ↑</button></footer>}
+      {!projectorMode && <footer><BrandMark /><p><strong>Walnut Road Equity Learning &amp; Action Hub</strong><span>K–7 lessons, classroom resources and community action.</span></p><button type="button" onClick={() => go("home")}>Back to start ↑</button></footer>}
     </main>
     </>
   );

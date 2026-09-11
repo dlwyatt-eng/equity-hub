@@ -174,7 +174,7 @@
       "curriculum": ["Science: ecosystems and resources", "Social Studies: systems and power", "ELA: informational design"],
       "differentiation": "Use picture cards, one local food example, a narrated route, or an extension comparing who owns and who labours.",
       "fallback": "Use a clean fictional food path; no student must discuss family food choices or affordability.",
-      "antiTokenism": "Indigenous food sovereignty is about Nation-specific rights, knowledge, lands, waters, and governance—not a themed recipe or generalized tradition.",
+      "antiTokenism": "Centre a specific Nation’s rights, knowledge, lands, waters and decisions about food. Use its own sources and follow its sharing protocols.",
       "source": { "label": "Working Group on Indigenous Food Sovereignty", "href": "https://wgifs.org/" }
     },
     {
@@ -324,7 +324,7 @@
       "curriculum": ["ELA: representation and media", "Arts: image and story", "Social Studies: B.C. histories and continuity"],
       "differentiation": "Offer audio, drawing, sentence frames, partner creation, or an extension auditing recommendation algorithms and missing creators.",
       "fallback": "Use teacher-saved source cards with full attribution; do not substitute generic image search results.",
-      "antiTokenism": "Black history is not only U.S. history, enslavement, or racism. Include contemporary B.C. people, joy, disagreement, creativity, and futures throughout the year.",
+      "antiTokenism": "Include Black Canadian histories alongside contemporary B.C. people, creativity, joy and community goals. Return to these voices throughout the year.",
       "source": { "label": "B.C. Black History Awareness Society — Learning Centre", "href": "https://bcblackhistory.ca/learning-centre/" }
     },
     {
@@ -359,7 +359,7 @@
       "curriculum": ["Science: biodiversity and systems", "Math: data", "Social Studies: policy and responsibility", "ELA: advertising"],
       "differentiation": "Use icon-based claim cards, one pre-selected graph, calculator support, or an extension comparing corporate and public data.",
       "fallback": "Use the local fictional advertisement and a teacher-printed data card; no live dashboard is required.",
-      "antiTokenism": "Avoid one-day cleanup theatre, doom, or putting systemic problems on children. Connect learning to a real decision-maker and report what changed or remained unknown.",
+      "antiTokenism": "Help students choose an achievable action and identify the adults, organisations or governments responsible for wider change. Plan a follow-up to see what changed.",
       "source": { "label": "City of Surrey — Climate Action Tracker", "href": "https://climateactiontracker.surrey.ca/" }
     },
     {
@@ -394,7 +394,7 @@
       "curriculum": ["PHE: safety and relationships", "Career: collaboration", "ELA: digital communication"],
       "differentiation": "Use silent sorting, role cards without acting, private teacher response, visual sequence, or an extension auditing a school reporting route.",
       "fallback": "Use paper scenario cards and a no-role-play route. Students never need to describe personal bullying.",
-      "antiTokenism": "Do not make kindness merchandise the lesson, force apologies, or ask a targeted student to educate peers. Teach systems, adult duties, consent, and meaningful repair.",
+      "antiTokenism": "Practise safe responses and explain how adults will help and follow up. Offer private ways to report concerns; participation and apologies should not be forced.",
       "source": { "label": "B.C. erase — Bullying", "href": "https://www2.gov.bc.ca/gov/content/erase/bullying" }
     }
   ]

@@ -144,9 +144,9 @@ export function MapRepresentationInquiry({ projectorMode, onEnterProjection, onE
     <section className="map-inquiry-page section page-section" aria-labelledby="map-inquiry-title">
       <header className="master-inquiry-hero">
         <div>
-          <p className="eyebrow dark"><span /> Standalone K–7 representation inquiry</p>
+          <p className="eyebrow dark"><span /> K–7 map inquiry</p>
           <h1 id="map-inquiry-title">{mapInquiry.publicTitle}</h1>
-          <p className="master-learning"><b>We are learning:</b> {mapInquiry.learning}</p>
+          <p className="master-learning">{mapInquiry.learning}</p>
           <p>{mapInquiry.why}</p>
           <div className="master-action-row">
             <button type="button" className="button primary" onClick={() => { setStageIndex(0); void onEnterProjection(); }}>Project the inquiry →</button>
@@ -218,7 +218,7 @@ export function ProvocationProjection({ provocation, screen, onExit, onScreen }:
       <div className="master-projector-stage">
         <p className="master-stage-kicker"><span>{screen === 0 ? "HOOK" : screen === 1 ? "NOTICE + WONDER" : "DISCUSS + CREATE"}</span><b>{provocation.timing}</b></p>
         <h1 id="provocation-projector-title">{provocation.title}</h1>
-        {screen === 0 && <><p className="projected-learning"><b>We are learning:</b> {provocation.student.learning}</p>{earthImage && <img className="calendar-hook-image" src="/images/climate-justice-action.webp" alt="Students and community members restore a stream, test water, plant native species, and map local climate action." width="1536" height="1024" />}<article className="projected-hook"><small>LOOK / LISTEN</small><p>{provocation.student.lookListen}</p><strong>{provocation.student.before}</strong></article></>}
+        {screen === 0 && <><p className="projected-learning">{provocation.student.learning}</p>{earthImage && <img className="calendar-hook-image" src="/images/climate-justice-action.webp" alt="Students and community members restore a stream, test water, plant native species, and map local climate action." width="1536" height="1024" />}<article className="projected-hook"><small>LOOK / LISTEN</small><p>{provocation.student.lookListen}</p><strong>{provocation.student.before}</strong></article></>}
         {screen === 1 && <div className="projected-provocation-grid"><article><small>NOTICE + WONDER</small><ol>{provocation.student.noticeWonder.map((item) => <li key={item}>{item}</li>)}</ol></article><article><small>QUESTIONS</small><ul>{provocation.student.questions.map((item) => <li key={item}>{item}</li>)}</ul></article></div>}
         {screen === 2 && <div className="projected-provocation-grid"><article><small>DISCUSS</small><p>{provocation.student.discussion}</p></article><article><small>YOU COULD MAKE</small><p>{provocation.student.product}</p></article></div>}
       </div>
@@ -326,7 +326,7 @@ export function CalendarProvocationsPanel({ projectorMode, onEnterProjection, on
   return (
     <section id="calendar-provocations" className="calendar-provocations-shell" aria-labelledby="calendar-provocations-title">
       <header className="calendar-heading">
-        <div><p className="eyebrow dark"><span /> Seven optional 20–60 minute pathways</p><h2 id="calendar-provocations-title">Calendar Provocations</h2><p>Fresh inquiries for familiar dates. Each one can stand alone: preparation, prompts, product, source, fallback, care, and K–7 guidance are all here.</p></div>
+        <div><p className="eyebrow dark"><span /> Seven optional 20–60 minute pathways</p><h2 id="calendar-provocations-title">Calendar Provocations</h2><p>Explore access, remembrance, community stories and useful action. Choose a question and preview its sources before teaching.</p></div>
         <button type="button" className="button secondary" onClick={() => window.print()}>Print the inventory</button>
       </header>
 
@@ -340,7 +340,7 @@ export function CalendarProvocationsPanel({ projectorMode, onEnterProjection, on
       <div className="provocation-list">
         {masterPack.calendarProvocations.map((provocation, index) => (
           <article id={`provocation-${provocation.id}`} className="calendar-provocation-card" tabIndex={-1} key={provocation.id} aria-labelledby={`provocation-title-${provocation.id}`}>
-            <header><span>{String(index + 1).padStart(2, "0")}</span><div><small>{provocation.timing} · {provocation.lens}</small><h3 id={`provocation-title-${provocation.id}`}>{provocation.title}</h3><p><b>We are learning:</b> {provocation.learning}</p></div><button type="button" onClick={() => begin(provocation)}>Project 3 screens →</button></header>
+            <header><span>{String(index + 1).padStart(2, "0")}</span><div><small>{provocation.timing} · {provocation.lens}</small><h3 id={`provocation-title-${provocation.id}`}>{provocation.title}</h3><p>{provocation.learning}</p></div><button type="button" onClick={() => begin(provocation)}>Project 3 screens →</button></header>
             <div className="provocation-core">
               <section><small>PROJECTED HOOK</small><p>{provocation.hook}</p><strong>Before: {provocation.before}</strong></section>
               <section><small>NOTICE + WONDER</small><ul>{provocation.noticeWonder.map((item) => <li key={item}>{item}</li>)}</ul></section>
@@ -350,13 +350,15 @@ export function CalendarProvocationsPanel({ projectorMode, onEnterProjection, on
               <section><small>CURRICULUM</small><p>{provocation.curriculum.join(" · ")}</p></section>
             </div>
             <div className="provocation-supports">
-              <p><b>Ways to join:</b> {provocation.differentiation}</p>
-              <p><b>Fallback:</b> {provocation.fallback}</p>
-              <p><b>Avoid tokenism:</b> {provocation.antiTokenism}</p>
+              <details className="provocation-teacher-notes"><summary>Teacher notes · preparation &amp; participation</summary>
+                <p><b>Ways to join:</b> {provocation.differentiation}</p>
+                <p><b>Alternative materials:</b> {provocation.fallback}</p>
+                <p>{provocation.antiTokenism}</p>
+              </details>
               <a href={provocation.source.href} target="_blank" rel="noreferrer">Open {provocation.source.label} ↗</a>
             </div>
             {provocation.listeningRehearsal && <div className="fictional-listening-entry">
-              <div><b>Separate fictional skills practice · Classroom OS</b><p>{provocation.listeningRehearsal.boundary}</p><p><b>Teacher preparation:</b> {provocation.listeningRehearsal.teacherNote}</p></div>
+              <div><b>Fictional listening practice</b><p>{provocation.listeningRehearsal.boundary}</p><p><b>Teacher preparation:</b> {provocation.listeningRehearsal.teacherNote}</p></div>
               <button type="button" id={`listening-rehearsal-open-${provocation.id}`} onClick={() => openRehearsal(provocation)}>Open fictional listening rehearsal</button>
             </div>}
           </article>
