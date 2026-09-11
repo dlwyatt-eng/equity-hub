@@ -2,6 +2,7 @@
 /* eslint-disable @next/next/no-img-element -- compressed local WebP assets are used for predictable projector rendering. */
 
 import { EquityExploration } from "./virtual-explorations";
+import EarthMonthEntry from "./earth-month-entry";
 import { useEffect, useLayoutEffect, useRef, useState } from "react";
 import { CalendarProvocationsPanel, MapRepresentationInquiry } from "./master-inquiry-panels";
 
@@ -2019,6 +2020,7 @@ export default function Home() {
           {view === "home" && (
             <>
               <CommunityToday onOpen={openCommunity} />
+              <EarthMonthEntry seasonal />
               <section className="home-hero">
                 <div className="hero-copy">
                   <aside className="standalone-note"><span aria-hidden="true">✦</span><div><b>LEARN &amp; ACT · K–7</b><p>Choose a lesson, gather the materials, and project the first question.</p></div></aside>
@@ -2144,6 +2146,7 @@ export default function Home() {
               <CalendarProvocationsPanel projectorMode={projectorMode} onEnterProjection={enterProjection} onExitProjection={exitProjection} />
               <div className="year-stage-grid">{yearStages.map((stage) => <article key={stage.n}><span>{stage.n}</span><small>{stage.when}</small><h2>{stage.title}</h2><p>{stage.detail}</p></article>)}</div>
               <div className="month-filter" aria-label="Filter schedule by month">{months.map((month) => <button type="button" key={month} className={monthFilter === month ? "active" : ""} aria-pressed={monthFilter === month} onClick={() => setMonthFilter(month)}>{month}</button>)}</div>
+              {!projectorMode && (monthFilter === "ALL" || monthFilter === "APR") && <EarthMonthEntry />}
               <div className="runway-list">
                 {visibleRunways.map((item) => (
                   <article key={`${item.month}-${item.event}`} className={item.priority === "Core" ? "core" : item.priority === "Featured" ? "featured" : item.priority === "Plan" ? "plan" : ""}>
@@ -2213,6 +2216,7 @@ export default function Home() {
               <h2 className="library-heading">Lesson activity packs</h2>
               <p className="library-intro">Each pack includes clearly marked teacher pages showing what to project, which student pages match the lesson, how many copies to make, what to model, and what to collect. Multi-route packs tell you which pages to choose—you do not teach the whole pack. The core range is shown honestly; use the lesson’s K–7 guide outside that range.</p>
               <div className="lesson-printables-grid">{orderedLessons.map((lesson, index) => <article className={`tone-${lesson.tone}`} key={lesson.id}><figure><img src={lesson.printable.preview} alt="" width="773" height="1000" /><span>{String(index + 1).padStart(2, "0")}</span></figure><div><span className="printable-grade">{lesson.grades}</span><h3>{lesson.printable.title}</h3><p>{lesson.printable.pagePlan.join(" ")}</p><button type="button" onClick={() => startLesson(lesson.id)}>Preview grade fit + page map →</button></div><div className="printable-links"><a className="bw-link" href={lesson.printable.bwHref} target="_blank" rel="noreferrer">Full B&amp;W · {lesson.printable.pages} pages</a><a href={lesson.printable.href} target="_blank" rel="noreferrer">Colour pack</a></div></article>)}</div>
+              <EarthMonthEntry />
               <h2 className="library-heading">Longer project toolkits</h2>
               <p className="library-intro compact">These are supplemental packs with their own intended ranges. A K–7 Hub does not mean every printable is written at every reading level.</p>
               <div className="download-grid">{downloads.map((item) => <article key={item.title}><span>{item.type}</span><h3>{item.title}</h3><p>{item.detail}</p><div>{item.colour === item.bw ? <a href={item.bw}>Open printable PDF ↓</a> : <><a href={item.colour}>Colour PDF ↓</a><a href={item.bw}>B&amp;W PDF ↓</a></>}</div></article>)}</div>
