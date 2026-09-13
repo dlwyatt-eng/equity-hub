@@ -439,7 +439,7 @@ const lessons: Lesson[] = [
         "For a current event, open one credible source yourself and use the on-screen three-card routine. Students should not search an open web or test personal information in AI.",
         "Print only the pages the route uses. Keep pages 1–2 as teacher guides; use pages 3–4 for the fair-class route, page 5 for the Surrey case, pages 6–7 for representation or student voice, and pages 8–9 for source checking and participation.",
         "Use the official candidate list only after nominations close September 11. Preview any candidate material and compare equal samples.",
-        "Use your usual civics or election materials only if you also teach election mechanics. This Equity Hub pathway centres access, missing perspectives, representation, participation, and accountability.",
+        "Focus on who can participate, whose perspectives are missing, and how decision-makers respond to the community. Add your usual civics materials if you also want to teach how elections work.",
       ],
       moves: ["Ask who set the choices, whose experience is missing, and what evidence could change a mind.", "Separate representation by ideas, experience, community, interest, and perspective from simple identity counting.", "Keep returning to: output, response, change, and next check."],
       care: "Stay non-partisan. Never ask students to disclose family voting, defend a group, rank identities, or treat a community as if everyone agrees. Use hypothetical cases when a live issue is unsafe or too personal.",
@@ -575,7 +575,7 @@ const lessons: Lesson[] = [
     teacher: {
       prepare: [
         "Print student pages 1–2 per student or pair, keep teacher pages 3–4, and set out art materials.",
-        "Preview the two exact maps linked on Step 1; no resource search is needed.",
+        "Preview the two maps linked on Step 1.",
         "Choose one of the three local Nation sources shown on Step 2 and preview it for grade fit.",
         "Choose two or three realistic class actions from the linked NCTR ReconciliACTION Plans.",
         "Use the optional governance screen only when it supports the learning. Do not present First Nations as a fourth level underneath Canadian governments; governance differs by Nation.",
@@ -1233,7 +1233,7 @@ const lessons: Lesson[] = [
     ],
     teacher: {
       prepare: [
-        "Print student pages 1–4 once per group and keep teacher pages 5–6. In this Equity Hub, open Student action and select one ready pathway with direct sources and three starting action ideas; no other hub or open-ended resource search is needed.",
+        "Print student pages 1–4 once per group and keep teacher pages 5–6. Open Student action and choose a project. Use its sources to compare the three suggested actions.",
         "For a short planning launch, teach only LEARN, COMPARE, and CHOOSE. Return to BUILD, ACT, and CHECK after the class, course, or club selects an issue.",
         "Confirm adult permission before any public message, contact, collection, fundraising, or change to a shared space.",
       ],
@@ -1940,7 +1940,7 @@ export default function Home() {
                 <ol>{selectedLesson.teacher.prepare.map((item) => <li key={item}>{item}</li>)}</ol>
                 <div className="prep-support">
                   <aside><small>TEACH WITH CARE</small><p>{selectedLesson.teacher.care}</p></aside>
-                  <section><small>PUBLIC LINKS TO OPEN IF THIS ROUTE USES THEM</small>{selectedLesson.teacher.sources?.length ? selectedLesson.teacher.sources.map((source) => <a key={source.href} href={source.href} target="_blank" rel="noreferrer">{source.label} ↗</a>) : <p>No outside source is required.</p>}{selectedLesson.id === "concern-to-action" && <button type="button" className="internal-prep-link" onClick={() => go("action")}>Open Student action in this Hub →</button>}</section>
+                  <section><small>SOURCES FOR THIS ACTIVITY</small>{selectedLesson.teacher.sources?.length ? selectedLesson.teacher.sources.map((source) => <a key={source.href} href={source.href} target="_blank" rel="noreferrer">{source.label} ↗</a>) : <p>No outside source is required.</p>}{selectedLesson.id === "concern-to-action" && <button type="button" className="internal-prep-link" onClick={() => go("action")}>Open Student action →</button>}</section>
                   <section><small>CURRICULUM CONNECTIONS</small><p>{selectedLesson.teacher.curriculum.join(" · ")}</p></section>
                 </div>
               </div>
@@ -2196,15 +2196,15 @@ export default function Home() {
           {view === "action" && (
             <section className="page-section action-page">
               <div className="action-hero section">
-                <div><p className="eyebrow light"><span /> Inside this Equity Hub · Student action</p><h1>Listen. Learn.<br /><em>Do something useful.</em></h1><p>Students choose what matters. Adults provide safety, access, permission, and follow-through. No companion site is needed.</p></div>
+                <div><p className="eyebrow light"><span /> Student action</p><h1>Listen. Learn.<br /><em>Do something useful.</em></h1><p>Students help choose what to work on. Adults help make it safe, accessible, and achievable.</p></div>
                 <figure><img src="/images/student-voice-club.webp" alt="Students listening, mapping ideas, choosing a priority, and presenting an improvement." width="1586" height="992" /></figure>
               </div>
               <div className="section action-workspace">
                 <div className="project-picker"><span>CHOOSE A POSSIBLE PROJECT</span><div>{actionProjects.map((project) => <button type="button" key={project.id} className={selectedProject === project.id ? "active" : ""} aria-pressed={selectedProject === project.id} onClick={() => setSelectedProject(project.id)}>{project.title}</button>)}</div></div>
                 <article className="project-focus"><div><small>START BY</small><p>{currentProject.start}</p></div><div><small>SUCCESS LOOKS LIKE</small><p>{currentProject.proof}</p></div>{currentProject.id === "spca" && <button type="button" onClick={() => startLesson("animal-welfare")}>Open BC SPCA learning pathway →</button>}</article>
                 <div className="project-ready">
-                  <article><small>OPEN THESE DIRECT SOURCES</small><div>{currentProject.sources.map((source) => <a key={source.href} href={source.href} target="_blank" rel="noreferrer">{source.label} ↗</a>)}</div></article>
-                  <article><small>COMPARE THESE THREE STARTING ACTIONS</small><ol>{currentProject.actions.map((action) => <li key={action}>{action}</li>)}</ol><p>One is deliberately tempting but may not fit. Students use evidence to decide.</p></article>
+                  <article><small>EXPLORE THESE SOURCES</small><div>{currentProject.sources.map((source) => <a key={source.href} href={source.href} target="_blank" rel="noreferrer">{source.label} ↗</a>)}</div></article>
+                  <article><small>COMPARE THESE THREE STARTING ACTIONS</small><ol>{currentProject.actions.map((action) => <li key={action}>{action}</li>)}</ol><p>Which action would help most? Use evidence to compare what each could achieve.</p></article>
                 </div>
                 <div className="action-step-tabs" aria-label="Action steps">{actionSteps.map((step, index) => <button type="button" key={step.n} className={actionStep === index ? "active" : ""} aria-current={actionStep === index ? "step" : undefined} onClick={() => setActionStep(index)}><b>{step.n}</b><span>{step.title}</span></button>)}</div>
                 <article className="action-step-card"><span>STEP {actionSteps[actionStep].n}</span><h2>{actionSteps[actionStep].title}</h2><p>{actionSteps[actionStep].question}</p><strong>{actionSteps[actionStep].tool}</strong><div><button type="button" disabled={actionStep === 0} onClick={() => setActionStep((current) => Math.max(0, current - 1))}>← Back</button><button type="button" disabled={actionStep === actionSteps.length - 1} onClick={() => setActionStep((current) => Math.min(actionSteps.length - 1, current + 1))}>Next →</button></div></article>
@@ -2221,7 +2221,7 @@ export default function Home() {
               <div className="lesson-printables-grid">{orderedLessons.map((lesson, index) => <article className={`tone-${lesson.tone}`} key={lesson.id}><figure><img src={lesson.printable.preview} alt="" width="773" height="1000" /><span>{String(index + 1).padStart(2, "0")}</span></figure><div><span className="printable-grade">{lesson.grades}</span><h3>{lesson.printable.title}</h3><p>{lesson.printable.pagePlan.join(" ")}</p><button type="button" onClick={() => startLesson(lesson.id)}>Preview grade fit + page map →</button></div><div className="printable-links"><a className="bw-link" href={lesson.printable.bwHref} target="_blank" rel="noreferrer">Full B&amp;W · {lesson.printable.pages} pages</a><a href={lesson.printable.href} target="_blank" rel="noreferrer">Colour pack</a></div></article>)}</div>
               <EarthMonthEntry />
               <h2 className="library-heading">Longer project toolkits</h2>
-              <p className="library-intro compact">These are supplemental packs with their own intended ranges. A K–7 Hub does not mean every printable is written at every reading level.</p>
+              <p className="library-intro compact">Check each toolkit’s suggested grades before printing. Adapt the reading and writing tasks to suit your class.</p>
               <div className="download-grid">{downloads.map((item) => <article key={item.title}><span>{item.type}</span><h3>{item.title}</h3><p>{item.detail}</p><div>{item.colour === item.bw ? <a href={item.bw}>Open printable PDF ↓</a> : <><a href={item.colour}>Colour PDF ↓</a><a href={item.bw}>B&amp;W PDF ↓</a></>}</div></article>)}</div>
               <h2 className="library-heading">Trusted starting points</h2>
               <div className="link-list">{trustedLinks.map((item) => <a href={item.href} target="_blank" rel="noreferrer" key={item.href}><span>{item.tag}</span><div><strong>{item.title}</strong><small>{item.source}</small></div><b>↗</b></a>)}</div>
