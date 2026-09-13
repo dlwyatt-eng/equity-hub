@@ -106,7 +106,7 @@ const lessons: Lesson[] = [
     question: "What helps everyone join in and be themselves?",
     timing: "Opening weeks, or whenever a learning group needs a belonging reset",
     length: "45–55 min or 2 × 25 min",
-    grades: "K–7 pathway · core K–7",
+    grades: "K–7 adaptations · best suited to K–7",
     tone: "leaf",
     use: "Build shared language for belonging, access, and student voice.",
     activity: "Look for fairness in a classroom picture, choose three belonging actions our class needs, then draw one action happening and name a first step",
@@ -208,7 +208,7 @@ const lessons: Lesson[] = [
     question: "How can a community make decisions so people can be heard, represented, and included?",
     timing: "Anytime voice, rules, or public decisions are studied; Surrey election routes fit Sept.–Oct. 2026",
     length: "15 min, 45 min, or 2 × 40 min",
-    grades: "K–7 pathway · core 3–7",
+    grades: "K–7 adaptations · best suited to 3–7",
     tone: "sun",
     use: "Use the Surrey election as a real equity case: who is heard, whose perspective is missing, and how voice continues after voting.",
     activity: "Choose a route: fair class decision, Surrey recreation-centre case, campaign-source check, trustee challenge, or post-election check-in",
@@ -471,7 +471,7 @@ const lessons: Lesson[] = [
     question: "What should we learn and do because we live on this land?",
     timing: "Before the September 29 school observance and September 30 Orange Shirt Day / National Day for Truth and Reconciliation, or anytime learners study place, governance, and responsibility",
     length: "2–3 × 40 min",
-    grades: "K–7 pathway · core 4–7",
+    grades: "K–7 adaptations · best suited to 4–7",
     tone: "coral",
     use: "Move beyond a one-day observance toward truth, living Nations, relationships, and responsibility.",
     activity: "Compare two provided Surrey maps, learn from one local First Nations source, then create a credited response",
@@ -609,7 +609,7 @@ const lessons: Lesson[] = [
     question: "What rights belong to every child?",
     timing: "Before National Child Day, or anytime learners study rights and adult responsibility",
     length: "55–65 min or 2 × 30 min",
-    grades: "K–7 pathway · core 3–7",
+    grades: "K–7 adaptations · best suited to 3–7",
     tone: "sky",
     use: "Connect human rights to students’ daily lives without turning rights into rewards.",
     activity: "Spot a right, solve the Rights Repair Mystery, then repair a fictional case in a comic",
@@ -714,7 +714,7 @@ const lessons: Lesson[] = [
     question: "When does the place or task create the problem?",
     timing: "Anytime; pairs well with children’s and human-rights learning",
     length: "45–60 min",
-    grades: "K–7 pathway · core 3–7",
+    grades: "K–7 adaptations · best suited to 3–7",
     tone: "berry",
     use: "Teach accessibility through observation, user-centred design, and multiple ways to participate.",
     activity: "Try a 30-second mini-task, match barriers to tools, then complete an Access Makeover",
@@ -825,7 +825,7 @@ const lessons: Lesson[] = [
     question: "How can pictures and clear words help more people find their way?",
     timing: "Late October, or when a real navigation need appears",
     length: "45–60 min",
-    grades: "K–7 pathway · core 3–7",
+    grades: "K–7 adaptations · best suited to 3–7",
     tone: "sky",
     use: "Explore visual and school-approved multilingual wayfinding without turning students into translators.",
     activity: "Test six picture signs, try two visual strategies, then revise one real school sign",
@@ -934,7 +934,7 @@ const lessons: Lesson[] = [
     question: "What can we do when racist words or actions hurt someone?",
     timing: "January, after class norms and the school help route are clear",
     length: "35–45 min",
-    grades: "K–7 pathway · core 4–7",
+    grades: "K–7 adaptations · best suited to 4–7",
     tone: "sun",
     use: "Practise safe responses without asking students to reenact personal harm.",
     activity: "Sort eight safe choices into Four Moves, then make a Pocket Response Guide",
@@ -1031,7 +1031,7 @@ const lessons: Lesson[] = [
     question: "What happens when more than one barrier affects someone?",
     timing: "Anytime after learners know the word barrier; optional February–March connection",
     length: "45–55 min",
-    grades: "K–7 pathway · core 5–7",
+    grades: "K–7 adaptations · best suited to 5–7",
     tone: "berry",
     use: "Make intersectionality concrete through one school-event design scenario.",
     activity: "Mark required access basics, then use six planning points for extra ways to participate",
@@ -1147,7 +1147,7 @@ const lessons: Lesson[] = [
     question: "How can students help with a real issue in a useful, caring way?",
     timing: "Anytime a class, course, or club is ready to move from learning to useful action",
     length: "1 planning block + later project sessions",
-    grades: "K–7 pathway · core 4–7",
+    grades: "K–7 adaptations · best suited to 4–7",
     tone: "sand",
     use: "Move from a strong feeling to listening, evidence, realistic influence, and accountable action.",
     activity: "Choose a sourced pathway, compare three ready action ideas, then plan the product that fits",
@@ -1264,7 +1264,7 @@ const lessons: Lesson[] = [
     question: "Which action would really help animals?",
     timing: "Anytime a verified animal-welfare need fits; suggested spring pathway",
     length: "3–6 lessons + project",
-    grades: "K–7 pathway · core 3–7",
+    grades: "K–7 adaptations · best suited to 3–7",
     tone: "coral",
     use: "Prepare a student-chosen BC SPCA or animal-welfare project grounded in current needs.",
     activity: "Use one provided BC SPCA case card, identify a need and current recommendation, then compare three actions",
@@ -1391,7 +1391,7 @@ const runways: Runway[] = [
   { month: "FEB", event: "When barriers overlap", start: "Feb. 1", create: "Feb. 2–10", share: "Feb. 11", date: "Advanced extension after rights + access", lesson: "barriers-overlap", priority: "Choice" },
   { month: "FEB", event: "Pink Shirt Day: bystander power & repair", start: "Feb. 15", create: "Build a safe response path", share: "Feb. 22–24", date: "Pink Shirt Day Feb. 24", lesson: "belonging-built", startAt: 4, provocationId: "pink-shirt-bystander-power", cta: "Open 30–45 min provocation →", priority: "Choice" },
   { month: "MAR", event: "Action Studio: planning launch", start: "Mar. 5", create: "Teach LEARN → COMPARE → CHOOSE", share: "Issue + plan ready Mar. 12", date: "Pause before BUILD until a spring issue is chosen", lesson: "concern-to-action", cta: "Teach planning Steps 1–3 →", priority: "Core" },
-  { month: "APR", event: "Animal welfare & BC SPCA pathway", start: "Week of Mar. 30", create: "April–early May", share: "May 10–14", date: "Featured spring option after Action Studio", lesson: "animal-welfare", priority: "Featured" },
+  { month: "APR", event: "Animal welfare & BC SPCA pathway", start: "Week of Mar. 30", create: "April–early May", share: "May 10–14", date: "Suggested for April after Action Studio; also usable at other times", lesson: "animal-welfare", priority: "Featured" },
   { month: "APR", event: "Earth Day: test a claim and track change", start: "Use current spring work", create: "Add one measured local action", share: "Apr. 22 + check-back", date: "Earth Day Apr. 22", href: "https://climateactiontracker.surrey.ca/", provocationId: "earth-day-systems", cta: "Open 35–60 min provocation →", priority: "Choice" },
   { month: "MAY", event: "Pride & inclusive belonging", start: "May 17", create: "Choose one exact grade-fit source in advance", share: "June", date: "Pride Month", href: "https://www.sogieducation.org/resourceguide", cta: "Open SOGI resource guide ↗", priority: "Plan" },
 ];
@@ -1539,7 +1539,10 @@ const trustedLinks = [
   { title: "AI and work", source: "OECD", href: "https://www.oecd.org/en/topics/ai-and-work.html", tag: "AI + work" },
 ];
 
+const yearPlanLabels: Record<Runway["priority"], string> = { Core: "Starting lesson", Featured: "Project option", Choice: "Activity option", Plan: "Planning resource" };
+
 const gradeBands: GradeBand[] = ["K–2", "3–5", "6–7"];
+const gradeFitLabels: Record<GradeFit, string> = { "Core lesson": "Suited to this grade range", "Teacher-led + core": "Use with teacher support", "Core + extension": "Suited to this range · extra challenge available", "Teacher-led": "Teacher-guided adaptation", Extension: "Extra challenge" };
 const gradeFitOrder: Record<GradeFit, number> = { "Core lesson": 0, "Teacher-led + core": 1, "Core + extension": 2, "Teacher-led": 3, Extension: 4 };
 const gradeFitClass: Record<GradeFit, string> = {
   "Core lesson": "fit-core-lesson",
@@ -1890,7 +1893,7 @@ export default function Home() {
 
             <section className="overview-grade-guide" aria-labelledby="grade-guide-title">
               <div className="overview-section-heading"><span aria-hidden="true">✦</span><div><small>K–7 GRADE GUIDE</small><h2 id="grade-guide-title">Teach the inquiry, adapt the product.</h2></div></div>
-              <p className="grade-guide-intro">The student pages are written for the lesson’s core range. Choose a band to see the most important adjustment before you print or project.</p>
+              <p className="grade-guide-intro">Choose your grade range to see how to use or adapt the student pages before you print or project.</p>
               <div className="grade-band-tabs" aria-label="Choose a grade band">
                 <button type="button" className={gradeBand === "ALL" ? "active" : ""} aria-pressed={gradeBand === "ALL"} onClick={() => setGradeBand("ALL")}>All bands</button>
                 {gradeBands.map((band) => <button type="button" key={band} className={gradeBand === band ? "active" : ""} aria-pressed={gradeBand === band} onClick={() => setGradeBand(band)}>{band}</button>)}
@@ -1898,7 +1901,7 @@ export default function Home() {
               {gradeBand !== "ALL" && <p className="grade-band-note"><b>{gradeBand}:</b> {gradeBandNotes[gradeBand]}</p>}
               <div className="grade-adaptation-grid">
                 {selectedLesson.teacher.adaptations.map((item) => <article key={item.band} className={gradeBand === item.band ? "active" : gradeBand === "ALL" ? "" : "muted"}>
-                  <span>{item.band}</span><b>{item.fit}</b><p>{item.move}</p>
+                  <span>{item.band}</span><b>{gradeFitLabels[item.fit]}</b><p>{item.move}</p>
                 </article>)}
               </div>
             </section>
@@ -2037,7 +2040,7 @@ export default function Home() {
                     <a className="colour-link" href={featuredLesson.printable.href} target="_blank" rel="noreferrer">Colour version ↓</a>
                   </div>
                   {teacherMode && <details className="home-teacher-notes"><summary>Teacher prep</summary><div><span><b>BEFORE</b>{featuredLesson.teacher.prepare.join(" · ")}</span><span><b>ASK</b>{featuredLesson.teacher.moves[0]}</span><span><b>EVIDENCE</b>{featuredLesson.teacher.evidence}</span></div></details>}
-                  <div className="grade-entry"><span>CHOOSE YOUR GRADE BAND</span><div>{gradeBands.map((band) => <button type="button" key={band} onClick={() => browseGrade(band)}>{band}</button>)}</div><small>Every lesson shows whether the band is core, teacher-led, or an extension.</small></div>
+                  <div className="grade-entry"><span>CHOOSE YOUR GRADE RANGE</span><div>{gradeBands.map((band) => <button type="button" key={band} onClick={() => browseGrade(band)}>{band}</button>)}</div><small>See which lessons suit your grade range and what support or extra challenge to offer.</small></div>
                 </div>
                 <figure className="hero-image">
                   <img src="/images/hero-belonging-built.webp" alt="Students and an adult redesigning a welcoming and accessible learning space." width="1536" height="1024" />
@@ -2067,13 +2070,13 @@ export default function Home() {
                 </div>
                 <div className="launch-grid">
                   <button type="button" className="launch-card leaf" onClick={() => startLesson("belonging-built", 0)}>
-                    <img src="/images/hero-belonging-built.webp" alt="" width="1536" height="1024" /><span><b>45–55 MIN</b> K–7 pathway · core K–7</span><h3>Belonging is built</h3><p>Students create a Belonging Action Studio page, explain why the action could help, and choose a realistic first move.</p><strong>Preview &amp; prepare →</strong>
+                    <img src="/images/hero-belonging-built.webp" alt="" width="1536" height="1024" /><span><b>45–55 MIN</b> K–7 adaptations · best suited to K–7</span><h3>Belonging is built</h3><p>Students create a Belonging Action Studio page, explain why the action could help, and choose a realistic first move.</p><strong>Preview &amp; prepare →</strong>
                   </button>
                   <button type="button" className="launch-card coral" onClick={() => startLesson("truth-place-responsibility")}>
-                    <img src="/images/artivism-gallery.webp" alt="" width="1536" height="1024" /><span><b>2–3 BLOCKS</b> K–7 pathway · core 4–7</span><h3>Truth, place &amp; responsibility</h3><p>Use the two linked maps and one local First Nations source. Direct links are in the preview.</p><strong>Preview &amp; prepare →</strong>
+                    <img src="/images/artivism-gallery.webp" alt="" width="1536" height="1024" /><span><b>2–3 BLOCKS</b> K–7 adaptations · best suited to 4–7</span><h3>Truth, place &amp; responsibility</h3><p>Use the two linked maps and one local First Nations source. Direct links are in the preview.</p><strong>Preview &amp; prepare →</strong>
                   </button>
                   <button type="button" className="launch-card sun" onClick={() => startLesson("voice-and-rules")}>
-                    <img src="/images/voice-and-rules.webp" alt="" width="1536" height="1024" /><span><b>15–90 MIN</b> K–7 pathway · core 3–7</span><h3>Whose voice shapes the rules?</h3><p>Start with a real class choice, then connect fairness to Surrey, trustees, participation, and accountability.</p><strong>Preview &amp; choose one route →</strong>
+                    <img src="/images/voice-and-rules.webp" alt="" width="1536" height="1024" /><span><b>15–90 MIN</b> K–7 adaptations · best suited to 3–7</span><h3>Whose voice shapes the rules?</h3><p>Start with a real class choice, then connect fairness to Surrey, trustees, participation, and accountability.</p><strong>Preview &amp; choose one route →</strong>
                   </button>
                 </div>
               </section>
@@ -2115,8 +2118,8 @@ export default function Home() {
                   {gradeBands.map((band) => <button type="button" key={band} className={gradeBand === band ? "active" : ""} aria-pressed={gradeBand === band} onClick={() => setGradeBand(band)}>{band}</button>)}
                 </div>
                 {gradeBand === "ALL"
-                  ? <p>Select a band to bring its exact teaching move to the top of every card. Core lessons appear first; teacher-led and extension pathways remain visible and clearly labelled.</p>
-                  : <div className="grade-selection-summary"><p><b>{gradeBand}:</b> {gradeBandNotes[gradeBand]}</p>{gradeCounts && <span>{gradeCounts["Core lesson"]} core · {gradeCounts["Teacher-led + core"] + gradeCounts["Core + extension"]} mixed · {gradeCounts["Teacher-led"]} teacher-led · {gradeCounts.Extension} extensions</span>}</div>}
+                  ? <p>Choose your grade range to see teaching suggestions on each card. Lessons suited to that range appear first, followed by adaptations and extra challenges.</p>
+                  : <div className="grade-selection-summary"><p><b>{gradeBand}:</b> {gradeBandNotes[gradeBand]}</p>{gradeCounts && <span>{gradeCounts["Core lesson"]} suited to this range · {gradeCounts["Teacher-led + core"] + gradeCounts["Core + extension"]} supported or extended options · {gradeCounts["Teacher-led"]} teacher-led · {gradeCounts.Extension} extensions</span>}</div>}
               </section>
               <div className="lesson-grid">
                 {gradeSortedLessons.map((lesson) => {
@@ -2125,7 +2128,7 @@ export default function Home() {
                   <article className={`lesson-card tone-${lesson.tone}`} key={lesson.id}>
                     <figure className="lesson-card-image"><img src={lesson.image} alt="" width="1536" height="1024" /><figcaption>{lesson.length}</figcaption></figure>
                     <div className="lesson-card-top"><span>{lesson.grades}</span><b>{lesson.printable.pages}-page pack</b></div>
-                    {bandMove && <div className={`card-grade-move ${gradeFitClass[bandMove.fit]}`}><span>{bandMove.band} · {bandMove.fit}</span><p>{bandMove.move}</p></div>}
+                    {bandMove && <div className={`card-grade-move ${gradeFitClass[bandMove.fit]}`}><span>{bandMove.band} · {gradeFitLabels[bandMove.fit]}</span><p>{bandMove.move}</p></div>}
                     <h2>{lesson.title}</h2><p className="lesson-question">{lesson.question}</p>
                     <div className="lesson-formats">{lesson.formats.map((format) => <span key={format}>{format}</span>)}</div>
                     <div className="lesson-card-plan"><span><small>STUDENTS WILL</small>{lesson.activity}</span><span><small>THEY FINISH WITH</small>{lesson.product}</span><span className="pack-purpose"><small>PACK CONTENTS</small>{lesson.printable.includes}{lesson.routes ? " Choose a route in the preview to see exactly which pages to print." : " The preview shows the exact copy plan."}</span></div>
@@ -2141,7 +2144,7 @@ export default function Home() {
 
           {view === "plan" && (
             <section className="section page-section planning-page">
-              <div className="page-heading split"><div><p className="eyebrow dark"><span /> K–7 year plan · 2026–27</p><h1>A year of belonging.</h1></div><p>Choose what fits your class. <b>Core</b> = starting point. <b>Featured</b> = spring project. <b>Choice</b> = extension. <b>Plan</b> = date and source.</p></div>
+              <div className="page-heading split"><div><p className="eyebrow dark"><span /> K–7 year plan · 2026–27</p><h1>A year of belonging.</h1></div><p>Choose lessons and activities that fit your class. The months suggest when to use them; everything is optional.</p></div>
               {!projectorMode && <CommunityCalendar initialCardId={communityCardId} onLesson={startLesson} largeText={largeText} onLargeText={() => setLargeText(v => !v)} />}
               <CalendarProvocationsPanel projectorMode={projectorMode} onEnterProjection={enterProjection} onExitProjection={exitProjection} />
               <div className="year-stage-grid">{yearStages.map((stage) => <article key={stage.n}><span>{stage.n}</span><small>{stage.when}</small><h2>{stage.title}</h2><p>{stage.detail}</p></article>)}</div>
@@ -2150,7 +2153,7 @@ export default function Home() {
               <div className="runway-list">
                 {visibleRunways.map((item) => (
                   <article key={`${item.month}-${item.event}`} className={item.priority === "Core" ? "core" : item.priority === "Featured" ? "featured" : item.priority === "Plan" ? "plan" : ""}>
-                    <div className="runway-month">{item.month}<small>{item.priority}</small></div>
+                    <div className="runway-month">{item.month}<small>{yearPlanLabels[item.priority]}</small></div>
                     <div className="runway-event"><h2>{item.event}</h2><span>WHY NOW: {item.date}</span></div>
                     <div className="runway-phase"><small>BEGIN</small><b>{item.start}</b></div>
                     <div className="runway-phase"><small>CREATE</small><b>{item.create}</b></div>
@@ -2214,7 +2217,7 @@ export default function Home() {
             <section className="section page-section library-page">
               <div className="page-heading split"><div><p className="eyebrow dark"><span /> Classroom resources</p><h1>Printables &amp; sources</h1></div><p>Open a lesson preview for grade guidance, copy counts and the matching projection screens.</p></div>
               <h2 className="library-heading">Lesson activity packs</h2>
-              <p className="library-intro">Each pack includes clearly marked teacher pages showing what to project, which student pages match the lesson, how many copies to make, what to model, and what to collect. Multi-route packs tell you which pages to choose—you do not teach the whole pack. The core range is shown honestly; use the lesson’s K–7 guide outside that range.</p>
+              <p className="library-intro">Each pack includes clearly marked teacher pages showing what to project, which student pages match the lesson, how many copies to make, what to model, and what to collect. Multi-route packs tell you which pages to choose—you do not teach the whole pack. Check the suggested grade range and use the lesson’s K–7 guide for adaptations.</p>
               <div className="lesson-printables-grid">{orderedLessons.map((lesson, index) => <article className={`tone-${lesson.tone}`} key={lesson.id}><figure><img src={lesson.printable.preview} alt="" width="773" height="1000" /><span>{String(index + 1).padStart(2, "0")}</span></figure><div><span className="printable-grade">{lesson.grades}</span><h3>{lesson.printable.title}</h3><p>{lesson.printable.pagePlan.join(" ")}</p><button type="button" onClick={() => startLesson(lesson.id)}>Preview grade fit + page map →</button></div><div className="printable-links"><a className="bw-link" href={lesson.printable.bwHref} target="_blank" rel="noreferrer">Full B&amp;W · {lesson.printable.pages} pages</a><a href={lesson.printable.href} target="_blank" rel="noreferrer">Colour pack</a></div></article>)}</div>
               <EarthMonthEntry />
               <h2 className="library-heading">Longer project toolkits</h2>
