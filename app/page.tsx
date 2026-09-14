@@ -2,6 +2,7 @@
 /* eslint-disable @next/next/no-img-element -- compressed local WebP assets are used for predictable projector rendering. */
 
 import { EquityExploration } from "./virtual-explorations";
+import TruthAdultGuide from "./truth-adult-guide";
 import EarthMonthEntry from "./earth-month-entry";
 import { useEffect, useLayoutEffect, useRef, useState } from "react";
 import { CalendarProvocationsPanel, MapRepresentationInquiry } from "./master-inquiry-panels";
@@ -518,7 +519,7 @@ const lessons: Lesson[] = [
         links: [
           { label: "Katzie First Nation — Who We Are", href: "https://katzie.ca/who-we-are/" },
           { label: "Semiahmoo First Nation — Community page", href: "https://www.semiahmoofirstnation.ca/" },
-          { label: "Kwantlen First Nation — Official site", href: "https://www.kwantlenfn.ca/" },
+          { label: "Kwantlen First Nation — Kwantlen Strong", href: "https://kwantlenfn.ca/kwantlen-strong/" },
         ],
       },
       {
@@ -1375,7 +1376,7 @@ const lessons: Lesson[] = [
 const runways: Runway[] = [
   { month: "SEPT", event: "Opening-week or new-group belonging", start: "First 1–2 weeks", create: "One belonging action or group contribution", share: "Set commitments + a check-back", date: "Use at the start of a term, course, advisory, or group reset", lesson: "belonging-built", priority: "Core" },
   { month: "SEPT", event: "Terry Fox: access, action & story", start: "Before the school run", create: "Revise one ethical message", share: "Report purpose + access", date: "Use the school’s confirmed Terry Fox date", provocationId: "terry-fox-access-and-action", cta: "Open 35–50 min provocation →", priority: "Choice" },
-  { month: "SEPT", event: "Truth, place & Orange Shirt Day", start: "Sept. 15", create: "Sept. 17–24", share: "Sept. 28–29", date: "September 29 school observance · Orange Shirt Day / National Day for Truth and Reconciliation September 30 · school closed September 30", lesson: "truth-place-responsibility", provocationId: "truth-records-responsibility", cta: "Open 30–50 min provocation →", priority: "Core" },
+  { month: "SEPT", event: "Truth, place & Orange Shirt Day", start: "Sept. 14", create: "Sept. 14–24", share: "Sept. 29", date: "September 29 school observance · Orange Shirt Day / National Day for Truth and Reconciliation September 30 · school closed September 30", lesson: "truth-place-responsibility", provocationId: "truth-records-responsibility", cta: "Open 30–50 min provocation →", priority: "Core" },
   { month: "SEPT", event: "Voice beyond voting — quick discussion", start: "Sept. 8 onward", create: "Choose one realistic route", share: "No product required", date: "Build participation language before campaigns", lesson: "voice-and-rules", startAt: 13, cta: "Preview the 15-minute route →", priority: "Choice" },
   { month: "SEPT", event: "Official candidates & representation", start: "After Sept. 11", create: "Sample equal amounts of candidate material", share: "One pattern + one missing question", date: "Nominations close and candidates are declared Sept. 11", lesson: "voice-and-rules", startAt: 7, cta: "Open representation screens →", priority: "Choice" },
   { month: "OCT", event: "Surrey election equity lab + Student Vote", start: "Oct. 5", create: "Oct. 6–9 & 13–15", share: "Oct. 16", date: "Election Oct. 17", lesson: "voice-and-rules", startAt: 5, cta: "Open the Surrey equity route →", priority: "Core" },
@@ -1711,7 +1712,7 @@ export default function Home() {
     window.setTimeout(() => document.getElementById("community-calendar")?.scrollIntoView({ block: "start" }), 100);
   };
   useEffect(() => {
-    const fromHash = () => { if (window.location.hash === "#community-calendar") { setView("plan"); setSelectedLessonId(null); } };
+    const fromHash = () => { if (window.location.hash === "#community-calendar") { setView("plan"); setSelectedLessonId(null); } else if (window.location.hash === "#lesson/truth-place-responsibility") { startLesson("truth-place-responsibility"); } };
     fromHash(); window.addEventListener("hashchange", fromHash);
     return () => window.removeEventListener("hashchange", fromHash);
   }, []);
@@ -1945,6 +1946,8 @@ export default function Home() {
                 </div>
               </div>
             </details>
+
+            {selectedLesson.id === "truth-place-responsibility" && <TruthAdultGuide />}
 
             <section className="lesson-map" aria-labelledby="lesson-map-title">
               <div className="overview-section-heading"><span aria-hidden="true">✦</span><div><small>PROJECTOR MAP</small><h2 id="lesson-map-title">What students will see</h2></div></div>
