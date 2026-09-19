@@ -1,6 +1,7 @@
 "use client";
 /* eslint-disable @next/next/no-img-element -- compressed local WebP assets are used for predictable projector rendering. */
 
+import RightsStrand, { RightsEntry } from "./rights-strand";
 import { EquityExploration } from "./virtual-explorations";
 import TruthAdultGuide from "./truth-adult-guide";
 import EarthMonthEntry from "./earth-month-entry";
@@ -9,7 +10,7 @@ import { CalendarProvocationsPanel, MapRepresentationInquiry } from "./master-in
 
 import { CommunityCalendar, CommunityToday } from "./community-calendar";
 
-type View = "home" | "teach" | "maps" | "plan" | "issues" | "action" | "library";
+type View = "rights" | "home" | "teach" | "maps" | "plan" | "issues" | "action" | "library";
 type Tone = "leaf" | "sun" | "sky" | "berry" | "coral" | "sand";
 type GradeBand = "K–2" | "3–5" | "6–7";
 type GradeSelection = "ALL" | GradeBand;
@@ -1374,6 +1375,9 @@ const lessons: Lesson[] = [
 ];
 
 const runways: Runway[] = [
+  { month: "OCT", event: "Rights & expression: Can I disagree?", start: "October", create: "25-minute introduction", share: "Explain one fair response", date: "Foundation for Nov. 20 and Dec. 10", lesson: "rights-strand", priority: "Core" },
+  { month: "NOV", event: "Rights, Respect & Responsibility", start: "Nov. 9", create: "Test scenarios Nov. 12–19", share: "Children’s rights Nov. 20", date: "National Child Day · Nov. 20", lesson: "rights-strand", priority: "Core" },
+  { month: "DEC", event: "Rights & expression case gallery", start: "Nov. 23", create: "Revise with evidence", share: "Dec. 10 · Human Rights Day", date: "Human Rights Day · Dec. 10", lesson: "rights-strand", priority: "Core" },
   { month: "SEPT", event: "Opening-week or new-group belonging", start: "First 1–2 weeks", create: "One belonging action or group contribution", share: "Set commitments + a check-back", date: "Use at the start of a term, course, advisory, or group reset", lesson: "belonging-built", priority: "Core" },
   { month: "SEPT", event: "Terry Fox: access, action & story", start: "Before the school run", create: "Revise one ethical message", share: "Report purpose + access", date: "Use the school’s confirmed Terry Fox date", provocationId: "terry-fox-access-and-action", cta: "Open 35–50 min provocation →", priority: "Choice" },
   { month: "SEPT", event: "Truth, place & Orange Shirt Day", start: "Sept. 14", create: "Sept. 14–24", share: "Sept. 29", date: "September 29 school observance · Orange Shirt Day / National Day for Truth and Reconciliation September 30 · school closed September 30", lesson: "truth-place-responsibility", provocationId: "truth-records-responsibility", cta: "Open 30–50 min provocation →", priority: "Core" },
@@ -1653,6 +1657,8 @@ export default function Home() {
       ? `${selectedLesson.title}. Screen ${routePosition + 1} of ${activeStepIndexes.length}: ${currentStep.title}.`
       : view === "teach"
           ? `Lessons page. ${gradeBand === "ALL" ? "All grade bands" : `${gradeBand} guidance`} selected.`
+          : view === "rights"
+            ? "Racism, Human Rights and Freedom of Expression inquiry."
           : view === "maps"
             ? "Map representation inquiry. Preparation, projection, sources, and K–7 adaptations."
           : view === "plan"
@@ -1700,6 +1706,8 @@ export default function Home() {
 
   const go = (next: View) => {
     setView(next);
+    if (next === "rights") window.history.replaceState(null, "", "#rights");
+    else if (window.location.hash === "#rights") window.history.replaceState(null, "", window.location.pathname);
     setSelectedLessonId(null);
     setLessonOverview(false);
     setRouteSteps([]);
@@ -1712,7 +1720,7 @@ export default function Home() {
     window.setTimeout(() => document.getElementById("community-calendar")?.scrollIntoView({ block: "start" }), 100);
   };
   useEffect(() => {
-    const fromHash = () => { if (window.location.hash === "#community-calendar") { setView("plan"); setSelectedLessonId(null); } else if (window.location.hash === "#lesson/truth-place-responsibility") { startLesson("truth-place-responsibility"); } };
+    const fromHash = () => { if (window.location.hash === "#rights") { setView("rights"); setSelectedLessonId(null); } else if (window.location.hash === "#community-calendar") { setView("plan"); setSelectedLessonId(null); } else if (window.location.hash === "#lesson/truth-place-responsibility") { startLesson("truth-place-responsibility"); } };
     fromHash(); window.addEventListener("hashchange", fromHash);
     return () => window.removeEventListener("hashchange", fromHash);
   }, []);
@@ -1722,6 +1730,7 @@ export default function Home() {
   };
 
   const startLesson = (id: string, startAt = 0) => {
+    if (id === "rights-strand") { go("rights"); return; }
     const lesson = lessons.find((item) => item.id === id);
     const matchingRoute = lesson?.routes?.find((route) => route.steps[0] === startAt);
     const selectedSteps = matchingRoute?.steps
@@ -1828,6 +1837,7 @@ export default function Home() {
     { key: "home", label: "Start" },
     { key: "teach", label: "Lessons" },
     { key: "maps", label: "Maps & power" },
+    { key: "rights", label: "Rights & expression" },
     { key: "plan", label: "Year plan" },
     { key: "action", label: "Student action" },
     { key: "library", label: "Printables" },
@@ -2026,6 +2036,7 @@ export default function Home() {
           {view === "home" && (
             <>
               <CommunityToday onOpen={openCommunity} />
+              <RightsEntry />
               <EarthMonthEntry seasonal />
               <section className="home-hero">
                 <div className="hero-copy">
@@ -2107,6 +2118,7 @@ export default function Home() {
             </>
           )}
 
+          {view === "rights" && <RightsStrand adult />}
           {view === "maps" && (
             <MapRepresentationInquiry projectorMode={projectorMode} onEnterProjection={enterProjection} onExitProjection={exitProjection} />
           )}
@@ -2150,6 +2162,7 @@ export default function Home() {
               <div className="page-heading split"><div><p className="eyebrow dark"><span /> K–7 year plan · 2026–27</p><h1>A year of belonging.</h1></div><p>Choose lessons and activities that fit your class. The months suggest when to use them; everything is optional.</p></div>
               {!projectorMode && <CommunityCalendar initialCardId={communityCardId} onLesson={startLesson} largeText={largeText} onLargeText={() => setLargeText(v => !v)} />}
               <CalendarProvocationsPanel projectorMode={projectorMode} onEnterProjection={enterProjection} onExitProjection={exitProjection} />
+              <RightsEntry />
               <div className="year-stage-grid">{yearStages.map((stage) => <article key={stage.n}><span>{stage.n}</span><small>{stage.when}</small><h2>{stage.title}</h2><p>{stage.detail}</p></article>)}</div>
               <div className="month-filter" aria-label="Filter schedule by month">{months.map((month) => <button type="button" key={month} className={monthFilter === month ? "active" : ""} aria-pressed={monthFilter === month} onClick={() => setMonthFilter(month)}>{month}</button>)}</div>
               {!projectorMode && (monthFilter === "ALL" || monthFilter === "APR") && <EarthMonthEntry />}
@@ -2198,6 +2211,7 @@ export default function Home() {
 
           {view === "action" && (
             <section className="page-section action-page">
+              <RightsEntry />
               <div className="action-hero section">
                 <div><p className="eyebrow light"><span /> Student action</p><h1>Listen. Learn.<br /><em>Do something useful.</em></h1><p>Students help choose what to work on. Adults help make it safe, accessible, and achievable.</p></div>
                 <figure><img src="/images/student-voice-club.webp" alt="Students listening, mapping ideas, choosing a priority, and presenting an improvement." width="1586" height="992" /></figure>
