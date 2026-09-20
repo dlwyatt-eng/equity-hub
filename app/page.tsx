@@ -1897,6 +1897,7 @@ export default function Home() {
           </div>
 
           <div className="section overview-body">
+            {selectedLesson.id === "belonging-built" && <section className="overview-grade-guide"><h2>Shared Grade 6 picture supports</h2><p>Five pages accompany regular class learning: belonging, inclusive games, Truth and Reconciliation, classroom communication and tens/ones. Choose pages as useful; no separate track or additional homework is required.</p><p><a href="https://dlwyatt-eng.github.io/teacher-hub/printables/belonging/Monday_Inclusive_Printables.pdf">Five student pages (B&W PDF)</a> · <a href="https://dlwyatt-eng.github.io/teacher-hub/printables/belonging/Belonging_Teacher_and_Visual_Pack.pdf">Teacher guide + existing visual companion (7 pages)</a></p></section>}
             <div className="overview-summary-grid">
               <article><span aria-hidden="true">01</span><small>STUDENTS DO</small><p>{selectedLesson.activity}</p></article>
               <article><span aria-hidden="true">02</span><small>STUDENTS FINISH WITH</small><p>{selectedLesson.product}</p></article>
