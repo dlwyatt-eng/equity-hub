@@ -1720,7 +1720,7 @@ export default function Home() {
     window.setTimeout(() => document.getElementById("community-calendar")?.scrollIntoView({ block: "start" }), 100);
   };
   useEffect(() => {
-    const fromHash = () => { if (window.location.hash === "#rights") { setView("rights"); setSelectedLessonId(null); } else if (window.location.hash === "#community-calendar") { setView("plan"); setSelectedLessonId(null); } else if (window.location.hash === "#lesson/truth-place-responsibility") { startLesson("truth-place-responsibility"); } };
+    const fromHash = () => { if (window.location.hash === "#rights") { setView("rights"); setSelectedLessonId(null); } else if (window.location.hash === "#community-calendar") { setView("plan"); setSelectedLessonId(null); } else if (window.location.hash === "#action") { go("action"); } else if (window.location.hash.startsWith("#lesson/")) { const id = window.location.hash.slice(8); if (lessons.some(lesson => lesson.id === id)) startLesson(id); } };
     fromHash(); window.addEventListener("hashchange", fromHash);
     return () => window.removeEventListener("hashchange", fromHash);
   }, []);
@@ -1872,6 +1872,7 @@ export default function Home() {
 
       {selectedLesson && lessonOverview ? (
         <section className={`lesson-overview tone-${selectedLesson.tone}`}>
+          {["belonging-built", "barrier-detectives", "rights-in-our-room"].includes(selectedLesson.id) && <aside className="issue-principle"><b>Belonging &amp; Community</b><span>Connect belonging, agreements, communication, access and student action across several lessons.</span><a href="https://dlwyatt-eng.github.io/teacher-hub/?view=Games+%26+Activities&amp;deck=belonging-sequence">Open the Grade 6 sequence →</a></aside>}
           <EquityExploration lessonId={selectedLesson.id} teacher />
           <div className="overview-topbar">
             <button type="button" className="back-button" onClick={returnToLessons}>← All lessons</button>
@@ -2216,7 +2217,7 @@ export default function Home() {
                 <div><p className="eyebrow light"><span /> Student action</p><h1>Listen. Learn.<br /><em>Do something useful.</em></h1><p>Students help choose what to work on. Adults help make it safe, accessible, and achievable.</p></div>
                 <figure><img src="/images/student-voice-club.webp" alt="Students listening, mapping ideas, choosing a priority, and presenting an improvement." width="1586" height="992" /></figure>
               </div>
-              <div className="section action-workspace">
+              <aside className="issue-principle"><b>Belonging &amp; Community</b><span>Connect belonging, agreements, communication, access and student action across several lessons.</span><a href="https://dlwyatt-eng.github.io/teacher-hub/?view=Games+%26+Activities&amp;deck=belonging-sequence">Open the Grade 6 sequence →</a></aside><div className="section action-workspace">
                 <div className="project-picker"><span>CHOOSE A POSSIBLE PROJECT</span><div>{actionProjects.map((project) => <button type="button" key={project.id} className={selectedProject === project.id ? "active" : ""} aria-pressed={selectedProject === project.id} onClick={() => setSelectedProject(project.id)}>{project.title}</button>)}</div></div>
                 <article className="project-focus"><div><small>START BY</small><p>{currentProject.start}</p></div><div><small>SUCCESS LOOKS LIKE</small><p>{currentProject.proof}</p></div>{currentProject.id === "spca" && <button type="button" onClick={() => startLesson("animal-welfare")}>Open BC SPCA learning pathway →</button>}</article>
                 <div className="project-ready">
@@ -2233,7 +2234,7 @@ export default function Home() {
           {view === "library" && (
             <section className="section page-section library-page">
               <div className="page-heading split"><div><p className="eyebrow dark"><span /> Classroom resources</p><h1>Printables &amp; sources</h1></div><p>Open a lesson preview for grade guidance, copy counts and the matching projection screens.</p></div>
-              <h2 className="library-heading">Lesson activity packs</h2>
+              <aside className="issue-principle"><b>Belonging &amp; Community</b><span>Connect belonging, agreements, communication, access and student action across several lessons.</span><a href="https://dlwyatt-eng.github.io/teacher-hub/?view=Games+%26+Activities&amp;deck=belonging-sequence">Open the Grade 6 sequence →</a></aside><h2 className="library-heading">Lesson activity packs</h2>
               <p className="library-intro">Each pack includes clearly marked teacher pages showing what to project, which student pages match the lesson, how many copies to make, what to model, and what to collect. Multi-route packs tell you which pages to choose—you do not teach the whole pack. Check the suggested grade range and use the lesson’s K–7 guide for adaptations.</p>
               <div className="lesson-printables-grid">{orderedLessons.map((lesson, index) => <article className={`tone-${lesson.tone}`} key={lesson.id}><figure><img src={lesson.printable.preview} alt="" width="773" height="1000" /><span>{String(index + 1).padStart(2, "0")}</span></figure><div><span className="printable-grade">{lesson.grades}</span><h3>{lesson.printable.title}</h3><p>{lesson.printable.pagePlan.join(" ")}</p><button type="button" onClick={() => startLesson(lesson.id)}>Preview grade fit + page map →</button></div><div className="printable-links"><a className="bw-link" href={lesson.printable.bwHref} target="_blank" rel="noreferrer">Full B&amp;W · {lesson.printable.pages} pages</a><a href={lesson.printable.href} target="_blank" rel="noreferrer">Colour pack</a></div></article>)}</div>
               <EarthMonthEntry />
