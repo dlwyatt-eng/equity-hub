@@ -9,6 +9,7 @@ import { useEffect, useLayoutEffect, useRef, useState } from "react";
 import { CalendarProvocationsPanel, MapRepresentationInquiry } from "./master-inquiry-panels";
 
 import { CommunityCalendar, CommunityToday } from "./community-calendar";
+import { localDay } from "../content/community-dates.mjs";
 
 type View = "rights" | "home" | "teach" | "maps" | "plan" | "issues" | "action" | "library";
 type Tone = "leaf" | "sun" | "sky" | "berry" | "coral" | "sand";
@@ -1622,6 +1623,9 @@ export default function Home() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [chosenOptions, setChosenOptions] = useState<string[]>([]);
   const [scrollResetKey, setScrollResetKey] = useState(0);
+  const electionDay = localDay();
+  const localVotePassed = electionDay > "2026-10-17";
+  const provincialVotePassed = electionDay > "2026-10-24";
 
   const selectedLesson = lessons.find((lesson) => lesson.id === selectedLessonId) ?? null;
   const currentStep = selectedLesson?.steps[stepIndex];
@@ -2065,12 +2069,17 @@ export default function Home() {
               </section>
 
               <section className="election-now section" aria-labelledby="election-now-title">
-                <div className="election-now-copy"><p className="eyebrow dark"><span /> Timely local connection · Oct. 17, 2026</p><h2 id="election-now-title">Who gets heard in Surrey?</h2><p>Explore whose voices shape local decisions and how young people can participate.</p></div>
+                <div className="election-now-copy"><p className="eyebrow dark"><span /> {provincialVotePassed ? "After the votes · keep asking" : "Two elections · two decisions"}</p><h2 id="election-now-title">{provincialVotePassed ? "What happens after a vote?" : localVotePassed ? "Local results. Provincial choice." : "Who gets heard?"}</h2><p>{provincialVotePassed ? "Surrey voted locally on October 17 and B.C. voted provincially on October 24. Check the official results, then ask what decisions and follow-up come next." : localVotePassed ? "Surrey's local vote was October 17; B.C.'s provincial vote is October 24. Compare who makes which decisions and check claims against original sources." : "Surrey's local vote is October 17; B.C.'s provincial vote is October 24. Compare who makes which decisions, whose voices are missing, and how to check a claim."} Classroom mock votes are a possibility, not a confirmed school event.</p><p className="election-official-links"><a href="https://www.surrey.ca/2026-municipal-election" target="_blank" rel="noreferrer">Surrey election ↗</a> · <a href="https://elections.bc.ca/2026-provincial-election/" target="_blank" rel="noreferrer">Elections BC ↗</a></p></div>
                 <div className="election-route-grid">
-                  <button type="button" onClick={() => startLesson("voice-and-rules", 13)}><small>EARLY SEPTEMBER · 15 MIN</small><b>Voting is one piece</b><span>How can young people participate now?</span></button>
-                  <button type="button" onClick={() => startLesson("voice-and-rules", 5)}><small>LATE SEPT.–OCTOBER · 45 MIN</small><b>Surrey equity lab</b><span>Decide, check missing perspectives, and revise.</span></button>
-                  <button type="button" onClick={() => startLesson("voice-and-rules", 7)}><small>AFTER SEPTEMBER 11</small><b>Representation + messages</b><span>Use the official candidate list and equal samples.</span></button>
-                  <button type="button" onClick={() => startLesson("voice-and-rules", 14)}><small>AFTER OCTOBER 17 · 15 MIN</small><b>Accountability check</b><span>Results are the start of the next question.</span></button>
+                  {provincialVotePassed ? <>
+                    <button type="button" onClick={() => startLesson("voice-and-rules", 14)}><small>AFTER BOTH VOTES · 15 MIN</small><b>Accountability check</b><span>What can we verify, and what still needs follow-up?</span></button>
+                    <button type="button" onClick={() => startLesson("voice-and-rules", 13)}><small>EVERY DAY · 15 MIN</small><b>Voting is one piece</b><span>How can young people participate between elections?</span></button>
+                  </> : <>
+                    <button type="button" onClick={() => startLesson("voice-and-rules", 13)}><small>15 MIN</small><b>Voting is one piece</b><span>How can young people participate now?</span></button>
+                    <button type="button" onClick={() => startLesson("voice-and-rules", 5)}><small>45 MIN</small><b>Decision lab</b><span>Decide, check missing perspectives, and revise.</span></button>
+                    {!localVotePassed && <button type="button" onClick={() => startLesson("voice-and-rules", 7)}><small>LOCAL ELECTION · OCTOBER 17</small><b>Representation + messages</b><span>Use official sources and equal samples.</span></button>}
+                    <button type="button" onClick={() => startLesson("voice-and-rules", 14)}><small>AFTER THE VOTES · 15 MIN</small><b>Accountability check</b><span>Results are the start of the next question.</span></button>
+                  </>}
                 </div>
               </section>
 
@@ -2249,7 +2258,7 @@ export default function Home() {
           )}
         </>
       )}
-      {!projectorMode && <footer><BrandMark /><p><strong>Walnut Road Equity Learning &amp; Action Hub</strong><span>K–7 lessons, classroom resources and community action.</span></p><button type="button" onClick={() => go("home")}>Back to start ↑</button></footer>}
+      {!projectorMode && <footer><BrandMark /><p><strong>Walnut Road Equity Learning &amp; Action Hub</strong><span>K–7 lessons, classroom resources and community action. · Updated September 23, 2026</span><a href="https://dlwyatt-eng.github.io/learn/">Mr. Wyatt&apos;s Grade 6 Student &amp; Family Hub ↗</a></p><button type="button" onClick={() => go("home")}>Back to start ↑</button></footer>}
     </main>
     </>
   );

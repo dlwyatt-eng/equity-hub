@@ -792,6 +792,8 @@ footer { min-height: 120px; display: grid; grid-template-columns: auto 1fr auto;
 footer p { display: grid; gap: 3px; margin: 0; }
 footer p span { color: rgba(255,255,255,.68); font-size: .85rem; }
 footer button { color: white; border: 0; background: none; cursor: pointer; font-weight: 800; }
+footer p a,.election-official-links a { color: #ffdc9b; text-decoration: underline; text-underline-offset: 3px; font-weight: 700; }
+.election-official-links { margin-top: 16px !important; }
 
 .large-text .desktop-nav button, .large-text .toggle, .large-text .text-size-toggle { font-size: .9rem; }
 .large-text .desktop-nav { display: none; }
