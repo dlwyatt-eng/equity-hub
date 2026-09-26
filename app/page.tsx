@@ -209,20 +209,21 @@ const lessons: Lesson[] = [
     image: "/images/voice-and-rules.webp",
     imageAlt: "Students sharing ideas through a circle, voting, anonymous responses, and other participation choices.",
     question: "How can a community make decisions so people can be heard, represented, and included?",
-    timing: "Anytime voice, rules, or public decisions are studied; Surrey election routes fit Sept.–Oct. 2026",
+    timing: "Anytime voice, rules, or public decisions are studied; local and provincial election routes fit Sept.–Oct. 2026",
     length: "15 min, 45 min, or 2 × 40 min",
     grades: "K–7 adaptations · best suited to 3–7",
     tone: "sun",
-    use: "Use the Surrey election as a real equity case: who is heard, whose perspective is missing, and how voice continues after voting.",
-    activity: "Choose a route: fair class decision, Surrey recreation-centre case, campaign-source check, trustee challenge, or post-election check-in",
+    use: "Use the 2026 local and provincial elections as real equity cases: who is heard, whose perspective is missing, and how voice continues after voting.",
+    activity: "Choose a route: fair class decision, Surrey case, provincial party inquiry, campaign-source check, or post-election check-in",
     product: "Only when useful: a reasoned recommendation, one question for a decision-maker, or a participation route",
-    materials: "Projector · selected student pages · pencils · direct sources already linked",
-    formats: ["15-min discussion", "Surrey decision lab", "Trustee voice challenge"],
+    materials: "Projector · selected student pages or blank paper · pencils · current sources",
+    formats: ["15-min discussion", "Surrey decision lab", "Provincial party inquiry", "Trustee voice challenge"],
     routes: [
       { title: "Fair class decision", time: "35–45 min", description: "Reveal a barrier, redesign a class-sharing plan, and decide how the class will review it.", steps: [0, 1, 2, 3, 4], print: "Use student pages 3–4." },
       { title: "Surrey equity lab", time: "25–40 min", description: "Compare evidence about a fictional recreation-centre decision and identify who still needs to be heard.", steps: [5, 6], print: "Use student page 5." },
       { title: "Representation + student voice", time: "30–45 min", description: "Study what appears in public messages or gather student input for trustees.", steps: [7, 8], print: "Choose student page 6, page 7, or both." },
       { title: "Source check + participation", time: "25–35 min", description: "Sort public messages by type, check evidence, and choose a realistic way for youth to participate.", steps: [9, 13], print: "Use student pages 8–9." },
+      { title: "B.C. provincial party inquiry", time: "2 × 40 min", description: "Research party proposals and criticisms with sources, make a balanced comparison, then discuss a personal choice if desired.", steps: [15, 16, 17, 18], print: "No pack pages needed. Use blank paper or a slide for the infographic." },
       { title: "Voting is one piece", time: "15 min", description: "Discuss several realistic ways young people can participate before and after an election.", steps: [13], print: "No worksheet is required; page 9 is optional." },
       { title: "AI power + accountability", time: "35–55 min", description: "Examine who benefits, who bears costs, who helps set rules, and how people can challenge a decision.", steps: [10, 11, 12], print: "Use the separate AI dilemma cards." },
       { title: "After the election", time: "15 min", description: "Choose one promise or issue and plan how students can check what happens next.", steps: [14], print: "No worksheet is required." },
@@ -435,20 +436,66 @@ const lessons: Lesson[] = [
           { label: "Surrey Board meetings", href: "https://www.surreyschools.ca/board-meetings" },
         ],
       },
+      {
+        label: "PROVINCIAL · RESEARCH",
+        time: "15–20 min",
+        title: "Choose an issue. Find the parties.",
+        prompt: "What decision in B.C. matters to you, and what do the parties propose?",
+        directions: ["Pick one provincial issue, such as housing, health care, education, climate, or affordability. You may choose a party to research more deeply, or compare several without choosing one.", "Check Elections BC for the election and candidate information. Read each party's own current material for its proposals. Write the source and date beside each claim.", "For the same issue, record at least one other party's proposal. If you cannot find a position, say 'not found in the sources checked.'"],
+        links: [
+          { label: "Elections BC · 2026 election", href: "https://elections.bc.ca/2026-provincial-election/" },
+          { label: "Elections BC · registered parties", href: "https://elections.bc.ca/candidates-parties/political-parties/" },
+          { label: "Elections BC · candidates", href: "https://elections.bc.ca/2026-provincial-election/candidates/" },
+        ],
+      },
+      {
+        label: "PROVINCIAL · SCRUTINY",
+        time: "20–25 min",
+        title: "Put a criticism to the test",
+        prompt: "What is controversial about each proposal, and how does the party respond?",
+        directions: ["Choose a specific criticism of the party you researched. Identify who made it, what evidence they offer, and how the party responds if a response is available.", "Apply the same questions to another party. Separate a verified fact, a prediction, and an opinion; do not turn a criticism into an established fact without evidence.", "Ask whose lives might be affected and whose perspective is missing. A serious disagreement can be described respectfully."],
+        cards: [
+          { title: "PROPOSAL", text: "What did the party actually say it would do?" },
+          { title: "CRITICISM", text: "Who raises the concern, and what evidence supports it?" },
+          { title: "RESPONSE", text: "What does the party say in reply? What remains uncertain?" },
+        ],
+      },
+      {
+        label: "PROVINCIAL · CREATE",
+        time: "25–35 min",
+        title: "Make an evidence card",
+        prompt: "Could a reader understand the choices and still decide for themselves?",
+        directions: ["On paper or a slide, show the party's proposal, an issue-based comparison, a criticism, the party's response, and one open question. Use the same headings for every party the class studies.", "Add source links or titles and the date checked. Distinguish the party's words from your own interpretation.", "You may add a clearly labelled personal view: 'I would support ___ because…' with evidence. Sharing a preference is optional; no one has to disclose a family vote."],
+        visual: "source-check",
+      },
+      {
+        label: "PROVINCIAL · DISCUSS",
+        time: "15–20 min",
+        title: "Ask, listen, reconsider",
+        prompt: "What evidence might change your mind?",
+        directions: ["In pairs or a gallery walk, explain one proposal accurately and invite a question. Listen without guessing how anyone's family votes.", "Ask about a trade-off, missing evidence, or a criticism. Answer from sources; say 'I don't know yet' when needed.", "Revise one claim on your evidence card after the conversation. A class can also hold a secret mock vote if it chooses."],
+        links: [
+          { label: "Elections BC · education resources", href: "https://elections.bc.ca/voting/outreach-and-education/educational-resources/" },
+          { label: "Student Vote", href: "https://studentvote.ca/" },
+        ],
+      },
     ],
     teacher: {
       prepare: [
-        "Choose one route for this lesson. Allow a separate session for the AI Equity Lens or AI Rules Council if you use them.",
-        "For a current event, open one credible source yourself and use the on-screen three-card routine. Students should not search an open web or test personal information in AI.",
+        "Choose one route for this lesson. The provincial party inquiry works as two class sessions and does not depend on a Leadership Club launch. Allow a separate session for the AI Equity Lens or AI Rules Council if you use them.",
+        "For the AI current-event route, open one credible source yourself and use the on-screen three-card routine. Students should not test personal information in AI.",
         "Print only the pages the route uses. Keep pages 1–2 as teacher guides; use pages 3–4 for the fair-class route, page 5 for the Surrey case, pages 6–7 for representation or student voice, and pages 8–9 for source checking and participation.",
-        "Use the official candidate list only after nominations close September 11. Preview any candidate material and compare equal samples.",
+        "For the local election route, use the official Surrey candidate list after the September 11 nomination deadline. Preview candidate material and compare equal samples.",
+        "For the provincial route, select age-appropriate current material before class. Give every party the same headings and scrutiny, and check the school's current guidance before displaying or distributing election material beyond the lesson.",
         "Focus on who can participate, whose perspectives are missing, and how decision-makers respond to the community. Add your usual civics materials if you also want to teach how elections work.",
       ],
       moves: ["Ask who set the choices, whose experience is missing, and what evidence could change a mind.", "Separate representation by ideas, experience, community, interest, and perspective from simple identity counting.", "Keep returning to: output, response, change, and next check."],
-      care: "Stay non-partisan. Never ask students to disclose family voting, defend a group, rank identities, or treat a community as if everyone agrees. Use hypothetical cases when a live issue is unsafe or too personal.",
+      care: "Teach from a non-partisan position. Students may form and share their own evidence-based preferences, but never require a personal or family voting disclosure. Give different parties equal research standards and respectful questions. Use hypothetical cases when a live issue is unsafe or too personal.",
       curriculum: ["Social Studies: government, representation, power, and participation", "Language Arts: claims, evidence, perspective, and discussion", "Career Education: community participation"],
       evidence: "A changed recommendation with reasons; a missing-perspective question; a source label; a trustee message; or a realistic participation and follow-up route. A product is optional.",
       sources: [
+        { label: "Elections BC – 2026 provincial election", href: "https://elections.bc.ca/2026-provincial-election/" },
+        { label: "Elections BC – political parties", href: "https://elections.bc.ca/candidates-parties/political-parties/" },
         { label: "City of Surrey – 2026 municipal election", href: "https://www.surrey.ca/city-government/2026-municipal-election" },
         { label: "Official Surrey candidate list – use after Sept. 11", href: "https://www.surrey.ca/city-government/2026-municipal-election/candidates" },
         { label: "Student Vote / CIVIX classroom resources", href: "https://studentvote.ca/canada/resources/" },
@@ -1894,7 +1941,7 @@ export default function Home() {
               <p className="overview-question">{selectedLesson.question}</p>
               <div className="overview-facts">
                 <span><small>TIME</small><b>{selectedRoute?.time ?? selectedLesson.length}</b></span>
-                <span><small>PACK CONTENTS</small><b>{selectedLesson.printable.studentPages} student + {selectedLesson.printable.pages - selectedLesson.printable.studentPages} teacher pages</b></span>
+                <span><small>MATERIALS</small><b>{selectedRoute?.title === "B.C. provincial party inquiry" ? "Blank paper or slides · current sources" : `${selectedLesson.printable.studentPages} student + ${selectedLesson.printable.pages - selectedLesson.printable.studentPages} teacher pages`}</b></span>
                 <span><small>SCREENS IN THIS ROUTE</small><b>{activeStepIndexes.length}</b></span>
               </div>
             </div>
@@ -1937,7 +1984,7 @@ export default function Home() {
               </section>
             )}
 
-            <section className="print-plan" aria-labelledby="print-plan-title">
+            {selectedRoute?.title !== "B.C. provincial party inquiry" && <section className="print-plan" aria-labelledby="print-plan-title">
               <figure><img src={selectedLesson.printable.preview} alt={`Preview of page 1 in the ${selectedLesson.printable.title} activity pack`} width="773" height="1000" /></figure>
               <div>
                 <div className="overview-section-heading"><span aria-hidden="true">✦</span><div><small>PRINT PLAN</small><h2 id="print-plan-title">What is this pack for?</h2></div></div>
@@ -1949,7 +1996,7 @@ export default function Home() {
                   <a href={selectedLesson.printable.href} target="_blank" rel="noreferrer">Open colour pack</a>
                 </div>
               </div>
-            </section>
+            </section>}
 
             <details className="overview-prep" open>
               <summary><span><small>BEFORE CLASS</small><b>{selectedLesson.teacher.prepare.length} preparation tasks</b></span><em>Open / close</em></summary>
@@ -2075,6 +2122,7 @@ export default function Home() {
                     <button type="button" onClick={() => startLesson("voice-and-rules", 14)}><small>AFTER BOTH VOTES · 15 MIN</small><b>Accountability check</b><span>What can we verify, and what still needs follow-up?</span></button>
                     <button type="button" onClick={() => startLesson("voice-and-rules", 13)}><small>EVERY DAY · 15 MIN</small><b>Voting is one piece</b><span>How can young people participate between elections?</span></button>
                   </> : <>
+                    <button type="button" onClick={() => startLesson("voice-and-rules", 15)}><small>PROVINCIAL ELECTION · 2 × 40 MIN</small><b>Party inquiry</b><span>Compare proposals and criticisms; students may form their own view.</span></button>
                     <button type="button" onClick={() => startLesson("voice-and-rules", 13)}><small>15 MIN</small><b>Voting is one piece</b><span>How can young people participate now?</span></button>
                     <button type="button" onClick={() => startLesson("voice-and-rules", 5)}><small>45 MIN</small><b>Decision lab</b><span>Decide, check missing perspectives, and revise.</span></button>
                     {!localVotePassed && <button type="button" onClick={() => startLesson("voice-and-rules", 7)}><small>LOCAL ELECTION · OCTOBER 17</small><b>Representation + messages</b><span>Use official sources and equal samples.</span></button>}
