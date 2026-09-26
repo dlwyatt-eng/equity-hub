@@ -223,7 +223,7 @@ const lessons: Lesson[] = [
       { title: "Surrey equity lab", time: "25–40 min", description: "Compare evidence about a fictional recreation-centre decision and identify who still needs to be heard.", steps: [5, 6], print: "Use student page 5." },
       { title: "Representation + student voice", time: "30–45 min", description: "Study what appears in public messages or gather student input for trustees.", steps: [7, 8], print: "Choose student page 6, page 7, or both." },
       { title: "Source check + participation", time: "25–35 min", description: "Sort public messages by type, check evidence, and choose a realistic way for youth to participate.", steps: [9, 13], print: "Use student pages 8–9." },
-      { title: "B.C. provincial party inquiry", time: "2 × 40 min", description: "Research party proposals and criticisms with sources, make a balanced comparison, then discuss a personal choice if desired.", steps: [15, 16, 17, 18], print: "No pack pages needed. Use blank paper or a slide for the infographic." },
+      { title: "B.C. provincial party inquiry", time: "2 × 40 min", description: "Research party proposals and criticisms with sources, make an evidence infographic, then discuss a personal choice if desired.", steps: [15, 16, 17, 18], print: "Print pages 3–6 for students; page 7 has conversation cards and page 8 is the exit ticket. Pages 1–2 are the teacher guide." },
       { title: "Voting is one piece", time: "15 min", description: "Discuss several realistic ways young people can participate before and after an election.", steps: [13], print: "No worksheet is required; page 9 is optional." },
       { title: "AI power + accountability", time: "35–55 min", description: "Examine who benefits, who bears costs, who helps set rules, and how people can challenge a decision.", steps: [10, 11, 12], print: "Use the separate AI dilemma cards." },
       { title: "After the election", time: "15 min", description: "Choose one promise or issue and plan how students can check what happens next.", steps: [14], print: "No worksheet is required." },
@@ -492,7 +492,7 @@ const lessons: Lesson[] = [
       moves: ["Ask who set the choices, whose experience is missing, and what evidence could change a mind.", "Separate representation by ideas, experience, community, interest, and perspective from simple identity counting.", "Keep returning to: output, response, change, and next check."],
       care: "Teach from a non-partisan position. Students may form and share their own evidence-based preferences, but never require a personal or family voting disclosure. Give different parties equal research standards and respectful questions. Use hypothetical cases when a live issue is unsafe or too personal.",
       curriculum: ["Social Studies: government, representation, power, and participation", "Language Arts: claims, evidence, perspective, and discussion", "Career Education: community participation"],
-      evidence: "A changed recommendation with reasons; a missing-perspective question; a source label; a trustee message; or a realistic participation and follow-up route. A product is optional.",
+    evidence: "A changed recommendation with reasons; a missing-perspective question; a source label; a trustee message; or a realistic participation and follow-up route. The provincial route uses a sourced infographic and a revised claim.",
       sources: [
         { label: "Elections BC – 2026 provincial election", href: "https://elections.bc.ca/2026-provincial-election/" },
         { label: "Elections BC – political parties", href: "https://elections.bc.ca/candidates-parties/political-parties/" },
@@ -1431,7 +1431,8 @@ const runways: Runway[] = [
   { month: "SEPT", event: "Truth, place & Orange Shirt Day", start: "Sept. 14", create: "Sept. 14–24", share: "Sept. 29", date: "September 29 school observance · Orange Shirt Day / National Day for Truth and Reconciliation September 30 · school closed September 30", lesson: "truth-place-responsibility", provocationId: "truth-records-responsibility", cta: "Open 30–50 min provocation →", priority: "Core" },
   { month: "SEPT", event: "Voice beyond voting — quick discussion", start: "Sept. 8 onward", create: "Choose one realistic route", share: "No product required", date: "Build participation language before campaigns", lesson: "voice-and-rules", startAt: 13, cta: "Preview the 15-minute route →", priority: "Choice" },
   { month: "SEPT", event: "Official candidates & representation", start: "After Sept. 11", create: "Sample equal amounts of candidate material", share: "One pattern + one missing question", date: "Nominations close and candidates are declared Sept. 11", lesson: "voice-and-rules", startAt: 7, cta: "Open representation screens →", priority: "Choice" },
-  { month: "OCT", event: "Surrey election equity lab + Student Vote", start: "Oct. 5", create: "Oct. 6–9 & 13–15", share: "Oct. 16", date: "Election Oct. 17", lesson: "voice-and-rules", startAt: 5, cta: "Open the Surrey equity route →", priority: "Core" },
+  { month: "OCT", event: "B.C. provincial party inquiry", start: "Late September or early October", create: "Two 40-minute blocks", share: "Source-backed infographics + questions", date: "Provincial election Oct. 24", lesson: "voice-and-rules", startAt: 15, cta: "Open the provincial inquiry →", priority: "Core" },
+  { month: "OCT", event: "Surrey local election equity lab", start: "Oct. 5", create: "Choose one 25–40 minute route", share: "One question about representation", date: "Local election Oct. 17", lesson: "voice-and-rules", startAt: 5, cta: "Open the Surrey equity route →", priority: "Choice" },
   { month: "OCT", event: "After the election: accountability", start: "Oct. 19", create: "Choose one issue to follow", share: "Set a later evidence check", date: "Official results due by Oct. 21", lesson: "voice-and-rules", startAt: 14, cta: "Preview the post-election route →", priority: "Choice" },
   { month: "OCT", event: "Harvest: who helps food reach us?", start: "Choose a fitting October day", create: "Trace one food relationship", share: "Name responsibility, not blame", date: "Use during harvest or food-systems learning", provocationId: "harvest-reciprocity", cta: "Open 40–60 min provocation →", priority: "Choice" },
   { month: "OCT", event: "Pictures, words & school wayfinding", start: "Oct. 26", create: "Oct. 27–Nov. 3", share: "Nov. 4–5", date: "Use when a real navigation need appears", lesson: "many-languages", priority: "Choice" },
@@ -1561,6 +1562,7 @@ const actionSteps = [
 ];
 
 const downloads = [
+  { title: "B.C. Provincial Party Inquiry", detail: "8-page low-ink teacher run sheet, source log, comparison, criticism check, infographic planner, discussion cards, and exit ticket", colour: "/downloads/bc-provincial-party-inquiry-black-white.pdf", bw: "/downloads/bc-provincial-party-inquiry-black-white.pdf", type: "Grades 6–7 · two 40-minute blocks" },
   { title: "Belonging & Learner Voice Toolkit", detail: "Facilitator guide + five write, draw, and colour graphic organizers", colour: "/downloads/belonging-learner-voice-toolkit.pdf", bw: "/downloads/belonging-learner-voice-toolkit.pdf", type: "Flexible K–7 toolkit" },
   { title: "AI Equity Dilemma Cards", detail: "Ten-page kit: equity lens, eight dilemma cards, Rules Council, power checks, sources, and teacher map", colour: "/downloads/ai-equity-dilemma-cards.pdf", bw: "/downloads/ai-equity-dilemma-cards-black-white.pdf", type: "Reusable discussion kit" },
   { title: "From Concern to Action", detail: "8-page student project toolkit", colour: "/downloads/from-concern-to-action-student-toolkit.pdf", bw: "/downloads/from-concern-to-action-student-toolkit-black-white.pdf", type: "Student toolkit" },
@@ -1569,6 +1571,8 @@ const downloads = [
 ];
 
 const trustedLinks = [
+  { title: "2026 B.C. provincial election", source: "Elections BC", href: "https://elections.bc.ca/2026-provincial-election/", tag: "Provincial" },
+  { title: "Registered B.C. political parties", source: "Elections BC", href: "https://elections.bc.ca/candidates-parties/political-parties/", tag: "Parties" },
   { title: "Equal Earth projection and free maps", source: "Equal Earth", href: "https://equal-earth.com/", tag: "Maps" },
   { title: "Equal Earth research record", source: "Monash University", href: "https://research.monash.edu/en/publications/the-equal-earth-map-projection", tag: "Evidence" },
   { title: "Correct The Map campaign", source: "Africa No Filter / Speak Up Africa", href: "https://correctthemap.org/", tag: "Representation" },
@@ -1944,7 +1948,7 @@ export default function Home() {
               <p className="overview-question">{selectedLesson.question}</p>
               <div className="overview-facts">
                 <span><small>TIME</small><b>{selectedRoute?.time ?? selectedLesson.length}</b></span>
-                <span><small>MATERIALS</small><b>{selectedRoute?.title === "B.C. provincial party inquiry" ? "Blank paper or slides · current sources" : `${selectedLesson.printable.studentPages} student + ${selectedLesson.printable.pages - selectedLesson.printable.studentPages} teacher pages`}</b></span>
+                <span><small>MATERIALS</small><b>{selectedRoute?.title === "B.C. provincial party inquiry" ? "8-page B&W pack · curated sources" : `${selectedLesson.printable.studentPages} student + ${selectedLesson.printable.pages - selectedLesson.printable.studentPages} teacher pages`}</b></span>
                 <span><small>SCREENS IN THIS ROUTE</small><b>{activeStepIndexes.length}</b></span>
               </div>
             </div>
@@ -1954,7 +1958,7 @@ export default function Home() {
             {selectedLesson.id === "belonging-built" && <section className="overview-grade-guide"><h2>Shared Grade 6 picture supports</h2><p>Five pages accompany regular class learning: belonging, inclusive games, Truth and Reconciliation, classroom communication and tens/ones. Choose pages as useful; no separate track or additional homework is required.</p><p><a href="https://dlwyatt-eng.github.io/teacher-hub/printables/belonging/Monday_Inclusive_Printables.pdf">Five student pages (B&W PDF)</a> · <a href="https://dlwyatt-eng.github.io/teacher-hub/printables/belonging/Belonging_Teacher_and_Visual_Pack.pdf">Teacher guide + existing visual companion (7 pages)</a></p></section>}
             <div className="overview-summary-grid">
               <article><span aria-hidden="true">01</span><small>STUDENTS DO</small><p>{selectedLesson.activity}</p></article>
-              <article><span aria-hidden="true">02</span><small>STUDENTS FINISH WITH</small><p>{selectedLesson.product}</p></article>
+              <article><span aria-hidden="true">02</span><small>STUDENTS FINISH WITH</small><p>{selectedRoute?.title === "B.C. provincial party inquiry" ? "A sourced party comparison, a criticism and response check, an infographic, and one revised claim" : selectedLesson.product}</p></article>
               <article><span aria-hidden="true">03</span><small>HAVE READY</small><p>{selectedLesson.materials}</p></article>
             </div>
 
@@ -1987,6 +1991,19 @@ export default function Home() {
               </section>
             )}
 
+            {selectedRoute?.title === "B.C. provincial party inquiry" && <section className="election-teacher-kit" aria-labelledby="election-kit-title">
+              <div className="overview-section-heading"><span aria-hidden="true">✦</span><div><small>READY-TO-TEACH ROUTE</small><h2 id="election-kit-title">Provincial party inquiry</h2></div></div>
+              <p>Use the same provincial issue and comparison headings across parties. Students can choose a party to examine closely, challenge its proposals with evidence, and form their own view. Their preference can stay private.</p>
+              <div className="election-kit-grid">
+                <article><b>Before class</b><p>Curate two or three current, age-appropriate excerpts per party, a sourced criticism, and any party response. Mark dates. Print student pages 3–6, discussion page 7, and exit page 8.</p></article>
+                <article><b>Block A · 40 minutes</b><p>5 min issue and claim types · 12 min model a dated source · 13 min compare parties · 10 min test a criticism.</p></article>
+                <article><b>Block B · 40 minutes</b><p>7 min revisit evidence · 17 min make the infographic · 11 min discuss in pairs or gallery walk · 5 min revise a claim and reflect.</p></article>
+                <article><b>Look for</b><p>Traceable sources; the same issue across parties; criticism attributed to its source; party response or an honest gap; facts separated from predictions and opinions.</p></article>
+              </div>
+              <div className="election-kit-sources"><b>Start with original sources</b><p>The party pages show what each party says; check dates and verify disputed claims separately. Elections BC lists registered parties beyond these starting points.</p><div><a href="https://elections.bc.ca/candidates-parties/political-parties/" target="_blank" rel="noreferrer">All registered parties ↗</a><a href="https://www.bcndp.ca/" target="_blank" rel="noreferrer">BC NDP ↗</a><a href="https://conservativebc.ca/" target="_blank" rel="noreferrer">BC Conservatives ↗</a><a href="https://bcgreens.ca/" target="_blank" rel="noreferrer">BC Greens ↗</a><a href="https://elections.bc.ca/2026-provincial-election/" target="_blank" rel="noreferrer">Election information ↗</a></div></div>
+              <p className="election-kit-model"><b>Model the move:</b> “The party proposes ___. A critic argues ___ because ___. The party responds ___. The evidence we can check is ___. The question still open is ___.”</p>
+              <a className="primary-print" href="/downloads/bc-provincial-party-inquiry-black-white.pdf" target="_blank" rel="noreferrer">Open the 8-page black-and-white teacher + student pack ↗</a>
+            </section>}
             {selectedRoute?.title !== "B.C. provincial party inquiry" && <section className="print-plan" aria-labelledby="print-plan-title">
               <figure><img src={selectedLesson.printable.preview} alt={`Preview of page 1 in the ${selectedLesson.printable.title} activity pack`} width="773" height="1000" /></figure>
               <div>
@@ -2038,7 +2055,7 @@ export default function Home() {
           <div className="lesson-player-top">
             {!projectorMode && <button type="button" className="back-button" onClick={returnToOverview}>← Lesson overview</button>}
             <div className="lesson-identity"><small>{selectedLesson.timing}</small><strong>{selectedLesson.title}</strong></div>
-            {!projectorMode && <div className="player-print-actions"><a className="print-button primary-print" href={selectedLesson.printable.bwHref} target="_blank" rel="noreferrer">B&amp;W · {selectedLesson.printable.pages} pages</a><a className="print-button" href={selectedLesson.printable.href} target="_blank" rel="noreferrer">Colour pack</a></div>}
+            {!projectorMode && <div className="player-print-actions">{selectedRoute?.title === "B.C. provincial party inquiry" ? <a className="print-button primary-print" href="/downloads/bc-provincial-party-inquiry-black-white.pdf" target="_blank" rel="noreferrer">Inquiry pack · 8 pages</a> : <><a className="print-button primary-print" href={selectedLesson.printable.bwHref} target="_blank" rel="noreferrer">B&amp;W · {selectedLesson.printable.pages} pages</a><a className="print-button" href={selectedLesson.printable.href} target="_blank" rel="noreferrer">Colour pack</a></>}</div>}
             <button type="button" className="project-button" onClick={toggleProjector}>{projectorMode ? "Exit projection" : "Project fullscreen"}</button>
           </div>
           <div className="step-track" aria-label={`Screen ${routePosition + 1} of ${activeStepIndexes.length}`}>
