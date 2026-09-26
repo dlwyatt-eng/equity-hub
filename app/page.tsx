@@ -11,7 +11,7 @@ import { CalendarProvocationsPanel, MapRepresentationInquiry } from "./master-in
 import { CommunityCalendar, CommunityToday } from "./community-calendar";
 import { localDay } from "../content/community-dates.mjs";
 
-type View = "rights" | "home" | "teach" | "maps" | "plan" | "issues" | "action" | "library";
+type View = "rights" | "home" | "teach" | "maps" | "plan" | "issues" | "action" | "outdoors" | "library";
 type Tone = "leaf" | "sun" | "sky" | "berry" | "coral" | "sand";
 type GradeBand = "K–2" | "3–5" | "6–7";
 type GradeSelection = "ALL" | GradeBand;
@@ -1712,6 +1712,8 @@ export default function Home() {
             ? "Racism, Human Rights and Freedom of Expression inquiry."
           : view === "maps"
             ? "Map representation inquiry. Preparation, projection, sources, and K–7 adaptations."
+          : view === "outdoors"
+            ? "Outdoor learning. School-ground field journals, Surrey places, and teacher resources."
           : view === "plan"
           ? `Year plan. ${monthFilter === "ALL" ? "All months" : monthFilter} selected.`
           : view === "action"
@@ -1891,6 +1893,7 @@ export default function Home() {
     { key: "rights", label: "Rights & expression" },
     { key: "plan", label: "Year plan" },
     { key: "action", label: "Student action" },
+    { key: "outdoors", label: "Outdoor learning" },
     { key: "library", label: "Printables" },
   ];
 
@@ -2131,6 +2134,11 @@ export default function Home() {
                 </div>
               </section>
 
+              <section className="outdoor-home section" aria-labelledby="outdoor-home-title">
+                <div><p className="eyebrow dark"><span /> Outdoor learning · start close to school</p><h2 id="outdoor-home-title">What can this place teach us?</h2><p>Take one class outside for a field-journal inquiry, then return to see what changed. Find print-ready journals and Surrey places to explore.</p></div>
+                <button type="button" className="button dark" onClick={() => go("outdoors")}>Open outdoor learning →</button>
+              </section>
+
               <section className="map-home-feature section" aria-labelledby="map-home-title">
                 <div><p className="eyebrow dark"><span /> Map inquiry · 45–60 min</p><h2 id="map-home-title">Who gets to represent the world?</h2><p>Compare Mercator and Equal Earth, measure four familiar place pairs, separate evidence from policy choices, and reimagine what a map could make visible.</p><button type="button" className="button dark" onClick={() => go("maps")}>Preview the K–7 inquiry →</button></div>
                 <div className="map-home-pair"><img src="/images/map-inquiry/mercator-world.svg" alt="Mercator world map projection, which enlarges high-latitude land areas." width="960" height="500" /><img src="/images/map-inquiry/equal-earth-world.svg" alt="Equal Earth world map projection, which preserves relative land area." width="960" height="500" /></div>
@@ -2285,6 +2293,30 @@ export default function Home() {
                 <div className="action-step-tabs" aria-label="Action steps">{actionSteps.map((step, index) => <button type="button" key={step.n} className={actionStep === index ? "active" : ""} aria-current={actionStep === index ? "step" : undefined} onClick={() => setActionStep(index)}><b>{step.n}</b><span>{step.title}</span></button>)}</div>
                 <article className="action-step-card"><span>STEP {actionSteps[actionStep].n}</span><h2>{actionSteps[actionStep].title}</h2><p>{actionSteps[actionStep].question}</p><strong>{actionSteps[actionStep].tool}</strong><div><button type="button" disabled={actionStep === 0} onClick={() => setActionStep((current) => Math.max(0, current - 1))}>← Back</button><button type="button" disabled={actionStep === actionSteps.length - 1} onClick={() => setActionStep((current) => Math.min(actionSteps.length - 1, current + 1))}>Next →</button></div></article>
                 <div className="action-download"><div><b>READY-TO-USE STUDENT TOOLKIT</b><span>Issue research, power mapping, action planning, and reflection.</span></div><a href="/downloads/from-concern-to-action-student-toolkit.pdf">Colour PDF ↓</a><a href="/downloads/from-concern-to-action-student-toolkit-black-white.pdf">B&amp;W PDF ↓</a></div>
+              </div>
+            </section>
+          )}
+
+          {view === "outdoors" && (
+            <section className="section page-section outdoor-page">
+              <div className="page-heading split"><div><p className="eyebrow dark"><span /> Learning with the land</p><h1>Take your class outside.</h1></div><p>Begin on your own school grounds. Return to a familiar place, notice what changes, and let students ask questions that matter to them.</p></div>
+              <div className="outdoor-start" aria-labelledby="outdoor-start-title">
+                <div><p className="eyebrow dark"><span /> A first visit · 40–60 min</p><h2 id="outdoor-start-title">One place. Many discoveries.</h2><p>Choose a reachable observation area with your students. In pairs, try a few field-journal missions, compare evidence, then come back after rain or in another season.</p></div>
+                <ol><li><b>Notice</b><span>Sketch, map, listen, and compare small places.</span></li><li><b>Explain</b><span>Use evidence and consider another possible explanation.</span></li><li><b>Return</b><span>Check what changed and how your class can care for the place.</span></li></ol>
+              </div>
+              <div className="outdoor-equity" aria-labelledby="outdoor-equity-title"><h2 id="outdoor-equity-title">Make the outdoors part of every class.</h2><p>Students should be able to investigate together from routes and observation stations they can reach. Offer drawing, writing, speaking, pointing, or approved photos as ways to record learning. A bus trip is optional; repeated visits close to school give more classes a chance to build a relationship with place.</p><p>When connecting learning to Indigenous knowledge, use specific Nation-created sources and credit their creators. Outdoor observation alone does not represent Indigenous teaching.</p></div>
+              <h2 className="library-heading">Print-and-go field journals</h2>
+              <p className="library-intro compact">Original black-and-white resources for Grades 5–7. Each journal has a teacher page, nine student challenges, a field map, and a return-visit page. Choose missions; students do not need to finish the whole booklet in one visit.</p>
+              <div className="outdoor-resources">
+                <article><span>START ANYWHERE</span><h3>Explore Your School Grounds</h3><p>Compare microhabitats, follow evidence of change, map rainwater, and examine how people shape a place.</p><a href="/downloads/Explore_Your_School_Grounds.pdf" target="_blank" rel="noreferrer">Black-and-white journal · 6 pages ↓</a></article>
+                <article><span>TREES AND FOREST</span><h3>Forest Explorer</h3><p>Explore layers, decomposition, light, living relationships, patterns, and a question worth revisiting.</p><a href="/downloads/Forest_Explorer_Booklet.pdf" target="_blank" rel="noreferrer">Black-and-white journal · 6 pages ↓</a></article>
+                <article><span>CHOOSE A PLACE</span><h3>Surrey Places to Explore</h3><p>Six starting locations, linked park details, route and access checks, and free City resources.</p><a href="/downloads/Surrey_Outdoor_Learning_Places.pdf" target="_blank" rel="noreferrer">Teacher inventory · 2 pages ↓</a></article>
+              </div>
+              <h2 className="library-heading">More ways to begin</h2>
+              <div className="outdoor-links">
+                <a href="https://www.surrey.ca/parks-recreation/parks/park-programs/resources-outdoor-learning" target="_blank" rel="noreferrer"><b>City of Surrey outdoor learning resources</b><span>Shade trees, seasons, parks, and stewardship activities ↗</span></a>
+                <a href="https://www.surrey.ca/parks-recreation/parks/park-programs/parks-school-programs" target="_blank" rel="noreferrer"><b>Nature Activity Kits and school park programs</b><span>Free two-week kit loans, cleanups, and program details ↗</span></a>
+                <a href="https://www.surrey.ca/parks-recreation/parks/find-park" target="_blank" rel="noreferrer"><b>Find a park near your school</b><span>Check its current features and visit conditions ↗</span></a>
               </div>
             </section>
           )}
