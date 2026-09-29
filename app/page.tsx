@@ -358,7 +358,7 @@ const lessons: Lesson[] = [
         directions: ["Name the message type before deciding whether you agree.", "Find the strongest available evidence.", "Label the source: government information, news reporting, candidate material, opinion, or advertising."],
         visual: "source-check",
         links: [
-          { label: "CIVIX classroom resources", href: "https://studentvote.ca/canada/resources/" },
+          { label: "CIVIX · B.C. classroom resources (Grades 4–7)", href: "https://studentvote.ca/bc/classroom-resources/" },
           { label: "City election information", href: "https://www.surrey.ca/city-government/2026-municipal-election" },
           { label: "Elections Canada — AI and inaccurate information", href: "https://www.elections.ca/content.aspx?dir=int&document=dig&lang=e&section=vot" },
         ],
@@ -476,7 +476,7 @@ const lessons: Lesson[] = [
         directions: ["In pairs or a gallery walk, explain one proposal accurately and invite a question. Listen without guessing how anyone's family votes.", "Ask about a trade-off, missing evidence, or a criticism. Answer from sources; say 'I don't know yet' when needed.", "Revise one claim on your evidence card after the conversation. A class can also hold a secret mock vote if it chooses."],
         links: [
           { label: "Elections BC · education resources", href: "https://elections.bc.ca/voting/outreach-and-education/educational-resources/" },
-          { label: "Student Vote", href: "https://studentvote.ca/" },
+          { label: "Student Vote · B.C. classroom resources", href: "https://studentvote.ca/bc/classroom-resources/" },
         ],
       },
     ],
@@ -498,7 +498,7 @@ const lessons: Lesson[] = [
         { label: "Elections BC – political parties", href: "https://elections.bc.ca/candidates-parties/political-parties/" },
         { label: "City of Surrey – 2026 municipal election", href: "https://www.surrey.ca/city-government/2026-municipal-election" },
         { label: "Official Surrey candidate list – use after Sept. 11", href: "https://www.surrey.ca/city-government/2026-municipal-election/candidates" },
-        { label: "Student Vote / CIVIX classroom resources", href: "https://studentvote.ca/canada/resources/" },
+        { label: "Student Vote / CIVIX · B.C. classroom resources (Grades 4–7)", href: "https://studentvote.ca/bc/classroom-resources/" },
         { label: "Surrey Schools – Student Voice example", href: "https://www.surreyschools.ca/_ci/p/168658" },
         { label: "Surrey Schools – board meetings and public communication", href: "https://www.surreyschools.ca/board-meetings" },
         { label: "Elections Canada – AI and inaccurate information", href: "https://www.elections.ca/content.aspx?dir=int&document=dig&lang=e&section=vot" },
