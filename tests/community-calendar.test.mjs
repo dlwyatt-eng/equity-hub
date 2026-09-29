@@ -12,6 +12,8 @@ test('no invented daily event, stale annual repeat, or month boundary leak',()=>
  assert.equal(activeCards(calendar,'2026-09-08').length,0);
  assert.equal(activeCards(calendar,'2027-09-30').length,0);
  assert.equal(activeCards(calendar,'2026-10-31').some(c=>c.id==='islamic-history'),true);
+ assert.equal(activeCards(calendar,'2026-10-31').some(c=>c.id==='latin-american'),true);
+ assert.equal(activeCards(calendar,'2026-10-31').some(c=>c.id==='womens-history'),true);
  assert.equal(activeCards(calendar,'2026-11-01').some(c=>c.id==='islamic-history'),false);
  assert.equal(activeCards(calendar,'2027-06-05').some(c=>c.id==='accessability'),true);
  assert.equal(activeCards(calendar,'2027-06-06').some(c=>c.id==='accessability'),false);
