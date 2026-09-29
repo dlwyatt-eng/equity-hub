@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "schoolYear": "2026–27",
-  "reviewedOn": "2026-09-10",
+  "reviewedOn": "2026-09-28",
   "validFrom": "2026-09-01",
   "validUntil": "2027-08-31",
   "timezone": "America/Vancouver",
@@ -117,6 +117,10 @@
     "diwali": {
       "label": "Statistics Canada — Diwali and distinct traditions",
       "href": "https://www.statcan.gc.ca/o1/en/plus/8604-diwali-festival-lights"
+    },
+    "women": {
+      "label": "Women and Gender Equality Canada — Women’s History Month",
+      "href": "https://www.canada.ca/en/women-gender-equality/commemorations-celebrations/womens-history-month.html"
     }
   },
   "items": [
@@ -259,6 +263,29 @@
         "Look at a Canadian picture book by an author with Latin American roots. Name the author and something you wonder.",
         "Choose Canadian library books by authors with roots in two different Latin American countries. Notice what each author shares. Share one source detail that helped your thinking.",
         "Choose Canadian library books by authors with roots in two different Latin American countries. Notice what each author shares. Then ask whose voice is missing and how schools could reduce a barrier to belonging."
+      ]
+    },
+    {
+      "id": "womens-history",
+      "title": "Women’s History Month",
+      "start": "2026-10-01",
+      "end": "2026-10-31",
+      "kind": "History, representation & rights",
+      "what": "Women and girls have shaped communities in every field, while barriers have also affected whose work was recognized, supported, or remembered.",
+      "canada": "Canada marks Women’s History Month every October. The month also includes Persons Day on October 18.",
+      "fact": "There is no single story of women in Canada. Race, disability, class, language, immigration, Indigenous identity, and other experiences can shape opportunities and barriers.",
+      "explore": "Choose one Canadian woman or girl from a reliable source. What did she contribute, what barrier or context mattered, and whose story would add another perspective?",
+      "voices": [
+        "women"
+      ],
+      "lesson": "barriers-overlap",
+      "dateNote": "October is Women’s History Month in Canada; Persons Day is October 18.",
+      "dateSource": "women",
+      "minBand": null,
+      "deeper": [
+        "Listen to a story about a woman or girl in Canada. What did she make, discover, lead, create, or change?",
+        "Compare two Canadian women from different communities or fields. What did each contribute, and what helped or limited their opportunities? Share one source detail.",
+        "Use two reliable sources to examine contribution, recognition, and barriers. Ask whose experiences are missing and how systems can make participation fairer."
       ]
     },
     {
