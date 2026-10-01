@@ -2033,7 +2033,7 @@ export default function Home() {
             <details className="overview-prep" open>
               <summary><span><small>BEFORE CLASS</small><b>{selectedLesson.teacher.prepare.length} preparation tasks</b></span><em>Open / close</em></summary>
               <div className="overview-prep-grid">
-                <ol>{selectedLesson.teacher.prepare.map((item) => <li key={item}>{item}</li>)}</ol>
+                <ol>{selectedLesson.teacher.prepare.map((item) => <li key={item}>{selectedRoute?.title === "B.C. provincial party inquiry" && item.startsWith("Print only the pages") ? selectedRoute.print : item}</li>)}</ol>
                 <div className="prep-support">
                   <aside><small>TEACH WITH CARE</small><p>{selectedLesson.teacher.care}</p></aside>
                   <section><small>SOURCES FOR THIS ACTIVITY</small>{selectedLesson.teacher.sources?.length ? selectedLesson.teacher.sources.map((source) => <a key={source.href} href={source.href} target="_blank" rel="noreferrer">{source.label} ↗</a>) : <p>No outside source is required.</p>}{selectedLesson.id === "concern-to-action" && <button type="button" className="internal-prep-link" onClick={() => go("action")}>Open Student action →</button>}</section>
