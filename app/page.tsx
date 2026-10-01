@@ -1562,6 +1562,9 @@ const actionSteps = [
 ];
 
 const downloads = [
+  { title: "Explore Your School Grounds", detail: "6-page black-and-white field journal: observations, change, microhabitats, rainwater and people’s choices. Choose one prompt and return to the same place.", colour: "/downloads/Explore_Your_School_Grounds.pdf", bw: "/downloads/Explore_Your_School_Grounds.pdf", type: "Grades 5–7 · outdoor learning" },
+  { title: "Forest Explorer", detail: "6-page black-and-white field journal: layers, light, relationships and questions to revisit. Select a task that fits your learners and location.", colour: "/downloads/Forest_Explorer_Booklet.pdf", bw: "/downloads/Forest_Explorer_Booklet.pdf", type: "Grades 5–7 · outdoor learning" },
+  { title: "Surrey Places to Explore", detail: "2-page teacher inventory with six starting places, park links and route/access checks. Confirm conditions and school arrangements before a visit.", colour: "/downloads/Surrey_Outdoor_Learning_Places.pdf", bw: "/downloads/Surrey_Outdoor_Learning_Places.pdf", type: "Teacher planning · outdoor learning" },
   { title: "B.C. Provincial Party Inquiry", detail: "8-page low-ink teacher run sheet, source log, comparison, criticism check, infographic planner, discussion cards, and exit ticket", colour: "/downloads/bc-provincial-party-inquiry-black-white.pdf", bw: "/downloads/bc-provincial-party-inquiry-black-white.pdf", type: "Grades 6–7 · two 40-minute blocks" },
   { title: "Belonging & Learner Voice Toolkit", detail: "Facilitator guide + five write, draw, and colour graphic organizers", colour: "/downloads/belonging-learner-voice-toolkit.pdf", bw: "/downloads/belonging-learner-voice-toolkit.pdf", type: "Flexible K–7 toolkit" },
   { title: "AI Equity Dilemma Cards", detail: "Ten-page kit: equity lens, eight dilemma cards, Rules Council, power checks, sources, and teacher map", colour: "/downloads/ai-equity-dilemma-cards.pdf", bw: "/downloads/ai-equity-dilemma-cards-black-white.pdf", type: "Reusable discussion kit" },
@@ -2354,7 +2357,7 @@ export default function Home() {
               <p className="library-intro">Each pack includes clearly marked teacher pages showing what to project, which student pages match the lesson, how many copies to make, what to model, and what to collect. Multi-route packs tell you which pages to choose—you do not teach the whole pack. Check the suggested grade range and use the lesson’s K–7 guide for adaptations.</p>
               <div className="lesson-printables-grid">{orderedLessons.map((lesson, index) => <article className={`tone-${lesson.tone}`} key={lesson.id}><figure><img src={lesson.printable.preview} alt="" width="773" height="1000" /><span>{String(index + 1).padStart(2, "0")}</span></figure><div><span className="printable-grade">{lesson.grades}</span><h3>{lesson.printable.title}</h3><p>{lesson.printable.pagePlan.join(" ")}</p><button type="button" onClick={() => startLesson(lesson.id)}>Preview grade fit + page map →</button></div><div className="printable-links"><a className="bw-link" href={lesson.printable.bwHref} target="_blank" rel="noreferrer">Full B&amp;W · {lesson.printable.pages} pages</a><a href={lesson.printable.href} target="_blank" rel="noreferrer">Colour pack</a></div></article>)}</div>
               <EarthMonthEntry />
-              <h2 className="library-heading">Longer project toolkits</h2>
+              <h2 className="library-heading">Field journals &amp; project toolkits</h2>
               <p className="library-intro compact">Check each toolkit’s suggested grades before printing. Adapt the reading and writing tasks to suit your class.</p>
               <div className="download-grid">{downloads.map((item) => <article key={item.title}><span>{item.type}</span><h3>{item.title}</h3><p>{item.detail}</p><div>{item.colour === item.bw ? <a href={item.bw}>Open printable PDF ↓</a> : <><a href={item.colour}>Colour PDF ↓</a><a href={item.bw}>B&amp;W PDF ↓</a></>}</div></article>)}</div>
               <h2 className="library-heading">Trusted starting points</h2>
@@ -2364,7 +2367,7 @@ export default function Home() {
           )}
         </>
       )}
-      {!projectorMode && <footer><BrandMark /><p><strong>Walnut Road Equity Learning &amp; Action Hub</strong><span>K–7 lessons, classroom resources and community action. · Updated September 23, 2026</span><a href="https://dlwyatt-eng.github.io/learn/">Mr. Wyatt&apos;s Grade 6 Student &amp; Family Hub ↗</a></p><button type="button" onClick={() => go("home")}>Back to start ↑</button></footer>}
+      {!projectorMode && <footer><BrandMark /><p><strong>Walnut Road Equity Learning &amp; Action Hub</strong><span>K–7 lessons, classroom resources and community action. · Updated September 30, 2026</span><a href="https://dlwyatt-eng.github.io/learn/">Mr. Wyatt&apos;s Grade 6 Student &amp; Family Hub ↗</a></p><button type="button" onClick={() => go("home")}>Back to start ↑</button></footer>}
     </main>
     </>
   );
