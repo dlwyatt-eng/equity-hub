@@ -1,6 +1,7 @@
 "use client";
 /* eslint-disable @next/next/no-img-element -- compressed local WebP assets are used for predictable projector rendering. */
 
+import NatureToday from "./nature-today";
 import RightsStrand, { RightsEntry } from "./rights-strand";
 import { EquityExploration } from "./virtual-explorations";
 import TruthAdultGuide from "./truth-adult-guide";
@@ -11,7 +12,7 @@ import { CalendarProvocationsPanel, MapRepresentationInquiry } from "./master-in
 import { CommunityCalendar, CommunityToday } from "./community-calendar";
 import { localDay } from "../content/community-dates.mjs";
 
-type View = "rights" | "home" | "teach" | "maps" | "plan" | "issues" | "action" | "outdoors" | "library";
+type View = "nature" | "rights" | "home" | "teach" | "maps" | "plan" | "issues" | "action" | "outdoors" | "library";
 type Tone = "leaf" | "sun" | "sky" | "berry" | "coral" | "sand";
 type GradeBand = "K–2" | "3–5" | "6–7";
 type GradeSelection = "ALL" | GradeBand;
@@ -1561,7 +1562,8 @@ const actionSteps = [
   { n: "06", title: "Report", question: "What did we deliver, what response came back, and what actually changed?", tool: "Output · response · change or unknown · next check" },
 ];
 
-const downloads = [
+const downloads: { title: string; detail: string; colour: string; bw: string; type: string; colourLabel?: string; bwLabel?: string }[] = [
+  { title: "Nature Today", detail: "15 sourced photographs, a teacher guide, and a six-page student observation journal. Download the complete package from Nature Today.", colour: "/downloads/nature-today/Nature_Today_Teacher_Pack.pdf", bw: "/downloads/nature-today/Nature_Today_Student_Journal.pdf", type: "Outdoor inquiry · daily 2–5 minutes", colourLabel: "Teacher pack PDF ↓", bwLabel: "Student journal PDF ↓" },
   { title: "Explore Your School Grounds", detail: "6-page black-and-white field journal: observations, change, microhabitats, rainwater and people’s choices. Choose one prompt and return to the same place.", colour: "/downloads/Explore_Your_School_Grounds.pdf", bw: "/downloads/Explore_Your_School_Grounds.pdf", type: "Grades 5–7 · outdoor learning" },
   { title: "Forest Explorer", detail: "6-page black-and-white field journal: layers, light, relationships and questions to revisit. Select a task that fits your learners and location.", colour: "/downloads/Forest_Explorer_Booklet.pdf", bw: "/downloads/Forest_Explorer_Booklet.pdf", type: "Grades 5–7 · outdoor learning" },
   { title: "Surrey Places to Explore", detail: "2-page teacher inventory with six starting places, park links and route/access checks. Confirm conditions and school arrangements before a visit.", colour: "/downloads/Surrey_Outdoor_Learning_Places.pdf", bw: "/downloads/Surrey_Outdoor_Learning_Places.pdf", type: "Teacher planning · outdoor learning" },
@@ -1719,6 +1721,8 @@ export default function Home() {
             ? "Racism, Human Rights and Freedom of Expression inquiry."
           : view === "maps"
             ? "Map representation inquiry. Preparation, projection, sources, and K–7 adaptations."
+          : view === "nature"
+            ? "Nature Today. A seasonal photograph, observation prompts and downloadable materials."
           : view === "outdoors"
             ? "Outdoor learning. School-ground field journals, Surrey places, and teacher resources."
           : view === "plan"
@@ -1766,8 +1770,9 @@ export default function Home() {
 
   const go = (next: View) => {
     setView(next);
-    if (next === "rights") window.history.replaceState(null, "", "#rights");
-    else if (window.location.hash === "#rights") window.history.replaceState(null, "", window.location.pathname);
+    if (next === "nature") window.history.replaceState(null, "", "#nature-today");
+    else if (next === "rights") window.history.replaceState(null, "", "#rights");
+    else if (["#rights", "#nature-today"].includes(window.location.hash)) window.history.replaceState(null, "", window.location.pathname);
     setSelectedLessonId(null);
     setLessonOverview(false);
     setRouteSteps([]);
@@ -1780,7 +1785,7 @@ export default function Home() {
     window.setTimeout(() => document.getElementById("community-calendar")?.scrollIntoView({ block: "start" }), 100);
   };
   useEffect(() => {
-    const fromHash = () => { if (window.location.hash === "#rights") { setView("rights"); setSelectedLessonId(null); } else if (window.location.hash === "#community-calendar") { setView("plan"); setSelectedLessonId(null); } else if (window.location.hash === "#action") { go("action"); } else if (window.location.hash.startsWith("#lesson/")) { const id = window.location.hash.slice(8); if (lessons.some(lesson => lesson.id === id)) startLesson(id); } };
+    const fromHash = () => { if (!window.location.hash) { setView("home"); setSelectedLessonId(null); } else if (window.location.hash === "#nature-today") { setView("nature"); setSelectedLessonId(null); } else if (window.location.hash === "#rights") { setView("rights"); setSelectedLessonId(null); } else if (window.location.hash === "#community-calendar") { setView("plan"); setSelectedLessonId(null); } else if (window.location.hash === "#action") { go("action"); } else if (window.location.hash.startsWith("#lesson/")) { const id = window.location.hash.slice(8); if (lessons.some(lesson => lesson.id === id)) startLesson(id); } };
     fromHash(); window.addEventListener("hashchange", fromHash);
     return () => window.removeEventListener("hashchange", fromHash);
   }, []);
@@ -2165,7 +2170,7 @@ export default function Home() {
 
               <section className="outdoor-home section" aria-labelledby="outdoor-home-title">
                 <div><p className="eyebrow dark"><span /> Outdoor learning · start close to school</p><h2 id="outdoor-home-title">What can this place teach us?</h2><p>Take one class outside for a field-journal inquiry, then return to see what changed. Find print-ready journals and Surrey places to explore.</p></div>
-                <button type="button" className="button dark" onClick={() => go("outdoors")}>Open outdoor learning →</button>
+                <div><button type="button" className="button dark" onClick={() => go("outdoors")}>Open outdoor learning →</button> <button type="button" className="button dark" onClick={() => go("nature")}>Nature Today</button></div>
               </section>
 
               <section className="map-home-feature section" aria-labelledby="map-home-title">
@@ -2326,9 +2331,12 @@ export default function Home() {
             </section>
           )}
 
+          {view === "nature" && <NatureToday audience="teacher" hub="equity" />}
+
           {view === "outdoors" && (
             <section className="section page-section outdoor-page">
               <div className="outdoor-hero"><div><p className="eyebrow dark"><span /> Learning with the land</p><h1>Let the place lead.</h1><p>Begin on your own school grounds. Return to a familiar place, notice what changes, and let students ask questions that matter to them.</p><a href="/downloads/Explore_Your_School_Grounds.pdf" target="_blank" rel="noreferrer">Open the first field journal ↗</a></div><figure><img src="/images/outdoor-schoolyard.webp" alt="Illustration of students observing a leafy schoolyard together from an accessible path" width="1536" height="1024" /><figcaption>A schoolyard can become a place to notice, wonder, and return.</figcaption></figure></div>
+              <aside className="issue-principle"><b>Nature Today · 2–5 minutes</b><span>One seasonal photograph. Notice a detail, explain an idea, then look for evidence close to school.</span><button className="button dark" type="button" onClick={() => go("nature")}>Open Nature Today + downloads</button></aside>
               <div className="outdoor-start" aria-labelledby="outdoor-start-title">
                 <div><p className="eyebrow dark"><span /> A first visit · 40–60 min</p><h2 id="outdoor-start-title">One place. Many discoveries.</h2><p>Choose a reachable observation area with your students. In pairs, try a few field-journal missions, compare evidence, then come back after rain or in another season.</p></div>
                 <ol><li><b>01 · Notice</b><span>Sketch, map, listen, and compare small places.</span></li><li><b>02 · Relate</b><span>Ask what lives here, what this place provides, and what affects it.</span></li><li><b>03 · Care</b><span>Consider responsibilities to living things and to one another.</span></li><li><b>04 · Return</b><span>Check what changed; let the next question grow from the visit.</span></li></ol>
@@ -2359,7 +2367,7 @@ export default function Home() {
               <EarthMonthEntry />
               <h2 className="library-heading">Field journals &amp; project toolkits</h2>
               <p className="library-intro compact">Check each toolkit’s suggested grades before printing. Adapt the reading and writing tasks to suit your class.</p>
-              <div className="download-grid">{downloads.map((item) => <article key={item.title}><span>{item.type}</span><h3>{item.title}</h3><p>{item.detail}</p><div>{item.colour === item.bw ? <a href={item.bw}>Open printable PDF ↓</a> : <><a href={item.colour}>Colour PDF ↓</a><a href={item.bw}>B&amp;W PDF ↓</a></>}</div></article>)}</div>
+              <div className="download-grid">{downloads.map((item) => <article key={item.title}><span>{item.type}</span><h3>{item.title}</h3><p>{item.detail}</p><div>{item.colour === item.bw ? <a href={item.bw}>Open printable PDF ↓</a> : <><a href={item.colour}>{item.colourLabel ?? "Colour PDF ↓"}</a><a href={item.bw}>{item.bwLabel ?? "B&W PDF ↓"}</a></>}</div></article>)}</div>
               <h2 className="library-heading">Trusted starting points</h2>
               <div className="link-list">{trustedLinks.map((item) => <a href={item.href} target="_blank" rel="noreferrer" key={item.href}><span>{item.tag}</span><div><strong>{item.title}</strong><small>{item.source}</small></div><b>↗</b></a>)}</div>
               {teacherMode && <aside className="gentle-care"><div><p className="eyebrow dark"><span /> Teaching with care</p><h2>Four gentle reminders</h2></div><ol><li><b>1</b><span><strong>Begin with curiosity.</strong> Notice assumptions and keep learning.</span></li><li><b>2</b><span><strong>Use authentic voices.</strong> Credit the specific people and communities represented.</span></li><li><b>3</b><span><strong>Protect dignity.</strong> No student represents a whole identity or community.</span></li><li><b>4</b><span><strong>Include possibility.</strong> Teach joy, strength, solidarity, repair, and action alongside harm.</span></li></ol></aside>}
