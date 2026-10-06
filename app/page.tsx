@@ -1929,9 +1929,9 @@ export default function Home() {
             <button type="button" className={largeText ? "text-size-toggle active" : "text-size-toggle"} aria-label={largeText ? "Use standard text size" : "Use large text"} aria-pressed={largeText} onClick={() => setLargeText((current) => !current)}>
               <span aria-hidden="true">Aa</span>{largeText ? "Large text" : "Standard text"}
             </button>
-            <button type="button" className="menu-button" aria-expanded={menuOpen} onClick={() => setMenuOpen((current) => !current)}>{menuOpen ? "Close" : "Menu"}</button>
+            <button type="button" className="menu-button" aria-controls="equity-mobile-navigation" aria-expanded={menuOpen} onClick={() => setMenuOpen((current) => !current)}>{menuOpen ? "Close" : "Menu"}</button>
           </div>
-          {menuOpen && <nav className="mobile-nav" aria-label="Mobile navigation">{navItems.map((item) => <button type="button" key={item.key} aria-current={view === item.key ? "page" : undefined} onClick={() => go(item.key)}>{item.label}</button>)}</nav>}
+          {menuOpen && <nav id="equity-mobile-navigation" className="mobile-nav" aria-label="Mobile navigation">{navItems.map((item) => <button type="button" key={item.key} aria-current={view === item.key ? "page" : undefined} onClick={() => go(item.key)}>{item.label}</button>)}</nav>}
         </header>
       )}
       <p className="sr-only" role="status" aria-live="polite" aria-atomic="true">{liveAnnouncement}</p>

@@ -77,12 +77,13 @@ button { white-space: normal; line-height: 1.25; }
   position: sticky;
   top: 0;
   z-index: 50;
-  height: 78px;
+  min-height: 78px;
+  height: auto;
   display: grid;
-  grid-template-columns: auto 1fr auto;
+  grid-template-columns: auto minmax(0, 1fr) auto;
   align-items: center;
   gap: 28px;
-  padding: 0 28px;
+  padding: 12px 28px;
   background: rgba(255, 253, 247, .94);
   border-bottom: 1px solid var(--line);
   backdrop-filter: blur(14px);
@@ -104,7 +105,7 @@ button { white-space: normal; line-height: 1.25; }
 .brand-mark i { position: absolute; inset: 2px; border: 2px solid var(--ink); border-radius: 50% 42% 52% 45%; transform: rotate(-10deg); }
 .brand-mark i::after { content: ""; position: absolute; inset: 5px; border: 1px solid var(--ink); border-radius: 42% 55% 45% 53%; transform: rotate(24deg); }
 .brand-mark b { position: relative; font-family: var(--font-lora), Georgia, serif; }
-.desktop-nav { display: flex; justify-content: center; gap: 2px; }
+.desktop-nav { display: flex; flex-wrap: wrap; justify-content: center; gap: 2px; min-width: 0; }
 .desktop-nav button {
   border: 0;
   background: none;
@@ -1049,4 +1050,21 @@ footer p a,.election-official-links a { color: #ffdc9b; text-decoration: underli
   .home-hero, .home-runway, .action-hero, .election-now, .planning-note, .gentle-care { color: #111 !important; background: white !important; }
   img { max-height: 6.5in; object-fit: contain !important; }
   a { text-decoration: underline; }
+}
+
+/* Header labels wrap between controls, never inside individual words. */
+.site-header button,.site-header span,.site-header strong,.site-header small{overflow-wrap:normal;word-break:normal;hyphens:none}
+.desktop-nav button,.header-tools button{flex-shrink:0;white-space:nowrap;min-height:44px}
+.brand-mark{flex-shrink:0}
+.site-header button:focus-visible{outline:3px solid #a45613;outline-offset:3px}
+.mobile-nav{max-height:calc(100dvh - 160px);overflow-y:auto;overscroll-behavior:contain}
+@media(min-width:1081px) and (max-width:1450px){
+ .site-header{grid-template-columns:1fr auto;gap:8px 20px}
+ .desktop-nav{grid-column:1/-1;grid-row:2}
+ .header-tools{grid-column:2;grid-row:1}
+}
+@media(max-width:480px){
+ .site-header,.large-text .site-header{grid-template-columns:minmax(0,1fr)}
+ .header-tools{grid-column:1;flex-wrap:wrap;gap:6px}
+ .mobile-nav{max-height:calc(100dvh - 180px)}
 }
