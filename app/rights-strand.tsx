@@ -1,4 +1,5 @@
 "use client";
+import CommunityInquiry from "./community-inquiries";
 import { useEffect, useRef, useState } from "react";
 import { rightsCases, rightsLabels, rightsMilestones, rightsScreens, rightsSources, rightsTerms } from "./rights-data";
 import "./rights-strand.css";
@@ -24,6 +25,7 @@ export default function RightsStrand({adult = false}:{adult?:boolean}) {
     <header className="rights-heading"><p className="rights-kicker">{adult?"K–7 · CANADA & BRITISH COLUMBIA":"GRADE 6 · RIGHTS & BELONGING"}</p><h1 id="rights-title">Racism, Human Rights<br/>&amp; Freedom of Expression</h1><p>When does freedom of expression protect what someone says, and when can expression interfere with another person’s rights?</p></header>
     <div className="rights-nav" role="group" aria-label="Choose inquiry section">{([["learn","1 · Learn"],["scenarios","2 · Where is the line?"],["action","3 · Take action"]] as const).map(([id,label])=><button key={id} aria-pressed={section===id} onClick={()=>setSection(id)}>{label}</button>)}</div>
     {section==="learn"&&<>
+      <CommunityInquiry kind="media" />
       <div className="rights-start"><div><h2>Start with “Can I disagree?”</h2><p>25 minutes · a partner, paper and pencil · no student device needed</p><p>Learn why expression matters, compare two statements, and explain one way to protect another person’s rights.</p></div><button onClick={()=>{setScreen(0);setProjecting(true);}}>Open four teaching screens</button></div>
       <div className="rights-four">{[
         ["01","Expression is a right","We can question rules, disagree and criticize people in power. An idea is not automatically illegal because someone finds it offensive."],

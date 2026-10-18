@@ -1,6 +1,7 @@
 "use client";
 /* eslint-disable @next/next/no-img-element -- compressed local WebP assets are used for predictable projector rendering. */
 
+import CommunityInquiry from "./community-inquiries";
 import NatureToday from "./nature-today";
 import RightsStrand, { RightsEntry } from "./rights-strand";
 import { EquityExploration } from "./virtual-explorations";
@@ -2047,7 +2048,10 @@ export default function Home() {
               </div>
             </details>
 
-            {selectedLesson.id === "truth-place-responsibility" && <TruthAdultGuide />}
+            {selectedLesson.id === "truth-place-responsibility" && <><TruthAdultGuide /><CommunityInquiry kind="history" /></>}
+            {selectedLesson.id === "belonging-built" && <CommunityInquiry kind="belonging" />}
+            {selectedLesson.id === "voice-and-rules" && <p><a href="#rights">Explore protest and media: Whose voice reaches the headline?</a> · <a href="#lesson/truth-place-responsibility">Close to home: stories, rights and change</a></p>}
+            {selectedLesson.id === "barrier-detectives" && <p><a href="#lesson/belonging-built">Shared interests, real choices: invitations and a Ways-to-Join menu</a></p>}
 
             <section className="lesson-map" aria-labelledby="lesson-map-title">
               <div className="overview-section-heading"><span aria-hidden="true">✦</span><div><small>PROJECTOR MAP</small><h2 id="lesson-map-title">What students will see</h2></div></div>
