@@ -16,6 +16,11 @@ const requiredPublicFiles = [
   "images/map-inquiry/equal-earth-world.svg",
   "images/media-literacy-source-check.webp",
   "images/climate-justice-action.webp",
+  "downloads/childrens-day-2026/Childrens-Day-2026-School-Learning-Pack.pdf",
+  "downloads/childrens-day-2026/Childrens-Day-2026-Rights-Poster.png",
+  "downloads/childrens-day-2026/Childrens-Day-2026-School-Pack.zip",
+  "downloads/childrens-day-2026/Childrens-Day-2026-Text-Companion.txt",
+  "downloads/childrens-day-2026/Read-me.txt",
 ];
 for (const file of requiredPublicFiles) await access(path.join(output, file));
 

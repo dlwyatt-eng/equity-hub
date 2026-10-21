@@ -5,7 +5,7 @@ import { rightsCases, rightsLabels, rightsMilestones, rightsScreens, rightsSourc
 import "./rights-strand.css";
 
 export function RightsEntry({href = "#rights"}:{href?:string}) {
-  return <aside className="rights-entry"><div><small>RIGHTS · EQUALITY · VOICE</small><h2>Racism, Human Rights &amp; Freedom of Expression</h2><p>Explore disagreement, discrimination and what we can do. October foundations → November 20 children’s rights → December 10 human rights.</p></div><a href={href}>Open the inquiry →</a></aside>;
+  return <aside className="rights-entry"><div><small>RIGHTS · EQUALITY · VOICE</small><h2>Racism, Human Rights &amp; Freedom of Expression</h2><p>Explore disagreement, discrimination and what we can do. Connect children’s rights with belonging, participation and respectful action.</p></div><a href={href}>Open the inquiry →</a></aside>;
 }
 
 export default function RightsStrand({adult = false}:{adult?:boolean}) {
@@ -54,7 +54,7 @@ export default function RightsStrand({adult = false}:{adult?:boolean}) {
       <p className="rights-note">Possible criminal hate speech belongs in adult assessment. If someone may be in danger, get help immediately; you do not need to decide which law applies.</p>
     </>}
     {section==="action"&&<>
-      <section className="rights-panel"><small>LEADERSHIP &amp; SPIRIT CLUB</small><h2>Rights, Respect &amp; Responsibility</h2><p>Help other students understand a right, practise a response and know when to ask an adult for help.</p><p><b>School-year pathway:</b> Begin with the club’s October 21 launch; develop through November 20 and revisit for December 10. Schools using this resource can choose their own meeting dates.</p><ol className="rights-timeline">
+      <section className="rights-panel"><small>LEADERSHIP &amp; SPIRIT CREW</small><h2>Rights, Respect &amp; Responsibility</h2><p>Help other students understand a right, practise a response and know when to ask an adult for help.</p><p><b>November learning pathway:</b> Build toward National Child Day and World Children’s Day on November 20. Use this sequence in a class or student leadership group. First student leadership meeting: Friday, November 13.</p><ol className="rights-timeline">
       <li><h3>1. Investigate · first meeting</h3><p>Try two fictional cases. Use UNICEF articles 2, 12 and 13 to identify a right. Ask: who can use it easily, who faces a barrier, and what must adults do?</p></li>
       <li><h3>2. Choose one useful change</h3><p>Choose one school routine, such as sharing ideas at class council. Invite voluntary feedback about that routine without collecting personal incidents or names. Decide what your project should help students do.</p></li>
       <li><h3>3. Make and test · before November 20</h3><p>Create a scenario card, a 30-second announcement, a hallway infographic or a five-minute class activity. Include one right, a fictional example, a safe response and an adult-help step. Have your sponsor check accuracy and care, then trial it with a small group.</p></li>

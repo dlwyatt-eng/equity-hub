@@ -7,11 +7,12 @@ import RightsStrand, { RightsEntry } from "./rights-strand";
 import { EquityExploration } from "./virtual-explorations";
 import TruthAdultGuide from "./truth-adult-guide";
 import EarthMonthEntry from "./earth-month-entry";
+import SchoolStaffStart from "./school-staff-start";
+import NovemberChildDay from "./november-child-day";
 import { useEffect, useLayoutEffect, useRef, useState } from "react";
 import { CalendarProvocationsPanel, MapRepresentationInquiry } from "./master-inquiry-panels";
 
-import { CommunityCalendar, CommunityToday } from "./community-calendar";
-import { localDay } from "../content/community-dates.mjs";
+import { CommunityCalendar } from "./community-calendar";
 
 type View = "nature" | "rights" | "home" | "teach" | "maps" | "plan" | "issues" | "action" | "outdoors" | "library";
 type Tone = "leaf" | "sun" | "sky" | "berry" | "coral" | "sand";
@@ -1564,6 +1565,7 @@ const actionSteps = [
 ];
 
 const downloads: { title: string; detail: string; colour: string; bw: string; type: string; colourLabel?: string; bwLabel?: string }[] = [
+  { title: "Every child. Every right.", detail: "Optional November 20 toolkit: poster, teacher guide, K–3 and Grades 4–7 activities, and a Leadership / Spirit Crew listening project with adult follow-through. Six-page print PDF; text companion includes source links.", colour: "/downloads/childrens-day-2026/Childrens-Day-2026-School-Learning-Pack.pdf", bw: "/downloads/childrens-day-2026/Childrens-Day-2026-Text-Companion.txt", type: "National Child Day / World Children’s Day · K–7 + leadership", colourLabel: "6-page learning pack PDF ↓", bwLabel: "Text companion + sources ↗" },
   { title: "Nature Today", detail: "15 sourced photographs, a teacher guide, and a six-page student observation journal. Download the complete package from Nature Today.", colour: "/downloads/nature-today/Nature_Today_Teacher_Pack.pdf", bw: "/downloads/nature-today/Nature_Today_Student_Journal.pdf", type: "Outdoor inquiry · daily 2–5 minutes", colourLabel: "Teacher pack PDF ↓", bwLabel: "Student journal PDF ↓" },
   { title: "Explore Your School Grounds", detail: "6-page black-and-white field journal: observations, change, microhabitats, rainwater and people’s choices. Choose one prompt and return to the same place.", colour: "/downloads/Explore_Your_School_Grounds.pdf", bw: "/downloads/Explore_Your_School_Grounds.pdf", type: "Grades 5–7 · outdoor learning" },
   { title: "Forest Explorer", detail: "6-page black-and-white field journal: layers, light, relationships and questions to revisit. Select a task that fits your learners and location.", colour: "/downloads/Forest_Explorer_Booklet.pdf", bw: "/downloads/Forest_Explorer_Booklet.pdf", type: "Grades 5–7 · outdoor learning" },
@@ -1680,9 +1682,6 @@ export default function Home() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [chosenOptions, setChosenOptions] = useState<string[]>([]);
   const [scrollResetKey, setScrollResetKey] = useState(0);
-  const electionDay = localDay();
-  const localVotePassed = electionDay > "2026-10-17";
-  const provincialVotePassed = electionDay > "2026-10-24";
 
   const selectedLesson = lessons.find((lesson) => lesson.id === selectedLessonId) ?? null;
   const currentStep = selectedLesson?.steps[stepIndex];
@@ -1773,7 +1772,7 @@ export default function Home() {
     setView(next);
     if (next === "nature") window.history.replaceState(null, "", "#nature-today");
     else if (next === "rights") window.history.replaceState(null, "", "#rights");
-    else if (["#rights", "#nature-today"].includes(window.location.hash)) window.history.replaceState(null, "", window.location.pathname);
+    else if (["#rights", "#nature-today", "#school-staff"].includes(window.location.hash)) window.history.replaceState(null, "", window.location.pathname);
     setSelectedLessonId(null);
     setLessonOverview(false);
     setRouteSteps([]);
@@ -1785,6 +1784,20 @@ export default function Home() {
     setCommunityCardId(id ?? null); go("plan");
     window.setTimeout(() => document.getElementById("community-calendar")?.scrollIntoView({ block: "start" }), 100);
   };
+  useEffect(() => {
+    const openSchoolStaff = () => {
+      if (window.location.hash !== "#school-staff") return;
+      setView("home");
+      setSelectedLessonId(null);
+      window.requestAnimationFrame(() => {
+        document.getElementById("school-staff")?.scrollIntoView({ block: "start" });
+        document.getElementById("school-staff-title")?.focus({ preventScroll: true });
+      });
+    };
+    openSchoolStaff();
+    window.addEventListener("hashchange", openSchoolStaff);
+    return () => window.removeEventListener("hashchange", openSchoolStaff);
+  }, []);
   useEffect(() => {
     const fromHash = () => { if (!window.location.hash) { setView("home"); setSelectedLessonId(null); } else if (window.location.hash === "#nature-today") { setView("nature"); setSelectedLessonId(null); } else if (window.location.hash === "#rights") { setView("rights"); setSelectedLessonId(null); } else if (window.location.hash === "#community-calendar") { setView("plan"); setSelectedLessonId(null); } else if (window.location.hash === "#action") { go("action"); } else if (window.location.hash.startsWith("#lesson/")) { const id = window.location.hash.slice(8); if (lessons.some(lesson => lesson.id === id)) startLesson(id); } };
     fromHash(); window.addEventListener("hashchange", fromHash);
@@ -2129,12 +2142,12 @@ export default function Home() {
         <>
           {view === "home" && (
             <>
-              <CommunityToday onOpen={openCommunity} />
+              <NovemberChildDay onLesson={startLesson} />
               <RightsEntry />
               <EarthMonthEntry seasonal />
               <section className="home-hero">
                 <div className="hero-copy">
-                  <aside className="standalone-note"><span aria-hidden="true">✦</span><div><b>LEARN &amp; ACT · K–7</b><p>Choose a lesson, gather the materials, and project the first question.</p></div></aside>
+                  <aside className="standalone-note"><span aria-hidden="true">✦</span><div><b>LEARN &amp; ACT · K–7</b><p>Choose a lesson, gather the materials, and project the first question.</p><a className="school-staff-shortcut" href="#school-staff">Walnut Road staff: school connections →</a></div></aside>
                   <p className="eyebrow"><span /> Featured lesson · {featuredLesson.title} · {featuredLesson.grades}</p>
                   <h1>What helps everyone <em>belong?</em></h1>
                   <p className="featured-route">LOOK CLOSELY <b>→</b> RANK WHAT MATTERS <b>→</b> DRAW THE ACTION</p>
@@ -2156,21 +2169,7 @@ export default function Home() {
                 </figure>
               </section>
 
-              <section className="election-now section" aria-labelledby="election-now-title">
-                <div className="election-now-copy"><p className="eyebrow dark"><span /> {provincialVotePassed ? "After the votes · keep asking" : "Two elections · two decisions"}</p><h2 id="election-now-title">{provincialVotePassed ? "What happens after a vote?" : localVotePassed ? "Local results. Provincial choice." : "Who gets heard?"}</h2><p>{provincialVotePassed ? "Surrey voted locally on October 17 and B.C. voted provincially on October 24. Check the official results, then ask what decisions and follow-up come next." : localVotePassed ? "Surrey's local vote was October 17; B.C.'s provincial vote is October 24. Compare who makes which decisions and check claims against original sources." : "Surrey's local vote is October 17; B.C.'s provincial vote is October 24. Compare who makes which decisions, whose voices are missing, and how to check a claim."} Classroom mock votes are a possibility, not a confirmed school event.</p><p className="election-official-links"><a href="https://www.surrey.ca/2026-municipal-election" target="_blank" rel="noreferrer">Surrey election ↗</a> · <a href="https://elections.bc.ca/2026-provincial-election/" target="_blank" rel="noreferrer">Elections BC ↗</a></p></div>
-                <div className="election-route-grid">
-                  {provincialVotePassed ? <>
-                    <button type="button" onClick={() => startLesson("voice-and-rules", 14)}><small>AFTER BOTH VOTES · 15 MIN</small><b>Accountability check</b><span>What can we verify, and what still needs follow-up?</span></button>
-                    <button type="button" onClick={() => startLesson("voice-and-rules", 13)}><small>EVERY DAY · 15 MIN</small><b>Voting is one piece</b><span>How can young people participate between elections?</span></button>
-                  </> : <>
-                    <button type="button" onClick={() => startLesson("voice-and-rules", 15)}><small>PROVINCIAL ELECTION · 2 × 40 MIN</small><b>Party inquiry</b><span>Compare proposals and criticisms; students may form their own view.</span></button>
-                    <button type="button" onClick={() => startLesson("voice-and-rules", 13)}><small>15 MIN</small><b>Voting is one piece</b><span>How can young people participate now?</span></button>
-                    <button type="button" onClick={() => startLesson("voice-and-rules", 5)}><small>45 MIN</small><b>Decision lab</b><span>Decide, check missing perspectives, and revise.</span></button>
-                    {!localVotePassed && <button type="button" onClick={() => startLesson("voice-and-rules", 7)}><small>LOCAL ELECTION · OCTOBER 17</small><b>Representation + messages</b><span>Use official sources and equal samples.</span></button>}
-                    <button type="button" onClick={() => startLesson("voice-and-rules", 14)}><small>AFTER THE VOTES · 15 MIN</small><b>Accountability check</b><span>Results are the start of the next question.</span></button>
-                  </>}
-                </div>
-              </section>
+              <SchoolStaffStart onNavigate={go} onLesson={(id) => { if (window.location.hash === "#school-staff") window.history.replaceState(null, "", window.location.pathname); startLesson(id); }} onCalendar={() => openCommunity()} />
 
               <section className="outdoor-home section" aria-labelledby="outdoor-home-title">
                 <div><p className="eyebrow dark"><span /> Outdoor learning · start close to school</p><h2 id="outdoor-home-title">What can this place teach us?</h2><p>Take one class outside for a field-journal inquiry, then return to see what changed. Find print-ready journals and Surrey places to explore.</p></div>
@@ -2197,22 +2196,6 @@ export default function Home() {
                   <button type="button" className="launch-card sun" onClick={() => startLesson("voice-and-rules")}>
                     <img src="/images/voice-and-rules.webp" alt="" width="1536" height="1024" /><span><b>15–90 MIN</b> K–7 adaptations · best suited to 3–7</span><h3>Whose voice shapes the rules?</h3><p>Start with a real class choice, then connect fairness to Surrey, trustees, participation, and accountability.</p><strong>Preview &amp; choose one route →</strong>
                   </button>
-                </div>
-              </section>
-
-              <section className="home-runway">
-                <div>
-                  <p className="eyebrow light"><span /> First six weeks</p>
-                  <h2>Start before<br />the date.</h2>
-                  <button type="button" className="text-link light" onClick={() => go("plan")}>Open the full-year runway →</button>
-                </div>
-                <div className="mini-runway">
-                  {runways.slice(0, 3).map((item) => (
-                    <article key={item.event}>
-                      <b>{item.start}</b><div><strong>{item.event}</strong><span>Create {item.create} · Share {item.share}</span></div>
-                      {item.lesson && <button type="button" onClick={() => startLesson(item.lesson!)}>Teach →</button>}
-                    </article>
-                  ))}
                 </div>
               </section>
 

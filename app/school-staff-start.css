@@ -1,0 +1,83 @@
+.school-staff {
+  padding-top: 56px;
+  padding-bottom: 56px;
+  scroll-margin-top: 145px;
+}
+.school-staff-heading {
+  display: grid;
+  grid-template-columns: minmax(0, 1.6fr) minmax(240px, 1fr);
+  gap: 32px;
+  align-items: start;
+}
+.school-staff h2 {
+  margin: 0 0 18px;
+  font-family: var(--font-lora), Georgia, serif;
+  font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+  line-height: 1.15;
+}
+.school-staff p { line-height: 1.55; }
+.school-staff h3 { margin: 0 0 10px; font-size: 1.1rem; line-height: 1.3; }
+.school-staff-leadership { padding: 24px; background: var(--leaf); border-radius: 18px; }
+.school-staff-leadership small { display: block; margin-bottom: 12px; font-weight: 800; font-size: .7rem; letter-spacing: .07em; }
+.school-staff button {
+  min-height: 44px;
+  padding: 10px 0;
+  border: 0;
+  border-radius: 4px;
+  background: transparent;
+  color: var(--ink);
+  font-weight: 800;
+  text-align: left;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+  cursor: pointer;
+}
+.school-staff button:hover { text-decoration-thickness: 2px; }
+.school-staff-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+  margin-top: 28px;
+}
+.school-staff-grid article {
+  display: flex;
+  flex-direction: column;
+  padding: 24px;
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  background: var(--paper);
+}
+.school-staff-grid article:nth-child(2n) { background: var(--cream); }
+.school-staff-number { display: block; margin-bottom: 18px; color: var(--ink-2); font-size: .75rem; font-weight: 800; }
+.school-staff-grid p { margin: 0 0 14px; }
+.school-staff-grid button { margin-top: auto; }
+.school-staff-planning {
+  display: flex;
+  gap: 24px;
+  justify-content: space-between;
+  align-items: center;
+  padding: 24px;
+  margin-top: 20px;
+  border-radius: 18px;
+  background: var(--sky);
+}
+.school-staff-planning p { max-width: 750px; margin: 0; }
+.school-staff-planning button { flex: 0 0 225px; }
+.school-staff-care { margin: 20px 0 0; color: var(--ink-2); font-size: .88rem; }
+.school-staff-shortcut { display: inline-block; margin-top: 8px; min-height: 36px; font-weight: 800; text-underline-offset: 4px; }
+@media (max-width: 850px) {
+  .school-staff-heading { grid-template-columns: 1fr; gap: 20px; }
+  .school-staff-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .school-staff-planning { display: block; }
+  .school-staff-planning button { margin-top: 12px; }
+}
+@media (max-width: 550px) {
+  .school-staff { padding-top: 36px; padding-bottom: 36px; }
+  .school-staff-grid { grid-template-columns: 1fr; }
+  .school-staff-grid article, .school-staff-leadership, .school-staff-planning { padding: 20px; }
+}
+@media print {
+  .school-staff-heading, .school-staff-grid { display: block; }
+  .school-staff article, .school-staff-leadership, .school-staff-planning { break-inside: avoid; margin-bottom: 12px; }
+  .school-staff-shortcut { display: none; }
+}
