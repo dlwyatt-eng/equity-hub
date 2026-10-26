@@ -16,6 +16,11 @@ export default function NovemberChildDay({ onLesson }: { onLesson: (id: string) 
         <button type="button" onClick={() => onLesson("concern-to-action")}>Plan a student-voice action →</button>
       </nav>
       <div className="november-child-day-downloads">
+        <h3>Social justice through stories</h3>
+        <p>Explore teacher-selected books through six themes, meaningful illustrations and evidence-based responses. Choose one theme or revisit stations over several sessions; November 20 is a connection, not a completion deadline.</p>
+        <a href="/downloads/social-justice-reading/index.html">Open the teacher lesson and reading package: lesson PDF, student booklet and six station signs</a>
+      </div>
+      <div className="november-child-day-downloads">
         <h3>Every child. Every right. · November toolkit</h3>
         <div className="november-download-links">
           <a href="/downloads/childrens-day-2026/Childrens-Day-2026-School-Learning-Pack.pdf" target="_blank" rel="noreferrer">Learning pack · 6-page PDF · 4.2 MB ↗</a>
