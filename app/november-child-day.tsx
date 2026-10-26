@@ -17,7 +17,7 @@ export default function NovemberChildDay({ onLesson }: { onLesson: (id: string) 
       </nav>
       <div className="november-child-day-downloads">
         <h3>Social justice through stories</h3>
-        <p>Explore teacher-selected books through six themes, meaningful illustrations and evidence-based responses. Choose one theme or revisit stations over several sessions; November 20 is a connection, not a completion deadline.</p>
+        <p>With a partner, circulate among six thematic stations, choose from a selection of books, read or view together, discuss and create individual responses. Move flexibly over several sessions, with other teaching formats available; November 20 is a connection, not a completion deadline.</p>
         <a href="/downloads/social-justice-reading/index.html">Open the teacher lesson and reading package: lesson PDF, student booklet and six station signs</a>
       </div>
       <div className="november-child-day-downloads">

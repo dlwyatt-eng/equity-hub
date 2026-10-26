@@ -4,31 +4,35 @@ Teacher lesson plan | Read, discuss, respond and connect
 
 ## Purpose and learning goals
 
-Use books selected by the teacher, with optional input from Laura, to explore rights, belonging and voice. Students identify a book’s key message, support an interpretation with words or pictures, explain why the learning matters, and connect ideas across books. They communicate through meaningful illustration and words, orally or with support.
+Students circulate among six thematic stations, choose a book from a station’s selection and work with a partner. Learning from books is primary: identify a key message, support thinking with words or pictures, explain why the learning matters and connect ideas across books. A required meaningful illustration supports that learning; artistic detail and colouring are secondary.
 
-## Materials and preparation
+## Set up six book-choice stations
 
-Use the approved eight-page grayscale student booklet and six station signs, selected books, pencils and drawing tools. Offer extra copies of the continuation page (page 8), accessible text or audio where available, and a shared place to record evidence. Preview every book for age suitability, accuracy and respectful representation. Select relevant pages rather than requiring the whole booklet at once. Read Indigenous-authored texts for the Indigenous voices theme; identify the specific Nation or community when the book provides it.
+Place an approved sign and a selection of teacher-chosen books at each thematic station, with optional selection input from Laura. Preview books for age suitability, accuracy and respectful representation. Include Indigenous-authored texts at the Indigenous voices station and identify specific Nations or communities when provided. Supply the approved eight-page grayscale booklet, pencils, drawing tools and extra continuation pages (page 8). Offer accessible text/audio and clear, accessible movement routes; bring books to students when needed.
 
-## Flexible timing
+## Partner station flow and flexible timing
 
-One book/theme: allow about 40–60 minutes, or split into two sessions: prepare and read (15–25 minutes), discuss and respond (20–30 minutes), then share (5 minutes). Stations: introduce one book together, then revisit selected stations over several sessions. Allow enough time to read or listen before responding; a timed rotation is optional. Complete the final reflection after students have encountered at least two books. Children’s Day on November 20 offers a connection to rights, belonging and voice, not a deadline to finish every station.
+Introduce the six themes and model choosing a book and discussing evidence. Partners choose a station and book, read or view it together, discuss the station question, then each completes an individual organizer response informed by their discussion. They may take turns reading, listen to an accessible version or examine illustrations together. Allow about 40–60 minutes for one book and response, split across sessions as needed. Partners move when ready and revisit stations over several sessions. No forced timed rotations or requirement to complete every station. Complete page 7 after at least two books. November 20 connects to children’s rights, belonging and voice, not a completion deadline.
 
-## Before the read-aloud
+## Before reading or viewing
 
-Introduce the author, illustrator and theme. Ask: What do the title and cover make us wonder? What might belonging or fair participation look like here? Invite predictions as possibilities, not facts. Explain that students may discuss the book or another text instead of sharing personal experiences. Agree to listen respectfully, use people’s stated names and identities, and question ideas without questioning anyone’s dignity.
+With partners, introduce the author, illustrator and theme. Ask: What do the title and cover make us wonder? What might belonging or fair participation look like here? Invite predictions as possibilities. Students may discuss books or the world without sharing personal experiences. Agree to listen, share turns, respect stated names and identities, and question ideas without questioning anyone’s dignity.
 
-## During the read-aloud
+## During reading and discussion
 
-Pause at a few purposeful moments: What do you notice in the words or pictures? What supports your thinking? Whose perspective are we hearing? What questions remain? Revisit a page when interpretations differ. Name unfairness accurately and attend to agency, resistance, care and joy. Do not invent quotations or assume a character speaks for a whole community.
+Partners pause to ask: What do we notice in the words or pictures? What supports our thinking? Whose perspective are we hearing? Revisit pages when interpretations differ. The teacher circulates, listens and prompts rather than supplying every answer. Name unfairness accurately and attend to agency, resistance, care and joy. Never invent quotations, treat a character as representing a whole community, or reenact oppression.
+
+## Other valid ways to use the package
+
+Adapt to the learners and selected books: use a teacher read-aloud, independent study, teacher-guided small groups or one-theme whole-class work. Use the same before/during/after discussion prompts and evidence-based responses in each format.
 
 # Respond with evidence
 
 Four organizer sections | Book learning comes first
 
-## After reading
+## After reading: discuss, then respond
 
-Revisit the station question and invite a brief partner or whole-class discussion: What did this book help us understand? Which detail changed or deepened our thinking? Model a response using an actual page from the selected book. Distinguish what the text shows from what we infer; explain that several interpretations may be supported by evidence.
+Partners revisit the station question: What did this book help us understand? Which detail deepened our thinking? Each student then completes their own organizer using ideas explored in discussion; partners need not reach identical interpretations. Model with an actual page when helpful and distinguish evidence from inference. A shared oral response is a valid adaptation when needed, with opportunities for both students to contribute.
 
 ## 1. Main idea or key message
 
@@ -48,7 +52,7 @@ Students connect the book to another book, the world or their own life by choice
 
 ## Space, access and enrichment
 
-Use page 8 whenever a response needs more room; record the book/topic and question being continued. Accept oral explanation, a scribe, speech-to-text, drawing with labels, home-language responses or supported communication. Preserve the thinking goal while adapting output and pacing. Students may finish the themed colouring frame as secondary enrichment after developing their book response; colouring is not evidence of understanding and should not crowd out reading, discussion or the meaningful illustration.
+Use page 8 whenever a response needs more room; record the book/topic and question being continued. Accept oral explanation, a scribe, speech-to-text, drawing with labels, home-language responses, supported communication or an adapted shared oral response. Preserve the thinking goal while adapting output and pacing. Complete the meaningful illustration as an explanation of book learning; colouring the themed frame is optional secondary enrichment and should not crowd out reading or discussion.
 
 # Connect learning and plan next steps
 
