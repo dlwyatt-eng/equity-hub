@@ -2,6 +2,7 @@
 /* eslint-disable @next/next/no-img-element -- compressed local WebP assets are used for predictable projector rendering. */
 
 import CommunityInquiry from "./community-inquiries";
+import LessonFinder, { type FinderSelection } from "./lesson-finder";
 import NatureToday from "./nature-today";
 import RightsStrand, { RightsEntry } from "./rights-strand";
 import { EquityExploration } from "./virtual-explorations";
@@ -1608,7 +1609,6 @@ const yearPlanLabels: Record<Runway["priority"], string> = { Core: "Starting les
 
 const gradeBands: GradeBand[] = ["K–2", "3–5", "6–7"];
 const gradeFitLabels: Record<GradeFit, string> = { "Core lesson": "Suited to this grade range", "Teacher-led + core": "Use with teacher support", "Core + extension": "Suited to this range · extra challenge available", "Teacher-led": "Teacher-guided adaptation", Extension: "Extra challenge" };
-const gradeFitOrder: Record<GradeFit, number> = { "Core lesson": 0, "Teacher-led + core": 1, "Core + extension": 2, "Teacher-led": 3, Extension: 4 };
 const gradeFitClass: Record<GradeFit, string> = {
   "Core lesson": "fit-core-lesson",
   "Teacher-led + core": "fit-teacher-core",
@@ -1676,6 +1676,7 @@ export default function Home() {
   const [stepIndex, setStepIndex] = useState(0);
   const [monthFilter, setMonthFilter] = useState("ALL");
   const [gradeBand, setGradeBand] = useState<GradeSelection>("ALL");
+  const [finderSelection, setFinderSelection] = useState<FinderSelection>({ time: "all", purpose: "all", subject: "all", showAll: false });
   const [issueFilter, setIssueFilter] = useState("");
   const [selectedProject, setSelectedProject] = useState(actionProjects[0].id);
   const [actionStep, setActionStep] = useState(0);
@@ -1691,18 +1692,6 @@ export default function Home() {
   const routePosition = Math.max(0, activeStepIndexes.indexOf(stepIndex));
   const selectedRoute = selectedLesson?.routes?.find((route) => route.steps.length === activeStepIndexes.length && route.steps.every((step, index) => step === activeStepIndexes[index]));
   const orderedLessons = lessonOrder.map((id) => lessons.find((lesson) => lesson.id === id)).filter((lesson): lesson is Lesson => Boolean(lesson));
-  const gradeSortedLessons = gradeBand === "ALL"
-    ? orderedLessons
-    : [...orderedLessons].sort((a, b) => {
-      const aFit = a.teacher.adaptations.find((item) => item.band === gradeBand)?.fit ?? "Extension";
-      const bFit = b.teacher.adaptations.find((item) => item.band === gradeBand)?.fit ?? "Extension";
-      return gradeFitOrder[aFit] - gradeFitOrder[bFit];
-    });
-  const gradeCounts = gradeBand === "ALL" ? null : orderedLessons.reduce<Record<GradeFit, number>>((counts, lesson) => {
-    const fit = lesson.teacher.adaptations.find((item) => item.band === gradeBand)?.fit ?? "Extension";
-    counts[fit] += 1;
-    return counts;
-  }, { "Core lesson": 0, "Teacher-led + core": 0, "Core + extension": 0, "Teacher-led": 0, Extension: 0 });
   const months = ["ALL", ...Array.from(new Set(runways.map((item) => item.month)))];
   const visibleRunways = monthFilter === "ALL" ? runways : runways.filter((item) => item.month === monthFilter);
   const visibleIssues = issueAreas.filter((issue) => {
@@ -1770,9 +1759,10 @@ export default function Home() {
 
   const go = (next: View) => {
     setView(next);
-    if (next === "nature") window.history.replaceState(null, "", "#nature-today");
+    if (next === "teach") window.history.replaceState(null, "", "#lessons");
+    else if (next === "nature") window.history.replaceState(null, "", "#nature-today");
     else if (next === "rights") window.history.replaceState(null, "", "#rights");
-    else if (["#rights", "#nature-today", "#school-staff"].includes(window.location.hash)) window.history.replaceState(null, "", window.location.pathname);
+    else if (["#rights", "#nature-today", "#school-staff", "#lessons"].includes(window.location.hash)) window.history.replaceState(null, "", window.location.pathname);
     setSelectedLessonId(null);
     setLessonOverview(false);
     setRouteSteps([]);
@@ -1799,7 +1789,7 @@ export default function Home() {
     return () => window.removeEventListener("hashchange", openSchoolStaff);
   }, []);
   useEffect(() => {
-    const fromHash = () => { if (!window.location.hash) { setView("home"); setSelectedLessonId(null); } else if (window.location.hash === "#nature-today") { setView("nature"); setSelectedLessonId(null); } else if (window.location.hash === "#rights") { setView("rights"); setSelectedLessonId(null); } else if (window.location.hash === "#community-calendar") { setView("plan"); setSelectedLessonId(null); } else if (window.location.hash === "#action") { go("action"); } else if (window.location.hash.startsWith("#lesson/")) { const id = window.location.hash.slice(8); if (lessons.some(lesson => lesson.id === id)) startLesson(id); } };
+    const fromHash = () => { if (!window.location.hash) { setView("home"); setSelectedLessonId(null); } else if (window.location.hash === "#lessons") { setView("teach"); setSelectedLessonId(null); } else if (window.location.hash === "#nature-today") { setView("nature"); setSelectedLessonId(null); } else if (window.location.hash === "#rights") { setView("rights"); setSelectedLessonId(null); } else if (window.location.hash === "#community-calendar") { setView("plan"); setSelectedLessonId(null); } else if (window.location.hash === "#action") { go("action"); } else if (window.location.hash.startsWith("#lesson/")) { const id = window.location.hash.slice(8); if (lessons.some(lesson => lesson.id === id)) startLesson(id); } };
     fromHash(); window.addEventListener("hashchange", fromHash);
     return () => window.removeEventListener("hashchange", fromHash);
   }, []);
@@ -1983,6 +1973,17 @@ export default function Home() {
               <article><span aria-hidden="true">02</span><small>STUDENTS FINISH WITH</small><p>{selectedRoute?.title === "B.C. provincial party inquiry" ? "A sourced party comparison, a criticism and response check, an infographic, and one revised claim" : selectedLesson.product}</p></article>
               <article><span aria-hidden="true">03</span><small>HAVE READY</small><p>{selectedLesson.materials}</p></article>
             </div>
+
+            <section className="route-ready" aria-labelledby="route-ready-title">
+              <small>YOUR TEACHING ROUTE</small><h2 id="route-ready-title">Ready in a few clear steps.</h2>
+              <p><b>{selectedRoute?.title ?? "Full learning pathway"}</b> · {selectedRoute?.time ?? selectedLesson.length}</p>
+              <div className="route-ready-grid">
+                <div><h3>01 · Gather &amp; adapt</h3><p>{selectedLesson.materials}</p><p>Materials describe the lesson pack; choose what this route needs.</p>{gradeBand !== "ALL" && <p><b>{gradeBand}:</b> {selectedLesson.teacher.adaptations.find(item => item.band === gradeBand)?.move}</p>}</div>
+                <div><h3>02 · Copy only what you need</h3><p>{selectedRoute?.print ?? selectedLesson.printable.pagePlan.join(" ")}</p><p>Use the matching print guide below. Short discussion routes may need no new copies.</p></div>
+                <div><h3>03 · Preview the sequence</h3><ol>{activeStepIndexes.map(index => <li key={index}>{selectedLesson.steps[index].title} <span>· {selectedLesson.steps[index].time}</span></li>)}</ol></div>
+              </div>
+              <p className="route-ready-note"><b>Before teaching:</b> review preparation, care guidance and original sources below. The selected route may build on earlier learning. Offer different ways to participate.</p>
+            </section>
 
             <section className="overview-grade-guide" aria-labelledby="grade-guide-title">
               <div className="overview-section-heading"><span aria-hidden="true">✦</span><div><small>K–7 GRADE GUIDE</small><h2 id="grade-guide-title">Teach the inquiry, adapt the product.</h2></div></div>
@@ -2211,39 +2212,8 @@ export default function Home() {
             <MapRepresentationInquiry projectorMode={projectorMode} onEnterProjection={enterProjection} onExitProjection={exitProjection} />
           )}
 
-          {view === "teach" && (
-            <section className="section page-section">
-              <div className="page-heading split"><div><p className="eyebrow dark"><span /> K–7 Equity Hub lessons</p><h1>Choose a lesson.</h1><p>Choose a lesson to see materials, print pages and grade guidance. Select a route, then project it.</p></div><button type="button" className="button secondary browse-issues" onClick={() => go("issues")}>Browse by big question →</button></div>
-              <section className="grade-chooser" aria-labelledby="grade-chooser-title">
-                <div><span aria-hidden="true">✦</span><div><small>CHOOSE YOUR TEACHING BAND</small><h2 id="grade-chooser-title">One inquiry. Different depth and products.</h2></div></div>
-                <div className="grade-band-tabs" aria-label="Show grade-band guidance">
-                  <button type="button" className={gradeBand === "ALL" ? "active" : ""} aria-pressed={gradeBand === "ALL"} onClick={() => setGradeBand("ALL")}>All bands</button>
-                  {gradeBands.map((band) => <button type="button" key={band} className={gradeBand === band ? "active" : ""} aria-pressed={gradeBand === band} onClick={() => setGradeBand(band)}>{band}</button>)}
-                </div>
-                {gradeBand === "ALL"
-                  ? <p>Choose your grade range to see teaching suggestions on each card. Lessons suited to that range appear first, followed by adaptations and extra challenges.</p>
-                  : <div className="grade-selection-summary"><p><b>{gradeBand}:</b> {gradeBandNotes[gradeBand]}</p>{gradeCounts && <span>{gradeCounts["Core lesson"]} suited to this range · {gradeCounts["Teacher-led + core"] + gradeCounts["Core + extension"]} supported or extended options · {gradeCounts["Teacher-led"]} teacher-led · {gradeCounts.Extension} extensions</span>}</div>}
-              </section>
-              <div className="lesson-grid">
-                {gradeSortedLessons.map((lesson) => {
-                  const bandMove = gradeBand === "ALL" ? null : lesson.teacher.adaptations.find((item) => item.band === gradeBand);
-                  return (
-                  <article className={`lesson-card tone-${lesson.tone}`} key={lesson.id}>
-                    <figure className="lesson-card-image"><img src={lesson.image} alt="" width="1536" height="1024" /><figcaption>{lesson.length}</figcaption></figure>
-                    <div className="lesson-card-top"><span>{lesson.grades}</span><b>{lesson.printable.pages}-page pack</b></div>
-                    {bandMove && <div className={`card-grade-move ${gradeFitClass[bandMove.fit]}`}><span>{bandMove.band} · {gradeFitLabels[bandMove.fit]}</span><p>{bandMove.move}</p></div>}
-                    <h2>{lesson.title}</h2><p className="lesson-question">{lesson.question}</p>
-                    <div className="lesson-formats">{lesson.formats.map((format) => <span key={format}>{format}</span>)}</div>
-                    <div className="lesson-card-plan"><span><small>STUDENTS WILL</small>{lesson.activity}</span><span><small>THEY FINISH WITH</small>{lesson.product}</span><span className="pack-purpose"><small>PACK CONTENTS</small>{lesson.printable.includes}{lesson.routes ? " Choose a route in the preview to see exactly which pages to print." : " The preview shows the exact copy plan."}</span></div>
-                    <p className="lesson-materials"><b>Materials:</b> {lesson.materials}</p>
-                    <div className="lesson-meta"><span>{lesson.timing}</span><span>{lesson.routes ? `${lesson.routes.length} route choices` : `${lesson.steps.length} student screens`}</span></div>
-                    <div className="lesson-card-actions"><button type="button" onClick={() => startLesson(lesson.id)}>Preview &amp; prepare →</button><a className="bw-link" href={lesson.printable.bwHref} target="_blank" rel="noreferrer">Full B&amp;W pack · {lesson.printable.pages} pages</a><a href={lesson.printable.href} target="_blank" rel="noreferrer">Colour pack</a></div>
-                  </article>
-                  );
-                })}
-              </div>
-            </section>
-          )}
+          {view === "teach" && <LessonFinder lessons={orderedLessons} grade={gradeBand} onGrade={setGradeBand} selection={finderSelection} onSelection={setFinderSelection}
+            onPrepare={(id, steps) => { startLesson(id); chooseRoute(steps); }} onQuestions={() => go("issues")} />}
 
           {view === "plan" && (
             <section className="section page-section planning-page">
