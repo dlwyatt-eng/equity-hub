@@ -847,7 +847,7 @@ button { white-space: normal; line-height: 1.25; }
 .projector-on .lesson-player { background: white; }
 .projector-on .lesson-player-top { position: fixed; top: 12px; right: 12px; z-index: 10; min-height: 0; display: block; padding: 0; border: 0; background: none; }
 .projector-on .lesson-player-top > :not(.project-button) { display: none; }
-.projector-on .project-button { opacity: .13; }
+.projector-on .project-button { opacity: 1; color: #173b36; background: #fff; border-color: #173b36; box-shadow: 0 2px 8px #0002; }
 .projector-on .project-button:hover, .projector-on .project-button:focus-visible, .projector-on .project-button:active { opacity: 1; }
 .projector-on .step-track, .projector-on .teacher-dock { display: none; }
 .projector-on .projector-stage { width: 100vw; height: calc(100vh - 74px); min-height: 0; margin: 0; padding: 4vh 5vw; border-radius: 0; box-shadow: none; justify-content: flex-start; }
@@ -1067,4 +1067,10 @@ footer p a,.election-official-links a { color: #ffdc9b; text-decoration: underli
  .site-header,.large-text .site-header{grid-template-columns:minmax(0,1fr)}
  .header-tools{grid-column:1;flex-wrap:wrap;gap:6px}
  .mobile-nav{max-height:calc(100dvh - 180px)}
+}
+
+/* Keep ordinary classroom projectors readable without making the title dominate. */
+@media screen and (max-height: 800px) and (min-width: 701px) {
+  .projector-on:not(.large-text) .projector-stage h1 { font-size: clamp(2.6rem, 4.4vw, 3.5rem); margin: 10px 0; }
+  .projector-on:not(.large-text) .projector-stage .big-question { font-size: clamp(1.6rem, 2.7vw, 2.1rem); }
 }

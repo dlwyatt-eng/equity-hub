@@ -14,3 +14,5 @@ test('provocation scroll respects reduced motion',()=>{assert.match(page,/matchM
 test("final reveal restores focus to the persistent pacing toggle",()=>{assert.match(component,/ref=\{toggleRef\}/);assert.match(component,/if \(next === directions.length\) toggleRef.current\?\.focus\(\)/)});
 
 test("quick launch selects dedicated BC inquiry worksheet when that route is chosen",()=>{const quick=page.slice(page.indexOf('className="classroom-quick-start"'),page.indexOf('className="overview-facts"'));assert.match(quick,/selectedRoute\?\.title === "B.C. provincial party inquiry" \? "\/downloads\/bc-provincial-party-inquiry-black-white.pdf" : selectedLesson.printable.bwHref/)});
+
+test("projection exit stays visible without hover and compact projectors retain readable text",async()=>{const global=await readFile(new URL("../app/globals.css",import.meta.url),"utf8");assert.match(global,/\.projector-on \.project-button \{ opacity: 1; color: #173b36; background: #fff/);assert.match(global,/max-height: 800px/);assert.match(global,/projector-on:not\(\.large-text\)/)});
