@@ -1,6 +1,7 @@
 "use client";
 /* eslint-disable @next/next/no-img-element -- compressed local WebP assets are used for predictable projector rendering. */
 
+import ClassroomDirections from "./classroom-directions";
 import CommunityInquiry from "./community-inquiries";
 import LessonFinder, { type FinderSelection } from "./lesson-finder";
 import NatureToday from "./nature-today";
@@ -1864,7 +1865,7 @@ export default function Home() {
   const openProvocation = (id: string) => {
     const target = document.getElementById(`provocation-${id}`);
     if (!target) return;
-    target.scrollIntoView({ behavior: "smooth", block: "start" });
+    target.scrollIntoView({ behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth", block: "start" });
     window.requestAnimationFrame(() => target.focus({ preventScroll: true }));
   };
 
@@ -1958,6 +1959,11 @@ export default function Home() {
               <p className="eyebrow dark"><span /> Lesson preview · {selectedLesson.grades}</p>
               <h1>{selectedLesson.title}</h1>
               <p className="overview-question">{selectedLesson.question}</p>
+              <div className="classroom-quick-start">
+                <b>Ready to teach this route?</b>
+                <div className="classroom-quick-start-actions"><button type="button" onClick={() => openStudentScreens()}>Open student screens →</button><a href={selectedLesson.printable.bwHref} target="_blank" rel="noreferrer">Matching B&amp;W pack ↗</a><a href="/printables/notice-evidence-next-step.pdf" target="_blank" rel="noreferrer">Optional one-page organizer ↗</a></div>
+                <small>First use? Check the route, preparation and care guidance below. Student screens keep teacher notes out of projection. The organizer is optional and does not replace the route’s activity pages.</small>
+              </div>
               <div className="overview-facts">
                 <span><small>TIME</small><b>{selectedRoute?.time ?? selectedLesson.length}</b></span>
                 <span><small>MATERIALS</small><b>{selectedRoute?.title === "B.C. provincial party inquiry" ? "8-page B&W pack · curated sources" : `${selectedLesson.printable.studentPages} student + ${selectedLesson.printable.pages - selectedLesson.printable.studentPages} teacher pages`}</b></span>
@@ -2116,8 +2122,7 @@ export default function Home() {
             {currentStep.cards && <div className="fact-card-row">{currentStep.cards.map((card) => <article key={card.title}><b>{card.title}</b><span>{card.text}</span></article>)}</div>}
             {currentStep.maxChoices && <p className="choice-limit">Choose {currentStep.maxChoices === 1 ? "one" : `up to ${currentStep.maxChoices}`}.</p>}
             {currentStep.options && <div className="choice-row" aria-label="Tap to choose one or more options">{currentStep.options.map((option) => <button type="button" key={option} className={chosenOptions.includes(option) ? "selected" : ""} aria-pressed={chosenOptions.includes(option)} onClick={() => toggleChoice(option)}>{option}</button>)}</div>}
-            <span className="direction-label">DO THIS NOW</span>
-            <ol className="student-directions">{currentStep.directions.map((direction, index) => <li key={direction}><b>{index + 1}</b><span>{direction}</span></li>)}</ol>
+            <ClassroomDirections key={`${selectedLesson.id}-${stepIndex}`} directions={currentStep.directions} />
             {currentStep.links && <div className="student-source-links">{currentStep.links.map((link) => <a key={link.href} href={link.href} target="_blank" rel="noreferrer">{link.label} ↗</a>)}</div>}
             {currentStep.artSpark && <div className="artivism-spark"><span aria-hidden="true">✦</span><p><b>ART SPARK</b>{currentStep.artSpark}</p></div>}
           </div>

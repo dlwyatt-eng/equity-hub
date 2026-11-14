@@ -1,0 +1,13 @@
+.classroom-direction-heading { display:flex; align-items:center; justify-content:space-between; gap:1rem; flex-wrap:wrap; }
+.classroom-pacing-controls { display:flex; gap:.65rem; flex-wrap:wrap; }
+.classroom-pacing-controls button { min-height:44px; padding:.7rem 1rem; color:#173b36; background:#fff; border:2px solid #49695d; border-radius:12px; font:inherit; font-weight:700; cursor:pointer; }
+.classroom-pacing-controls button:focus-visible,.classroom-quick-start a:focus-visible,.classroom-quick-start button:focus-visible { outline:3px solid #0b6074; outline-offset:4px; }
+.classroom-step-count { font-size:.9rem; color:#43554f; }
+.classroom-directions .student-directions li[hidden] { display:none; }
+.classroom-quick-start { margin-top:1.25rem; padding:1.25rem; background:#edf5ee; border:1px solid #c0d3c4; border-radius:18px; }
+.classroom-quick-start-actions { display:flex; flex-wrap:wrap; gap:.75rem; margin:.8rem 0; }
+.classroom-quick-start button,.classroom-quick-start a { display:inline-flex; align-items:center; min-height:48px; padding:.8rem 1rem; border:1px solid #173b36; border-radius:12px; font:inherit; font-weight:700; }
+.classroom-quick-start button { color:white; background:#173b36; cursor:pointer; }
+.classroom-quick-start a { color:#173b36; background:white; }
+.classroom-quick-start small { display:block; line-height:1.5; }
+@media print { .classroom-pacing-controls,.classroom-step-count,.classroom-quick-start { display:none; } .classroom-directions .student-directions li[hidden] { display:flex; } }
