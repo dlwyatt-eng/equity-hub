@@ -12,3 +12,5 @@ test('optional organizer supports alternative responses and privacy',()=>{assert
 test('provocation scroll respects reduced motion',()=>{assert.match(page,/matchMedia\("\(prefers-reduced-motion: reduce\)"\).matches \? "auto" : "smooth"/)});
 
 test("final reveal restores focus to the persistent pacing toggle",()=>{assert.match(component,/ref=\{toggleRef\}/);assert.match(component,/if \(next === directions.length\) toggleRef.current\?\.focus\(\)/)});
+
+test("quick launch selects dedicated BC inquiry worksheet when that route is chosen",()=>{const quick=page.slice(page.indexOf('className="classroom-quick-start"'),page.indexOf('className="overview-facts"'));assert.match(quick,/selectedRoute\?\.title === "B.C. provincial party inquiry" \? "\/downloads\/bc-provincial-party-inquiry-black-white.pdf" : selectedLesson.printable.bwHref/)});

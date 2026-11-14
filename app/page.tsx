@@ -1961,7 +1961,7 @@ export default function Home() {
               <p className="overview-question">{selectedLesson.question}</p>
               <div className="classroom-quick-start">
                 <b>Ready to teach this route?</b>
-                <div className="classroom-quick-start-actions"><button type="button" onClick={() => openStudentScreens()}>Open student screens →</button><a href={selectedLesson.printable.bwHref} target="_blank" rel="noreferrer">Matching B&amp;W pack ↗</a><a href="/printables/notice-evidence-next-step.pdf" target="_blank" rel="noreferrer">Optional one-page organizer ↗</a></div>
+                <div className="classroom-quick-start-actions"><button type="button" onClick={() => openStudentScreens()}>Open student screens →</button><a href={selectedRoute?.title === "B.C. provincial party inquiry" ? "/downloads/bc-provincial-party-inquiry-black-white.pdf" : selectedLesson.printable.bwHref} target="_blank" rel="noreferrer">Matching B&amp;W pack ↗</a><a href="/printables/notice-evidence-next-step.pdf" target="_blank" rel="noreferrer">Optional one-page organizer ↗</a></div>
                 <small>First use? Check the route, preparation and care guidance below. Student screens keep teacher notes out of projection. The organizer is optional and does not replace the route’s activity pages.</small>
               </div>
               <div className="overview-facts">
