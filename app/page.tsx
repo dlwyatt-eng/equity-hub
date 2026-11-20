@@ -2085,6 +2085,14 @@ export default function Home() {
               </div>
             </section>
 
+            {selectedLesson.id === "rights-in-our-room" && (
+              <p>
+                <b>After Rights Repair · optional Grade 6 discussion:</b>{" "}
+                <a href="https://dlwyatt-eng.github.io/learn/#/rights" target="_blank" rel="noreferrer">Where Is the Line? · Learn Hub ↗</a>{" "}
+                Choose “2 · Where is the line?” and pick a fictional case. What detail from the case supports your thinking?
+              </p>
+            )}
+
             <div className="overview-launch">
               <div><small>READY TO TEACH</small><b>{selectedRoute?.title ?? selectedLesson.title}</b><span>{selectedRoute?.print ?? `Use the ${selectedLesson.printable.title} pack.`} Projection begins only if you later choose Project fullscreen.</span></div>
               <button type="button" onClick={() => openStudentScreens()}>Open student screens →</button>
