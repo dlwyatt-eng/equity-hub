@@ -672,7 +672,7 @@ const lessons: Lesson[] = [
     materials: "Projected scene · Rights Repair card set · comic page · scissors optional",
     formats: ["Rights mystery", "Match pairs", "Repair comic"],
     routes: [
-      { title: "Rights Repair lesson", time: "45–55 min", description: "Spot a right, match rights with adult responsibilities, and repair a fictional case in a comic.", steps: [0, 1, 2, 3, 4], print: "Hand out student pages 1–2; keep teacher pages 3–4." },
+      { title: "Rights Repair lesson", time: "45–55 min", description: "Spot a right, match rights with adult responsibilities, and repair a fictional case in a comic.", steps: [0, 1, 2, 3, 4], print: "Hand out student pages 1–2. This download contains student pages only." },
       { title: "Rights check-back", time: "8–12 min", description: "Revisit one class action and ask whether the adult or school responsibility is now being met.", steps: [4], print: "Reuse page 2 or discuss the existing comic; no new pack is required." },
       { title: "AI privacy extension", time: "15–25 min", description: "Consider the promised safety benefit, privacy risks, evidence, limits, and right to challenge errors.", steps: [5], print: "No worksheet is required." },
     ],
@@ -681,13 +681,13 @@ const lessons: Lesson[] = [
       href: "/downloads/lesson-rights-in-our-room.pdf",
       bwHref: "/downloads/lesson-rights-in-our-room-black-white.pdf",
       preview: "/images/printable-previews/rights-in-our-room.webp",
-      pages: 4,
+      pages: 2,
       studentPages: 2,
-      includes: "Two spacious student pages + two teacher pages: rights-and-adult matches, fictional scenarios, repair comic, screen map, key, and care guidance",
+      includes: "Two student pages: rights-and-adult matches, fictional scenarios, and a repair comic",
       pagePlan: [
         "Project SPOT first; SPOT is screen-only. Page 1 supports MATCH; copy one for each group and cut—or match in place.",
         "Page 2 supports SOLVE + COMIC; copy one Rights Repair comic for every student. SHARE is screen-only.",
-        "Pages 3–4 — teacher copy counts, screen map, model, answer key, care, and source; keep these pages. AI PRIVACY is screen-only.",
+        "Student pages only. AI PRIVACY is screen-only.",
       ],
     },
     steps: [
@@ -744,7 +744,7 @@ const lessons: Lesson[] = [
     ],
     teacher: {
       prepare: [
-        "Print student page 1 once per group and page 2 once per student; keep teacher pages 3–4. Pre-cut the match cards if helpful.",
+        "Print student page 1 once per group and page 2 once per student. Pre-cut the match cards if helpful.",
         "Open the linked UNICEF Canada elementary children’s-rights resources before class.",
         "Use one fictional case from the lesson: a video without captions, a playground rule made without checking how it affects safe play, or a student’s full name repeatedly ignored.",
       ],
@@ -1966,7 +1966,7 @@ export default function Home() {
               </div>
               <div className="overview-facts">
                 <span><small>TIME</small><b>{selectedRoute?.time ?? selectedLesson.length}</b></span>
-                <span><small>MATERIALS</small><b>{selectedRoute?.title === "B.C. provincial party inquiry" ? "8-page B&W pack · curated sources" : `${selectedLesson.printable.studentPages} student + ${selectedLesson.printable.pages - selectedLesson.printable.studentPages} teacher pages`}</b></span>
+                <span><small>MATERIALS</small><b>{selectedRoute?.title === "B.C. provincial party inquiry" ? "8-page B&W pack · curated sources" : selectedLesson.printable.pages === selectedLesson.printable.studentPages ? `${selectedLesson.printable.pages} student pages only` : `${selectedLesson.printable.studentPages} student + ${selectedLesson.printable.pages - selectedLesson.printable.studentPages} teacher pages`}</b></span>
                 <span><small>SCREENS IN THIS ROUTE</small><b>{activeStepIndexes.length}</b></span>
               </div>
             </div>
@@ -2046,7 +2046,7 @@ export default function Home() {
               <figure><img src={selectedLesson.printable.preview} alt={`Preview of page 1 in the ${selectedLesson.printable.title} activity pack`} width="773" height="1000" /></figure>
               <div>
                 <div className="overview-section-heading"><span aria-hidden="true">✦</span><div><small>PRINT PLAN</small><h2 id="print-plan-title">What is this pack for?</h2></div></div>
-                <p className="print-plan-intro"><b>{selectedLesson.printable.title}</b> supports the projected lesson. Teacher pages are clearly marked and should stay with you.</p>
+                <p className="print-plan-intro"><b>{selectedLesson.printable.title}</b> supports the projected lesson. {selectedLesson.printable.pages === selectedLesson.printable.studentPages ? "This download contains student pages only." : "Teacher pages are clearly marked and should stay with you."}</p>
                 <ol>{selectedLesson.printable.pagePlan.map((item) => <li key={item}>{item}</li>)}</ol>
                 {selectedRoute && <p className="route-print-note"><b>For the route selected above:</b> {selectedRoute.print}</p>}
                 <div className="print-plan-actions">
@@ -2332,7 +2332,7 @@ export default function Home() {
             <section className="section page-section library-page">
               <div className="page-heading split"><div><p className="eyebrow dark"><span /> Classroom resources</p><h1>Printables &amp; sources</h1></div><p>Open a lesson preview for grade guidance, copy counts and the matching projection screens.</p></div>
               <aside className="issue-principle"><b>Belonging &amp; Community</b><span>Connect belonging, agreements, communication, access and student action across several lessons.</span><a href="https://dlwyatt-eng.github.io/teacher-hub/?view=Games+%26+Activities&amp;deck=belonging-sequence">Open the Grade 6 sequence →</a></aside><h2 className="library-heading">Lesson activity packs</h2>
-              <p className="library-intro">Each pack includes clearly marked teacher pages showing what to project, which student pages match the lesson, how many copies to make, what to model, and what to collect. Multi-route packs tell you which pages to choose—you do not teach the whole pack. Check the suggested grade range and use the lesson’s K–7 guide for adaptations.</p>
+              <p className="library-intro">Rights Repair contains student pages only. Other packs include clearly marked teacher pages showing what to project, which student pages match the lesson, how many copies to make, what to model, and what to collect. Multi-route packs tell you which pages to choose—you do not teach the whole pack. Check the suggested grade range and use the lesson’s K–7 guide for adaptations.</p>
               <div className="lesson-printables-grid">{orderedLessons.map((lesson, index) => <article className={`tone-${lesson.tone}`} key={lesson.id}><figure><img src={lesson.printable.preview} alt="" width="773" height="1000" /><span>{String(index + 1).padStart(2, "0")}</span></figure><div><span className="printable-grade">{lesson.grades}</span><h3>{lesson.printable.title}</h3><p>{lesson.printable.pagePlan.join(" ")}</p><button type="button" onClick={() => startLesson(lesson.id)}>Preview grade fit + page map →</button></div><div className="printable-links"><a className="bw-link" href={lesson.printable.bwHref} target="_blank" rel="noreferrer">Full B&amp;W · {lesson.printable.pages} pages</a><a href={lesson.printable.href} target="_blank" rel="noreferrer">Colour pack</a></div></article>)}</div>
               <EarthMonthEntry />
               <h2 className="library-heading">Field journals &amp; project toolkits</h2>
